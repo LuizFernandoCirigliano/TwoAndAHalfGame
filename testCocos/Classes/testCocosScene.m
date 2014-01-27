@@ -201,12 +201,12 @@
     
     for (int i = 0; i < (int)TILE_X; i++) {
         //lower
-        wallCube.location = cc3v((float)((i * TILE_SZ) - xstart), LOCATION_Y - 1, LOCATION_Z);
+        wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) , LOCATION_Y - 0.5, LOCATION_Z);
         [wall addChild:wallCube];
         wallCube = [wallCube copy];
         
         //upper
-        wallCube.location = cc3v((float)((i * TILE_SZ) - xstart), -LOCATION_Y - 1, LOCATION_Z);
+        wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) , -LOCATION_Y - 0.5, LOCATION_Z);
         [wall addChild:wallCube];
         wallCube = [wallCube copy];
     }
@@ -214,12 +214,12 @@
     [wallCube rotateByAngle:90 aroundAxis:kCC3VectorUnitZPositive];
     for (int i = 0; i < (int)TILE_X; i++) {
         //lower
-        wallCube.location = cc3v(LOCATION_Y, (float)((i * TILE_SZ) - xstart), LOCATION_Z);
+        wallCube.location = cc3v(LOCATION_Y - 0.5, (float)((i * TILE_SZ) - xstart), LOCATION_Z);
         [wall addChild:wallCube];
         wallCube = [wallCube copy];
         
         //upper
-        wallCube.location = cc3v(-LOCATION_Y, (float)((i * TILE_SZ) - xstart), LOCATION_Z);
+        wallCube.location = cc3v(-LOCATION_Y - 0.5, (float)((i * TILE_SZ) - xstart), LOCATION_Z);
         [wall addChild:wallCube];
         wallCube = [wallCube copy];
     }
