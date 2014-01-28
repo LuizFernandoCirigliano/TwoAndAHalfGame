@@ -309,6 +309,7 @@
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		A344F5411892D57C00355248 /* CC3Node+Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = A344F5401892D57C00355248 /* CC3Node+Collision.m */; };
+		A3B2978E189825C9003949D3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2978D189825C9003949D3 /* Player.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -910,6 +911,8 @@
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		A344F53F1892D57C00355248 /* CC3Node+Collision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CC3Node+Collision.h"; sourceTree = "<group>"; };
 		A344F5401892D57C00355248 /* CC3Node+Collision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CC3Node+Collision.m"; sourceTree = "<group>"; };
+		A3B2978C189825C9003949D3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		A3B2978D189825C9003949D3 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1917,6 +1920,8 @@
 				A344F5351892D3CB00355248 /* Categories */,
 				3AD47EC91890211200623ACA /* Connection */,
 				3AD47ECA1890212C00623ACA /* Game */,
+				A3B2978C189825C9003949D3 /* Player.h */,
+				A3B2978D189825C9003949D3 /* Player.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2275,6 +2280,7 @@
 				3A4EA8BD188D927A00E6C9F5 /* CCPhysicsDebugNode.m in Sources */,
 				3A4EA843188D927900E6C9F5 /* CCActionEase.m in Sources */,
 				3A4EA880188D927900E6C9F5 /* CCFontDefinition.m in Sources */,
+				A3B2978E189825C9003949D3 /* Player.m in Sources */,
 				3A4EA8C0188D927A00E6C9F5 /* CCPhysicsSprite.mm in Sources */,
 				3A4EA9E8188D927B00E6C9F5 /* CC3PODVertexSkinning.mm in Sources */,
 				3A4EAA83188D927C00E6C9F5 /* CC3MeshNode.m in Sources */,

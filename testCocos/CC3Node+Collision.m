@@ -20,7 +20,7 @@
 
 - (void) createSphericalBoundingVolumeFromBoundingBox
 {
-    [self createSphericalBoundingVolumeFromBoundingBoxWithRatio: 1.0f];
+    [self createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: 1.0f];
 }
 
 - (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio

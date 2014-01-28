@@ -15,15 +15,13 @@
 #import "CC3Foundation.h"
 #import "CC3UtilityMeshNodes.h"
 #import "CC3Node+Collision.h"
+#import "Player.h"
 
 #define TILE_SZ 100.0f
 @implementation testCocosScene
 
-CC3Node *_monkey;
 NSMutableArray *_walls;
-CC3Vector _monkeyLocation;
-GLfloat _monkeyRotation;
-
+CC3Node *_monkeyModel;
 -(void) dealloc {
 	[super dealloc];
 }
@@ -55,7 +53,7 @@ GLfloat _monkeyRotation;
     [Connection myConnection].delegate = self;
     
     _walls = [[NSMutableArray alloc] init];
-    self.charactersArray = [NSMutableArray array];
+    self.charactersArray = [[NSMutableArray alloc] init];
     self.flip = NO;
     self.isTouchEnabled = YES;
 	// Create the camera, place it back a bit, and add it to the scene
@@ -141,26 +139,39 @@ GLfloat _monkeyRotation;
 	
 	// ------------------------------------------
     
+    //load the model content from the file
+    [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
+    _monkeyModel = [self getNodeNamed:@"monkey"];
+    
+    //remove this temp model from the world
+    [self removeChild:_monkeyModel];
+    
     [self readMapFile];
 	[self createTerrain];
     [self createWalls];
     [self addPlayerCharacter];
+    [self addPlayerCharacter];
+
     
 }
 -(void) addPlayerCharacter {
-    [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
+    Player *monkey = [[Player alloc] init];
     
-    CC3Node *monkey = [self getNodeNamed:@"monkey"];
-    [monkey createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.8f];
-    monkey.shouldDrawBoundingVolume = YES;
-    _monkey = monkey;
-    monkey.location = cc3v(0, 0, 50);
+    //copy the original model
+    monkey.node = [_monkeyModel copy];
     
-    monkey.rotationAxis = kCC3VectorUnitYPositive;
+    //create bounding volume
+    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.8f];
+    monkey.node.shouldDrawBoundingVolume = YES;
     
-    monkey.scale = cc3v(10,10,10);
+    monkey.node.location = cc3v(0, 0, 50);
     
+    monkey.node.rotationAxis = kCC3VectorUnitYPositive;
+    monkey.node.scale = cc3v(10,10,10);
+    
+    //add to character array and add the node to the scene
     [self.charactersArray addObject:monkey];
+    [self addChild:monkey.node];
 }
 -(void) readMapFile {
     NSString* path = [[NSBundle mainBundle] pathForResource:@"map01"
@@ -283,7 +294,7 @@ GLfloat _monkeyRotation;
                 wallCube.color = endColor;
                 [wall addChild:wallCube];
                 [wallCube createBoundingVolumeFromBoundingBox];
-                wallCube.shouldDrawBoundingVolume = YES;
+//                wallCube.shouldDrawBoundingVolume = YES;
                 [_walls addObject:wallCube];
                 wallCube = [wallCube copy];
                 //return to original color
@@ -329,7 +340,7 @@ GLfloat _monkeyRotation;
  */
 -(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor
 {
-//    _monkeyLocation = _monkey.location;
+
 }
 
 /**
@@ -514,10 +525,10 @@ GLfloat _monkeyRotation;
     
     NSLog(@"%@ player: %@" , [buttonPressMessage buttonNumber], [buttonPressMessage playerNumber]);
     
-    CC3Node* node = (CC3Node*)[self.charactersArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
+    Player* character = [self.charactersArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
     int buttonNumberInt = [[buttonPressMessage buttonNumber] intValue];
     
-    NSLog(@"%@" ,[node name]);
+    NSLog(@"%@" ,[character.node name]);
     CC3Vector moveDirection;
     CCActionInterval *move;
 
@@ -526,56 +537,56 @@ GLfloat _monkeyRotation;
     switch (buttonNumberInt) {
         //up button
         case 0:
-            if(node.rotationAngle != 0) {
+            if(character.node.rotationAngle != 0) {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:0];
-                [node runAction:rotate];
+                [character.node runAction:rotate];
             }
             moveDirection = cc3v(0, 0, speed);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
-            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             
             break;
         //right button
         case 1:
-            if(node.rotationAngle != -90) {
+            if(character.node.rotationAngle != -90) {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-90];
-                [node runAction:rotate];
+                [character.node runAction:rotate];
             }
             moveDirection = cc3v(-speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
-            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             
             break;
         //bottom button
         case 2:
-            if(node.rotationAngle != 180) {
+            if(character.node.rotationAngle != 180) {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:180];
-                [node runAction:rotate];
+                [character.node runAction:rotate];
             }
             
             moveDirection = cc3v(0, 0, -speed);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
-            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //left button
         case 3:
-            if(node.rotationAngle != 90) {
+            if(character.node.rotationAngle != 90) {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:90];
-                [node runAction:rotate];
+                [character.node runAction:rotate];
             }
             
             moveDirection = cc3v(speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
-            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //movement end
         default:
-            [node stopActionByTag:0];
-            [node stopActionByTag:1];
+            [character.node stopActionByTag:0];
+            [character.node stopActionByTag:1];
             break;
     }
 }
@@ -595,25 +606,24 @@ GLfloat _monkeyRotation;
  */
 -(void) checkForCollisions
 {
-    //For each wall cube:
-    for (CC3Node *wall in _walls)
+    for (Player *player in self.charactersArray)
     {
-        // Test whether the player intersects the wall.
-        if ([_monkey.boundingVolume doesIntersect:wall.boundingVolume])
+        //For each wall cube:
+        for (CC3Node *wall in _walls)
         {
-            //If it does I stop their movement
-            [_monkey stopAllActions];
-//            NSLog(@"Location was: (%f, %f)", _monkey.location.x, _monkey.location.z);
-            _monkey.location = _monkeyLocation;
-            _monkey.rotationAngle = _monkeyRotation;
-            return;
-//            NSLog(@"Location is: (%f, %f)", _monkey.location.x, _monkey.location.z);
-            
+            // Test whether the player intersects the wall.
+            if ([player.node.boundingVolume doesIntersect:wall.boundingVolume])
+            {
+                //If it does I stop their movement
+                [player.node stopAllActions];
+                player.node.location = player.oldLocation;
+                player.node.rotationAngle = player.oldRotationAngle;
+                break;
+            }
         }
+        player.oldLocation = player.node.location;
+        player.oldRotationAngle = player.node.rotationAngle;
     }
-    
-     _monkeyLocation = _monkey.location;
-    _monkeyRotation = _monkey.rotationAngle;
 }
 
 @end
