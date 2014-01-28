@@ -145,21 +145,9 @@
     
     CC3Node *monkey = [self getNodeNamed:@"monkey"];
     monkey.location = cc3v(0, 0, 50);
-//    monkey.rotation = cc3v(90, 0, 0);
     
-//    monkey.rotationAxis = kCC3VectorUnitZPositive;
+    monkey.rotationAxis = kCC3VectorUnitYPositive;
     
-    [monkey runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]]];
-//    [monkey rotateByAngle:90 aroundAxis:kCC3VectorUnitZPositive];
-//    
-//    NSLog(@"%f %f %f", monkey.rotation.x, monkey.rotation.y, monkey.rotation.z );
-//    
-//    [monkey rotateByAngle:90 aroundAxis:kCC3VectorUnitZPositive];
-//    
-//    NSLog(@"%f %f %f", monkey.rotation.x, monkey.rotation.y, monkey.rotation.z );
-
-//    CC3RotateToLookAt *rotation = [CC3RotateToLookAt actionWithDuration:0.5f endVector:cc3v(0, 100, 0)];
-//    [monkey runAction:rotation];
     monkey.scale = cc3v(10,10,10);
     
     [self.charactersArray addObject:monkey];
@@ -224,7 +212,7 @@
                 [tile setTexture: texture];
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
                 
-//                CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), (float)(((j * TILE_SZ) - ystart)), LOCATION_Z);
+
                 CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), LOCATION_Z, (float)(((j * TILE_SZ) - ystart)));
                 [tile setLocation: loc];
                 [tile retainVertexLocations];
@@ -250,7 +238,7 @@
     CC3Node *wall = [CC3Node node];
     [self addContentFromPODFile:@"simpleCube2.pod" withName:@"wallCube"];
     CC3Node *wallCube = [self getNodeNamed:@"wallCube"];
-    wallCube.scale = cc3v(49.5f, 49.5f, 80);
+    wallCube.scale = cc3v(49.5f, 80, 49.5f);
     
     //save original color for possible restore
     ccColor3B originalColor = wallCube.color;
@@ -519,8 +507,7 @@
     NSLog(@"%@" ,[node name]);
     CC3Vector moveDirection;
     CCActionInterval *move;
-    
-    node.rotationAxis = kCC3VectorUnitYPositive;
+
     const int speed = 10;
     //sets the direction of movement based on the number passed by the connexion, rotates the dragon to face the direction of movement.
     switch (buttonNumberInt) {
@@ -533,6 +520,7 @@
             moveDirection = cc3v(0, 0, speed);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             
             break;
         //right button
@@ -544,6 +532,7 @@
             moveDirection = cc3v(-speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             
             break;
         //bottom button
@@ -556,6 +545,7 @@
             moveDirection = cc3v(0, 0, -speed);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //left button
         case 3:
@@ -567,10 +557,12 @@
             moveDirection = cc3v(speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //movement end
         default:
             [node stopActionByTag:0];
+            [node stopActionByTag:1];
             break;
     }
 }
