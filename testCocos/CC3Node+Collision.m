@@ -12,7 +12,6 @@
 
 - (void) createBoundingVolumeFromBoundingBox
 {
-    NSLog(@"TO AQUI");
     CC3NodeBoundingVolume *bv = [CC3NodeBoxBoundingVolume boundingVolumeFromBox:self.boundingBox];
     
     self.boundingVolume = bv;
