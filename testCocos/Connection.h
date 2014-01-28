@@ -12,7 +12,9 @@
 #import "StartGameMessage.h"
 #import "EndRoundMessage.h"
 #import "ButtonPressMessage.h"
+#import "SetPlayerNumberMessage.h"
 
+#define MAX_PLAYERS 4
 @protocol ConnectionDelegate <NSObject>
 
 @required
@@ -24,7 +26,7 @@
 
 @required
 -(void) roundEnded;
--(void) otherPlayerPressed:(NSNumber *) buttonNumber ;
+-(void) otherPlayerPressed:(ButtonPressMessage *) buttonPressMessage ;
 @end
 
 
@@ -38,6 +40,7 @@
 
 @property (nonatomic, assign) id delegate;
 
+@property (nonatomic, strong) NSMutableArray *peerArray;
 
 + (Connection *) myConnection;
 + (Connection *) myConnectionWithName: (NSString *) peerName;

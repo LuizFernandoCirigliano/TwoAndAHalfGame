@@ -12,6 +12,7 @@
 		3A2F428A1896B8F80088C77D /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42891896B8F80088C77D /* map01.txt */; };
 		3A2F42981896D8630088C77D /* uvmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42951896D8630088C77D /* uvmap.png */; };
 		3A2F429A1896DC0B0088C77D /* suzanne.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42991896DC0B0088C77D /* suzanne.pod */; };
+		3A2F429D1897E1FF0088C77D /* SetPlayerNumberMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F429C1897E1FF0088C77D /* SetPlayerNumberMessage.m */; };
 		3A4EA822188D927900E6C9F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA821188D927900E6C9F5 /* QuartzCore.framework */; };
 		3A4EA824188D927900E6C9F5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA823188D927900E6C9F5 /* OpenGLES.framework */; };
 		3A4EA826188D927900E6C9F5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA825188D927900E6C9F5 /* OpenAL.framework */; };
@@ -317,6 +318,8 @@
 		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
 		3A2F42951896D8630088C77D /* uvmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uvmap.png; sourceTree = "<group>"; };
 		3A2F42991896DC0B0088C77D /* suzanne.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = suzanne.pod; sourceTree = "<group>"; };
+		3A2F429B1897E1FF0088C77D /* SetPlayerNumberMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPlayerNumberMessage.h; sourceTree = "<group>"; };
+		3A2F429C1897E1FF0088C77D /* SetPlayerNumberMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPlayerNumberMessage.m; sourceTree = "<group>"; };
 		3A4EA81E188D927900E6C9F5 /* TwoAndAHalfGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoAndAHalfGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4EA821188D927900E6C9F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3A4EA823188D927900E6C9F5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1936,6 +1939,8 @@
 				3AD47EBA189020F900623ACA /* NewMessage.m */,
 				3AD47EBB189020F900623ACA /* StartGameMessage.h */,
 				3AD47EBC189020F900623ACA /* StartGameMessage.m */,
+				3A2F429B1897E1FF0088C77D /* SetPlayerNumberMessage.h */,
+				3A2F429C1897E1FF0088C77D /* SetPlayerNumberMessage.m */,
 				3AD47EBD189020F900623ACA /* ButtonPressMessage.h */,
 				3AD47EBE189020F900623ACA /* ButtonPressMessage.m */,
 				3AD47EBF189020F900623ACA /* EndRoundMessage.h */,
@@ -2262,6 +2267,7 @@
 				3A4EAAE8188D927C00E6C9F5 /* CC3ResourceNode.m in Sources */,
 				3A4EA935188D927A00E6C9F5 /* CCGLView.m in Sources */,
 				3A4EA969188D927A00E6C9F5 /* CDOpenALSupport.m in Sources */,
+				3A2F429D1897E1FF0088C77D /* SetPlayerNumberMessage.m in Sources */,
 				3A4EA84C188D927900E6C9F5 /* CCActionInstant.m in Sources */,
 				3A4EA86D188D927900E6C9F5 /* CCClippingNode.m in Sources */,
 				3A4EAB19188D927C00E6C9F5 /* CC3Cache.m in Sources */,
