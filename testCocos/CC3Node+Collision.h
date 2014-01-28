@@ -10,7 +10,7 @@
 
 @interface CC3Node (Collision)
 
-@property (nonatomic) BOOL shouldCheckCollision;
+//@property (nonatomic) BOOL shouldCheckCollision;
 - (void) createBoundingVolumeFromBoundingBox;
 
 @end

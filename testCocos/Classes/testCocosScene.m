@@ -14,10 +14,14 @@
 #import "CC3Light.h"
 #import "CC3Foundation.h"
 #import "CC3UtilityMeshNodes.h"
+#import "CC3Node+Collision.h"
 
 
 #define TILE_SZ 100.0f
 @implementation testCocosScene
+
+CC3Node *_monkey;
+NSMutableArray *_walls;
 
 -(void) dealloc {
 	[super dealloc];
@@ -49,6 +53,7 @@
     [Connection myConnection];
     [Connection myConnection].delegate = self;
     
+    _walls = [[NSMutableArray alloc] init];
     self.charactersArray = [NSMutableArray array];
     self.flip = NO;
     self.isTouchEnabled = YES;
@@ -144,6 +149,9 @@
     [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
     
     CC3Node *monkey = [self getNodeNamed:@"monkey"];
+    [monkey createBoundingVolumeFromBoundingBox];
+    monkey.shouldDrawBoundingVolume = YES;
+    _monkey = monkey;
     monkey.location = cc3v(0, 0, 50);
 //    monkey.rotation = cc3v(90, 0, 0);
     
@@ -251,7 +259,7 @@
     [self addContentFromPODFile:@"simpleCube2.pod" withName:@"wallCube"];
     CC3Node *wallCube = [self getNodeNamed:@"wallCube"];
     wallCube.scale = cc3v(49.5f, 49.5f, 80);
-    
+
     //save original color for possible restore
     ccColor3B originalColor = wallCube.color;
     
@@ -284,15 +292,15 @@
                 ccColor3B endColor = { rand() % 256 , rand() % 256, rand() % 256 };
                 wallCube.color = endColor;
                 [wall addChild:wallCube];
-                
+                [wallCube createBoundingVolumeFromBoundingBox];
+                wallCube.shouldDrawBoundingVolume = YES;
+                [_walls addObject:wallCube];
                 wallCube = [wallCube copy];
                 //return to original color
                 wallCube.color = originalColor;
             }
         }
     }
-    
-    
     
     [self addChild:wall];
 }
@@ -341,8 +349,9 @@
  *
  * For more info, read the notes of this method on CC3Node.
  */
--(void) updateAfterTransform: (CC3NodeUpdatingVisitor*) visitor {
-    
+-(void) updateAfterTransform: (CC3NodeUpdatingVisitor*) visitor
+{
+    [self checkForCollisions];
 }
 
 
@@ -575,6 +584,32 @@
     }
 }
 
+/**
+ * Check for collisions.
+ *
+ * Invoke the doesIntersectNode: method to determine whether the player has
+ * collided with the wall or with another player.
+ *
+ * If the player is colliding, it may do so for several update frames.
+ * On each frame, we need to determine whether it is heading towards something. If it is we stop the moving action. 
+ *
+ * All movement is handled by CCActions.
+ *
+ * The effect is to see the player collide with something, and stop.
+ */
+-(void) checkForCollisions
+{
+    //For each wall cube:
+    for (CC3Node *wall in _walls)
+    {
+        // Test whether the player intersects the wall.
+        if ([_monkey.boundingVolume doesIntersect:wall.boundingVolume])
+        {
+            //If it does I stop their movement
+            [_monkey stopAllActions];
+        }
+    }
+}
 
 @end
 
