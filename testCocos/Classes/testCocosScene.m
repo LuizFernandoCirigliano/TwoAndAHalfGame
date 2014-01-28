@@ -54,7 +54,7 @@
     self.isTouchEnabled = YES;
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, -15.0, 25.0 );
+	cam.location = cc3v( 0.0, 25.0, -15.0 );
     cam.targetLocation = cc3v(0, 0, 0);
     
 	[self addChild: cam];
@@ -145,7 +145,7 @@
     
     CC3Node *monkey = [self getNodeNamed:@"monkey"];
     monkey.location = cc3v(0, 0, 50);
-    monkey.rotation = cc3v(90, 0, 0);
+//    monkey.rotation = cc3v(90, 0, 0);
     
 //    monkey.rotationAxis = kCC3VectorUnitZPositive;
     
@@ -222,9 +222,10 @@
                 
                 [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ, TILE_SZ) andTessellation:CC3TessellationMake(1, 1)];
                 [tile setTexture: texture];
+                [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
                 
-                
-                CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), (float)(((j * TILE_SZ) - ystart)), LOCATION_Z);
+//                CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), (float)(((j * TILE_SZ) - ystart)), LOCATION_Z);
+                CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), LOCATION_Z, (float)(((j * TILE_SZ) - ystart)));
                 [tile setLocation: loc];
                 [tile retainVertexLocations];
                 
@@ -241,7 +242,7 @@
 
 -(void) createWalls {
     
-    const float LOCATION_Z = (TILE_SZ - 5);
+    const float LOCATION_Z = 0;
     float xstart = (float)((self.xTiles * TILE_SZ) / 2.0f);
     float ystart = (float)((self.yTiles* TILE_SZ) / 2.0f);
 
@@ -278,7 +279,7 @@
                 [wall addChild:wallCube];
                 wallCube = [wallCube copy];
             } else if (c == '2' || c == '1') {
-                wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2, LOCATION_Z);
+                wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   LOCATION_Z, (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2);
                 //paint the tile a different color
                 ccColor3B endColor = { rand() % 256 , rand() % 256, rand() % 256 };
                 wallCube.color = endColor;
@@ -519,51 +520,51 @@
     CC3Vector moveDirection;
     CCActionInterval *move;
     
-    node.rotationAxis = cc3v(0, 0, 1);
+    node.rotationAxis = kCC3VectorUnitYPositive;
     const int speed = 10;
     //sets the direction of movement based on the number passed by the connexion, rotates the dragon to face the direction of movement.
     switch (buttonNumberInt) {
         //up button
         case 0:
-            if(node.rotationAngle != 180) {
-                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:180];
+            if(node.rotationAngle != 0) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:0];
                 [node runAction:rotate];
             }
-            moveDirection = cc3v(0, speed, 0);
+            moveDirection = cc3v(0, 0, speed);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             
             break;
         //right button
         case 1:
-            if(node.rotationAngle != 90) {
-                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:90];
+            if(node.rotationAngle != -90) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-90];
                 [node runAction:rotate];
             }
-            moveDirection = cc3v(speed, 0, 0);
+            moveDirection = cc3v(-speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             
             break;
         //bottom button
         case 2:
-            if(node.rotationAngle != 0) {
-                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:0];
+            if(node.rotationAngle != 180) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:180];
                 [node runAction:rotate];
             }
             
-            moveDirection = cc3v(0, -speed, 0);
+            moveDirection = cc3v(0, 0, -speed);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             break;
         //left button
         case 3:
-            if(node.rotationAngle != 270) {
-                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:270];
+            if(node.rotationAngle != 90) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:90];
                 [node runAction:rotate];
             }
             
-            moveDirection = cc3v(-speed, 0, 0);
+            moveDirection = cc3v(speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             break;

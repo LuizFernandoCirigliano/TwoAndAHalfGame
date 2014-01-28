@@ -30,7 +30,7 @@ static Connection *myConnectionConfiguration = nil;
     
     if (!myConnectionConfiguration)
     {
-        myConnectionConfiguration = [[super allocWithZone:nil] initWithName:[UIDevice currentDevice].name];
+        myConnectionConfiguration = [[super allocWithZone:nil] initWithName:@"simulador"];
     }
     
     return myConnectionConfiguration;
