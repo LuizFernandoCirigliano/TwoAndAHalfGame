@@ -76,7 +76,7 @@ static Connection *myConnectionConfiguration = nil;
     NSError *error;
     [self.mySession sendData:data toPeers:[NSArray arrayWithObject:peer] withMode:MCSessionSendDataUnreliable error: &error];
     if(error) {
-        NSLog(@"%@", [error description]);
+//        NSLog(@"%@", [error description]);
     }
 }
 
@@ -106,10 +106,14 @@ static Connection *myConnectionConfiguration = nil;
                 return;
         }
         
-        [self.peerArray addObject:peerID];
-        NSLog(@"Player Number: %d", [self.peerArray count]);
+        
 
         NSData *data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:[self.peerArray count]] archiveData];
+        
+        [self.peerArray addObject:peerID];
+        NSLog(@"Player Number: %d", [self.peerArray count]);
+        
+        
         [self sendData:data toPeer: peerID];
     }
 }
