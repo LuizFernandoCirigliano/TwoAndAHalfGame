@@ -57,6 +57,9 @@ static Connection *myConnectionConfiguration = nil;
         self.advertiser.delegate = self;
         self.browserVC.delegate = self;
         self.mySession.delegate = self;
+        
+        
+        self.peerArray = [NSMutableArray array];
     }
     
     return self;
@@ -64,6 +67,14 @@ static Connection *myConnectionConfiguration = nil;
 - (void) sendData:(NSData *) data {
     NSError *error;
     [self.mySession sendData:data toPeers:[self.mySession connectedPeers] withMode:MCSessionSendDataUnreliable error: &error];
+    if(error) {
+        NSLog(@"%@", [error description]);
+    }
+}
+
+- (void) sendData:(NSData *) data toPeer:(MCPeerID *) peer{
+    NSError *error;
+    [self.mySession sendData:data toPeers:[NSArray arrayWithObject:peer] withMode:MCSessionSendDataUnreliable error: &error];
     if(error) {
         NSLog(@"%@", [error description]);
     }
@@ -88,7 +99,19 @@ static Connection *myConnectionConfiguration = nil;
 #pragma marks MCSessionDelegate
 // Remote peer changed state
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
-    
+    if (state ==  MCSessionStateConnected) {
+        //checks if it's a reconnection
+        for (int i = 0; i < [self.peerArray count]; i++) {
+            if ([self.peerArray objectAtIndex:i] == peerID)
+                return;
+        }
+        
+        [self.peerArray addObject:peerID];
+        NSLog(@"Player Number: %d", [self.peerArray count]);
+
+        NSData *data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:[self.peerArray count]] archiveData];
+        [self sendData:data toPeer: peerID];
+    }
 }
 
 // Received data from remote peer
