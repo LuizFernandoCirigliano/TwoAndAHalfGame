@@ -15,6 +15,8 @@
 #import "CC3Foundation.h"
 #import "CC3UtilityMeshNodes.h"
 
+
+#define TILE_SZ 100.0f
 @implementation testCocosScene
 
 -(void) dealloc {
@@ -52,7 +54,7 @@
     self.isTouchEnabled = YES;
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, -15.0, 20.0 );
+	cam.location = cc3v( 0.0, -15.0, 25.0 );
     cam.targetLocation = cc3v(0, 0, 0);
     
 	[self addChild: cam];
@@ -60,7 +62,7 @@
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( 0.0, -20.0, 0.0 );
+	lamp.location = cc3v( 0.0, 0.0, 10.0 );
 	lamp.isDirectionalOnly = NO;
 	[cam addChild: lamp];
     
@@ -131,26 +133,83 @@
 	LogInfo(@"The structure of this scene is: %@", [self structureDescription]);
 	
 	// ------------------------------------------
-
+    
+    [self readMapFile];
 	[self createTerrain];
     [self createWalls];
-
+    [self addPlayerCharacter];
+    
 }
+-(void) addPlayerCharacter {
+    [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
+    
+    CC3Node *monkey = [self getNodeNamed:@"monkey"];
+    monkey.location = cc3v(0, 0, 50);
+    monkey.rotation = cc3v(90, 0, 0);
+    
+//    monkey.rotationAxis = kCC3VectorUnitZPositive;
+    
+    [monkey runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]]];
+//    [monkey rotateByAngle:90 aroundAxis:kCC3VectorUnitZPositive];
+//    
+//    NSLog(@"%f %f %f", monkey.rotation.x, monkey.rotation.y, monkey.rotation.z );
+//    
+//    [monkey rotateByAngle:90 aroundAxis:kCC3VectorUnitZPositive];
+//    
+//    NSLog(@"%f %f %f", monkey.rotation.x, monkey.rotation.y, monkey.rotation.z );
 
+//    CC3RotateToLookAt *rotation = [CC3RotateToLookAt actionWithDuration:0.5f endVector:cc3v(0, 100, 0)];
+//    [monkey runAction:rotation];
+    monkey.scale = cc3v(10,10,10);
+    
+    [self.charactersArray addObject:monkey];
+}
+-(void) readMapFile {
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"map01"
+                                                     ofType:@"txt"];
+    NSString* content = [NSString stringWithContentsOfFile:path
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    
+    int lineSize = (int) [content rangeOfString: @"\n"].location + 1; //acha tamanho da linha pelo primeiro \n
+    
+    self.lines = [NSMutableArray arrayWithCapacity: (NSUInteger) 2];
+    
+    int initialPos = 0; //initR indica a posicao inicial da proxima "linha"
+    
+    for(int lineNumber = 0; initialPos < content.length; lineNumber++)
+    {
+        initialPos = lineSize*lineNumber; //calcula comeco da proxima linha
+        if (initialPos >= content.length)
+            continue;
+        NSMutableString *nextLine;
+        if(lineSize*(lineNumber+1) >= content.length) //caso da ultima linha, pega string a partir da posicao incial
+        {
+            nextLine = (NSMutableString *) [content substringFromIndex:(NSUInteger) initialPos];
+            
+        }
+        else // se nao for a ultima linha, pega a substring a partir de initialPos e "corta" apenas caracteres ate \n seguinte
+        {
+            nextLine = (NSMutableString *) [[content substringFromIndex:(NSUInteger) initialPos] substringToIndex:(NSUInteger) lineSize - 1];
+        }
+        
+        [self.lines addObject: nextLine]; //adiciona string a array de linhas
+    }
+    
+    self.xTiles = [self.lines count];
+    self.yTiles = [[self.lines firstObject] length] / 2 + 1;
+    
+}
 -(void) createTerrain {
     //hocus pocus add grass
     
-    const float LOCATION_Z = (-2.0f);
-    const float TILE_X =     (20.0f);
-    const float TILE_Y =     (20.0f);
-    const float TILE_SZ =    (1.0f);
+    const float LOCATION_Z = (0.0f);
     
+    float xstart = (float)((self.xTiles * TILE_SZ) / 2.0f);
+    float ystart = (float)((self.yTiles * TILE_SZ) / 2.0f);
     
-    float xstart = (float)((TILE_X * TILE_SZ) / 2.0f);
-    float ystart = (float)((TILE_Y * TILE_SZ) / 2.0f);
-    
-    for (int i = 0; i < (int)TILE_X; i++) {
-        for (int j = 0; j < (int)TILE_Y; j++) {
+    for (int i = 0; i < (int)self.xTiles; i++) {
+        for (int j = 0; j < (int)self.yTiles; j++) {
             NSString * name = [NSString stringWithFormat:@"grass.png"];
             CCLOG(@"tile : %@", name);
             
@@ -165,7 +224,7 @@
                 [tile setTexture: texture];
                 
                 
-                CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), (float)(((j * TILE_SZ) - ystart) * 1), LOCATION_Z);
+                CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), (float)(((j * TILE_SZ) - ystart)), LOCATION_Z);
                 [tile setLocation: loc];
                 [tile retainVertexLocations];
                 
@@ -181,47 +240,55 @@
 }
 
 -(void) createWalls {
+    
+    const float LOCATION_Z = (TILE_SZ - 5);
+    float xstart = (float)((self.xTiles * TILE_SZ) / 2.0f);
+    float ystart = (float)((self.yTiles* TILE_SZ) / 2.0f);
 
-    
-    const float LOCATION_Z = (-1.0f);
-    
-    const float TILE_X =     (20.0f);
-
-    const float TILE_SZ =    (1.0f);
-    
-    
-    float xstart = (float)((TILE_X * TILE_SZ) / 2.0f);
-    
-    const float LOCATION_Y = xstart;
-
+    //load the resource tiles from pod file
     CC3Node *wall = [CC3Node node];
     [self addContentFromPODFile:@"simpleCube2.pod" withName:@"wallCube"];
     CC3Node *wallCube = [self getNodeNamed:@"wallCube"];
-    wallCube.scale = cc3v(0.5, 0.2, 2);
+    wallCube.scale = cc3v(49.5f, 49.5f, 80);
     
-    for (int i = 0; i < (int)TILE_X; i++) {
-        //lower
-        wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) , LOCATION_Y - 0.5, LOCATION_Z);
-        [wall addChild:wallCube];
-        wallCube = [wallCube copy];
-        
-        //upper
-        wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) , -LOCATION_Y - 0.5, LOCATION_Z);
-        [wall addChild:wallCube];
-        wallCube = [wallCube copy];
-    }
+    //save original color for possible restore
+    ccColor3B originalColor = wallCube.color;
     
-    [wallCube rotateByAngle:90 aroundAxis:kCC3VectorUnitZPositive];
-    for (int i = 0; i < (int)TILE_X; i++) {
-        //lower
-        wallCube.location = cc3v(LOCATION_Y - 0.5, (float)((i * TILE_SZ) - xstart), LOCATION_Z);
-        [wall addChild:wallCube];
-        wallCube = [wallCube copy];
+    
+    for (int i = 0; i < (int)self.xTiles; i++) {
+        if (i >= [self.lines count])
+            break;
         
-        //upper
-        wallCube.location = cc3v(-LOCATION_Y - 0.5, (float)((i * TILE_SZ) - xstart), LOCATION_Z);
-        [wall addChild:wallCube];
-        wallCube = [wallCube copy];
+        NSString *currentLine = [self.lines objectAtIndex:i];
+        
+        for (int j = 0; j < (int)self.yTiles; j++) {
+            //lower
+            if (2*j >= [currentLine length])
+                break;
+            char c = [currentLine characterAtIndex:2*j];
+        
+            //reads a character from the string, add accordingly.
+            
+            //c == 0 -> empty tile
+            //c == 1 -> original color wall
+            //c == 2 -> colored wall
+            
+            if (c == '3') {
+                wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2, LOCATION_Z);
+                [wall addChild:wallCube];
+                wallCube = [wallCube copy];
+            } else if (c == '2' || c == '1') {
+                wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2, LOCATION_Z);
+                //paint the tile a different color
+                ccColor3B endColor = { rand() % 256 , rand() % 256, rand() % 256 };
+                wallCube.color = endColor;
+                [wall addChild:wallCube];
+                
+                wallCube = [wallCube copy];
+                //return to original color
+                wallCube.color = originalColor;
+            }
+        }
     }
     
     
@@ -387,32 +454,36 @@
  */
 -(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {
     
+    if (touchType != UITouchPhaseBegan)
+        return;
     //using to change camera positions, alter as you need
     
     static int position = 0;
+    CC3Vector direction;
     
     switch (position) {
         case 0:
-            [self.activeCamera setLocation:cc3v(0.0, -75.0, 50.0 )];
+            direction = cc3v(1, 0, 1);
             break;
         case 1:
-            [self.activeCamera setLocation:cc3v(50, 0, 50)];
+            direction = cc3v(0, 1, 1);
             break;
         case 2:
-            [self.activeCamera setLocation:cc3v(0, 75, 50)];
+            direction = cc3v(-1, 1, 1);
             break;
         case 3:
-            [self.activeCamera setLocation:cc3v(-50,25,50)];
+            direction = cc3v(0, 0, 1);
+        case 4:
+            direction = cc3v(1, 0, 0);
             break;
     
         default:
             break;
     }
+    [self.activeCamera moveWithDuration:3.0f toShowAllOf:self fromDirection:direction];
     
-    position = (position + 1) % 4;
+    position = (position + 1) % 5;
     [self.activeCamera setTargetLocation:kCC3VectorZero];
-//    [self.activeCamera moveWithDuration: 3.0 toShowAllOf: self withPadding: 0.0f];
-//    [self.activeCamera moveToShowAllOf:self];
 }
 
 /**
@@ -448,46 +519,51 @@
     CC3Vector moveDirection;
     CCActionInterval *move;
     
+    node.rotationAxis = cc3v(0, 0, 1);
+    const int speed = 10;
     //sets the direction of movement based on the number passed by the connexion, rotates the dragon to face the direction of movement.
     switch (buttonNumberInt) {
         //up button
         case 0:
-            if  (!CC3VectorsAreEqual(node.rotation, kCC3VectorUnitYPositive)){
-                CCActionInterval *rotate = [CC3RotateTo actionWithDuration:0.5f endVector:cc3v(-90.0, 0.0, 0.0)];
+            if(node.rotationAngle != 180) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:180];
                 [node runAction:rotate];
             }
-            moveDirection = kCC3VectorUnitYPositive;
+            moveDirection = cc3v(0, speed, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            
             break;
         //right button
         case 1:
-            if  (!CC3VectorsAreEqual(node.rotation, kCC3VectorUnitXPositive)){
-                CCActionInterval *rotate = [CC3RotateTo actionWithDuration:0.5f endVector:cc3v(0, 90.0, 0.0)];
+            if(node.rotationAngle != 90) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:90];
                 [node runAction:rotate];
             }
-            moveDirection = kCC3VectorUnitXPositive;
+            moveDirection = cc3v(speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             
             break;
         //bottom button
         case 2:
-            if  (!CC3VectorsAreEqual(node.rotation, kCC3VectorUnitXNegative)){
-                CCActionInterval *rotate = [CC3RotateTo actionWithDuration:0.5f endVector:cc3v(0.0, -90.0, 0.0)];
+            if(node.rotationAngle != 0) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:0];
                 [node runAction:rotate];
             }
-            moveDirection = kCC3VectorUnitYNegative;
+            
+            moveDirection = cc3v(0, -speed, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             break;
         //left button
         case 3:
-            if  (!CC3VectorsAreEqual(node.rotation, kCC3VectorUnitYNegative)){
-                CCActionInterval *rotate = [CC3RotateTo actionWithDuration:0.5f endVector:cc3v(-90.0, 0.0, -90.0)];
+            if(node.rotationAngle != 270) {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:270];
                 [node runAction:rotate];
             }
-            moveDirection = kCC3VectorUnitXNegative;
+            
+            moveDirection = cc3v(-speed, 0, 0);
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             break;
@@ -496,10 +572,6 @@
             [node stopActionByTag:0];
             break;
     }
-    
-    
-   
-    
 }
 
 

@@ -16,6 +16,11 @@
 @property BOOL flip;
 @property (strong, nonatomic) NSMutableArray *charactersArray;
 @property (strong, nonatomic) CC3Camera *cam;
+@property (strong, nonatomic) NSMutableArray *lines;
+
+@property int xTiles;
+@property int yTiles;
+
 //@property (strong, nonatomic) Connection *myConnection;
 
 @end

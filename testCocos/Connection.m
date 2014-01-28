@@ -131,6 +131,8 @@ static Connection *myConnectionConfiguration = nil;
 }
 
 #pragma marks MCNearbyServiceAdvertiserDelegate
+
+//Accept automatically
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL accept, MCSession *session))invitationHandler {
     
     invitationHandler(YES, self.mySession);

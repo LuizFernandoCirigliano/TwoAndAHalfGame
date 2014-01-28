@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3A2F4282189678ED0088C77D /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F4281189678ED0088C77D /* grass.png */; };
 		3A2F428618968B1A0088C77D /* simpleCube2.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F428518968B1A0088C77D /* simpleCube2.pod */; };
+		3A2F428A1896B8F80088C77D /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42891896B8F80088C77D /* map01.txt */; };
+		3A2F42981896D8630088C77D /* uvmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42951896D8630088C77D /* uvmap.png */; };
+		3A2F429A1896DC0B0088C77D /* suzanne.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42991896DC0B0088C77D /* suzanne.pod */; };
 		3A4EA822188D927900E6C9F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA821188D927900E6C9F5 /* QuartzCore.framework */; };
 		3A4EA824188D927900E6C9F5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA823188D927900E6C9F5 /* OpenGLES.framework */; };
 		3A4EA826188D927900E6C9F5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA825188D927900E6C9F5 /* OpenAL.framework */; };
@@ -310,6 +313,9 @@
 /* Begin PBXFileReference section */
 		3A2F4281189678ED0088C77D /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		3A2F428518968B1A0088C77D /* simpleCube2.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = simpleCube2.pod; sourceTree = "<group>"; };
+		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
+		3A2F42951896D8630088C77D /* uvmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uvmap.png; sourceTree = "<group>"; };
+		3A2F42991896DC0B0088C77D /* suzanne.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = suzanne.pod; sourceTree = "<group>"; };
 		3A4EA81E188D927900E6C9F5 /* TwoAndAHalfGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoAndAHalfGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4EA821188D927900E6C9F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3A4EA823188D927900E6C9F5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -925,6 +931,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A2F42921896D8630088C77D /* Suzanne */ = {
+			isa = PBXGroup;
+			children = (
+				3A2F42991896DC0B0088C77D /* suzanne.pod */,
+				3A2F42951896D8630088C77D /* uvmap.png */,
+			);
+			path = Suzanne;
+			sourceTree = "<group>";
+		};
 		3A4EA815188D927900E6C9F5 = {
 			isa = PBXGroup;
 			children = (
@@ -1840,8 +1855,10 @@
 			isa = PBXGroup;
 			children = (
 				3A2F428518968B1A0088C77D /* simpleCube2.pod */,
+				3A2F42891896B8F80088C77D /* map01.txt */,
 				3A4EAB76188D927D00E6C9F5 /* Info.plist */,
 				3A2F4281189678ED0088C77D /* grass.png */,
+				3A2F42921896D8630088C77D /* Suzanne */,
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
@@ -1984,6 +2001,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Luiz Fernando 2";
+				TargetAttributes = {
+					3A4EA81D188D927900E6C9F5 = {
+						DevelopmentTeam = QHL9JXYSYP;
+					};
+				};
 			};
 			buildConfigurationList = 3A4EA819188D927900E6C9F5 /* Build configuration list for PBXProject "TwoAndAHalfGame" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2008,11 +2030,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A4EAB9C188D927D00E6C9F5 /* Default-Landscape~ipad.png in Resources */,
+				3A2F42981896D8630088C77D /* uvmap.png in Resources */,
 				3A4EAB91188D927D00E6C9F5 /* Icon-76.png in Resources */,
 				3A4EAB6F188D927D00E6C9F5 /* CC3SingleTextureReflectAlphaTest.fsh in Resources */,
 				3A4EAB93188D927D00E6C9F5 /* Icon-76@2x.png in Resources */,
 				3A4EAB73188D927D00E6C9F5 /* CC3TexturableRigidBones.vsh in Resources */,
+				3A2F428A1896B8F80088C77D /* map01.txt in Resources */,
 				3A4EAB8F188D927D00E6C9F5 /* Icon-72@2x.png in Resources */,
+				3A2F429A1896DC0B0088C77D /* suzanne.pod in Resources */,
 				3A4EAB83188D927D00E6C9F5 /* Icon-50@2x.png in Resources */,
 				3A4EAB51188D927D00E6C9F5 /* CC3ClipSpaceSingleTexture.fsh in Resources */,
 				3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */,
@@ -2383,18 +2408,24 @@
 		3A4EABB8188D927D00E6C9F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = "\"testCocos/libs/kazmath/include\"";
 				INFOPLIST_FILE = testCocos/Resources/Info.plist;
 				PRODUCT_NAME = TwoAndAHalfGame;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		3A4EABB9188D927D00E6C9F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = "\"testCocos/libs/kazmath/include\"";
 				INFOPLIST_FILE = testCocos/Resources/Info.plist;
 				PRODUCT_NAME = TwoAndAHalfGame;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
