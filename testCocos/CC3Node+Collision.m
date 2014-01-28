@@ -15,7 +15,20 @@
     CC3NodeBoundingVolume *bv = [CC3NodeBoxBoundingVolume boundingVolumeFromBox:self.boundingBox];
     
     self.boundingVolume = bv;
-    self.shouldUseFixedBoundingVolume = NO;
+    self.shouldUseFixedBoundingVolume = YES;
+}
+
+- (void) createSphericalBoundingVolumeFromBoundingBox
+{
+    [self createSphericalBoundingVolumeFromBoundingBoxWithRatio: 1.0f];
+}
+
+- (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio
+{
+    CC3NodeSphericalBoundingVolume *bv = [CC3NodeSphericalBoundingVolume boundingVolumeFromSphere:CC3SphereFromCircumscribingBox(self.boundingBox)];
+    bv.radius *= ratio;
+    self.boundingVolume = bv;
+    self.shouldUseFixedBoundingVolume = YES;
 }
 
 
