@@ -16,12 +16,13 @@
 #import "CC3UtilityMeshNodes.h"
 #import "CC3Node+Collision.h"
 
-
 #define TILE_SZ 100.0f
 @implementation testCocosScene
 
 CC3Node *_monkey;
 NSMutableArray *_walls;
+CC3Vector _monkeyLocation;
+GLfloat _monkeyRotation;
 
 -(void) dealloc {
 	[super dealloc];
@@ -60,6 +61,7 @@ NSMutableArray *_walls;
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
 	cam.location = cc3v( 0.0, 25.0, -15.0 );
+//    cam set
     cam.targetLocation = cc3v(0, 0, 0);
     
 	[self addChild: cam];
@@ -149,7 +151,7 @@ NSMutableArray *_walls;
     [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
     
     CC3Node *monkey = [self getNodeNamed:@"monkey"];
-    [monkey createBoundingVolumeFromBoundingBox];
+    [monkey createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.8f];
     monkey.shouldDrawBoundingVolume = YES;
     _monkey = monkey;
     monkey.location = cc3v(0, 0, 50);
@@ -325,8 +327,9 @@ NSMutableArray *_walls;
  *
  * For more info, read the notes of this method on CC3Node.
  */
--(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor {
-    
+-(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor
+{
+//    _monkeyLocation = _monkey.location;
 }
 
 /**
@@ -370,8 +373,9 @@ NSMutableArray *_walls;
 
 	// Move the camera to frame the scene. The resulting configuration of the camera is output as
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
-	[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self withPadding: 0.0f];
-
+	[self.activeCamera moveWithDuration: 1.0 toShowAllOf: self withPadding: 0.0f];
+//    [self.activeCamera setTarget:_monkey];
+//    [self.activeCamera setShouldTrackTarget:YES];
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
 }
@@ -599,8 +603,17 @@ NSMutableArray *_walls;
         {
             //If it does I stop their movement
             [_monkey stopAllActions];
+//            NSLog(@"Location was: (%f, %f)", _monkey.location.x, _monkey.location.z);
+            _monkey.location = _monkeyLocation;
+            _monkey.rotationAngle = _monkeyRotation;
+            return;
+//            NSLog(@"Location is: (%f, %f)", _monkey.location.x, _monkey.location.z);
+            
         }
     }
+    
+     _monkeyLocation = _monkey.location;
+    _monkeyRotation = _monkey.rotationAngle;
 }
 
 @end
