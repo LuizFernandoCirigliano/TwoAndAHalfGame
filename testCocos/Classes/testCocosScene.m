@@ -164,7 +164,7 @@ CC3Node *_monkeyModel;
     [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.8f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
-    monkey.node.location = cc3v(0, 0, 50);
+    monkey.node.location = cc3v(-400.0*[self.charactersArray count], 0, 50);
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
     monkey.node.scale = cc3v(10,10,10);
@@ -384,11 +384,21 @@ CC3Node *_monkeyModel;
 
 	// Move the camera to frame the scene. The resulting configuration of the camera is output as
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
-	[self.activeCamera moveWithDuration: 1.0 toShowAllOf: self withPadding: 0.0f];
+//    [self.activeCamera moveWithDuration: 1.0 toShowAllOf: [[self.charactersArray objectAtIndex:0] node]];
+    
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray firstObject] node] afterDelay:3.0f];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray lastObject] node] afterDelay:6.0f];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:9.0f];
+//	[self.activeCamera moveWithDuration: 1.0 toShowAllOf: self withPadding: 0.0f];
 //    [self.activeCamera setTarget:_monkey];
 //    [self.activeCamera setShouldTrackTarget:YES];
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
+}
+
+-(void) zoomCameraOnObject: (CC3Node *)object {
+    NSLog (@"camera luz acao")  ;
+    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 25.0, -15.0 )];
 }
 
 /**
