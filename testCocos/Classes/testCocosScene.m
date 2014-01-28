@@ -530,7 +530,7 @@
                 [node runAction:rotate];
             }
             moveDirection = cc3v(0, speed, 0);
-            move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
+            move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection node:];
             [node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             
             break;

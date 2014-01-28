@@ -308,6 +308,7 @@
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		A344F5411892D57C00355248 /* CC3Node+Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = A344F5401892D57C00355248 /* CC3Node+Collision.m */; };
+		A3B76D6C1897D5D9009FF6FF /* CC3MoveBy+Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B76D6B1897D5D9009FF6FF /* CC3MoveBy+Collision.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -907,6 +908,8 @@
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		A344F53F1892D57C00355248 /* CC3Node+Collision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CC3Node+Collision.h"; sourceTree = "<group>"; };
 		A344F5401892D57C00355248 /* CC3Node+Collision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CC3Node+Collision.m"; sourceTree = "<group>"; };
+		A3B76D6A1897D5D9009FF6FF /* CC3MoveBy+Collision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CC3MoveBy+Collision.h"; sourceTree = "<group>"; };
+		A3B76D6B1897D5D9009FF6FF /* CC3MoveBy+Collision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CC3MoveBy+Collision.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1969,6 +1972,8 @@
 			children = (
 				A344F53F1892D57C00355248 /* CC3Node+Collision.h */,
 				A344F5401892D57C00355248 /* CC3Node+Collision.m */,
+				A3B76D6A1897D5D9009FF6FF /* CC3MoveBy+Collision.h */,
+				A3B76D6B1897D5D9009FF6FF /* CC3MoveBy+Collision.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2124,6 +2129,7 @@
 				3A4EAA89188D927C00E6C9F5 /* CC3NodeVisitor.m in Sources */,
 				3A4EABA6188D927D00E6C9F5 /* testCocosLayer.m in Sources */,
 				3A4EA93B188D927A00E6C9F5 /* base64.c in Sources */,
+				A3B76D6C1897D5D9009FF6FF /* CC3MoveBy+Collision.m in Sources */,
 				3A4EA85E188D927900E6C9F5 /* CCActionTween.m in Sources */,
 				3A4EA9CD188D927B00E6C9F5 /* CC3PFXResource.mm in Sources */,
 				3A4EA9F2188D927B00E6C9F5 /* CC3PVRTexture.mm in Sources */,
