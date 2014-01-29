@@ -168,7 +168,7 @@ CC3Node *_monkeyModel;
     monkey.node.location = cc3v(-400.0*[self.charactersArray count], 0, 50);
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
-    monkey.node.scale = cc3v(10,10,10);
+    monkey.node.scale = cc3v(15,15,15);
     
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
@@ -176,8 +176,8 @@ CC3Node *_monkeyModel;
     
     //Add sprite to billboard
     CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
-    [marker setScale:cc3v(0.06f, 0.06f, 0.06f)];
-    marker.location = cc3v(0,15,0);
+    [marker setScale:cc3v(0.1f, 0.1f, 0.1f)];
+    marker.location = cc3v(0,25,0);
     //Always face the camera
     marker.shouldAutotargetCamera = YES;
     [marker setIsTouchEnabled:NO];
