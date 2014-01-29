@@ -16,6 +16,7 @@
 #import "CC3UtilityMeshNodes.h"
 #import "CC3Node+Collision.h"
 #import "Player.h"
+#import "CC3BillBoard.h"
 
 #define TILE_SZ 100.0f
 @implementation testCocosScene
@@ -169,6 +170,20 @@ CC3Node *_monkeyModel;
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
     monkey.node.scale = cc3v(10,10,10);
     
+    //Add Identifier on Player
+    //Make a 2D sprite with image = player's number
+    CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[self.charactersArray count]+1]];
+    
+    //Add sprite to billboard
+    CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
+    [marker setScale:cc3v(0.06f, 0.06f, 0.06f)];
+    marker.location = cc3v(0,15,0);
+    //Always face the camera
+    marker.shouldAutotargetCamera = YES;
+    [marker setIsTouchEnabled:NO];
+    
+    [monkey.node addChild:marker];
+
     //add to character array and add the node to the scene
     [self.charactersArray addObject:monkey];
     [self addChild:monkey.node];
