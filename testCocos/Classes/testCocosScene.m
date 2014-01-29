@@ -23,7 +23,9 @@
 
 NSMutableArray *_walls;
 CC3Node *_monkeyModel;
--(void) dealloc {
+
+-(void) dealloc
+{
 	[super dealloc];
 }
 
@@ -49,11 +51,12 @@ CC3Node *_monkeyModel;
  *    font to a mesh results in a LOT of triangles. When adapting this template project for your own
  *    application, REMOVE the POD file 'hello-world.pod' from the Resources folder of your project.
  */
--(void) initializeScene {
+-(void) initializeScene
+{
     [Connection myConnection];
     [Connection myConnection].delegate = self;
     
-    _walls = [[NSMutableArray alloc] init];
+    _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
     self.charactersArray = [[NSMutableArray alloc] init];
     self.flip = NO;
     self.isTouchEnabled = YES;
@@ -155,7 +158,14 @@ CC3Node *_monkeyModel;
 
     
 }
--(void) addPlayerCharacter {
+
+/**
+ *
+ * DOCUMENTATION MUST BE ADDED
+ *
+ */
+-(void) addPlayerCharacter
+{
     Player *monkey = [[Player alloc] init];
     
     //copy the original model
@@ -165,7 +175,7 @@ CC3Node *_monkeyModel;
     [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.8f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
-    monkey.node.location = cc3v(-400.0*[self.charactersArray count], 0, 50);
+    monkey.node.location = cc3v(-120.0*[self.charactersArray count], 0, 50);
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
     monkey.node.scale = cc3v(15,15,15);
@@ -173,7 +183,12 @@ CC3Node *_monkeyModel;
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
     CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[self.charactersArray count]+1]];
-    
+    monkey.index = [self.charactersArray count];
+    monkey.lastPlayerCollisionTimestamp = [NSMutableDictionary dictionaryWithDictionary:
+        @{@"0" : [NSDate dateWithTimeIntervalSince1970:0.0f],
+          @"1" : [NSDate dateWithTimeIntervalSince1970:0.0f],
+          @"2" : [NSDate dateWithTimeIntervalSince1970:0.0f],
+          @"3" : [NSDate dateWithTimeIntervalSince1970:0.0f]}];
     //Add sprite to billboard
     CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
     [marker setScale:cc3v(0.1f, 0.1f, 0.1f)];
@@ -188,7 +203,14 @@ CC3Node *_monkeyModel;
     [self.charactersArray addObject:monkey];
     [self addChild:monkey.node];
 }
--(void) readMapFile {
+
+/**
+ *
+ * DOCUMENTATION MUST BE ADDED
+ *
+ */
+-(void) readMapFile
+{
     NSString* path = [[NSBundle mainBundle] pathForResource:@"map01"
                                                      ofType:@"txt"];
     NSString* content = [NSString stringWithContentsOfFile:path
@@ -224,7 +246,14 @@ CC3Node *_monkeyModel;
     self.yTiles = [[self.lines firstObject] length] / 2 + 1;
     
 }
--(void) createTerrain {
+
+/**
+ *
+ * DOCUMENTATION MUST BE ADDED
+ *
+ */
+-(void) createTerrain
+{
     //hocus pocus add grass
     
     const float LOCATION_Z = (0.0f);
@@ -264,6 +293,12 @@ CC3Node *_monkeyModel;
     }
 }
 
+
+/**
+ *
+ * DOCUMENTATION MUST BE ADDED
+ *
+ */
 -(void) createWalls {
     
     const float LOCATION_Z = 0;
@@ -541,7 +576,11 @@ CC3Node *_monkeyModel;
 
 #pragma mark - GameConnectionDelegate
 //Methods that handle multipeer controller interaction
-
+/**
+ *
+ * DOCUMENTATION MUST BE ADDED!
+ *
+ */
 -(void) otherPlayerPressed:(ButtonPressMessage *)buttonPressMessage {
     
     if ([[buttonPressMessage playerNumber] intValue] >= [self.charactersArray count])
@@ -616,6 +655,8 @@ CC3Node *_monkeyModel;
     }
 }
 
+
+#pragma mark - CollisionHandling
 /**
  * Check for collisions.
  *
@@ -623,14 +664,18 @@ CC3Node *_monkeyModel;
  * collided with the wall or with another player.
  *
  * If the player is colliding, it may do so for several update frames.
- * On each frame, we need to determine whether it is heading towards something. If it is we stop the moving action. 
+ * On each frame, we need to determine whether it is heading towards something. If it is we stop the moving action.
  *
  * All movement is handled by CCActions.
  *
- * The effect is to see the player collide with something, and stop.
+ * The effect is to see the player collide with a wall, and stop.
+ *
+ * If the player collides with another player a invoke a method to handle that special case.
+ *
  */
 -(void) checkForCollisions
 {
+    //For each player
     for (Player *player in self.charactersArray)
     {
         //For each wall cube:
@@ -644,6 +689,32 @@ CC3Node *_monkeyModel;
                 player.node.location = player.oldLocation;
                 player.node.rotationAngle = player.oldRotationAngle;
                 break;
+            }
+        }
+        //For each player
+        for (Player *player2 in self.charactersArray)
+        {
+            if (player2 != player)
+            {
+                // Test whether player1 is intersecting player2.
+                if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
+                {
+                    NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
+                    NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
+                    if (interval > 60.0f)
+#warning Fix hardcoded 60.0f (One minute)
+                    {
+                        // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
+                        NSDate *now = [[NSDate date] copy];
+                        [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
+                        [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
+                        NSLog(@"Players collided; minigame should start!!");
+                    }
+                    else
+                    {
+                        NSLog(@"Players already collided %fseconds ago", interval);
+                    }
+                }
             }
         }
         player.oldLocation = player.node.location;

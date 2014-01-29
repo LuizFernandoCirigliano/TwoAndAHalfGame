@@ -10,7 +10,10 @@
 
 @interface Player : NSObject
 
+@property (nonatomic) NSInteger index;
 @property (nonatomic) CC3Vector oldLocation;
 @property (nonatomic) GLfloat oldRotationAngle;
 @property (nonatomic, strong) CC3Node *node;
+@property (nonatomic, strong) NSMutableDictionary *lastPlayerCollisionTimestamp;
+
 @end

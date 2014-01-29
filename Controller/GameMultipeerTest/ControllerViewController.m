@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [Connection myConnection].delegate = self;
-    self.playerLabel.text = [NSString stringWithFormat:@"Player %d", [[Connection myConnection] playerNumber]];
+    self.playerLabel.text = [NSString stringWithFormat:@"Player %d", [[Connection myConnection] playerNumber]+1];
 }
 
 - (void)didReceiveMemoryWarning
