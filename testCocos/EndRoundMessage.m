@@ -10,7 +10,12 @@
 
 @implementation EndRoundMessage
 
-- (NSData *)archiveData{
+/**
+ * Add method description here
+ *
+ */
+- (NSData *)archiveData
+{
     return [self archiveDataWithKey:@"endRoundMessage"];
 }
 

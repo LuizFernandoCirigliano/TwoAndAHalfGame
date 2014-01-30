@@ -9,5 +9,7 @@
 #import "NewMessage.h"
 
 @interface EndRoundMessage : NewMessage
+
 - (NSData *)archiveData;
+
 @end

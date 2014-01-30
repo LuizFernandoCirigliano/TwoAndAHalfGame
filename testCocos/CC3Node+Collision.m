@@ -10,24 +10,54 @@
 
 @implementation CC3Node (Collision)
 
+/**
+ * Allocates and initializes an autoreleased instance of the
+ * mesh bounding volume from its bounding box,
+ * and sets the shouldUseFixedBoundingVolume
+ * property to NO.
+ */
 - (void) createBoundingVolumeFromBoundingBox
 {
+    //Create bounding volume
     CC3NodeBoundingVolume *bv = [CC3NodeBoxBoundingVolume boundingVolumeFromBox:self.boundingBox];
-    
+    //Set bounding volume
     self.boundingVolume = bv;
+    //Use fixed bounding volume
     self.shouldUseFixedBoundingVolume = YES;
 }
 
+/**
+ * Allocates and initializes an autoreleased instance of the
+ * mesh spherical bounding volume from its bounding box,
+ * and sets the shouldUseFixedBoundingVolume
+ * property to NO.
+ */
 - (void) createSphericalBoundingVolumeFromBoundingBox
 {
     [self createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: 1.0f];
 }
 
+/**
+ * Allocates and initializes an autoreleased instance of the
+ * mesh spherical bounding volume from its bounding box,
+ * with a given radius ratio
+ * and sets the shouldUseFixedBoundingVolume
+ * property to NO.
+ \param ratio The ratio of the ratius in the spherical bounding volume
+ */
 - (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio
 {
-    CC3NodeSphericalBoundingVolume *bv = [CC3NodeSphericalBoundingVolume boundingVolumeFromSphere:CC3SphereFromCircumscribingBox(self.boundingBox)];
-    bv.radius *= ratio;
-    self.boundingVolume = bv;
+    //Create box
+    CC3Box boundingBox = self.boundingBox;
+    //Create sphere
+    CC3Sphere boundingSphere = CC3SphereFromCircumscribingBox(boundingBox);
+    //Set sphere radius
+    boundingSphere.radius *= ratio;
+    //Create boudning volume from sphere
+    CC3NodeSphericalBoundingVolume *boundingVolume = [CC3NodeSphericalBoundingVolume boundingVolumeFromSphere:boundingSphere];
+    //Set bounding volume
+    self.boundingVolume = boundingVolume;
+    //Use fixed bounding volume
     self.shouldUseFixedBoundingVolume = YES;
 }
 

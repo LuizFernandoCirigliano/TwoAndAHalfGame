@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "CC3DeviceCameraOverlayUIViewController.h"
 
-@interface testCocosAppDelegate : NSObject <UIApplicationDelegate> {
+@interface testCocosAppDelegate : NSObject <UIApplicationDelegate>
+{
+    /**
+     * Add instance variable description here
+     *
+     */
 	UIWindow* _window;
+    
+    /**
+     * Add instance variable description here
+     *
+     */
 	CC3DeviceCameraOverlayUIViewController* _viewController;
 }
 @end

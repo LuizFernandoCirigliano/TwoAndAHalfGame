@@ -12,11 +12,22 @@
 #import "EndRoundMessage.h"
 #import "ButtonPressMessage.h"
 
+#warning Add pragma marks to this file.
+
 @implementation Connection
 
+/**
+ * Add description here
+ */
 static Connection *myConnectionConfiguration = nil;
 
-+ (Connection *) myConnectionWithName: (NSString *) peerName{
+/**
+ * Add method description here
+ *
+ \param peerName Parameter Description
+ */
++ (Connection *) myConnectionWithName: (NSString *) peerName
+{
     
     if (!myConnectionConfiguration)
     {
@@ -26,18 +37,30 @@ static Connection *myConnectionConfiguration = nil;
     return myConnectionConfiguration;
 }
 
-+ (Connection *) myConnection{
+/**
+ * Add method description here
+ *
+ \param peerName Parameter Description
+ */
++ (Connection *) myConnection
+{
     
     if (!myConnectionConfiguration)
     {
         myConnectionConfiguration = [[super allocWithZone:nil] initWithName:@"simulador"];
+#warning Possible incomplete method implementation.
     }
     
     return myConnectionConfiguration;
 }
 
--(Connection *) initWithName : (NSString *) peerName{
-    
+/**
+ * Add method description here
+ *
+ \param peerName Parameter Description
+ */
+-(Connection *) initWithName : (NSString *) peerName
+{
     self = [super init];
     
     if(self){
@@ -64,7 +87,14 @@ static Connection *myConnectionConfiguration = nil;
     
     return self;
 }
-- (void) sendData:(NSData *) data {
+
+/**
+ * Add method description here
+ *
+ \param data Parameter Description
+ */
+- (void) sendData:(NSData *) data
+{
     NSError *error;
     [self.mySession sendData:data toPeers:[self.mySession connectedPeers] withMode:MCSessionSendDataUnreliable error: &error];
     if(error) {
@@ -72,6 +102,12 @@ static Connection *myConnectionConfiguration = nil;
     }
 }
 
+/**
+ * Add method description here
+ *
+ \param data Parameter Description
+ \param peer Parameter Description
+ */
 - (void) sendData:(NSData *) data toPeer:(MCPeerID *) peer{
     NSError *error;
     [self.mySession sendData:data toPeers:[NSArray arrayWithObject:peer] withMode:MCSessionSendDataUnreliable error: &error];
@@ -80,30 +116,64 @@ static Connection *myConnectionConfiguration = nil;
     }
 }
 
-- (void) showBrowserVC:(UIViewController*)controller{
+/**
+ * Add method description here
+ *
+ \param controller Parameter Description
+ */
+- (void) showBrowserVC:(UIViewController*) controller
+{
     [controller presentViewController:self.browserVC animated:YES completion:nil];
 }
 
-- (void) dismissBrowserVC{
+/**
+ * Add method description here
+ *
+ */
+- (void) dismissBrowserVC
+{
     [self.browserVC dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController {
+/**
+ * Add method description here
+ *
+ \param browserViewController Parameter Description
+ */
+- (void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
+{
     [self dismissBrowserVC];
 }
 
+/**
+ * Add method description here
+ *
+ \param browserViewController Parameter Description
+ */
 - (void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController {
     [self dismissBrowserVC];
 }
 
 #pragma marks MCSessionDelegate
+
 // Remote peer changed state
-- (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
-    if (state ==  MCSessionStateConnected) {
+/**
+ * Add method description here
+ *
+ \param peerID Parameter Description
+ \param state Parameter Description
+ */
+- (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
+{
+    if (state ==  MCSessionStateConnected)
+    {
         //checks if it's a reconnection
-        for (int i = 0; i < [self.peerArray count]; i++) {
+        for (int i = 0; i < [self.peerArray count]; i++)
+        {
             if ([self.peerArray objectAtIndex:i] == peerID)
+            {
                 return;
+            }
         }
         
         
@@ -119,6 +189,13 @@ static Connection *myConnectionConfiguration = nil;
 }
 
 // Received data from remote peer
+/**
+ * Add method description here
+ *
+ \param sessionParameter Description
+ \param data Parameter Description
+ \param peerID Parameter Description
+ */
 - (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID{
     NewMessage *message = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (message == nil) {
@@ -143,24 +220,63 @@ static Connection *myConnectionConfiguration = nil;
     }
 }
 
-// Received a byte stream from remote peer
-- (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID{
+/**
+ * Add method description here
+ *
+ \param session Parameter Description
+ \param stream Parameter Description
+ \param streamName Parameter Description
+ \param peerID Parameter Description
+ */
+- (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID
+{
+    // Received a byte stream from remote peer
+    #warning Possible incomplete method implementation.
 }
 
-// Start receiving a resource from remote peer
-- (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress{
-    
+
+/**
+ * Add method description here
+ *
+ \param session Parameter Description
+ \param resourceName Parameter Description
+ \param peerID Parameter Description
+ \param progress Parameter Description
+ */
+- (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress
+{
+    // Start receiving a resource from remote peer
+    #warning Possible incomplete method implementation.
 }
 
-// Finished receiving a resource from remote peer and saved the content in a temporary location - the app is responsible for moving the file to a permanent location within its sandbox
-- (void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error {
-    
+/**
+ * Add method description here
+ *
+ \param session Parameter Description
+ \param resourceName Parameter Description
+ \param peerID Parameter Description
+ \param localURL Parameter Description
+ \param error Parameter Description
+ */
+- (void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error
+{
+    // Finished receiving a resource from remote peer and saved the content in a temporary location - the app is responsible for moving the file to a permanent location within its sandbox
+    #warning Possible incomplete method implementation.
 }
 
 #pragma marks MCNearbyServiceAdvertiserDelegate
 
 //Accept automatically
-- (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL accept, MCSession *session))invitationHandler {
+/**
+ * Add method description here
+ *
+ \param advertiser Parameter Description
+ \param peerID Parameter Description
+ \param context Parameter Description
+ \param invitationHandler Parameter Description
+ */
+- (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL accept, MCSession *session))invitationHandler
+{
     
     invitationHandler(YES, self.mySession);
     

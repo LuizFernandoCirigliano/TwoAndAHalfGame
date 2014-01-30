@@ -11,11 +11,16 @@
 #import "testCocosScene.h"
 #import "CC3CC2Extensions.h"
 
+
 #define kAnimationFrameRate		60		// Animation frame rate
 
 @implementation testCocosAppDelegate
 
--(void) dealloc {
+/**
+ * Add method description here
+ */
+-(void) dealloc
+{
 	[_window release];
 	[_viewController release];
 	[super dealloc];
@@ -27,7 +32,7 @@
  *
  * NOTE: As of iOS6, supported device orientations are an intersection of the mask established for the
  * UIViewController (as set in this method here), and the values specified in the project 'Info.plist'
- * file, under the 'Supported interface orientations' and 'Supported interface orientations (iPad)'
+ * file, under the 'Supported interface orientations' and 'Supported interface orientations (iPad	)'
  * keys. Specifically, although the mask here is set to UIInterfaceOrientationMaskAll, to ensure that
  * all orienatations are enabled under iOS6, be sure that those settings in the 'Info.plist' file also
  * reflect all four orientation values. By default, the 'Info.plist' settings only enable the two
@@ -85,6 +90,11 @@
 }
 #endif
 
+/**
+ * Add method description here
+ *
+ \param application Parameter Description
+ */
 -(void) applicationDidFinishLaunching: (UIApplication*) application {
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images.
@@ -142,15 +152,27 @@
 	[CCDirector.sharedDirector runWithScene: scene];
 }
 
-/** Pause the cocos3d/cocos2d action. */
--(void) applicationWillResignActive: (UIApplication*) application {
+/**
+ * Pause the cocos3d/cocos2d action.
+ */
+-(void) applicationWillResignActive: (UIApplication*) application
+{
 	[CCDirector.sharedDirector pause];
 }
 
-/** Resume the cocos3d/cocos2d action. */
--(void) resumeApp { [CCDirector.sharedDirector resume]; }
+/**
+ * Resume the cocos3d/cocos2d action.
+ */
+-(void) resumeApp
+{
+    [CCDirector.sharedDirector resume];
+}
 
--(void) applicationDidBecomeActive: (UIApplication*) application {
+/**
+ * Add method description here
+ */
+-(void) applicationDidBecomeActive: (UIApplication*) application
+{
 	
 	// Workaround to fix the issue of drop to 40fps on iOS4.X on app resume.
 	// Adds short delay before resuming the app.
@@ -164,24 +186,44 @@
 //	[self resumeApp];
 }
 
--(void) applicationDidReceiveMemoryWarning: (UIApplication*) application {
+/**
+ * Add method description here
+ */
+-(void) applicationDidReceiveMemoryWarning: (UIApplication*) application
+{
 	[CCDirector.sharedDirector purgeCachedData];
 }
 
--(void) applicationDidEnterBackground: (UIApplication*) application {
+/**
+ * Add method description here
+ */
+-(void) applicationDidEnterBackground: (UIApplication*) application
+{
 	[CCDirector.sharedDirector stopAnimation];
 }
 
--(void) applicationWillEnterForeground: (UIApplication*) application {
+/**
+ * Add method description here
+ */
+-(void) applicationWillEnterForeground: (UIApplication*) application
+{
 	[CCDirector.sharedDirector startAnimation];
 }
 
--(void)applicationWillTerminate: (UIApplication*) application {
+/**
+ * Add method description here
+ */
+-(void)applicationWillTerminate: (UIApplication*) application
+{
 	[CCDirector.sharedDirector.view removeFromSuperview];
 	[CCDirector.sharedDirector end];
 }
 
--(void) applicationSignificantTimeChange: (UIApplication*) application {
+/**
+ * Add method description here
+ */
+-(void) applicationSignificantTimeChange: (UIApplication*) application
+{
 	[CCDirector.sharedDirector setNextDeltaTimeZero: YES];
 }
 

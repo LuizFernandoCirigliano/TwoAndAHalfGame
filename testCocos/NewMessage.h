@@ -11,6 +11,7 @@
 
 @interface NewMessage : NSObject <NSCoding>
 
+
 - (NSData *)archiveDataWithKey: (NSString *) key;
 
 

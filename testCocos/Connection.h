@@ -15,6 +15,8 @@
 #import "SetPlayerNumberMessage.h"
 
 #define MAX_PLAYERS 4
+
+#warning Protocol should be documented.
 @protocol ConnectionDelegate <NSObject>
 
 @required
@@ -22,6 +24,7 @@
 - (void)ready;
 @end
 
+#warning Protocol should be documented.
 @protocol GameConnectionDelegate <NSObject>
 
 @required
@@ -32,14 +35,34 @@
 
 @interface Connection : NSObject <MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate>
 
+/**
+ * Add property description here
+ */
 @property (nonatomic, strong) MCBrowserViewController *browserVC;
+
+/**
+ * Add property description here
+ */
 @property (nonatomic, strong) MCNearbyServiceAdvertiser *advertiser;
+
+/**
+ * Add property description here
+ */
 @property (nonatomic, strong) MCSession *mySession;
+
+/**
+ * Add property description here
+ */
 @property (nonatomic, strong) MCPeerID *myPeerID;
 
-
+/**
+ * Add property description here
+ */
 @property (nonatomic, assign) id delegate;
 
+/**
+ * Add property description here
+ */
 @property (nonatomic, strong) NSMutableArray *peerArray;
 
 + (Connection *) myConnection;

@@ -10,7 +10,13 @@
 
 @implementation SetPlayerNumberMessage
 
--(id) initWithPlayerNumber: (NSInteger)playerNumber{
+/**
+ * Add method description here
+ *
+ \param playerNumber Parameter Description
+ */
+-(id) initWithPlayerNumber: (NSInteger)playerNumber
+{
     self = [super init];
     
     if(self) {
@@ -20,21 +26,38 @@
     return self;
 }
 
-- (NSData *)archiveData{
+/**
+ * Add method description here
+ *
+ */
+- (NSData *)archiveData
+{
     return [self archiveDataWithKey:@"buttonPressMessage"];
 }
 
 #pragma marks NSCoding Protocols
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
+/**
+ * Add method description here
+ *
+ \param decoder Parameter Description
+ */
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super init])
+    {
         self.playerNumber = [decoder decodeObjectForKey:@"playerNumber"];
-        
     }
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)encoder {
+/**
+ * Add method description here
+ *
+ \param encoder Parameter Description
+ */
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
     [encoder encodeObject:self.playerNumber forKey:@"playerNumber"];
 }
 

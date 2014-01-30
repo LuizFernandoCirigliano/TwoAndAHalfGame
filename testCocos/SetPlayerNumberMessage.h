@@ -12,7 +12,9 @@
 
 - (NSData *)archiveData;
 
-
+/**
+ * Add property description here
+ */
 @property (strong, nonatomic) NSNumber *playerNumber;
 
 

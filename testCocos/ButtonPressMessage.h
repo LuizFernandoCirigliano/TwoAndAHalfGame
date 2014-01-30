@@ -11,7 +11,14 @@
 @interface ButtonPressMessage : NewMessage
 - (NSData *)archiveData;
 
+/**
+ * Add property description here
+ */
 @property (strong, nonatomic) NSNumber *buttonNumber;
+
+/**
+ * Add property description here
+ */
 @property (strong, nonatomic) NSNumber *playerNumber;
 
 

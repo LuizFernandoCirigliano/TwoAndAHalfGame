@@ -161,7 +161,7 @@ CC3Node *_monkeyModel;
 
 /**
  *
- * DOCUMENTATION MUST BE ADDED
+ * Add method description here
  *
  */
 -(void) addPlayerCharacter
@@ -183,7 +183,10 @@ CC3Node *_monkeyModel;
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
     CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[self.charactersArray count]+1]];
+    //Set the player index
     monkey.index = [self.charactersArray count];
+    //Allocates and inititializes a mutable dictionary with last player collision timestamps
+    //Set as default to unix time 0
     monkey.lastPlayerCollisionTimestamp = [NSMutableDictionary dictionaryWithDictionary:
         @{@"0" : [NSDate dateWithTimeIntervalSince1970:0.0f],
           @"1" : [NSDate dateWithTimeIntervalSince1970:0.0f],
@@ -205,8 +208,7 @@ CC3Node *_monkeyModel;
 }
 
 /**
- *
- * DOCUMENTATION MUST BE ADDED
+ * Add method description here
  *
  */
 -(void) readMapFile
@@ -248,8 +250,7 @@ CC3Node *_monkeyModel;
 }
 
 /**
- *
- * DOCUMENTATION MUST BE ADDED
+ * Add method description here
  *
  */
 -(void) createTerrain
@@ -295,8 +296,7 @@ CC3Node *_monkeyModel;
 
 
 /**
- *
- * DOCUMENTATION MUST BE ADDED
+ * Add method description here
  *
  */
 -(void) createWalls {
@@ -315,13 +315,17 @@ CC3Node *_monkeyModel;
     ccColor3B originalColor = wallCube.color;
     
     
-    for (int i = 0; i < (int)self.xTiles; i++) {
+    for (int i = 0; i < (int)self.xTiles; i++)
+    {
         if (i >= [self.lines count])
+        {
             break;
+        }
         
         NSString *currentLine = [self.lines objectAtIndex:i];
         
-        for (int j = 0; j < (int)self.yTiles; j++) {
+        for (int j = 0; j < (int)self.yTiles; j++)
+        {
             //lower
             if (2*j >= [currentLine length])
                 break;
@@ -332,12 +336,16 @@ CC3Node *_monkeyModel;
             //c == 0 -> empty tile
             //c == 1 -> original color wall
             //c == 2 -> colored wall
+#warning POG detected /\
             
-            if (c == '3') {
+            if (c == '3')
+            {
                 wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2, LOCATION_Z);
                 [wall addChild:wallCube];
                 wallCube = [wallCube copy];
-            } else if (c == '2' || c == '1') {
+            }
+            else if (c == '2' || c == '1')
+            {
                 wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   LOCATION_Z, (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2);
                 //paint the tile a different color
                 ccColor3B endColor = { rand() % 256 , rand() % 256, rand() % 256 };
@@ -577,15 +585,17 @@ CC3Node *_monkeyModel;
 #pragma mark - GameConnectionDelegate
 //Methods that handle multipeer controller interaction
 /**
+ * Add method description here!
  *
- * DOCUMENTATION MUST BE ADDED!
- *
+ \param buttonPressMessage Parameter Description
  */
--(void) otherPlayerPressed:(ButtonPressMessage *)buttonPressMessage {
+-(void) otherPlayerPressed:(ButtonPressMessage *)buttonPressMessage
+{
     
     if ([[buttonPressMessage playerNumber] intValue] >= [self.charactersArray count])
+    {
         return;
-    
+    }
     
     NSLog(@"%@ player: %@" , [buttonPressMessage buttonNumber], [buttonPressMessage playerNumber]);
     
@@ -598,10 +608,12 @@ CC3Node *_monkeyModel;
 
     const int speed = 10;
     //sets the direction of movement based on the number passed by the connexion, rotates the dragon to face the direction of movement.
-    switch (buttonNumberInt) {
+    switch (buttonNumberInt)
+    {
         //up button
         case 0:
-            if(character.node.rotationAngle != 0) {
+            if(character.node.rotationAngle != 0)
+            {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:0];
                 [character.node runAction:rotate];
             }
@@ -613,7 +625,8 @@ CC3Node *_monkeyModel;
             break;
         //right button
         case 1:
-            if(character.node.rotationAngle != -90) {
+            if(character.node.rotationAngle != -90)
+            {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-90];
                 [character.node runAction:rotate];
             }
@@ -625,7 +638,8 @@ CC3Node *_monkeyModel;
             break;
         //bottom button
         case 2:
-            if(character.node.rotationAngle != 180) {
+            if(character.node.rotationAngle != 180)
+            {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:180];
                 [character.node runAction:rotate];
             }
@@ -637,7 +651,8 @@ CC3Node *_monkeyModel;
             break;
         //left button
         case 3:
-            if(character.node.rotationAngle != 90) {
+            if(character.node.rotationAngle != 90)
+            {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:90];
                 [character.node runAction:rotate];
             }

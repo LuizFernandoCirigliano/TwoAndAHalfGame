@@ -10,7 +10,13 @@
 
 @implementation NewMessage
 
-- (NSData *)archiveDataWithKey: (NSString *) key{
+/**
+ * Add method description here
+ *
+ \param key Parameter Description
+ */
+- (NSData *)archiveDataWithKey: (NSString *) key
+{
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject: self];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey: key];
@@ -20,15 +26,28 @@
 
 #pragma marks NSCoding Protocols
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
-        
+/**
+ * Add method description here
+ *
+ \param key Parameter Description
+ */
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if (self = [super init])
+    {
+        #warning Possible incomplete method implementation.
     }
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    
+/**
+ * Add method description here
+ *
+ \param encoder Parameter Description
+ */
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    #warning Possible incomplete method implementation.
 }
 
 

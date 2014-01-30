@@ -10,5 +10,6 @@
 #import "NewMessage.h"
 
 @interface StartGameMessage : NewMessage
+
 - (NSData *)archiveData;
 @end

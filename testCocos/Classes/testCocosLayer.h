@@ -11,7 +11,9 @@
 
 
 /** A sample application-specific CC3Layer subclass. */
-@interface testCocosLayer : CC3Layer  <CCTouchDelegate> {
+@interface testCocosLayer : CC3Layer  <CCTouchDelegate>
+{
+    
 }
 
 @end

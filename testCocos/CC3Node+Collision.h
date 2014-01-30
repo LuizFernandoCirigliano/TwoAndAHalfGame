@@ -10,7 +10,6 @@
 
 @interface CC3Node (Collision)
 
-//@property (nonatomic) BOOL shouldCheckCollision;
 - (void) createBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio;

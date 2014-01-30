@@ -69,20 +69,47 @@
 //	[self handleTouch: touch ofType: kCCTouchMoved];
 //}
 
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+/**
+ * Add method description here
+ *
+ \param touches Parameter Description
+ \param event Parameter Description
+ */
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     NSLog(@"Touch Began");
+    #warning Possible incomplete method implementation.
 }
 
--(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+/**
+ * Add method description here
+ *
+ \param touches Parameter Description
+ \param event Parameter Description
+ */
+-(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    #warning Possible incomplete method implementation.
 }
 
--(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+/**
+ * Add method description here
+ \param touches Parameter Description
+ \param event Parameter Description
+ */
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    #warning Possible incomplete method implementation.
 }
 
--(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+/**
+ * Add method description here
+ \param touches Parameter Description
+ \param event Parameter Description
+ */
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    #warning Possible incomplete method implementation.
 }
 
 @end
