@@ -314,6 +314,7 @@
 		A31C86BE18991B3600769876 /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86BD18991B3600769876 /* p2.png */; };
 		A344F5411892D57C00355248 /* CC3Node+Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = A344F5401892D57C00355248 /* CC3Node+Collision.m */; };
 		A3B2978E189825C9003949D3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2978D189825C9003949D3 /* Player.m */; };
+		A3B8D224189A78EA009FFE5C /* StartMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D223189A78EA009FFE5C /* StartMinigameMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -921,6 +922,8 @@
 		A344F5401892D57C00355248 /* CC3Node+Collision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CC3Node+Collision.m"; sourceTree = "<group>"; };
 		A3B2978C189825C9003949D3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		A3B2978D189825C9003949D3 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		A3B8D222189A78EA009FFE5C /* StartMinigameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMinigameMessage.h; sourceTree = "<group>"; };
+		A3B8D223189A78EA009FFE5C /* StartMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartMinigameMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1956,6 +1959,8 @@
 				3AD47EBE189020F900623ACA /* ButtonPressMessage.m */,
 				3AD47EBF189020F900623ACA /* EndRoundMessage.h */,
 				3AD47EC0189020F900623ACA /* EndRoundMessage.m */,
+				A3B8D222189A78EA009FFE5C /* StartMinigameMessage.h */,
+				A3B8D223189A78EA009FFE5C /* StartMinigameMessage.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2169,6 +2174,7 @@
 				3A4EAA4D188D927B00E6C9F5 /* CC3TextureUnit.m in Sources */,
 				3A4EA852188D927900E6C9F5 /* CCActionManager.m in Sources */,
 				3AD47EC3189020F900623ACA /* NewMessage.m in Sources */,
+				A3B8D224189A78EA009FFE5C /* StartMinigameMessage.m in Sources */,
 				3A4EA8BA188D927A00E6C9F5 /* CCParticleSystemQuad.m in Sources */,
 				3A4EAA0E188D927B00E6C9F5 /* PVRTDecompress.cpp in Sources */,
 				3A4EAB0B188D927C00E6C9F5 /* CC3ShaderProgramMatcher.m in Sources */,

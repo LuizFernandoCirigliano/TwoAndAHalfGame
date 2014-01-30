@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A2F42A31897E53D0088C77D /* SetPlayerNumberMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F42A21897E53D0088C77D /* SetPlayerNumberMessage.m */; };
 		3A44A4FB1888395A00777286 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FA1888395A00777286 /* Foundation.framework */; };
 		3A44A4FD1888395A00777286 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FC1888395A00777286 /* CoreGraphics.framework */; };
 		3A44A4FF1888395A00777286 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FE1888395A00777286 /* UIKit.framework */; };
@@ -21,14 +20,15 @@
 		3A44A51C1888395A00777286 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FE1888395A00777286 /* UIKit.framework */; };
 		3A44A5241888395A00777286 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A44A5221888395A00777286 /* InfoPlist.strings */; };
 		3A44A5261888395A00777286 /* GameMultipeerTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A5251888395A00777286 /* GameMultipeerTestTests.m */; };
-		3A44A53118883A1E00777286 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A53018883A1E00777286 /* Connection.m */; };
 		3A44A53318883A3F00777286 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A53218883A3F00777286 /* MultipeerConnectivity.framework */; };
 		3A44A53818883AFA00777286 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A44A53718883AFA00777286 /* Main.storyboard */; };
-		3A44A54018883C3300777286 /* NewMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A53B18883C3300777286 /* NewMessage.m */; };
-		3A44A54118883C3300777286 /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A53D18883C3300777286 /* StartGameMessage.m */; };
-		3A44A54218883C3300777286 /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A53F18883C3300777286 /* EndRoundMessage.m */; };
 		3A44A54618883CE300777286 /* ControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A54518883CE300777286 /* ControllerViewController.m */; };
-		3A44A54918883E4D00777286 /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A54818883E4D00777286 /* ButtonPressMessage.m */; };
+		A3B8D231189A7B2C009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D226189A7B2C009FFE5C /* ButtonPressMessage.m */; };
+		A3B8D233189A7B2C009FFE5C /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D22A189A7B2C009FFE5C /* EndRoundMessage.m */; };
+		A3B8D234189A7B2C009FFE5C /* NewMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D22C189A7B2C009FFE5C /* NewMessage.m */; };
+		A3B8D235189A7B2C009FFE5C /* SetPlayerNumberMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D22E189A7B2C009FFE5C /* SetPlayerNumberMessage.m */; };
+		A3B8D236189A7B2C009FFE5C /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D230189A7B2C009FFE5C /* StartGameMessage.m */; };
+		A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23A189A7BB3009FFE5C /* Connection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A2F42A11897E53D0088C77D /* SetPlayerNumberMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPlayerNumberMessage.h; sourceTree = "<group>"; };
-		3A2F42A21897E53D0088C77D /* SetPlayerNumberMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPlayerNumberMessage.m; sourceTree = "<group>"; };
 		3A44A4F71888395A00777286 /* GameMultipeerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameMultipeerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A44A4FA1888395A00777286 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A44A4FC1888395A00777286 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,20 +60,22 @@
 		3A44A5211888395A00777286 /* GameMultipeerTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameMultipeerTestTests-Info.plist"; sourceTree = "<group>"; };
 		3A44A5231888395A00777286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A44A5251888395A00777286 /* GameMultipeerTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameMultipeerTestTests.m; sourceTree = "<group>"; };
-		3A44A52F18883A1E00777286 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
-		3A44A53018883A1E00777286 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3A44A53218883A3F00777286 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		3A44A53718883AFA00777286 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		3A44A53A18883C3300777286 /* NewMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessage.h; sourceTree = "<group>"; };
-		3A44A53B18883C3300777286 /* NewMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessage.m; sourceTree = "<group>"; };
-		3A44A53C18883C3300777286 /* StartGameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameMessage.h; sourceTree = "<group>"; };
-		3A44A53D18883C3300777286 /* StartGameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameMessage.m; sourceTree = "<group>"; };
-		3A44A53E18883C3300777286 /* EndRoundMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndRoundMessage.h; sourceTree = "<group>"; };
-		3A44A53F18883C3300777286 /* EndRoundMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndRoundMessage.m; sourceTree = "<group>"; };
 		3A44A54418883CE300777286 /* ControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerViewController.h; sourceTree = "<group>"; };
 		3A44A54518883CE300777286 /* ControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerViewController.m; sourceTree = "<group>"; };
-		3A44A54718883E4D00777286 /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonPressMessage.h; sourceTree = "<group>"; };
-		3A44A54818883E4D00777286 /* ButtonPressMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonPressMessage.m; sourceTree = "<group>"; };
+		A3B8D225189A7B2C009FFE5C /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonPressMessage.h; path = ../../testCocos/ButtonPressMessage.h; sourceTree = "<group>"; };
+		A3B8D226189A7B2C009FFE5C /* ButtonPressMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ButtonPressMessage.m; path = ../../testCocos/ButtonPressMessage.m; sourceTree = "<group>"; };
+		A3B8D229189A7B2C009FFE5C /* EndRoundMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndRoundMessage.h; path = ../../testCocos/EndRoundMessage.h; sourceTree = "<group>"; };
+		A3B8D22A189A7B2C009FFE5C /* EndRoundMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndRoundMessage.m; path = ../../testCocos/EndRoundMessage.m; sourceTree = "<group>"; };
+		A3B8D22B189A7B2C009FFE5C /* NewMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMessage.h; path = ../../testCocos/NewMessage.h; sourceTree = "<group>"; };
+		A3B8D22C189A7B2C009FFE5C /* NewMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewMessage.m; path = ../../testCocos/NewMessage.m; sourceTree = "<group>"; };
+		A3B8D22D189A7B2C009FFE5C /* SetPlayerNumberMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPlayerNumberMessage.h; path = ../../testCocos/SetPlayerNumberMessage.h; sourceTree = "<group>"; };
+		A3B8D22E189A7B2C009FFE5C /* SetPlayerNumberMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetPlayerNumberMessage.m; path = ../../testCocos/SetPlayerNumberMessage.m; sourceTree = "<group>"; };
+		A3B8D22F189A7B2C009FFE5C /* StartGameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartGameMessage.h; path = ../../testCocos/StartGameMessage.h; sourceTree = "<group>"; };
+		A3B8D230189A7B2C009FFE5C /* StartGameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartGameMessage.m; path = ../../testCocos/StartGameMessage.m; sourceTree = "<group>"; };
+		A3B8D239189A7BB3009FFE5C /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
+		A3B8D23A189A7BB3009FFE5C /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +140,8 @@
 				3A44A5091888395A00777286 /* AppDelegate.h */,
 				3A44A50A1888395A00777286 /* AppDelegate.m */,
 				3A44A53618883A6A00777286 /* View */,
+				A3B8D237189A7B34009FFE5C /* Connection */,
 				3A44A53518883A5400777286 /* Controller */,
-				3A44A53418883A4A00777286 /* Connection */,
 				3A44A5121888395A00777286 /* Images.xcassets */,
 				3A44A5011888395A00777286 /* Supporting Files */,
 			);
@@ -177,16 +177,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3A44A53418883A4A00777286 /* Connection */ = {
-			isa = PBXGroup;
-			children = (
-				3A44A53918883C0600777286 /* Messages */,
-				3A44A52F18883A1E00777286 /* Connection.h */,
-				3A44A53018883A1E00777286 /* Connection.m */,
-			);
-			name = Connection;
-			sourceTree = "<group>";
-		};
 		3A44A53518883A5400777286 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,19 +196,29 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		3A44A53918883C0600777286 /* Messages */ = {
+		A3B8D237189A7B34009FFE5C /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				3A44A53A18883C3300777286 /* NewMessage.h */,
-				3A44A53B18883C3300777286 /* NewMessage.m */,
-				3A44A53C18883C3300777286 /* StartGameMessage.h */,
-				3A44A53D18883C3300777286 /* StartGameMessage.m */,
-				3A44A54718883E4D00777286 /* ButtonPressMessage.h */,
-				3A44A54818883E4D00777286 /* ButtonPressMessage.m */,
-				3A44A53E18883C3300777286 /* EndRoundMessage.h */,
-				3A44A53F18883C3300777286 /* EndRoundMessage.m */,
-				3A2F42A11897E53D0088C77D /* SetPlayerNumberMessage.h */,
-				3A2F42A21897E53D0088C77D /* SetPlayerNumberMessage.m */,
+				A3B8D239189A7BB3009FFE5C /* Connection.h */,
+				A3B8D23A189A7BB3009FFE5C /* Connection.m */,
+				A3B8D238189A7B49009FFE5C /* Messages */,
+			);
+			name = Connection;
+			sourceTree = "<group>";
+		};
+		A3B8D238189A7B49009FFE5C /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				A3B8D225189A7B2C009FFE5C /* ButtonPressMessage.h */,
+				A3B8D226189A7B2C009FFE5C /* ButtonPressMessage.m */,
+				A3B8D229189A7B2C009FFE5C /* EndRoundMessage.h */,
+				A3B8D22A189A7B2C009FFE5C /* EndRoundMessage.m */,
+				A3B8D22B189A7B2C009FFE5C /* NewMessage.h */,
+				A3B8D22C189A7B2C009FFE5C /* NewMessage.m */,
+				A3B8D22D189A7B2C009FFE5C /* SetPlayerNumberMessage.h */,
+				A3B8D22E189A7B2C009FFE5C /* SetPlayerNumberMessage.m */,
+				A3B8D22F189A7B2C009FFE5C /* StartGameMessage.h */,
+				A3B8D230189A7B2C009FFE5C /* StartGameMessage.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -326,13 +326,13 @@
 				3A44A54618883CE300777286 /* ControllerViewController.m in Sources */,
 				3A44A5111888395A00777286 /* ConnectViewController.m in Sources */,
 				3A44A50B1888395A00777286 /* AppDelegate.m in Sources */,
-				3A44A54118883C3300777286 /* StartGameMessage.m in Sources */,
-				3A2F42A31897E53D0088C77D /* SetPlayerNumberMessage.m in Sources */,
-				3A44A54218883C3300777286 /* EndRoundMessage.m in Sources */,
-				3A44A54918883E4D00777286 /* ButtonPressMessage.m in Sources */,
-				3A44A54018883C3300777286 /* NewMessage.m in Sources */,
+				A3B8D233189A7B2C009FFE5C /* EndRoundMessage.m in Sources */,
+				A3B8D235189A7B2C009FFE5C /* SetPlayerNumberMessage.m in Sources */,
 				3A44A5071888395A00777286 /* main.m in Sources */,
-				3A44A53118883A1E00777286 /* Connection.m in Sources */,
+				A3B8D236189A7B2C009FFE5C /* StartGameMessage.m in Sources */,
+				A3B8D231189A7B2C009FFE5C /* ButtonPressMessage.m in Sources */,
+				A3B8D234189A7B2C009FFE5C /* NewMessage.m in Sources */,
+				A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

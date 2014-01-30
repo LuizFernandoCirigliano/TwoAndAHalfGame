@@ -108,9 +108,10 @@ CC3Node *_monkeyModel;
 	
 	// Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
-	[self createGLBuffers];
+	
+    [self createGLBuffers];
 	[self releaseRedundantContent];
-
+    
 	
 	// ------------------------------------------
 	
@@ -166,7 +167,7 @@ CC3Node *_monkeyModel;
  */
 -(void) addPlayerCharacter
 {
-    Player *monkey = [[Player alloc] init];
+    Player *monkey = [[Player alloc] initWithIndex: [self.charactersArray count]];
     
     //copy the original model
     monkey.node = [_monkeyModel copy];
@@ -183,15 +184,6 @@ CC3Node *_monkeyModel;
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
     CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[self.charactersArray count]+1]];
-    //Set the player index
-    monkey.index = [self.charactersArray count];
-    //Allocates and inititializes a mutable dictionary with last player collision timestamps
-    //Set as default to unix time 0
-    monkey.lastPlayerCollisionTimestamp = [NSMutableDictionary dictionaryWithDictionary:
-        @{@"0" : [NSDate dateWithTimeIntervalSince1970:0.0f],
-          @"1" : [NSDate dateWithTimeIntervalSince1970:0.0f],
-          @"2" : [NSDate dateWithTimeIntervalSince1970:0.0f],
-          @"3" : [NSDate dateWithTimeIntervalSince1970:0.0f]}];
     //Add sprite to billboard
     CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
     [marker setScale:cc3v(0.1f, 0.1f, 0.1f)];
@@ -262,8 +254,10 @@ CC3Node *_monkeyModel;
     float xstart = (float)((self.xTiles * TILE_SZ) / 2.0f);
     float ystart = (float)((self.yTiles * TILE_SZ) / 2.0f);
     
-    for (int i = 0; i < (int)self.xTiles; i++) {
-        for (int j = 0; j < (int)self.yTiles; j++) {
+    for (int i = 0; i < (int)self.xTiles; i++)
+    {
+        for (int j = 0; j < (int)self.yTiles; j++)
+        {
             NSString * name = [NSString stringWithFormat:@"grass.png"];
             CCLOG(@"tile : %@", name);
             
@@ -513,7 +507,8 @@ CC3Node *_monkeyModel;
  * behind the scene makes use of depth drawing. See also the closeDepthTestWithVisitor:
  * method for more info about managing the depth buffer.
  */
--(void) drawSceneContentWithVisitor: (CC3NodeDrawingVisitor*) visitor {
+-(void) drawSceneContentWithVisitor: (CC3NodeDrawingVisitor*) visitor
+{
 	[super drawSceneContentWithVisitor: visitor];
 }
 
@@ -724,6 +719,7 @@ CC3Node *_monkeyModel;
                         [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
                         [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
                         NSLog(@"Players collided; minigame should start!!");
+                        [self startMinigame: @[player, player2]];
                     }
                     else
                     {
@@ -734,6 +730,19 @@ CC3Node *_monkeyModel;
         }
         player.oldLocation = player.node.location;
         player.oldRotationAngle = player.node.rotationAngle;
+    }
+}
+
+/**
+ * Sets players in minigame mode and starts a minigame
+ \param players NSArray of Player containing players who shall play a minigame
+ */
+- (void) startMinigame: (NSArray*) players
+{
+    //One player is already playing a minigame case not handled! #FIXME
+    for (Player *player in players)
+    {
+        player.isPlayingMinigame = YES;
     }
 }
 
