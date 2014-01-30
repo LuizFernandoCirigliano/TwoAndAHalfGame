@@ -23,12 +23,13 @@
 		3A44A53318883A3F00777286 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A53218883A3F00777286 /* MultipeerConnectivity.framework */; };
 		3A44A53818883AFA00777286 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A44A53718883AFA00777286 /* Main.storyboard */; };
 		3A44A54618883CE300777286 /* ControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A54518883CE300777286 /* ControllerViewController.m */; };
-		A3B8D231189A7B2C009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D226189A7B2C009FFE5C /* ButtonPressMessage.m */; };
-		A3B8D233189A7B2C009FFE5C /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D22A189A7B2C009FFE5C /* EndRoundMessage.m */; };
-		A3B8D234189A7B2C009FFE5C /* NewMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D22C189A7B2C009FFE5C /* NewMessage.m */; };
-		A3B8D235189A7B2C009FFE5C /* SetPlayerNumberMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D22E189A7B2C009FFE5C /* SetPlayerNumberMessage.m */; };
-		A3B8D236189A7B2C009FFE5C /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D230189A7B2C009FFE5C /* StartGameMessage.m */; };
 		A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23A189A7BB3009FFE5C /* Connection.m */; };
+		A3B8D248189A7DE2009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23D189A7DE2009FFE5C /* ButtonPressMessage.m */; };
+		A3B8D249189A7DE2009FFE5C /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23F189A7DE2009FFE5C /* EndRoundMessage.m */; };
+		A3B8D24A189A7DE2009FFE5C /* NewMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D241189A7DE2009FFE5C /* NewMessage.m */; };
+		A3B8D24B189A7DE2009FFE5C /* SetPlayerNumberMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D243189A7DE2009FFE5C /* SetPlayerNumberMessage.m */; };
+		A3B8D24C189A7DE2009FFE5C /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D245189A7DE2009FFE5C /* StartGameMessage.m */; };
+		A3B8D24D189A7DE2009FFE5C /* StartMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D247189A7DE2009FFE5C /* StartMinigameMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,18 +65,20 @@
 		3A44A53718883AFA00777286 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3A44A54418883CE300777286 /* ControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerViewController.h; sourceTree = "<group>"; };
 		3A44A54518883CE300777286 /* ControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerViewController.m; sourceTree = "<group>"; };
-		A3B8D225189A7B2C009FFE5C /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonPressMessage.h; path = ../../testCocos/ButtonPressMessage.h; sourceTree = "<group>"; };
-		A3B8D226189A7B2C009FFE5C /* ButtonPressMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ButtonPressMessage.m; path = ../../testCocos/ButtonPressMessage.m; sourceTree = "<group>"; };
-		A3B8D229189A7B2C009FFE5C /* EndRoundMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndRoundMessage.h; path = ../../testCocos/EndRoundMessage.h; sourceTree = "<group>"; };
-		A3B8D22A189A7B2C009FFE5C /* EndRoundMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndRoundMessage.m; path = ../../testCocos/EndRoundMessage.m; sourceTree = "<group>"; };
-		A3B8D22B189A7B2C009FFE5C /* NewMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMessage.h; path = ../../testCocos/NewMessage.h; sourceTree = "<group>"; };
-		A3B8D22C189A7B2C009FFE5C /* NewMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewMessage.m; path = ../../testCocos/NewMessage.m; sourceTree = "<group>"; };
-		A3B8D22D189A7B2C009FFE5C /* SetPlayerNumberMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPlayerNumberMessage.h; path = ../../testCocos/SetPlayerNumberMessage.h; sourceTree = "<group>"; };
-		A3B8D22E189A7B2C009FFE5C /* SetPlayerNumberMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetPlayerNumberMessage.m; path = ../../testCocos/SetPlayerNumberMessage.m; sourceTree = "<group>"; };
-		A3B8D22F189A7B2C009FFE5C /* StartGameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartGameMessage.h; path = ../../testCocos/StartGameMessage.h; sourceTree = "<group>"; };
-		A3B8D230189A7B2C009FFE5C /* StartGameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartGameMessage.m; path = ../../testCocos/StartGameMessage.m; sourceTree = "<group>"; };
 		A3B8D239189A7BB3009FFE5C /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		A3B8D23A189A7BB3009FFE5C /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
+		A3B8D23C189A7DE2009FFE5C /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonPressMessage.h; path = ../../Shared/ButtonPressMessage.h; sourceTree = "<group>"; };
+		A3B8D23D189A7DE2009FFE5C /* ButtonPressMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ButtonPressMessage.m; path = ../../Shared/ButtonPressMessage.m; sourceTree = "<group>"; };
+		A3B8D23E189A7DE2009FFE5C /* EndRoundMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndRoundMessage.h; path = ../../Shared/EndRoundMessage.h; sourceTree = "<group>"; };
+		A3B8D23F189A7DE2009FFE5C /* EndRoundMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndRoundMessage.m; path = ../../Shared/EndRoundMessage.m; sourceTree = "<group>"; };
+		A3B8D240189A7DE2009FFE5C /* NewMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewMessage.h; path = ../../Shared/NewMessage.h; sourceTree = "<group>"; };
+		A3B8D241189A7DE2009FFE5C /* NewMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewMessage.m; path = ../../Shared/NewMessage.m; sourceTree = "<group>"; };
+		A3B8D242189A7DE2009FFE5C /* SetPlayerNumberMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetPlayerNumberMessage.h; path = ../../Shared/SetPlayerNumberMessage.h; sourceTree = "<group>"; };
+		A3B8D243189A7DE2009FFE5C /* SetPlayerNumberMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetPlayerNumberMessage.m; path = ../../Shared/SetPlayerNumberMessage.m; sourceTree = "<group>"; };
+		A3B8D244189A7DE2009FFE5C /* StartGameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartGameMessage.h; path = ../../Shared/StartGameMessage.h; sourceTree = "<group>"; };
+		A3B8D245189A7DE2009FFE5C /* StartGameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartGameMessage.m; path = ../../Shared/StartGameMessage.m; sourceTree = "<group>"; };
+		A3B8D246189A7DE2009FFE5C /* StartMinigameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartMinigameMessage.h; path = ../../Shared/StartMinigameMessage.h; sourceTree = "<group>"; };
+		A3B8D247189A7DE2009FFE5C /* StartMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartMinigameMessage.m; path = ../../Shared/StartMinigameMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,16 +212,18 @@
 		A3B8D238189A7B49009FFE5C /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				A3B8D225189A7B2C009FFE5C /* ButtonPressMessage.h */,
-				A3B8D226189A7B2C009FFE5C /* ButtonPressMessage.m */,
-				A3B8D229189A7B2C009FFE5C /* EndRoundMessage.h */,
-				A3B8D22A189A7B2C009FFE5C /* EndRoundMessage.m */,
-				A3B8D22B189A7B2C009FFE5C /* NewMessage.h */,
-				A3B8D22C189A7B2C009FFE5C /* NewMessage.m */,
-				A3B8D22D189A7B2C009FFE5C /* SetPlayerNumberMessage.h */,
-				A3B8D22E189A7B2C009FFE5C /* SetPlayerNumberMessage.m */,
-				A3B8D22F189A7B2C009FFE5C /* StartGameMessage.h */,
-				A3B8D230189A7B2C009FFE5C /* StartGameMessage.m */,
+				A3B8D23C189A7DE2009FFE5C /* ButtonPressMessage.h */,
+				A3B8D23D189A7DE2009FFE5C /* ButtonPressMessage.m */,
+				A3B8D23E189A7DE2009FFE5C /* EndRoundMessage.h */,
+				A3B8D23F189A7DE2009FFE5C /* EndRoundMessage.m */,
+				A3B8D240189A7DE2009FFE5C /* NewMessage.h */,
+				A3B8D241189A7DE2009FFE5C /* NewMessage.m */,
+				A3B8D242189A7DE2009FFE5C /* SetPlayerNumberMessage.h */,
+				A3B8D243189A7DE2009FFE5C /* SetPlayerNumberMessage.m */,
+				A3B8D244189A7DE2009FFE5C /* StartGameMessage.h */,
+				A3B8D245189A7DE2009FFE5C /* StartGameMessage.m */,
+				A3B8D246189A7DE2009FFE5C /* StartMinigameMessage.h */,
+				A3B8D247189A7DE2009FFE5C /* StartMinigameMessage.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -324,15 +329,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A44A54618883CE300777286 /* ControllerViewController.m in Sources */,
+				A3B8D24D189A7DE2009FFE5C /* StartMinigameMessage.m in Sources */,
 				3A44A5111888395A00777286 /* ConnectViewController.m in Sources */,
 				3A44A50B1888395A00777286 /* AppDelegate.m in Sources */,
-				A3B8D233189A7B2C009FFE5C /* EndRoundMessage.m in Sources */,
-				A3B8D235189A7B2C009FFE5C /* SetPlayerNumberMessage.m in Sources */,
+				A3B8D249189A7DE2009FFE5C /* EndRoundMessage.m in Sources */,
+				A3B8D24B189A7DE2009FFE5C /* SetPlayerNumberMessage.m in Sources */,
 				3A44A5071888395A00777286 /* main.m in Sources */,
-				A3B8D236189A7B2C009FFE5C /* StartGameMessage.m in Sources */,
-				A3B8D231189A7B2C009FFE5C /* ButtonPressMessage.m in Sources */,
-				A3B8D234189A7B2C009FFE5C /* NewMessage.m in Sources */,
+				A3B8D24C189A7DE2009FFE5C /* StartGameMessage.m in Sources */,
 				A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */,
+				A3B8D24A189A7DE2009FFE5C /* NewMessage.m in Sources */,
+				A3B8D248189A7DE2009FFE5C /* ButtonPressMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
