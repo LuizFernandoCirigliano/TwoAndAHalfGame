@@ -107,12 +107,7 @@ CC3Node *_monkeyModel;
 	// this method before invoking the releaseRedundantContent method.
 	[self createBoundingVolumes];
 	
-	// Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
-	// save memory, release the vertex content in main memory because it is now redundant.
-	
-    [self createGLBuffers];
-	[self releaseRedundantContent];
-    
+
 	
 	// ------------------------------------------
 	
@@ -158,6 +153,11 @@ CC3Node *_monkeyModel;
     [self addPlayerCharacter];
     [self addPlayerCharacter];
 
+    	// Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
+	// save memory, release the vertex content in main memory because it is now redundant.
+	
+    [self createGLBuffers];
+    [self releaseRedundantContent];
     
 }
 
