@@ -10,8 +10,15 @@
 
 @implementation Connection
 
+/* This classes sets up the remote connection between devices, and handles interactions using the message transfer system
+
+    Always set the correct delegate (depending what the current state is) to the current view controller
+*/
 static Connection *myConnectionConfiguration = nil;
 
+//Methods for the Singleton pattern of this class.
+
+//Setup the connection with a custom display name (passed by peerName)
 + (Connection *) myConnectionWithName: (NSString *) peerName{
     
     if (!myConnectionConfiguration)
@@ -22,6 +29,7 @@ static Connection *myConnectionConfiguration = nil;
     return myConnectionConfiguration;
 }
 
+//Setup the connection with standard display name using device name
 + (Connection *) myConnection{
     
     if (!myConnectionConfiguration)
@@ -46,7 +54,8 @@ static Connection *myConnectionConfiguration = nil;
         //  Setup BrowserViewController
         self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:@"controllertest" session:self.mySession];
         
-        //  Setup Advertiser
+        //  Setup Advertiser - Allows for other devices to connect directly to this one
+        // This can be removed since the controllers should connect to the server.
         self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:@"controllertest" discoveryInfo:nil session:self.mySession];
         [self.advertiser start];
         
@@ -56,12 +65,44 @@ static Connection *myConnectionConfiguration = nil;
     
     return self;
 }
+
+#pragma mark - Connection event handling
+
+//this is used to send messages to all the connected devices for the current session
+//data must be an archived message class.
 - (void) sendData:(NSData *) data {
     NSError *error;
     [self.mySession sendData:data toPeers:[self.mySession connectedPeers] withMode:MCSessionSendDataUnreliable error: &error];
     if(error) {
         NSLog(@"%@", [error description]);
     }
+}
+
+//same as above, except this one sends to a single peer instead of all connected devices
+- (void) sendData:(NSData *) data toPeer:(MCPeerID *) peer{
+    NSError *error;
+    [self.mySession sendData:data toPeers:[NSArray arrayWithObject:peer] withMode:MCSessionSendDataUnreliable error: &error];
+    if(error) {
+//        NSLog(@"%@", [error description]);
+    }
+}
+
+// Received data from remote peer
+// session - The active connection session
+// data - Encapsulates one of the message classes. Use the archive/unarchive methods to obtain the message with the properties
+// peerID - the ID from the device that sent the data on the current session. Can be used to send some sort of response message
+
+- (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID{
+    NewMessage *message = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    if (message == nil) {
+        NSLog(@"erro, mensagem nula");
+    } else if ([message isKindOfClass:[SetPlayerNumberMessage class]]) {
+        SetPlayerNumberMessage *playerNumberMessage = (SetPlayerNumberMessage *)message;
+        NSLog(@"%d", [[playerNumberMessage playerNumber] intValue]);
+        self.playerNumber = [[playerNumberMessage playerNumber] intValue];
+    }
+    
+    //for example on how to use delegates to handle events based on the type of messages that arrive, check the server connection class
 }
 
 - (void) showBrowserVC:(UIViewController*)controller{
@@ -84,18 +125,6 @@ static Connection *myConnectionConfiguration = nil;
 // Remote peer changed state
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
     
-}
-
-// Received data from remote peer
-- (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID{
-    NewMessage *message = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    if (message == nil) {
-        NSLog(@"erro, mensagem nula");
-    } else if ([message isKindOfClass:[SetPlayerNumberMessage class]]) {
-        SetPlayerNumberMessage *playerNumberMessage = (SetPlayerNumberMessage *)message;
-        NSLog(@"%d", [[playerNumberMessage playerNumber] intValue]);
-        self.playerNumber = [[playerNumberMessage playerNumber] intValue];
-    }
 }
 
 // Received a byte stream from remote peer
