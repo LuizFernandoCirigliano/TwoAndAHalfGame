@@ -8,11 +8,22 @@
 
 #import "ControllerViewController.h"
 #import "ButtonPressMessage.h"
-@interface ControllerViewController ()
+#import "JSDPad.h"
+#import "JSButton.h"
+
+@interface ControllerViewController ()  <JSDPadDelegate>
+@property (weak, nonatomic) IBOutlet JSButton *button0;
+@property (weak, nonatomic) IBOutlet JSButton *button1;
+@property (weak, nonatomic) IBOutlet JSButton *button2;
+@property (weak, nonatomic) IBOutlet JSButton *button3;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *playerLabel;
 @end
 
+
 @implementation ControllerViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +40,22 @@
 	// Do any additional setup after loading the view.
     [Connection myConnection].delegate = self;
     self.playerLabel.text = [NSString stringWithFormat:@"Player %d", [[Connection myConnection] playerNumber]+1];
+    
+    [[self.button0 titleLabel] setText:@"0"];
+	[self.button0 setBackgroundImage:[UIImage imageNamed:@"button"]];
+	[self.button0 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
+    
+    [[self.button1 titleLabel] setText:@"1"];
+	[self.button1 setBackgroundImage:[UIImage imageNamed:@"button"]];
+	[self.button1 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
+    
+    [[self.button2 titleLabel] setText:@"2"];
+	[self.button2 setBackgroundImage:[UIImage imageNamed:@"button"]];
+	[self.button2 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
+    
+    [[self.button3 titleLabel] setText:@"3"];
+	[self.button3 setBackgroundImage:[UIImage imageNamed:@"button"]];
+	[self.button3 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,7 +65,8 @@
 }
 
 
-- (IBAction)buttonPress:(UIButton *)sender {
+- (IBAction)buttonPress:(UIButton *)sender
+{
     NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:sender.tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
     [[Connection myConnection] sendData:data];
 }
@@ -60,4 +88,57 @@
     
 }
 
+#pragma mark - JSDPadDelegate
+
+- (void)dPad:(JSDPad *)dPad didPressDirection:(JSDPadDirection)direction
+{
+    //Player should stop walking
+    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:4 andPlayer:[[Connection myConnection] playerNumber]] archiveData];
+    [[Connection myConnection] sendData:data];
+    
+    NSInteger tag;
+    
+    switch (direction)
+    {
+        case JSDPadDirectionUp:
+            tag = 0;
+            break;
+        case JSDPadDirectionRight:
+            tag = 1;
+            break;
+        case JSDPadDirectionDown:
+            tag = 2;
+            break;
+        case JSDPadDirectionLeft:
+            tag = 3;
+            break;
+        case JSDPadDirectionUpRight:
+            tag = 10;
+            break;
+        case JSDPadDirectionDownRight:
+            tag = 20;
+            break;
+        case JSDPadDirectionDownLeft:
+            tag = 30;
+            break;
+        case JSDPadDirectionUpLeft:
+            tag = 40;
+            break;
+        default:
+            tag = -1;
+            break;
+    }
+    data = [[[ButtonPressMessage alloc] initWithButtonNumber:tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
+    NSLog(@"%d", tag);
+    [[Connection myConnection] sendData:data];
+}
+
+- (void)dPadDidReleaseDirection:(JSDPad *)dPad
+{
+	NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:4 andPlayer:[[Connection myConnection] playerNumber]] archiveData];
+    [[Connection myConnection] sendData:data];
+}
+
+
+#warning Add credits do JSController
 @end

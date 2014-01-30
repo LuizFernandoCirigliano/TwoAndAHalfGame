@@ -17,6 +17,7 @@
 #import "CC3Node+Collision.h"
 #import "Player.h"
 #import "CC3BillBoard.h"
+#import "CC3ParametricMeshNodes.h"
 
 #define TILE_SZ 100.0f
 @implementation testCocosScene
@@ -262,7 +263,8 @@ CC3Node *_monkeyModel;
             CCLOG(@"tile : %@", name);
             
             CC3Texture * texture = [CC3Texture textureFromFile: name];
-            if( texture != nil) {
+            if( texture != nil)
+            {
                 CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
                 CC3Texture * texture = [CC3Texture textureFromFile: name];
                 
@@ -278,7 +280,8 @@ CC3Node *_monkeyModel;
                 [tile retainVertexLocations];
                 
                 
-                [self addChild: tile];
+                //[self addChild: tile];
+#warning Performance issues!
                 
                 loc = [tile location];
                 CCLOG(@"Added tile at : %f / %f / %f", loc.x, loc.y, loc.z);
@@ -286,6 +289,34 @@ CC3Node *_monkeyModel;
             }
         }
     }
+    
+//    NSString * name = [NSString stringWithFormat:@"grass.png"];
+//    CCLOG(@"tile : %@", name);
+//
+//    CC3Texture * texture = [CC3Texture textureFromFile: name];
+//    if( texture != nil)
+//    {
+//        CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
+//        CC3Texture * texture = [CC3Texture textureFromFile: name];
+//
+//        tile.shouldCullBackFaces = NO;
+//
+//        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ * self.xTiles, TILE_SZ * self.yTiles) andTessellation:CC3TessellationMake(1, 1)];
+//        [tile setTexture: texture];
+//        [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
+//
+//
+//        CC3Vector loc = cc3v(0.0f, LOCATION_Z, 0.0f);
+//        [tile setLocation: loc];
+//        [tile retainVertexLocations];
+//
+//
+//        [self addChild: tile];
+//
+//        loc = [tile location];
+//        CCLOG(@"Added tile at : %f / %f / %f", loc.x, loc.y, loc.z);
+//    }
+    
 }
 
 
@@ -657,6 +688,59 @@ CC3Node *_monkeyModel;
             [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
+        //upright button
+        case 10:
+            if(character.node.rotationAngle != -45)
+            {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-45];
+                [character.node runAction:rotate];
+            }
+            
+            moveDirection = cc3v(-speed*sqrt(2.0f), 0, speed*sqrt(2.0f));
+            move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
+            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            break;
+        //downright button
+        case 20:
+            if(character.node.rotationAngle != -135)
+            {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-135];
+                [character.node runAction:rotate];
+            }
+            
+            moveDirection = cc3v(-speed*sqrt(2.0f), 0, -speed*sqrt(2.0f));
+            move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
+            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            break;
+        //downleft button
+        case 30:
+            if(character.node.rotationAngle != 135)
+            {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:135];
+                [character.node runAction:rotate];
+            }
+            
+            moveDirection = cc3v(speed*sqrt(2.0f), 0, -speed*sqrt(2.0f));
+            move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
+            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            break;
+        //upleft button
+        case 40:
+            if(character.node.rotationAngle != 45)
+            {
+                CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:45];
+                [character.node runAction:rotate];
+            }
+            
+            moveDirection = cc3v(speed*sqrt(2.0f), 0, speed*sqrt(2.0f));
+            move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
+            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            break;
+
         //movement end
         default:
             [character.node stopActionByTag:0];

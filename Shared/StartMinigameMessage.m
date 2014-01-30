@@ -16,6 +16,6 @@
  */
 - (NSData *)archiveData
 {
-    return [self archiveDataWithKey:@"startGameMessage"];
+    return [self archiveDataWithKey:@"startMinigameMessage"];
 }
 @end

@@ -23,6 +23,7 @@
 		3A44A53318883A3F00777286 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A53218883A3F00777286 /* MultipeerConnectivity.framework */; };
 		3A44A53818883AFA00777286 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A44A53718883AFA00777286 /* Main.storyboard */; };
 		3A44A54618883CE300777286 /* ControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A54518883CE300777286 /* ControllerViewController.m */; };
+		A3B4719C189AB97F0043BFAC /* JSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4719B189AB97F0043BFAC /* JSButton.m */; };
 		A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23A189A7BB3009FFE5C /* Connection.m */; };
 		A3B8D248189A7DE2009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23D189A7DE2009FFE5C /* ButtonPressMessage.m */; };
 		A3B8D249189A7DE2009FFE5C /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23F189A7DE2009FFE5C /* EndRoundMessage.m */; };
@@ -30,6 +31,7 @@
 		A3B8D24B189A7DE2009FFE5C /* SetPlayerNumberMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D243189A7DE2009FFE5C /* SetPlayerNumberMessage.m */; };
 		A3B8D24C189A7DE2009FFE5C /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D245189A7DE2009FFE5C /* StartGameMessage.m */; };
 		A3B8D24D189A7DE2009FFE5C /* StartMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D247189A7DE2009FFE5C /* StartMinigameMessage.m */; };
+		A3B8D262189A8ED7009FFE5C /* JSDPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D261189A8ED7009FFE5C /* JSDPad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		3A44A53718883AFA00777286 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3A44A54418883CE300777286 /* ControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerViewController.h; sourceTree = "<group>"; };
 		3A44A54518883CE300777286 /* ControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerViewController.m; sourceTree = "<group>"; };
+		A3B4719A189AB97F0043BFAC /* JSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSButton.h; sourceTree = "<group>"; };
+		A3B4719B189AB97F0043BFAC /* JSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSButton.m; sourceTree = "<group>"; };
 		A3B8D239189A7BB3009FFE5C /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		A3B8D23A189A7BB3009FFE5C /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		A3B8D23C189A7DE2009FFE5C /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonPressMessage.h; path = ../../Shared/ButtonPressMessage.h; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 		A3B8D245189A7DE2009FFE5C /* StartGameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartGameMessage.m; path = ../../Shared/StartGameMessage.m; sourceTree = "<group>"; };
 		A3B8D246189A7DE2009FFE5C /* StartMinigameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartMinigameMessage.h; path = ../../Shared/StartMinigameMessage.h; sourceTree = "<group>"; };
 		A3B8D247189A7DE2009FFE5C /* StartMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartMinigameMessage.m; path = ../../Shared/StartMinigameMessage.m; sourceTree = "<group>"; };
+		A3B8D260189A8ED7009FFE5C /* JSDPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDPad.h; sourceTree = "<group>"; };
+		A3B8D261189A8ED7009FFE5C /* JSDPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDPad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +200,10 @@
 		3A44A53618883A6A00777286 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3B4719A189AB97F0043BFAC /* JSButton.h */,
+				A3B4719B189AB97F0043BFAC /* JSButton.m */,
+				A3B8D260189A8ED7009FFE5C /* JSDPad.h */,
+				A3B8D261189A8ED7009FFE5C /* JSDPad.m */,
 				3A44A53718883AFA00777286 /* Main.storyboard */,
 			);
 			name = View;
@@ -333,11 +343,13 @@
 				3A44A5111888395A00777286 /* ConnectViewController.m in Sources */,
 				3A44A50B1888395A00777286 /* AppDelegate.m in Sources */,
 				A3B8D249189A7DE2009FFE5C /* EndRoundMessage.m in Sources */,
+				A3B8D262189A8ED7009FFE5C /* JSDPad.m in Sources */,
 				A3B8D24B189A7DE2009FFE5C /* SetPlayerNumberMessage.m in Sources */,
 				3A44A5071888395A00777286 /* main.m in Sources */,
 				A3B8D24C189A7DE2009FFE5C /* StartGameMessage.m in Sources */,
 				A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */,
 				A3B8D24A189A7DE2009FFE5C /* NewMessage.m in Sources */,
+				A3B4719C189AB97F0043BFAC /* JSButton.m in Sources */,
 				A3B8D248189A7DE2009FFE5C /* ButtonPressMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
