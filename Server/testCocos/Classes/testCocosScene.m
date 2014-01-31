@@ -25,6 +25,8 @@
 NSMutableArray *_walls;
 CC3Node *_monkeyModel;
 
+CC3Node *_mazeMap;
+
 -(void) dealloc
 {
 	[super dealloc];
@@ -140,16 +142,24 @@ CC3Node *_monkeyModel;
 	
 	// ------------------------------------------
     
+    //Add maze map mesh
+    [self addContentFromPODFile:@"school.pod" withName:@"school"];
+    _mazeMap = [self getNodeNamed:@"school"];
+    _mazeMap.scale = cc3v(200,200,200);
+    [self addChild:_mazeMap];
+    
+    
     //load the model content from the file
     [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
     _monkeyModel = [self getNodeNamed:@"monkey"];
+    
     
     //remove this temp model from the world
     [self removeChild:_monkeyModel];
     
     [self readMapFile];
 	[self createTerrain];
-    [self createWalls];
+    //[self createWalls];
     [self addPlayerCharacter];
     [self addPlayerCharacter];
 
