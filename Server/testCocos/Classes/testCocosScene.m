@@ -146,6 +146,8 @@ CC3Node *_mazeMap;
     [self addContentFromPODFile:@"school.pod" withName:@"school"];
     _mazeMap = [self getNodeNamed:@"school"];
     _mazeMap.scale = cc3v(200,200,200);
+    _mazeMap.shouldDrawBoundingVolume = YES;
+    [_mazeMap createBoundingVolume];
     [self addChild:_mazeMap];
     
     

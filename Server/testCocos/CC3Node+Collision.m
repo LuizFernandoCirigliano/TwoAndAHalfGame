@@ -62,5 +62,26 @@
 }
 
 
+/**
+ * Returns the node position in the integer map
+ \param mapRect A rectangle containing the map
+ \param mapDimensions A point (will be evaluated as (int,int)) containing the map dimensions
+ */
+- (CGPoint) positionInIntegerMapWithRealDimensions: (CGRect) mapRect andMapDimensions: (CGPoint) mapDimensions
+{
+    CGPoint transposedPoint;
+    CGPoint position = CGPointMake(self.location.x, self.location.y);
+    
+    NSInteger mapSizeX = (int) mapDimensions.x;
+    NSInteger mapSizeY = (int) mapDimensions.y;
+    
+#warning Possible incomplete method implementation
+    
+    //This method code is incomplete, please do not use it
+    
+    return transposedPoint;
+}
+
+
 
 @end
