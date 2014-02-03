@@ -164,17 +164,17 @@ CC3Node *_mazeMap;
     
 
     [self createTerrain];
-    [self addPlayerCharacter];
-    [self addPlayerCharacter];
     [self addMazeWalls];
+    
+    [self addPlayerCharacter];
+    [self addPlayerCharacter];
+    
     
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
 	[self createGLBuffers];
     [self releaseRedundantContent];
     
-    
-
 
 }
 
@@ -188,15 +188,24 @@ CC3Node *_mazeMap;
     //Add maze map mesh
     [self addContentFromPODFile:@"schoolmap.pod" withName:@"school"];
     _mazeMap = [self getNodeNamed:@"school"];
+
     _mazeMap.scale = cc3v(200,200,200);
+    
+    NSLog(@"***********%f %f %f*********" , _mazeMap.boundingBox.maximum.x*_mazeMap.scale.x  / [[Map myMap] xTileCount] , 0.0f ,_mazeMap.boundingBox.maximum.z*_mazeMap.scale.z / [[Map myMap] zTileCount]);
+    
+    //update the size of the tiles based on the size of POD file
+    
+    [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x  andMapZ:_mazeMap.boundingBox.maximum.z*_mazeMap.scale.z];
+    
     _mazeMap.shouldDrawBoundingVolume = YES;
     _mazeMap.shouldCullBackFaces = NO;
-    _mazeMap.shouldUseLighting = YES;
     _mazeMap.shouldCullFrontFaces = NO;
     
+
     [self addChild:_mazeMap];
     
 }
+
 -(void) addPlayerCharacter
 {
     Player *monkey = [[Player alloc] initWithIndex: [self.charactersArray count]];
@@ -208,7 +217,8 @@ CC3Node *_mazeMap;
     [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.8f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
-    monkey.node.location = cc3v(-120.0*[self.charactersArray count], 0, 50);
+//    monkey.node.location = cc3v(-120.0*[self.charactersArray count], 0, 50);
+    monkey.node.location = cc3v(0, 0, 0);
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
     monkey.node.scale = cc3v(15,15,15);
@@ -236,48 +246,6 @@ CC3Node *_mazeMap;
  * Add method description here
  *
  */
-//-(void) readMapFile
-//{
-//    NSString* path = [[NSBundle mainBundle] pathForResource:@"map01"
-//                                                     ofType:@"txt"];
-//    NSString* content = [NSString stringWithContentsOfFile:path
-//                                                  encoding:NSUTF8StringEncoding
-//                                                     error:NULL];
-//    
-//    int lineSize = (int) [content rangeOfString: @"\n"].location + 1; //acha tamanho da linha pelo primeiro \n
-//    
-//    self.lines = [NSMutableArray arrayWithCapacity: (NSUInteger) 2];
-//    
-//    int initialPos = 0; //initR indica a posicao inicial da proxima "linha"
-//    
-//    for(int lineNumber = 0; initialPos < content.length; lineNumber++)
-//    {
-//        initialPos = lineSize*lineNumber; //calcula comeco da proxima linha
-//        if (initialPos >= content.length)
-//            continue;
-//        NSMutableString *nextLine;
-//        if(lineSize*(lineNumber+1) >= content.length) //caso da ultima linha, pega string a partir da posicao incial
-//        {
-//            nextLine = (NSMutableString *) [content substringFromIndex:(NSUInteger) initialPos];
-//            
-//        }
-//        else // se nao for a ultima linha, pega a substring a partir de initialPos e "corta" apenas caracteres ate \n seguinte
-//        {
-//            nextLine = (NSMutableString *) [[content substringFromIndex:(NSUInteger) initialPos] substringToIndex:(NSUInteger) lineSize - 1];
-//        }
-//        
-//        [self.lines addObject: nextLine]; //adiciona string a array de linhas
-//    }
-//    
-//    self.xTiles = [self.lines count];
-//    self.yTiles = [[self.lines firstObject] length] / 2 + 1;
-//    
-//}
-
-/**
- * Add method description here
- *
- */
 -(void) createTerrain
 {
     //hocus pocus add grass
@@ -288,16 +256,15 @@ CC3Node *_mazeMap;
     
     CC3Texture * texture = [CC3Texture textureFromFile: name];
     
-    int xTiles = [[Map myMap] xTiles];
-    int yTiles = [[Map myMap] yTiles];
+    int xTiles = [[Map myMap] xTileCount];
+    int zTiles = [[Map myMap] zTileCount];
     if( texture != nil)
     {
         CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
         CC3Texture * texture = [CC3Texture textureFromFile: name];
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ*xTiles, TILE_SZ*yTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
-        
-        tile.depthFunction = GL_LESS;
+        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ*xTiles, TILE_SZ*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
+    
         tile.shouldCullBackFaces = NO;
         tile.shouldCullFrontFaces = NO;
 
@@ -378,7 +345,7 @@ CC3Node *_mazeMap;
  * For more info, read the notes of this method on CC3Scene.
  */
 -(void) onOpen {
-	
+    
 	// Add additional scene content dynamically and asynchronously on a background thread
 	// after the scene is open and rendering has begun on the rendering thread. We use the
 	// GL backgrounder provided by the viewSurfaceManager to accomplish this. Asynchronous
@@ -484,36 +451,37 @@ CC3Node *_mazeMap;
  */
 -(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {
     
-    if (touchType != UITouchPhaseBegan)
-        return;
-    //using to change camera positions, alter as you need
-    
-    static int position = 0;
-    CC3Vector direction;
-    
-    switch (position) {
-        case 0:
-            direction = cc3v(1, 0, 1);
-            break;
-        case 1:
-            direction = cc3v(0, 1, 1);
-            break;
-        case 2:
-            direction = cc3v(-1, 1, 1);
-            break;
-        case 3:
-            direction = cc3v(0, 0, 1);
-        case 4:
-            direction = cc3v(1, 0, 0);
-            break;
-    
-        default:
-            break;
-    }
-    [self.activeCamera moveWithDuration:3.0f toShowAllOf:self fromDirection:direction];
-    
-    position = (position + 1) % 5;
-    [self.activeCamera setTargetLocation:kCC3VectorZero];
+//    if (touchType != UITouchPhaseBegan)
+//        return;
+//    //using to change camera positions, alter as you need
+//    
+//    static int position = 0;
+//    CC3Vector direction;
+//    
+//    switch (position) {
+//        case 0:
+//            direction = cc3v(1, 0, 1);
+//            break;
+//        case 1:
+//            direction = cc3v(0, 1, 1);
+//            break;
+//        case 2:
+//            direction = cc3v(-1, 1, 1);
+//            break;
+//        case 3:
+//            direction = cc3v(0, 0, 1);
+//        case 4:
+//            direction = cc3v(1, 0, 0);
+//            break;
+//    
+//        default:
+//            break;
+//    }
+//    [self.activeCamera moveWithDuration:3.0f toShowAllOf:self fromDirection:direction];
+//    
+//    position = (position + 1) % 5;
+//    [self.activeCamera setTargetLocation:kCC3VectorZero];
+
 }
 
 /**
@@ -526,7 +494,7 @@ CC3Node *_mazeMap;
  * For more info, read the notes of this method on CC3Scene.
  */
 -(void) nodeSelected: (CC3Node*) aNode byTouchEvent: (uint) touchType at: (CGPoint) touchPoint {
-
+    
 }
 
 
@@ -546,12 +514,12 @@ CC3Node *_mazeMap;
         return;
     }
     
-    NSLog(@"%@ player: %@" , [buttonPressMessage buttonNumber], [buttonPressMessage playerNumber]);
+//    NSLog(@"%@ player: %@" , [buttonPressMessage buttonNumber], [buttonPressMessage playerNumber]);
     
     Player* character = [self.charactersArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
     int buttonNumberInt = [[buttonPressMessage buttonNumber] intValue];
     
-    NSLog(@"%@" ,[character.node name]);
+//    NSLog(@"%@" ,[character.node name]);
     CC3Vector moveDirection;
     CCActionInterval *move;
 
@@ -670,6 +638,9 @@ CC3Node *_mazeMap;
             [character.node stopActionByTag:1];
             break;
     }
+    CGPoint tile = [[Map myMap] locationInMapWithPosition:CGPointMake(character.node.location.x, character.node.location.z)];
+    
+    NSLog(@"%c" , [[Map myMap] contentOfMapAtLocation:tile]);
 }
 
 
@@ -720,12 +691,12 @@ CC3Node *_mazeMap;
                         NSDate *now = [[NSDate date] copy];
                         [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
                         [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
-                        NSLog(@"Players collided; minigame should start!!");
+//                        NSLog(@"Players collided; minigame should start!!");
                         [self startMinigame: @[player, player2]];
                     }
                     else
                     {
-                        NSLog(@"Players already collided %fseconds ago", interval);
+//                        NSLog(@"Players already collided %fseconds ago", interval);
                     }
                 }
             }

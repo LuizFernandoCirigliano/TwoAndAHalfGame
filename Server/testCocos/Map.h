@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#define TILE_SZ 100.0f
+#import "CGPointExtension.h"
 
 @interface Map : NSObject
 
@@ -17,18 +16,27 @@
  */
 @property (strong, nonatomic) NSMutableArray *lines;
 
+@property float tileSizeX;
+@property float tileSizeZ;
+
+@property float mapSizeX;
+@property float mapSizeZ;
 
 /**
  * Add property description here
  */
-@property int xTiles;
+@property int xTileCount;
 
 /**
  * Add property description here
  */
-@property int yTiles;
+@property int zTileCount;
 
 + (Map *) myMap;
 
 - (void) readMapFile;
+
+-(void) setSizesWithMapX : (float) xSize andMapZ: (float) zSize;
+-(CGPoint) locationInMapWithPosition: (CGPoint) position;
+-(char) contentOfMapAtLocation: (CGPoint) location;
 @end

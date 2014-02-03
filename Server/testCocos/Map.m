@@ -58,11 +58,35 @@ static Map *myMapConfiguration = nil;
             nextLine = (NSMutableString *) [[content substringFromIndex:(NSUInteger) initialPos] substringToIndex:(NSUInteger) lineSize - 1];
         }
         
+        nextLine = [nextLine stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self.lines addObject: nextLine]; //adiciona string a array de linhas
     }
     
-    self.xTiles = [self.lines count];
-    self.yTiles = [[self.lines firstObject] length] / 2 + 1;
+    self.xTileCount = [self.lines count];
+    self.zTileCount = [[self.lines firstObject] length];
+    
+    NSLog(@"%d %d", self.xTileCount, self.zTileCount);
+
 }
 
+
+-(void) setSizesWithMapX : (float) xSize andMapZ: (float) zSize {
+    self.mapSizeX = xSize;
+    self.mapSizeZ = zSize;
+    
+    self.tileSizeX = xSize / self.xTileCount;
+    self.tileSizeZ = zSize / self.zTileCount;
+}
+
+-(CGPoint) locationInMapWithPosition: (CGPoint) position {
+    CGPoint point = CGPointMake(floorf((position.x + self.mapSizeX)/ (2*self.tileSizeX)), floorf((position.y + self.mapSizeZ) / (2*self.tileSizeZ)));
+    
+    return point;
+}
+
+-(char) contentOfMapAtLocation:(CGPoint)location {
+    
+    return [[self.lines objectAtIndex:(int)location.x] characterAtIndex:(int)location.y];
+    
+}
 @end
