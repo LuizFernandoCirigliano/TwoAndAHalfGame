@@ -8,20 +8,12 @@
 
 #import "CC3Node.h"
 
-#define TILE_SZ 100.0f
-
 @interface CC3Node (Collision)
-
-
-/**
- * Node location before movement
- */
-@property (nonatomic) CC3Vector oldLocation;
-
 
 - (void) createBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio;
+- (BOOL) shouldMove;
 
 
 @end

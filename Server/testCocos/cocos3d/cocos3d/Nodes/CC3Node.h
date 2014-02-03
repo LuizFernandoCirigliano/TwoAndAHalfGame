@@ -263,6 +263,13 @@ typedef enum {
  */
 @property(nonatomic, assign) CC3Vector location;
 
+
+/**
+ * Node location before movement
+ */
+@property (nonatomic, assign) CC3Vector oldLocation;
+//Added by Francesco Perrotti-Garcia for TwoAndAHalfGame
+
 /**
  * The location of the node in 3D space, relative to the global origin.
  * 

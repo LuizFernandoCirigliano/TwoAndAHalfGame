@@ -11,6 +11,7 @@
 
 @implementation CC3Node (Collision)
 
+
 /**
  * Allocates and initializes an autoreleased instance of the
  * mesh bounding volume from its bounding box,
@@ -44,7 +45,7 @@
  * with a given radius ratio
  * and sets the shouldUseFixedBoundingVolume
  * property to NO.
- \param ratio The ratio of the ratius in the spherical bounding volume
+ \param ratio The ratio of the radius in the spherical bounding volume
  */
 - (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio
 {
@@ -64,17 +65,42 @@
 
 
 /**
- * Returns whether the node should move considering its current and locationa and the map content
+ * Returns whether the node should move considering its location and the map
  */
 - (BOOL) shouldMove
 {
-    CGPoint oldPosition = CGPointMake(self.oldLocation.x, self.oldLocation.z);
     CGPoint position = CGPointMake(self.location.x, self.location.z);
-
-#warning Possible incomplete method implementation
     
+    CC3BoundingVolume *boundingVolume = self.boundingVolume;
+    if ([boundingVolume isKindOfClass:[CC3NodeSphericalBoundingVolume class]])
+    {
+        GLfloat radius = ((CC3NodeSphericalBoundingVolume*)boundingVolume).radius;
+        
+        CGPoint bounds[4] =    {CGPointMake(self.location.x         , self.location.z - radius), //UP
+                                CGPointMake(self.location.x + radius, self.location.z         ), //RIGHT
+                                CGPointMake(self.location.x         , self.location.z + radius), //DOWN
+                                CGPointMake(self.location.x - radius, self.location.z         )};//LEFT
     
-    return YES;
+        CGPoint locationInMap[4];
+        
+//        for (int i = 0; i < 4; i++)
+//        {
+//            locationInMap[i]  = [Map locationInMapWithPosition: bounds[i]];
+//            
+//            if ([Map contentOfMapAtLocation: locationInMap[i]] != '0') //If the new location is not free
+//            {
+//                return NO; //The node should not move
+//            }
+//        }
+        
+        return YES;
+    }
+    else
+    {
+        //If the bounding volume is not spherical than the node is free to move
+        return YES;
+    }
+    
 }
 
 
