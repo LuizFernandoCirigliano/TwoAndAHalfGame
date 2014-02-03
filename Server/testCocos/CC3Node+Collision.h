@@ -12,6 +12,13 @@
 
 @interface CC3Node (Collision)
 
+
+/**
+ * Node location before movement
+ */
+@property (nonatomic) CC3Vector oldLocation;
+
+
 - (void) createBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio;

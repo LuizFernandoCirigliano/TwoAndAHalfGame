@@ -15,15 +15,6 @@
  */
 @property (nonatomic) NSInteger index;
 
-/**
- * Player location before movement
- */
-@property (nonatomic) CC3Vector oldLocation;
-
-/**
- * Player rotation angle before movement
- */
-@property (nonatomic) GLfloat oldRotationAngle;
 
 /**
  * Player node

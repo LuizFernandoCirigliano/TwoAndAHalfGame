@@ -7,6 +7,7 @@
 //
 
 #import "CC3Node+Collision.h"
+#import "Map.h"
 
 @implementation CC3Node (Collision)
 
@@ -63,23 +64,17 @@
 
 
 /**
- * Returns the node position in the integer map
- \param mapRect A rectangle containing the map
- \param mapDimensions A point (will be evaluated as (int,int)) containing the map dimensions
+ * Returns whether the node should move considering its current and locationa and the map content
  */
-- (CGPoint) positionInIntegerMapWithRealDimensions: (CGRect) mapRect andMapDimensions: (CGPoint) mapDimensions
+- (BOOL) shouldMove
 {
-    CGPoint transposedPoint;
+    CGPoint oldPosition = CGPointMake(self.oldLocation.x, self.oldLocation.z);
     CGPoint position = CGPointMake(self.location.x, self.location.z);
-    
-    NSInteger mapSizeX = (int) mapDimensions.x;
-    NSInteger mapSizeY = (int) mapDimensions.y;
-    
+
 #warning Possible incomplete method implementation
     
-    //This method code is incomplete, please do not use it
     
-    return transposedPoint;
+    return YES;
 }
 
 
