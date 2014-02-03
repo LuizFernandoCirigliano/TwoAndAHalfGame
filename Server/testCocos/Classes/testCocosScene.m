@@ -57,6 +57,10 @@ CC3Node *_mazeMap;
  */
 -(void) initializeScene
 {
+    self.shouldClearDepthBufferBefore2D = NO;
+	self.shouldClearDepthBufferBefore3D = NO;
+    
+    
     [Connection myConnection];
     [Connection myConnection].delegate = self;
     
@@ -66,16 +70,18 @@ CC3Node *_mazeMap;
     self.isTouchEnabled = YES;
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, 50.0f, 15.0f );
+	cam.location = cc3v( 0.0, 40.0f, 15.0f );
 //    cam set
-    cam.targetLocation = cc3v(0, 0, 0);
-    
+//    cam.targetLocation = cc3v(0, 0, 0);
+    cam.hasInfiniteDepthOfField = YES;
+    cam.nearClippingDistance = 1000;
+//    cam.
 	[self addChild: cam];
 
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( 0.0, 0.0, 10.0 );
+	lamp.location = cc3v( 0.0, 20.0, 0.0 );
 	lamp.isDirectionalOnly = NO;
 	[cam addChild: lamp];
     
@@ -143,16 +149,9 @@ CC3Node *_mazeMap;
 	
 	// ------------------------------------------
     
-    //Add maze map mesh
-    [self addContentFromPODFile:@"schoolmap.pod" withName:@"school"];
-    _mazeMap = [self getNodeNamed:@"school"];
-    _mazeMap.scale = cc3v(200,200,200);
-    _mazeMap.shouldDrawBoundingVolume = YES;
-
-//    _mazeMap.shouldDrawAllBoundingVolumes = YES;
-//    [_mazeMap createBoundingVolume];
-    [self addChild:_mazeMap];
     
+    [self createGLBuffers];
+    [self releaseRedundantContent];
     
     //load the model content from the file
     [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
@@ -163,17 +162,20 @@ CC3Node *_mazeMap;
     [self removeChild:_monkeyModel];
     
     [self readMapFile];
-//	[self createTerrain];
-    //[self createWalls];
+    
+    
+    
+    [self createTerrain];
     [self addPlayerCharacter];
     [self addPlayerCharacter];
     
     	// Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
 	
-    [self createGLBuffers];
-    [self releaseRedundantContent];
     
+    [self addMazeWalls];
+
+
 }
 
 /**
@@ -181,6 +183,20 @@ CC3Node *_mazeMap;
  * Add method description here
  *
  */
+
+-(void) addMazeWalls {
+    //Add maze map mesh
+    [self addContentFromPODFile:@"schoolmap.pod" withName:@"school"];
+    _mazeMap = [self getNodeNamed:@"school"];
+    _mazeMap.scale = cc3v(200,200,200);
+    _mazeMap.shouldDrawBoundingVolume = YES;
+    _mazeMap.shouldCullBackFaces = NO;
+    _mazeMap.shouldUseLighting = YES;
+    _mazeMap.shouldCullFrontFaces = NO;
+    
+    [self addChild:_mazeMap];
+    
+}
 -(void) addPlayerCharacter
 {
     Player *monkey = [[Player alloc] initWithIndex: [self.charactersArray count]];
@@ -205,6 +221,7 @@ CC3Node *_mazeMap;
     [marker setScale:cc3v(0.1f, 0.1f, 0.1f)];
     marker.location = cc3v(0,25,0);
     //Always face the camera
+    
     marker.shouldAutotargetCamera = YES;
     [marker setIsTouchEnabled:NO];
     
@@ -264,74 +281,32 @@ CC3Node *_mazeMap;
 -(void) createTerrain
 {
     //hocus pocus add grass
-    
     const float LOCATION_Z = (0.0f);
     
-    float xstart = (float)((self.xTiles * TILE_SZ) / 2.0f);
-    float ystart = (float)((self.yTiles * TILE_SZ) / 2.0f);
+    NSString * name = [NSString stringWithFormat:@"grass.png"];
+    CCLOG(@"tile : %@", name);
     
-    for (int i = 0; i < (int)self.xTiles; i++)
+    CC3Texture * texture = [CC3Texture textureFromFile: name];
+    if( texture != nil)
     {
-        for (int j = 0; j < (int)self.yTiles; j++)
-        {
-            NSString * name = [NSString stringWithFormat:@"grass.png"];
-            CCLOG(@"tile : %@", name);
-            
-            CC3Texture * texture = [CC3Texture textureFromFile: name];
-            if( texture != nil)
-            {
-                CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
-                CC3Texture * texture = [CC3Texture textureFromFile: name];
-                
-                tile.shouldCullBackFaces = NO;
-                
-                [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ, TILE_SZ) andTessellation:CC3TessellationMake(1, 1)];
-                [tile setTexture: texture];
+        CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
+        CC3Texture * texture = [CC3Texture textureFromFile: name];
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-                
+        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ*self.xTiles, TILE_SZ*self.yTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
+        
+        tile.depthFunction = GL_LESS;
+        tile.shouldCullBackFaces = NO;
+        tile.shouldCullFrontFaces = NO;
 
-                CC3Vector loc = cc3v((float)((i * TILE_SZ) - xstart), LOCATION_Z, (float)(((j * TILE_SZ) - ystart)));
-                [tile setLocation: loc];
-                [tile retainVertexLocations];
-                
-                
-                //[self addChild: tile];
-#warning Performance issues!
-                
-                loc = [tile location];
-                CCLOG(@"Added tile at : %f / %f / %f", loc.x, loc.y, loc.z);
-                
-            }
-        }
+        [tile setTexture: texture];
+
+
+        CC3Vector loc = cc3v(0, LOCATION_Z, 0);
+        [tile setLocation: loc];
+        [tile retainVertexLocations];
+        
+        [self addChild: tile];
     }
-    
-//    NSString * name = [NSString stringWithFormat:@"grass.png"];
-//    CCLOG(@"tile : %@", name);
-//
-//    CC3Texture * texture = [CC3Texture textureFromFile: name];
-//    if( texture != nil)
-//    {
-//        CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
-//        CC3Texture * texture = [CC3Texture textureFromFile: name];
-//
-//        tile.shouldCullBackFaces = NO;
-//
-//        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ * self.xTiles, TILE_SZ * self.yTiles) andTessellation:CC3TessellationMake(1, 1)];
-//        [tile setTexture: texture];
-//        [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-//
-//
-//        CC3Vector loc = cc3v(0.0f, LOCATION_Z, 0.0f);
-//        [tile setLocation: loc];
-//        [tile retainVertexLocations];
-//
-//
-//        [self addChild: tile];
-//
-//        loc = [tile location];
-//        CCLOG(@"Added tile at : %f / %f / %f", loc.x, loc.y, loc.z);
-//    }
-    
 }
 
 
@@ -494,7 +469,7 @@ CC3Node *_mazeMap;
 
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
-    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 50.0f, 15.0f )];
+    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 40.0f, 5.0f )];
 }
 
 /**
