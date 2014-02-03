@@ -81,7 +81,7 @@ CC3Node *_mazeMap;
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( 0.0, 20.0, 0.0 );
+	lamp.location = cc3v( 0.0, 30.0, 50.0 );
 	lamp.isDirectionalOnly = NO;
 	[cam addChild: lamp];
     
@@ -151,7 +151,7 @@ CC3Node *_mazeMap;
     
     
     
-    
+
     //load the model content from the file
     [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
     _monkeyModel = [self getNodeNamed:@"monkey"];
@@ -162,9 +162,10 @@ CC3Node *_mazeMap;
     
     [[Map myMap] readMapFile];
     
-
-    [self createTerrain];
+    //leave the mazeWalls as the first method
     [self addMazeWalls];
+    
+    [self createTerrain];
     
     [self addPlayerCharacter];
     [self addPlayerCharacter];
@@ -191,7 +192,7 @@ CC3Node *_mazeMap;
 
     _mazeMap.scale = cc3v(200,200,200);
     
-    NSLog(@"***********%f %f %f*********" , _mazeMap.boundingBox.maximum.x*_mazeMap.scale.x  / [[Map myMap] xTileCount] , 0.0f ,_mazeMap.boundingBox.maximum.z*_mazeMap.scale.z / [[Map myMap] zTileCount]);
+
     
     //update the size of the tiles based on the size of POD file
     
@@ -199,9 +200,13 @@ CC3Node *_mazeMap;
     
     _mazeMap.shouldDrawBoundingVolume = YES;
     _mazeMap.shouldCullBackFaces = NO;
-    _mazeMap.shouldCullFrontFaces = NO;
     
-
+    _mazeMap.shouldCastShadows = YES;
+    _mazeMap.shouldUseLighting = YES;
+    
+    static const ccColor3B color = {123,123,123};
+    _mazeMap.color = color;
+    
     [self addChild:_mazeMap];
     
 }
@@ -214,7 +219,7 @@ CC3Node *_mazeMap;
     monkey.node = [_monkeyModel copy];
     
     //create bounding volume
-    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.8f];
+    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.7f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
 //    monkey.node.location = cc3v(-120.0*[self.charactersArray count], 0, 50);
@@ -263,10 +268,10 @@ CC3Node *_mazeMap;
         CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
         CC3Texture * texture = [CC3Texture textureFromFile: name];
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-        [tile populateAsCenteredRectangleWithSize: CGSizeMake([Map myMap].tileSizeX*xTiles, [Map myMap].tileSizeZ*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
+        [tile populateAsCenteredRectangleWithSize: CGSizeMake([Map myMap].tileSizeX*2*xTiles, [Map myMap].tileSizeZ*2*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
     
         tile.shouldCullBackFaces = NO;
-        tile.shouldCullFrontFaces = NO;
+
 
         [tile setTexture: texture];
 
@@ -371,7 +376,7 @@ CC3Node *_mazeMap;
 
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
-    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 40.0f, 5.0f )];
+    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 30.0f, 5.0f )];
 }
 
 /**
@@ -451,36 +456,36 @@ CC3Node *_mazeMap;
  */
 -(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {
     
-//    if (touchType != UITouchPhaseBegan)
-//        return;
-//    //using to change camera positions, alter as you need
-//    
-//    static int position = 0;
-//    CC3Vector direction;
-//    
-//    switch (position) {
-//        case 0:
-//            direction = cc3v(1, 0, 1);
-//            break;
-//        case 1:
-//            direction = cc3v(0, 1, 1);
-//            break;
-//        case 2:
-//            direction = cc3v(-1, 1, 1);
-//            break;
-//        case 3:
-//            direction = cc3v(0, 0, 1);
-//        case 4:
-//            direction = cc3v(1, 0, 0);
-//            break;
-//    
-//        default:
-//            break;
-//    }
-//    [self.activeCamera moveWithDuration:3.0f toShowAllOf:self fromDirection:direction];
-//    
-//    position = (position + 1) % 5;
-//    [self.activeCamera setTargetLocation:kCC3VectorZero];
+    if (touchType != UITouchPhaseBegan)
+        return;
+    //using to change camera positions, alter as you need
+    
+    static int position = 0;
+    CC3Vector direction;
+    
+    switch (position) {
+        case 0:
+            direction = cc3v(1, 0, 1);
+            break;
+        case 1:
+            direction = cc3v(0, 1, 1);
+            break;
+        case 2:
+            direction = cc3v(-1, 1, 1);
+            break;
+        case 3:
+            direction = cc3v(0, 0, 1);
+        case 4:
+            direction = cc3v(1, 0, 0);
+            break;
+    
+        default:
+            break;
+    }
+    [self.activeCamera moveWithDuration:3.0f toShowAllOf:self fromDirection:direction];
+    
+    position = (position + 1) % 5;
+    [self.activeCamera setTargetLocation:kCC3VectorZero];
 
 }
 

@@ -59,6 +59,29 @@ static Map *myMapConfiguration = nil;
         }
         
         nextLine = [nextLine stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        for (int i = 0; i < nextLine.length; i++)
+        {
+            char c = [nextLine characterAtIndex:i];
+            switch (c)
+            {
+                case 'a':
+                    self.playerASpawnPoint = CGPointMake(lineNumber, i);
+                    break;
+                case 'b':
+                    self.playerBSpawnPoint = CGPointMake(lineNumber, i);
+                    break;
+                case 'c':
+                    self.playerCSpawnPoint = CGPointMake(lineNumber, i);
+                    break;
+                case 'd':
+                    self.playerDSpawnPoint = CGPointMake(lineNumber, i);
+                    break;
+                default:
+                    break;
+            }
+        }
+        
         [self.lines addObject: nextLine]; //adiciona string a array de linhas
         
         NSLog(@"%@", nextLine);

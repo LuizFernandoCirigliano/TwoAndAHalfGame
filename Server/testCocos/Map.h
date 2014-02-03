@@ -32,6 +32,12 @@
  */
 @property int zTileCount;
 
+@property (nonatomic) CGPoint playerASpawnPoint;
+@property (nonatomic) CGPoint playerBSpawnPoint;
+@property (nonatomic) CGPoint playerCSpawnPoint;
+@property (nonatomic) CGPoint playerDSpawnPoint;
+
+
 + (Map *) myMap;
 
 - (void) readMapFile;

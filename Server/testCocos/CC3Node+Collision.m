@@ -74,7 +74,7 @@
     CC3BoundingVolume *boundingVolume = self.boundingVolume;
     if ([boundingVolume isKindOfClass:[CC3NodeSphericalBoundingVolume class]])
     {
-        GLfloat radius = ((CC3NodeSphericalBoundingVolume*)boundingVolume).radius;
+        GLfloat radius = ((CC3NodeSphericalBoundingVolume*)boundingVolume).radius * self.scale.x;
         
         CGPoint bounds[4] =    {CGPointMake(self.location.x         , self.location.z - radius), //UP
                                 CGPointMake(self.location.x + radius, self.location.z         ), //RIGHT
