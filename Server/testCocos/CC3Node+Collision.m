@@ -83,15 +83,15 @@
     
         CGPoint locationInMap[4];
         
-//        for (int i = 0; i < 4; i++)
-//        {
-//            locationInMap[i]  = [Map locationInMapWithPosition: bounds[i]];
-//            
-//            if ([Map contentOfMapAtLocation: locationInMap[i]] != '0') //If the new location is not free
-//            {
-//                return NO; //The node should not move
-//            }
-//        }
+        for (int i = 0; i < 4; i++)
+        {
+            locationInMap[i]  = [[Map myMap] locationInMapWithPosition: bounds[i]];
+            
+            if ([[Map myMap] contentOfMapAtLocation: locationInMap[i]] != '0') //If the new location is not free
+            {
+                return NO; //The node should not move
+            }
+        }
         
         return YES;
     }

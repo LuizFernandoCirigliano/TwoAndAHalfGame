@@ -263,7 +263,7 @@ CC3Node *_mazeMap;
         CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
         CC3Texture * texture = [CC3Texture textureFromFile: name];
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ*xTiles, TILE_SZ*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
+        [tile populateAsCenteredRectangleWithSize: CGSizeMake([Map myMap].tileSizeX*xTiles, [Map myMap].tileSizeZ*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
     
         tile.shouldCullBackFaces = NO;
         tile.shouldCullFrontFaces = NO;
