@@ -15,6 +15,10 @@
  */
 @property (nonatomic) NSInteger index;
 
+/**
+ * Node location before movement
+ */
+@property (nonatomic, assign) CC3Vector oldLocation;
 
 /**
  * Player node

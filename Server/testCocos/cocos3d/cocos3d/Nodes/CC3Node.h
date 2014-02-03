@@ -265,12 +265,6 @@ typedef enum {
 
 
 /**
- * Node location before movement
- */
-@property (nonatomic, assign) CC3Vector oldLocation;
-//Added by Francesco Perrotti-Garcia for TwoAndAHalfGame
-
-/**
  * The location of the node in 3D space, relative to the global origin.
  * 
  * This is calculated by using the globalTransformMatrix to tranform the local origin (0,0,0).
