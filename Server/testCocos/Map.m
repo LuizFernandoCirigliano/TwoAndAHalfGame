@@ -60,6 +60,8 @@ static Map *myMapConfiguration = nil;
         
         nextLine = [nextLine stringByReplacingOccurrencesOfString:@" " withString:@""];
         [self.lines addObject: nextLine]; //adiciona string a array de linhas
+        
+        NSLog(@"%@", nextLine);
     }
     
     self.xTileCount = [self.lines count];
@@ -86,7 +88,7 @@ static Map *myMapConfiguration = nil;
 
 -(char) contentOfMapAtLocation:(CGPoint)location {
     
-    return [[self.lines objectAtIndex:(int)location.x] characterAtIndex:(int)location.y];
+    return [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] characterAtIndex:self.zTileCount - (int)location.y - 1];
     
 }
 @end
