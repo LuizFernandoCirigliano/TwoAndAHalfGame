@@ -33,19 +33,19 @@
 /**
  * Add property description here
  */
-@property (strong, nonatomic) NSMutableArray *lines;
-
-#warning A pragma mark may be necessary here
-
-/**
- * Add property description here
- */
-@property int xTiles;
-
-/**
- * Add property description here
- */
-@property int yTiles;
+//@property (strong, nonatomic) NSMutableArray *lines;
+//
+//#warning A pragma mark may be necessary here
+//
+///**
+// * Add property description here
+// */
+//@property int xTiles;
+//
+///**
+// * Add property description here
+// */
+//@property int yTiles;
 
 //@property (strong, nonatomic) Connection *myConnection;
 

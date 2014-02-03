@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A25F106189FFC10005FD2F3 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F105189FFC10005FD2F3 /* Map.m */; };
 		3A2F4282189678ED0088C77D /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F4281189678ED0088C77D /* grass.png */; };
 		3A2F428618968B1A0088C77D /* simpleCube2.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F428518968B1A0088C77D /* simpleCube2.pod */; };
 		3A2F428A1896B8F80088C77D /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42891896B8F80088C77D /* map01.txt */; };
@@ -320,6 +321,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A25F104189FFC10005FD2F3 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
+		3A25F105189FFC10005FD2F3 /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
 		3A2F4281189678ED0088C77D /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		3A2F428518968B1A0088C77D /* simpleCube2.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = simpleCube2.pod; sourceTree = "<group>"; };
 		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
@@ -1990,6 +1993,8 @@
 				3A4EABA5188D927D00E6C9F5 /* testCocosLayer.m */,
 				3A4EABA7188D927D00E6C9F5 /* testCocosScene.h */,
 				3A4EABA8188D927D00E6C9F5 /* testCocosScene.m */,
+				3A25F104189FFC10005FD2F3 /* Map.h */,
+				3A25F105189FFC10005FD2F3 /* Map.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -2149,6 +2154,7 @@
 				3A4EA874188D927900E6C9F5 /* ccDeprecated.m in Sources */,
 				3A4EAB42188D927D00E6C9F5 /* CC3World.m in Sources */,
 				3A4EAB9F188D927D00E6C9F5 /* main.m in Sources */,
+				3A25F106189FFC10005FD2F3 /* Map.m in Sources */,
 				3A4EA92F188D927A00E6C9F5 /* CCDirectorMac.m in Sources */,
 				3A4EAB12188D927C00E6C9F5 /* CC3ShadowVolumes.m in Sources */,
 				3A4EA889188D927A00E6C9F5 /* ccGLStateCache.m in Sources */,

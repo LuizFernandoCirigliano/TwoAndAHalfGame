@@ -18,8 +18,8 @@
 #import "Player.h"
 #import "CC3BillBoard.h"
 #import "CC3ParametricMeshNodes.h"
+#import "Map.h"
 
-#define TILE_SZ 100.0f
 
 @implementation testCocosScene
 
@@ -150,8 +150,7 @@ CC3Node *_mazeMap;
 	// ------------------------------------------
     
     
-    [self createGLBuffers];
-    [self releaseRedundantContent];
+    
     
     //load the model content from the file
     [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
@@ -161,19 +160,20 @@ CC3Node *_mazeMap;
     //remove this temp model from the world
     [self removeChild:_monkeyModel];
     
-    [self readMapFile];
+    [[Map myMap] readMapFile];
     
-    
-    
+
     [self createTerrain];
     [self addPlayerCharacter];
     [self addPlayerCharacter];
-    
-    	// Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
-	// save memory, release the vertex content in main memory because it is now redundant.
-	
-    
     [self addMazeWalls];
+    
+    // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
+	// save memory, release the vertex content in main memory because it is now redundant.
+	[self createGLBuffers];
+    [self releaseRedundantContent];
+    
+    
 
 
 }
@@ -236,43 +236,43 @@ CC3Node *_mazeMap;
  * Add method description here
  *
  */
--(void) readMapFile
-{
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"map01"
-                                                     ofType:@"txt"];
-    NSString* content = [NSString stringWithContentsOfFile:path
-                                                  encoding:NSUTF8StringEncoding
-                                                     error:NULL];
-    
-    int lineSize = (int) [content rangeOfString: @"\n"].location + 1; //acha tamanho da linha pelo primeiro \n
-    
-    self.lines = [NSMutableArray arrayWithCapacity: (NSUInteger) 2];
-    
-    int initialPos = 0; //initR indica a posicao inicial da proxima "linha"
-    
-    for(int lineNumber = 0; initialPos < content.length; lineNumber++)
-    {
-        initialPos = lineSize*lineNumber; //calcula comeco da proxima linha
-        if (initialPos >= content.length)
-            continue;
-        NSMutableString *nextLine;
-        if(lineSize*(lineNumber+1) >= content.length) //caso da ultima linha, pega string a partir da posicao incial
-        {
-            nextLine = (NSMutableString *) [content substringFromIndex:(NSUInteger) initialPos];
-            
-        }
-        else // se nao for a ultima linha, pega a substring a partir de initialPos e "corta" apenas caracteres ate \n seguinte
-        {
-            nextLine = (NSMutableString *) [[content substringFromIndex:(NSUInteger) initialPos] substringToIndex:(NSUInteger) lineSize - 1];
-        }
-        
-        [self.lines addObject: nextLine]; //adiciona string a array de linhas
-    }
-    
-    self.xTiles = [self.lines count];
-    self.yTiles = [[self.lines firstObject] length] / 2 + 1;
-    
-}
+//-(void) readMapFile
+//{
+//    NSString* path = [[NSBundle mainBundle] pathForResource:@"map01"
+//                                                     ofType:@"txt"];
+//    NSString* content = [NSString stringWithContentsOfFile:path
+//                                                  encoding:NSUTF8StringEncoding
+//                                                     error:NULL];
+//    
+//    int lineSize = (int) [content rangeOfString: @"\n"].location + 1; //acha tamanho da linha pelo primeiro \n
+//    
+//    self.lines = [NSMutableArray arrayWithCapacity: (NSUInteger) 2];
+//    
+//    int initialPos = 0; //initR indica a posicao inicial da proxima "linha"
+//    
+//    for(int lineNumber = 0; initialPos < content.length; lineNumber++)
+//    {
+//        initialPos = lineSize*lineNumber; //calcula comeco da proxima linha
+//        if (initialPos >= content.length)
+//            continue;
+//        NSMutableString *nextLine;
+//        if(lineSize*(lineNumber+1) >= content.length) //caso da ultima linha, pega string a partir da posicao incial
+//        {
+//            nextLine = (NSMutableString *) [content substringFromIndex:(NSUInteger) initialPos];
+//            
+//        }
+//        else // se nao for a ultima linha, pega a substring a partir de initialPos e "corta" apenas caracteres ate \n seguinte
+//        {
+//            nextLine = (NSMutableString *) [[content substringFromIndex:(NSUInteger) initialPos] substringToIndex:(NSUInteger) lineSize - 1];
+//        }
+//        
+//        [self.lines addObject: nextLine]; //adiciona string a array de linhas
+//    }
+//    
+//    self.xTiles = [self.lines count];
+//    self.yTiles = [[self.lines firstObject] length] / 2 + 1;
+//    
+//}
 
 /**
  * Add method description here
@@ -287,12 +287,15 @@ CC3Node *_mazeMap;
     CCLOG(@"tile : %@", name);
     
     CC3Texture * texture = [CC3Texture textureFromFile: name];
+    
+    int xTiles = [[Map myMap] xTiles];
+    int yTiles = [[Map myMap] yTiles];
     if( texture != nil)
     {
         CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
         CC3Texture * texture = [CC3Texture textureFromFile: name];
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ*self.xTiles, TILE_SZ*self.yTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
+        [tile populateAsCenteredRectangleWithSize: CGSizeMake(TILE_SZ*xTiles, TILE_SZ*yTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
         
         tile.depthFunction = GL_LESS;
         tile.shouldCullBackFaces = NO;
@@ -310,74 +313,6 @@ CC3Node *_mazeMap;
 }
 
 
-/**
- * Add method description here
- *
- */
--(void) createWalls {
-    
-    const float LOCATION_Z = 0;
-    float xstart = (float)((self.xTiles * TILE_SZ) / 2.0f);
-    float ystart = (float)((self.yTiles* TILE_SZ) / 2.0f);
-
-    //load the resource tiles from pod file
-    CC3Node *wall = [CC3Node node];
-    [self addContentFromPODFile:@"simpleCube2.pod" withName:@"wallCube"];
-    CC3Node *wallCube = [self getNodeNamed:@"wallCube"];
-    wallCube.scale = cc3v(49.5f, 80, 49.5f);
-    
-    //save original color for possible restore
-    ccColor3B originalColor = wallCube.color;
-    
-    
-    for (int i = 0; i < (int)self.xTiles; i++)
-    {
-        if (i >= [self.lines count])
-        {
-            break;
-        }
-        
-        NSString *currentLine = [self.lines objectAtIndex:i];
-        
-        for (int j = 0; j < (int)self.yTiles; j++)
-        {
-            //lower
-            if (2*j >= [currentLine length])
-                break;
-            char c = [currentLine characterAtIndex:2*j];
-        
-            //reads a character from the string, add accordingly.
-            
-            //c == 0 -> empty tile
-            //c == 1 -> original color wall
-            //c == 2 -> colored wall
-#warning POG detected /\
-            
-            if (c == '3')
-            {
-                wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2, LOCATION_Z);
-                [wall addChild:wallCube];
-                wallCube = [wallCube copy];
-            }
-            else if (c == '2' || c == '1')
-            {
-                wallCube.location = cc3v((float)((i * TILE_SZ) - xstart) ,   LOCATION_Z, (float)((j * TILE_SZ) - ystart)  - TILE_SZ/2);
-                //paint the tile a different color
-                ccColor3B endColor = { rand() % 256 , rand() % 256, rand() % 256 };
-                wallCube.color = endColor;
-                [wall addChild:wallCube];
-                [wallCube createBoundingVolumeFromBoundingBox];
-//                wallCube.shouldDrawBoundingVolume = YES;
-                [_walls addObject:wallCube];
-                wallCube = [wallCube copy];
-                //return to original color
-                wallCube.color = originalColor;
-            }
-        }
-    }
-    
-    [self addChild:wall];
-}
 
 /**
  * By populating this method, you can add add additional scene content dynamically and
