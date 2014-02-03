@@ -86,6 +86,12 @@ static Map *myMapConfiguration = nil;
     return point;
 }
 
+-(CGPoint) positionInMapWithLocation: (CGPoint) location {
+    CGPoint position = CGPointMake(-self.mapSizeX + self.tileSizeX*location.x, -self.mapSizeZ + self.tileSizeZ*location.y);
+    
+    return position;
+}
+
 -(char) contentOfMapAtLocation:(CGPoint)location {
     
     return [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] characterAtIndex:self.zTileCount - (int)location.y - 1];

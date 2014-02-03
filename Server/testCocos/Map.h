@@ -38,5 +38,6 @@
 
 -(void) setSizesWithMapX : (float) xSize andMapZ: (float) zSize;
 -(CGPoint) locationInMapWithPosition: (CGPoint) position;
+-(CGPoint) positionInMapWithLocation: (CGPoint) location;
 -(char) contentOfMapAtLocation: (CGPoint) location;
 @end
