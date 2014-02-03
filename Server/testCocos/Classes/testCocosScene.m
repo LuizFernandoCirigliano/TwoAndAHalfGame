@@ -692,52 +692,46 @@ CC3Node *_mazeMap;
  */
 -(void) checkForCollisions
 {
-//    //For each player
-//    for (Player *player in self.charactersArray)
-//    {
-//        //For each wall cube:
-//        for (CC3Node *wall in _walls)
-//        {
-//            // Test whether the player intersects the wall.
-//            if ([player.node.boundingVolume doesIntersect:wall.boundingVolume])
-//            {
-//                //If it does I stop their movement
-//                [player.node stopAllActions];
-//                player.node.location = player.oldLocation;
-//                player.node.rotationAngle = player.oldRotationAngle;
-//                break;
-//            }
-//        }
-//        //For each player
-//        for (Player *player2 in self.charactersArray)
-//        {
-//            if (player2 != player)
-//            {
-//                // Test whether player1 is intersecting player2.
-//                if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
-//                {
-//                    NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
-//                    NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
-//                    if (interval > 60.0f)
-//#warning Fix hardcoded 60.0f (One minute)
-//                    {
-//                        // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
-//                        NSDate *now = [[NSDate date] copy];
-//                        [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
-//                        [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
-//                        NSLog(@"Players collided; minigame should start!!");
-//                        [self startMinigame: @[player, player2]];
-//                    }
-//                    else
-//                    {
-//                        NSLog(@"Players already collided %fseconds ago", interval);
-//                    }
-//                }
-//            }
-//        }
-//        player.oldLocation = player.node.location;
-//        player.oldRotationAngle = player.node.rotationAngle;
-//    }
+    //For each player
+    for (Player *player in self.charactersArray)
+    {
+        // Test whether the player intersects the wall.
+        if (![player.node shouldMove])
+        {
+            //If the player should not move it is intersecting the wall
+            [player.node stopAllActions];
+            player.node.location = player.oldLocation;
+        }
+
+        //For each player
+        for (Player *player2 in self.charactersArray)
+        {
+            if (player2 != player)
+            {
+                // Test whether player1 is intersecting player2.
+                if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
+                {
+                    NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
+                    NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
+                    if (interval > 60.0f)
+#warning Fix hardcoded 60.0f (One minute)
+                    {
+                        // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
+                        NSDate *now = [[NSDate date] copy];
+                        [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
+                        [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
+                        NSLog(@"Players collided; minigame should start!!");
+                        [self startMinigame: @[player, player2]];
+                    }
+                    else
+                    {
+                        NSLog(@"Players already collided %fseconds ago", interval);
+                    }
+                }
+            }
+        }
+        player.oldLocation = player.node.location;
+    }
 }
 
 /**
