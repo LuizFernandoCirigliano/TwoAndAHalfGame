@@ -20,6 +20,7 @@
 #import "CC3ParametricMeshNodes.h"
 
 #define TILE_SZ 100.0f
+
 @implementation testCocosScene
 
 NSMutableArray *_walls;
@@ -65,7 +66,7 @@ CC3Node *_mazeMap;
     self.isTouchEnabled = YES;
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, 25.0, -15.0 );
+	cam.location = cc3v( 0.0, 50.0f, 15.0f );
 //    cam set
     cam.targetLocation = cc3v(0, 0, 0);
     
@@ -147,7 +148,9 @@ CC3Node *_mazeMap;
     _mazeMap = [self getNodeNamed:@"school"];
     _mazeMap.scale = cc3v(200,200,200);
     _mazeMap.shouldDrawBoundingVolume = YES;
-    [_mazeMap createBoundingVolume];
+
+//    _mazeMap.shouldDrawAllBoundingVolumes = YES;
+//    [_mazeMap createBoundingVolume];
     [self addChild:_mazeMap];
     
     
@@ -160,11 +163,11 @@ CC3Node *_mazeMap;
     [self removeChild:_monkeyModel];
     
     [self readMapFile];
-	[self createTerrain];
+//	[self createTerrain];
     //[self createWalls];
     [self addPlayerCharacter];
     [self addPlayerCharacter];
-
+    
     	// Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
 	
@@ -484,16 +487,14 @@ CC3Node *_mazeMap;
     [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray firstObject] node] afterDelay:3.0f];
     [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray lastObject] node] afterDelay:6.0f];
     [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:9.0f];
-//	[self.activeCamera moveWithDuration: 1.0 toShowAllOf: self withPadding: 0.0f];
-//    [self.activeCamera setTarget:_monkey];
-//    [self.activeCamera setShouldTrackTarget:YES];
+
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
 }
 
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
-    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 25.0, -15.0 )];
+    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 50.0f, 15.0f )];
 }
 
 /**
@@ -649,7 +650,7 @@ CC3Node *_mazeMap;
     switch (buttonNumberInt)
     {
         //up button
-        case 0:
+        case 2:
             if(character.node.rotationAngle != 0)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:0];
@@ -662,7 +663,7 @@ CC3Node *_mazeMap;
             
             break;
         //right button
-        case 1:
+        case 3:
             if(character.node.rotationAngle != -90)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-90];
@@ -675,7 +676,7 @@ CC3Node *_mazeMap;
             
             break;
         //bottom button
-        case 2:
+        case 0:
             if(character.node.rotationAngle != 180)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:180];
@@ -688,7 +689,7 @@ CC3Node *_mazeMap;
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //left button
-        case 3:
+        case 1:
             if(character.node.rotationAngle != 90)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:90];
@@ -701,7 +702,7 @@ CC3Node *_mazeMap;
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //upright button
-        case 10:
+        case 30:
             if(character.node.rotationAngle != -45)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-45];
@@ -714,7 +715,7 @@ CC3Node *_mazeMap;
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //downright button
-        case 20:
+        case 40:
             if(character.node.rotationAngle != -135)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-135];
@@ -727,7 +728,7 @@ CC3Node *_mazeMap;
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //downleft button
-        case 30:
+        case 10:
             if(character.node.rotationAngle != 135)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:135];
@@ -740,7 +741,7 @@ CC3Node *_mazeMap;
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //upleft button
-        case 40:
+        case 20:
             if(character.node.rotationAngle != 45)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:45];

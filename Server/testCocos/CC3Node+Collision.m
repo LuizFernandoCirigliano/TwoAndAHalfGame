@@ -70,7 +70,7 @@
 - (CGPoint) positionInIntegerMapWithRealDimensions: (CGRect) mapRect andMapDimensions: (CGPoint) mapDimensions
 {
     CGPoint transposedPoint;
-    CGPoint position = CGPointMake(self.location.x, self.location.y);
+    CGPoint position = CGPointMake(self.location.x, self.location.z);
     
     NSInteger mapSizeX = (int) mapDimensions.x;
     NSInteger mapSizeY = (int) mapDimensions.y;

@@ -8,6 +8,8 @@
 
 #import "CC3Node.h"
 
+#define TILE_SZ 100.0f
+
 @interface CC3Node (Collision)
 
 - (void) createBoundingVolumeFromBoundingBox;
