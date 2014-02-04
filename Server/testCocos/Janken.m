@@ -47,7 +47,7 @@
         self.playerAID = playerID;
         self.playerAGesture = playerGesture;
     }
-    else
+    else if (playerID != self.playerAID)
     {
         self.playerBID = playerID;
         self.playerBGesture = playerGesture;
