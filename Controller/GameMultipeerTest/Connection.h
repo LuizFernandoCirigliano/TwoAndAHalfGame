@@ -13,6 +13,7 @@
 #import "EndRoundMessage.h"
 #import "ButtonPressMessage.h"
 #import "SetPlayerNumberMessage.h"
+#import "StartMinigameMessage.h"
 
 @protocol ConnectionDelegate <NSObject>
 

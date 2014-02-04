@@ -100,6 +100,10 @@ static Connection *myConnectionConfiguration = nil;
         SetPlayerNumberMessage *playerNumberMessage = (SetPlayerNumberMessage *)message;
         NSLog(@"%d", [[playerNumberMessage playerNumber] intValue]);
         self.playerNumber = [[playerNumberMessage playerNumber] intValue];
+    } else if ([message isKindOfClass:[StartMinigameMessage class]]) {
+        if([self.delegate respondsToSelector:@selector(startMinigame)]) {
+            [self.delegate performSelector:@selector(startMinigame)];
+        }
     }
     
     //for example on how to use delegates to handle events based on the type of messages that arrive, check the server connection class

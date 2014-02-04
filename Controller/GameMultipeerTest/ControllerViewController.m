@@ -139,6 +139,9 @@
     [[Connection myConnection] sendData:data];
 }
 
-
+-(void) startMinigame {
+    
+    [self performSegueWithIdentifier:@"startMinigame" sender:self];
+}
 #warning Add credits do JSController
 @end

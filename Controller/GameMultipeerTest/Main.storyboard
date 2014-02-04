@@ -151,6 +151,7 @@
                         <outlet property="button2" destination="gye-va-3ho" id="s53-OX-diJ"/>
                         <outlet property="button3" destination="a1a-PO-bbK" id="YaM-NW-fHZ"/>
                         <outlet property="playerLabel" destination="KVE-fa-4JG" id="Zyj-ah-CUm"/>
+                        <segue destination="fph-Vi-gR8" kind="push" identifier="startMinigame" id="a3x-IB-mCp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hx9-0s-wBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,10 +203,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NSs-sF-9Th"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPK-4K-10d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="444"/>
+            <point key="canvasLocation" x="1109" y="-150"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fPt-wC-VBo">
