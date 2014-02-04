@@ -94,8 +94,13 @@ static Map *myMapConfiguration = nil;
 
 }
 
-//sets the map size and tile size for the map
--(void) setSizesWithMapX : (float) xSize andMapZ: (float) zSize {
+/**
+ * Sets the map and tile size for the map
+ \param xSize size in the x axis
+ \param zSize size in the z axis
+ */
+-(void) setSizesWithMapX : (float) xSize andMapZ: (float) zSize
+{
     self.mapSizeX = xSize;
     self.mapSizeZ = zSize;
     
@@ -104,23 +109,24 @@ static Map *myMapConfiguration = nil;
 }
 
 //This method receives a position (float values for x and z) and returns the indexes for the corresponding tile
--(CGPoint) locationInMapWithPosition: (CGPoint) position {
+-(CGPoint) locationInMapWithPosition: (CGPoint) position
+{
     CGPoint location = CGPointMake(floorf((position.x + self.mapSizeX/2)/ self.tileSizeX), floorf((position.y + self.mapSizeZ/2) / self.tileSizeZ));
     
     return location;
 }
 
 //This method receives the tile indexes and returns the center position (float values) for the center of the tile
--(CGPoint) positionInMapWithLocation: (CGPoint) location {
+-(CGPoint) positionInMapWithLocation: (CGPoint) location
+{
     CGPoint position = CGPointMake(-self.mapSizeX/2 + self.tileSizeX*location.x + self.tileSizeX , -self.mapSizeZ/2 + self.tileSizeZ*location.y + self.tileSizeZ);
     
     return position;
 }
 
 //returns the character at the location tile
--(char) contentOfMapAtLocation:(CGPoint)location {
-    
+-(char) contentOfMapAtLocation:(CGPoint)location
+{
     return [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] characterAtIndex:self.zTileCount - (int)location.y - 1];
-    
 }
 @end

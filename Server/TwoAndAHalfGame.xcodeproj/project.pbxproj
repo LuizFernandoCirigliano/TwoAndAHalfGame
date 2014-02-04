@@ -1883,15 +1883,15 @@
 			children = (
 				A3561CF6189FC4D8005207A1 /* schoolmap.pod */,
 				A3561CD7189BD798005207A1 /* school.pod */,
-				A31C86B81899185400769876 /* images2D */,
 				3A2F428518968B1A0088C77D /* simpleCube2.pod */,
 				3A2F42891896B8F80088C77D /* map01.txt */,
 				3A4EAB76188D927D00E6C9F5 /* Info.plist */,
 				3A2F4281189678ED0088C77D /* grass.png */,
-				3A2F42921896D8630088C77D /* Suzanne */,
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
+				A31C86B81899185400769876 /* images2D */,
+				3A2F42921896D8630088C77D /* Suzanne */,
 				3A4EAB77188D927D00E6C9F5 /* Icons */,
 				3A4EAB94188D927D00E6C9F5 /* Launch Images */,
 			);
@@ -1944,8 +1944,7 @@
 				A344F5351892D3CB00355248 /* Categories */,
 				3AD47EC91890211200623ACA /* Connection */,
 				3AD47ECA1890212C00623ACA /* Game */,
-				A3B2978C189825C9003949D3 /* Player.h */,
-				A3B2978D189825C9003949D3 /* Player.m */,
+				A3BD53E218A14ECA002E3564 /* Model */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1990,16 +1989,13 @@
 		3AD47ECA1890212C00623ACA /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				A3BD53E118A14EB4002E3564 /* Minigames */,
 				3A4EABA1188D927D00E6C9F5 /* testCocosAppDelegate.h */,
 				3A4EABA2188D927D00E6C9F5 /* testCocosAppDelegate.m */,
 				3A4EABA4188D927D00E6C9F5 /* testCocosLayer.h */,
 				3A4EABA5188D927D00E6C9F5 /* testCocosLayer.m */,
 				3A4EABA7188D927D00E6C9F5 /* testCocosScene.h */,
 				3A4EABA8188D927D00E6C9F5 /* testCocosScene.m */,
-				3A25F104189FFC10005FD2F3 /* Map.h */,
-				3A25F105189FFC10005FD2F3 /* Map.m */,
-				A3B92F6A18A1159B00EFF763 /* Janken.h */,
-				A3B92F6B18A1159B00EFF763 /* Janken.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -2007,8 +2003,8 @@
 		A31C86B81899185400769876 /* images2D */ = {
 			isa = PBXGroup;
 			children = (
-				A31C86BD18991B3600769876 /* p2.png */,
 				A31C86B01899184D00769876 /* p1.png */,
+				A31C86BD18991B3600769876 /* p2.png */,
 				A31C86B21899184D00769876 /* p3.png */,
 				A31C86B31899184D00769876 /* p4.png */,
 			);
@@ -2022,6 +2018,26 @@
 				A344F5401892D57C00355248 /* CC3Node+Collision.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		A3BD53E118A14EB4002E3564 /* Minigames */ = {
+			isa = PBXGroup;
+			children = (
+				A3B92F6A18A1159B00EFF763 /* Janken.h */,
+				A3B92F6B18A1159B00EFF763 /* Janken.m */,
+			);
+			name = Minigames;
+			sourceTree = "<group>";
+		};
+		A3BD53E218A14ECA002E3564 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3B2978C189825C9003949D3 /* Player.h */,
+				A3B2978D189825C9003949D3 /* Player.m */,
+				3A25F104189FFC10005FD2F3 /* Map.h */,
+				3A25F105189FFC10005FD2F3 /* Map.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

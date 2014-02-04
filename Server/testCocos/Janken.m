@@ -19,6 +19,14 @@ typedef NS_ENUM(NSInteger, JankenType)
 
 @implementation Janken
 
+
+/*
+ * Return the ID of the winning player or kJankenTie in case of a tie
+ \param playerAID The ID of the A player
+ \param playerAGesture The gesture of the A player
+ \param playerBID The ID of the B player
+ \param playerBGesture The gesture of the B player
+ */
 - (NSInteger) winningPlayerWhenPlayer: (NSInteger) playerAID chose: (JankenType) playerAGesture andPlayer: (NSInteger) playerBID chose: (JankenType) playerBGesture
 {
     switch (playerAGesture)
