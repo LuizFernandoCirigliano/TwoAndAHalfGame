@@ -29,6 +29,7 @@
 @required
 -(void) roundEnded;
 -(void) otherPlayerPressed:(NSNumber *) buttonNumber ;
+-(void) startMinigame;
 @end
 
 
