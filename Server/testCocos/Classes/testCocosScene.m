@@ -278,7 +278,7 @@ CC3Node *_mazeMap;
     monkey.node = [_monkeyModel copy];
     
     //create bounding volume
-    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.7f];
+    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.6f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
     //temporary spawn position methods, replace with positions on map text file
