@@ -169,6 +169,7 @@ CC3Node *_mazeMap;
     
     [self createTerrain];
     
+//    [self createTestTerrain];
 
     [self addPlayerCharacter];
     [self addPlayerCharacter];
@@ -181,6 +182,53 @@ CC3Node *_mazeMap;
     [self releaseRedundantContent];
     
 
+}
+
+-(void) createTestTerrain
+{
+    //hocus pocus add grass
+    
+    const float LOCATION_Z = (0.0f);
+    
+//    float xstart = (float)(([[Map myMap] xTileCount] * [[Map myMap] tileSizeX]) / 2.0f);
+//    float ystart = (float)(([[Map myMap] zTileCount] * [[Map myMap] tileSizeZ]) / 2.0f);
+    
+    for (int i = 0; i < [[Map myMap] xTileCount]; i++)
+    {
+        for (int j = 0; j < [[Map myMap] zTileCount]; j++)
+        {
+            NSString * name = [NSString stringWithFormat:@"grass.png"];
+            CCLOG(@"tile : %@", name);
+            
+            CC3Texture * texture = [CC3Texture textureFromFile: name];
+            if( texture != nil) {
+                CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
+//                CC3Texture * texture = [CC3Texture textureFromFile: name];
+                
+                tile.shouldCullBackFaces = NO;
+                
+                [tile populateAsCenteredRectangleWithSize: CGSizeMake ([[Map myMap] tileSizeX], [[Map myMap] tileSizeZ]) andTessellation:CC3TessellationMake(1, 1)];
+//                [tile setTexture: texture];
+                
+                ccColor3B color= {rand() % 255, rand() % 255, rand() % 255};
+                [tile setColor:color];
+                [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
+//                [tile setT]
+                
+                CGPoint location = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector loc = cc3v(location.x, LOCATION_Z, location.y);
+                [tile setLocation: loc];
+                [tile retainVertexLocations];
+                
+                
+                [self addChild: tile];
+                
+                loc = [tile location];
+                CCLOG(@"Added tile at : %f / %f / %f", loc.x, loc.y, loc.z);
+                
+            }
+        }
+    }
 }
 
 /**
@@ -236,13 +284,13 @@ CC3Node *_mazeMap;
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,1)];
             break;
         case 1:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,38)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(57,37)];
             break;
         case 2:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,38)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,37)];
             break;
         case 3:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,1)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(57,1)];
             break;
         default:
             break;
@@ -293,7 +341,7 @@ CC3Node *_mazeMap;
         CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
         CC3Texture * texture = [CC3Texture textureFromFile: name];
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-        [tile populateAsCenteredRectangleWithSize: CGSizeMake([Map myMap].tileSizeX*2*xTiles, [Map myMap].tileSizeZ*2*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
+        [tile populateAsCenteredRectangleWithSize: CGSizeMake([Map myMap].tileSizeX*xTiles, [Map myMap].tileSizeZ*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
     
         tile.shouldCullBackFaces = NO;
 

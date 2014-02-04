@@ -56,8 +56,8 @@ static Connection *myConnectionConfiguration = nil;
         
         //  Setup Advertiser - Allows for other devices to connect directly to this one
         // This can be removed since the controllers should connect to the server.
-        self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:@"controllertest" discoveryInfo:nil session:self.mySession];
-        [self.advertiser start];
+//        self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:@"controllertest" discoveryInfo:nil session:self.mySession];
+//        [self.advertiser start];
         
         self.browserVC.delegate = self;
         self.mySession.delegate = self;
