@@ -793,6 +793,7 @@ CC3Node *_mazeMap;
                 }
             }
         }
+        
         player.oldLocation = player.node.location;
     }
 }
@@ -806,6 +807,9 @@ CC3Node *_mazeMap;
     //One player is already playing a minigame case not handled! #FIXME
     for (Player *player in players)
     {
+        MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:player.index];
+        NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
+        [[Connection myConnection] sendData: data toPeer: peer];
         player.isPlayingMinigame = YES;
     }
 }

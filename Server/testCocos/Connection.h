@@ -13,7 +13,7 @@
 #import "EndRoundMessage.h"
 #import "ButtonPressMessage.h"
 #import "SetPlayerNumberMessage.h"
-
+#import "StartMinigameMessage.h"
 #define MAX_PLAYERS 4
 
 #warning Protocol should be documented.
@@ -70,4 +70,5 @@
 
 - (void) showBrowserVC:(UIViewController*)controller;
 - (void) sendData: (NSData *)data;
+- (void) sendData:(NSData *) data toPeer:(MCPeerID *) peer;
 @end
