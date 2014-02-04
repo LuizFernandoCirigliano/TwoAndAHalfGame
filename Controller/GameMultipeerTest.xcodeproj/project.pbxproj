@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A25F10918A14E03005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10818A14E03005FD2F3 /* JankenResultMessage.m */; };
 		3A44A4FB1888395A00777286 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FA1888395A00777286 /* Foundation.framework */; };
 		3A44A4FD1888395A00777286 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FC1888395A00777286 /* CoreGraphics.framework */; };
 		3A44A4FF1888395A00777286 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FE1888395A00777286 /* UIKit.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A25F10718A14E03005FD2F3 /* JankenResultMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JankenResultMessage.h; sourceTree = "<group>"; };
+		3A25F10818A14E03005FD2F3 /* JankenResultMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JankenResultMessage.m; sourceTree = "<group>"; };
 		3A44A4F71888395A00777286 /* GameMultipeerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameMultipeerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A44A4FA1888395A00777286 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A44A4FC1888395A00777286 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -233,6 +236,8 @@
 				A3B8D23F189A7DE2009FFE5C /* EndRoundMessage.m */,
 				A3B8D240189A7DE2009FFE5C /* NewMessage.h */,
 				A3B8D241189A7DE2009FFE5C /* NewMessage.m */,
+				3A25F10718A14E03005FD2F3 /* JankenResultMessage.h */,
+				3A25F10818A14E03005FD2F3 /* JankenResultMessage.m */,
 				A3B8D242189A7DE2009FFE5C /* SetPlayerNumberMessage.h */,
 				A3B8D243189A7DE2009FFE5C /* SetPlayerNumberMessage.m */,
 				A3B8D244189A7DE2009FFE5C /* StartGameMessage.h */,
@@ -352,6 +357,7 @@
 				A3B8D24B189A7DE2009FFE5C /* SetPlayerNumberMessage.m in Sources */,
 				3A44A5071888395A00777286 /* main.m in Sources */,
 				A3B8D24C189A7DE2009FFE5C /* StartGameMessage.m in Sources */,
+				3A25F10918A14E03005FD2F3 /* JankenResultMessage.m in Sources */,
 				A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */,
 				A3B8D24A189A7DE2009FFE5C /* NewMessage.m in Sources */,
 				A3B4719C189AB97F0043BFAC /* JSButton.m in Sources */,

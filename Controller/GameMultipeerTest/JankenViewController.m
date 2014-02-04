@@ -7,6 +7,7 @@
 //
 
 #import "JankenViewController.h"
+#import "Connection.h"
 
 @interface JankenViewController ()
 
@@ -38,18 +39,10 @@
 
 - (IBAction)click:(UIButton *)sender
 {
-    if ([sender.titleLabel.text  isEqualToString: @"Rock"])
-    {
-        
-    }
-    else if ([sender.titleLabel.text isEqualToString:@"Paper"])
-    {
-        
-    }
-    else if ([sender.titleLabel.text isEqualToString:@"Scissors"])
-    {
-        
-    }
+    NSData *data = [[[JankenResultMessage alloc] initWithJankenResult:sender.tag andPlayerNumber:[[Connection myConnection] playerNumber]] archiveData];
+    
+    //currently sending to all peers, limit to send only to server
+    [[Connection myConnection] sendDataToServer:data];
 }
 
 @end
