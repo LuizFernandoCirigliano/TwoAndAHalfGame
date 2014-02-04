@@ -318,6 +318,7 @@
 		A3B8D25D189A7DF8009FFE5C /* SetPlayerNumberMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D255189A7DF8009FFE5C /* SetPlayerNumberMessage.m */; };
 		A3B8D25E189A7DF8009FFE5C /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D257189A7DF8009FFE5C /* StartGameMessage.m */; };
 		A3B8D25F189A7DF8009FFE5C /* StartMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D259189A7DF8009FFE5C /* StartMinigameMessage.m */; };
+		A3B92F6C18A1159B00EFF763 /* Janken.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B92F6B18A1159B00EFF763 /* Janken.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -931,6 +932,8 @@
 		A3B8D257189A7DF8009FFE5C /* StartGameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartGameMessage.m; path = ../../Shared/StartGameMessage.m; sourceTree = "<group>"; };
 		A3B8D258189A7DF8009FFE5C /* StartMinigameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartMinigameMessage.h; path = ../../Shared/StartMinigameMessage.h; sourceTree = "<group>"; };
 		A3B8D259189A7DF8009FFE5C /* StartMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartMinigameMessage.m; path = ../../Shared/StartMinigameMessage.m; sourceTree = "<group>"; };
+		A3B92F6A18A1159B00EFF763 /* Janken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Janken.h; sourceTree = "<group>"; };
+		A3B92F6B18A1159B00EFF763 /* Janken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Janken.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1995,6 +1998,8 @@
 				3A4EABA8188D927D00E6C9F5 /* testCocosScene.m */,
 				3A25F104189FFC10005FD2F3 /* Map.h */,
 				3A25F105189FFC10005FD2F3 /* Map.m */,
+				A3B92F6A18A1159B00EFF763 /* Janken.h */,
+				A3B92F6B18A1159B00EFF763 /* Janken.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -2268,6 +2273,7 @@
 				3A4EAA37188D927B00E6C9F5 /* PVRTVector.cpp in Sources */,
 				3A4EA877188D927900E6C9F5 /* CCDirector.m in Sources */,
 				3A4EAB25188D927D00E6C9F5 /* CC3Identifiable.m in Sources */,
+				A3B92F6C18A1159B00EFF763 /* Janken.m in Sources */,
 				3A4EA867188D927900E6C9F5 /* CCAtlasNode.m in Sources */,
 				3A4EAACE188D927C00E6C9F5 /* CC3DeviceCameraOverlayUIViewController.m in Sources */,
 				3A4EAA5D188D927B00E6C9F5 /* CC3Matrix4x3.m in Sources */,
