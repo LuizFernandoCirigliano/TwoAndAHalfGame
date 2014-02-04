@@ -38,5 +38,6 @@
  */
 @property (nonatomic) BOOL isPlayingMinigame;
 
+
 - (id) initWithIndex: (NSInteger) index;
 @end
