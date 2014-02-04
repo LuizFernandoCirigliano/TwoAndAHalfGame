@@ -46,8 +46,8 @@
     
     //currently sending to all peers, limit to send only to server
     [[Connection myConnection] sendDataToServer:data];
-//    self.view.userInteractionEnabled = NO;
-//    [self dismissViewControllerAnimated:NO completion:nil];
+    self.view.userInteractionEnabled = NO;
+    [self dismissViewControllerAnimated:NO completion:nil];
     switch (sender.tag) {
         case 0:
             self.pickLabel.text = @"rock";
