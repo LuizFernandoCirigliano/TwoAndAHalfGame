@@ -10,6 +10,7 @@
 #import "Connection.h"
 
 @interface JankenViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *pickLabel;
 
 @end
 
@@ -45,9 +46,21 @@
     
     //currently sending to all peers, limit to send only to server
     [[Connection myConnection] sendDataToServer:data];
-    self.view.userInteractionEnabled = NO;
-    [self dismissViewControllerAnimated:NO completion:nil];
-    
+//    self.view.userInteractionEnabled = NO;
+//    [self dismissViewControllerAnimated:NO completion:nil];
+    switch (sender.tag) {
+        case 0:
+            self.pickLabel.text = @"rock";
+            break;
+        case 1:
+            self.pickLabel.text = @"paper";
+            break;
+        case 2:
+            self.pickLabel.text = @"scissors";
+            break;
+        default:
+            break;
+    }
 }
 
 @end
