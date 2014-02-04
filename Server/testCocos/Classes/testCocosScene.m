@@ -196,6 +196,7 @@ CC3Node *_mazeMap;
     //update the size of the tiles based on the size of POD file
     
     [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x  andMapZ:_mazeMap.boundingBox.maximum.z*_mazeMap.scale.z];
+    [[Map myMap] setScale:200];
     
     _mazeMap.shouldDrawBoundingVolume = YES;
     _mazeMap.shouldCullBackFaces = NO;
@@ -218,7 +219,9 @@ CC3Node *_mazeMap;
     monkey.node.shouldDrawBoundingVolume = YES;
     
 //    monkey.node.location = cc3v(-120.0*[self.charactersArray count], 0, 50);
-    monkey.node.location = cc3v(0, 0, 0);
+    
+    CGPoint spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1, 1)];
+    monkey.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
     monkey.node.scale = cc3v(15,15,15);

@@ -32,6 +32,8 @@
  */
 @property int zTileCount;
 
+@property float scale;
+
 + (Map *) myMap;
 
 - (void) readMapFile;
