@@ -42,6 +42,7 @@ static Game *myGameConfiguration = nil;
         NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
         [[Connection myConnection] sendData: data toPeer: peer];
         player.isPlayingMinigame = YES;
+        [player.node stopAllActions];
     }
 }
 

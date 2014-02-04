@@ -14,7 +14,9 @@ typedef NS_ENUM(NSInteger, JankenType)
 {
     Rock,
     Paper,
-    Scissors
+    Scissors,
+    nothing
+    
 };
 
 

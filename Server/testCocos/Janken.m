@@ -40,9 +40,19 @@
  \param playerID The ID of the player
  \param playerGesture The gesture chosen by the player
  */
+-(id) init {
+    self = [super init];
+    
+    if (self) {
+        self.playerAGesture = nothing;
+    }
+    
+    return self;
+}
 - (void) player: (NSInteger) playerID chose: (JankenType) playerGesture
 {
-    if (!self.playerAGesture)
+    NSLog(@"ID -> %d, Gesture -> %d", playerID, playerGesture);
+    if (self.playerAGesture == nothing)
     {
         self.playerAID = playerID;
         self.playerAGesture = playerGesture;
@@ -111,12 +121,13 @@
  */
 - (void) setWinner:(NSInteger)winner
 {
+    
     Game *game = [Game myGame];
     _winner = winner;
     if (winner == kJankenTie)
     {
         //TIE ==> REMATCH
-        [game jankenTie];
+//        [game jankenTie];
     }
     else
     {
