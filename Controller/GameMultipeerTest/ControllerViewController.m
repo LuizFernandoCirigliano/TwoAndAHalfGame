@@ -141,7 +141,7 @@
 
 -(void) startMinigame {
     
-    [self performSegueWithIdentifier:@"startMinigame" sender:self];
+    [self performSegueWithIdentifier:@"startMinigame" sender:nil];
 }
 #warning Add credits do JSController
 @end

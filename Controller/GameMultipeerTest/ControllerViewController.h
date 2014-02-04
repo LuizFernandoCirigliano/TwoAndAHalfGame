@@ -12,5 +12,6 @@
 @interface ControllerViewController : UIViewController <GameDelegate>
 
 -(void) otherPlayerPressed:(NSNumber *) buttonNumber;
+-(void) startMinigame;
 
 @end
