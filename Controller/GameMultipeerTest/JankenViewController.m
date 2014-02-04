@@ -27,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.userInteractionEnabled = YES;
 	// Do any additional setup after loading the view.
 }
 
@@ -43,6 +45,9 @@
     
     //currently sending to all peers, limit to send only to server
     [[Connection myConnection] sendDataToServer:data];
+    self.view.userInteractionEnabled = NO;
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
 }
 
 @end
