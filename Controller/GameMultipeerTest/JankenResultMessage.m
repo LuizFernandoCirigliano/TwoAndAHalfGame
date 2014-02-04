@@ -1,26 +1,22 @@
 //
-//  SetPlayerNumberMessage.m
-//  TwoAndAHalfGame
+//  JankenResultMessage.m
+//  GameMultipeerTest
 //
-//  Created by Luiz Fernando 2 on 1/28/14.
+//  Created by Luiz Fernando 2 on 2/4/14.
 //  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.
 //
 
-#import "SetPlayerNumberMessage.h"
+#import "JankenResultMessage.h"
 
-@implementation SetPlayerNumberMessage
+@implementation JankenResultMessage
 
-/**
- * Add method description here
- *
- \param playerNumber Parameter Description
- */
--(id) initWithPlayerNumber: (NSInteger)playerNumber
+-(id) initWithJankenResult: (NSInteger)result andPlayerNumber: (NSInteger)number
 {
     self = [super init];
     
     if(self) {
-        self.playerNumber = [NSNumber numberWithInt:playerNumber];
+        self.jankenResult = [NSNumber numberWithInt:result];
+        self.playerNumber = [NSNumber numberWithInt:number];
     }
     
     return self;
@@ -32,7 +28,7 @@
  */
 - (NSData *)archiveData
 {
-    return [self archiveDataWithKey:@"playerNumberMessage"];
+    return [self archiveDataWithKey:@"jankenResultMessage"];
 }
 
 #pragma marks NSCoding Protocols
@@ -46,6 +42,7 @@
 {
     if (self = [super init])
     {
+        self.jankenResult = [decoder decodeObjectForKey:@"jankenResult"];
         self.playerNumber = [decoder decodeObjectForKey:@"playerNumber"];
     }
     return self;
@@ -58,7 +55,7 @@
  */
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
+    [encoder encodeObject:self.jankenResult forKey:@"jankenResult"];
     [encoder encodeObject:self.playerNumber forKey:@"playerNumber"];
 }
-
 @end

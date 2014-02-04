@@ -87,6 +87,10 @@ static Connection *myConnectionConfiguration = nil;
     }
 }
 
+-(void) sendDataToServer: (NSData *) data {
+    [self.mySession sendData:data toPeers:[NSArray arrayWithObject:self.serverPeerID] withMode:MCSessionSendDataUnreliable error:nil];
+}
+
 // Received data from remote peer
 // session - The active connection session
 // data - Encapsulates one of the message classes. Use the archive/unarchive methods to obtain the message with the properties
@@ -97,14 +101,19 @@ static Connection *myConnectionConfiguration = nil;
     if (message == nil) {
         NSLog(@"erro, mensagem nula");
     } else if ([message isKindOfClass:[SetPlayerNumberMessage class]]) {
+        
         SetPlayerNumberMessage *playerNumberMessage = (SetPlayerNumberMessage *)message;
         NSLog(@"%d", [[playerNumberMessage playerNumber] intValue]);
         self.playerNumber = [[playerNumberMessage playerNumber] intValue];
+        self.serverPeerID = peerID;
+        
     } else if ([message isKindOfClass:[StartMinigameMessage class]]) {
+        
         if([self.delegate respondsToSelector:@selector(startMinigame)]) {
             NSLog(@"MESSAGE RECEIVED");
             [self.delegate performSelectorOnMainThread:@selector(startMinigame) withObject:nil waitUntilDone:NO];
         }
+        
     }
     
     //for example on how to use delegates to handle events based on the type of messages that arrive, check the server connection class

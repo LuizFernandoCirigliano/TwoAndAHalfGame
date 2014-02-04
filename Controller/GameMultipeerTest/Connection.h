@@ -14,6 +14,8 @@
 #import "ButtonPressMessage.h"
 #import "SetPlayerNumberMessage.h"
 #import "StartMinigameMessage.h"
+#import "JankenResultMessage.h"
+
 
 @protocol ConnectionDelegate <NSObject>
 
@@ -41,9 +43,14 @@
 @property (nonatomic, assign) id delegate;
 @property int playerNumber;
 
+@property (nonatomic, strong) MCPeerID *serverPeerID;
+
 + (Connection *) myConnection;
 + (Connection *) myConnectionWithName: (NSString *) peerName;
 
 - (void) showBrowserVC:(UIViewController*)controller;
 - (void) sendData: (NSData *)data;
+- (void) sendDataToServer: (NSData *)data;
+- (void) sendData:(NSData *) data toPeer:(MCPeerID *) peer;
+
 @end
