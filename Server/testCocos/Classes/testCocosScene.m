@@ -20,11 +20,14 @@
 #import "CC3ParametricMeshNodes.h"
 #import "Map.h"
 
+#define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
 
 @implementation testCocosScene
 
 NSMutableArray *_walls;
 CC3Node *_monkeyModel;
+
+CC3Node *_allCharacters;
 
 CC3Node *_mazeMap;
 
@@ -57,20 +60,19 @@ CC3Node *_mazeMap;
  */
 -(void) initializeScene
 {
-    self.shouldClearDepthBufferBefore2D = NO;
-	self.shouldClearDepthBufferBefore3D = NO;
+
     
     
     [Connection myConnection];
     [Connection myConnection].delegate = self;
-    
+    _allCharacters = [CC3Node node];
     _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
     self.charactersArray = [[NSMutableArray alloc] init];
     self.flip = NO;
     self.isTouchEnabled = YES;
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, 40.0f, 15.0f );
+	cam.location = CAMERA_ANGLE;
 //    cam set
 //    cam.targetLocation = cc3v(0, 0, 0);
     cam.hasInfiniteDepthOfField = YES;
@@ -175,6 +177,8 @@ CC3Node *_mazeMap;
     [self addPlayerCharacter];
     [self addPlayerCharacter];
     [self addPlayerCharacter];
+    
+    [self addChild:_allCharacters];
     
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
@@ -317,7 +321,10 @@ CC3Node *_mazeMap;
 
     //add to character array and add the node to the scene
     [self.charactersArray addObject:monkey];
-    [self addChild:monkey.node];
+    
+    [_allCharacters addChild:monkey.node];
+
+    
 }
 
 /**
@@ -441,15 +448,22 @@ CC3Node *_mazeMap;
     
     [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray firstObject] node] afterDelay:3.0f];
     [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray lastObject] node] afterDelay:6.0f];
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:9.0f];
-
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:8.0f];
+    
+    
+    NSTimer *cameraTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES];
+//    [cameraTimer fire];
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
+}
+-(void) zoomCameraOnPlayers {
+    NSLog(@"moving camera");
+    [self.activeCamera moveWithDuration:1.0f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
 }
 
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
-    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:cc3v( 0.0, 30.0f, 5.0f )];
+    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
 }
 
 /**
