@@ -96,5 +96,6 @@
     {
         //WE HAVE A WINNER
     }
+    self = [[Janken alloc] init];
 }
 @end
