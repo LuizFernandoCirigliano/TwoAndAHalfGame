@@ -105,14 +105,14 @@ static Map *myMapConfiguration = nil;
 
 //This method receives a position (float values for x and z) and returns the indexes for the corresponding tile
 -(CGPoint) locationInMapWithPosition: (CGPoint) position {
-    CGPoint location = CGPointMake(floorf((position.x + self.mapSizeX/2)/ (self.tileSizeX)), floorf((position.y + self.mapSizeZ/2) / (self.tileSizeZ)));
+    CGPoint location = CGPointMake(floorf((position.x + self.mapSizeX/2)/ self.tileSizeX), floorf((position.y + self.mapSizeZ/2) / self.tileSizeZ));
     
     return location;
 }
 
 //This method receives the tile indexes and returns the center position (float values) for the center of the tile
 -(CGPoint) positionInMapWithLocation: (CGPoint) location {
-    CGPoint position = CGPointMake(-self.mapSizeX/2 + self.tileSizeX*location.x + self.tileSizeX/2, -self.mapSizeZ/2 + self.tileSizeZ*location.y + self.tileSizeZ/2);
+    CGPoint position = CGPointMake(-self.mapSizeX/2 + self.tileSizeX*location.x + self.tileSizeX , -self.mapSizeZ/2 + self.tileSizeZ*location.y + self.tileSizeZ);
     
     return position;
 }

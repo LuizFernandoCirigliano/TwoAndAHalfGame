@@ -86,8 +86,8 @@
         for (int i = 0; i < 4; i++)
         {
             locationInMap[i]  = [[Map myMap] locationInMapWithPosition: bounds[i]];
-            
-            if ([[Map myMap] contentOfMapAtLocation: locationInMap[i]] != '0') //If the new location is not free
+            char c = [[Map myMap] contentOfMapAtLocation: locationInMap[i]];
+            if (isdigit(c) && c != '0') //If the new location is not free
             {
                 return NO; //The node should not move
             }
