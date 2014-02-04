@@ -23,7 +23,7 @@
 /**
  * Add property description here
  */
-@property (strong, nonatomic) NSMutableArray *charactersArray;
+//@property (strong, nonatomic) NSMutableArray *charactersArray;
 
 /**
  * Add property description here

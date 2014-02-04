@@ -19,17 +19,21 @@
 #import "CC3BillBoard.h"
 #import "CC3ParametricMeshNodes.h"
 #import "Map.h"
+#import "Game.h"
 
 #define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
 
 @implementation testCocosScene
 
 NSMutableArray *_walls;
+
 CC3Node *_monkeyModel;
 
 CC3Node *_allCharacters;
 
 CC3Node *_mazeMap;
+
+NSMutableArray *_playerArray;
 
 -(void) dealloc
 {
@@ -62,15 +66,8 @@ CC3Node *_mazeMap;
 {
 
     
-    
-    [Connection myConnection];
-    [Connection myConnection].delegate = self;
-    _allCharacters = [CC3Node node];
-    _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
-    self.charactersArray = [[NSMutableArray alloc] init];
-    self.flip = NO;
-    self.isTouchEnabled = YES;
-	// Create the camera, place it back a bit, and add it to the scene
+    [self performInitializations];
+    // Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
 	cam.location = CAMERA_ANGLE;
 //    cam set
@@ -188,6 +185,22 @@ CC3Node *_mazeMap;
 
 }
 
+//all variable and property initializations go here
+-(void) performInitializations {
+    [Connection myConnection];
+    [Connection myConnection].delegate = self;
+    _allCharacters = [CC3Node node];
+    _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
+    
+//    self.charactersArray = [[NSMutableArray alloc] init];
+    self.flip = NO;
+    self.isTouchEnabled = YES;
+    
+    [[Game myGame] configureGame];
+    
+    _playerArray = [[Game myGame] playerArray];
+    
+}
 -(void) createTestTerrain
 {
     //hocus pocus add grass
@@ -272,7 +285,7 @@ CC3Node *_mazeMap;
 
 -(void) addPlayerCharacter
 {
-    Player *monkey = [[Player alloc] initWithIndex: [self.charactersArray count]];
+    Player *monkey = [[Player alloc] initWithIndex: [_playerArray count]];
     
     //copy the original model
     monkey.node = [_monkeyModel copy];
@@ -283,7 +296,7 @@ CC3Node *_mazeMap;
     
     //temporary spawn position methods, replace with positions on map text file
     CGPoint spawnPoint;
-    switch ([self.charactersArray count]) {
+    switch ([_playerArray count]) {
         case 0:
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,1)];
             break;
@@ -307,7 +320,7 @@ CC3Node *_mazeMap;
     
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
-    CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[self.charactersArray count]+1]];
+    CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[_playerArray count]+1]];
     //Add sprite to billboard
     CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
     [marker setScale:cc3v(0.1f, 0.1f, 0.1f)];
@@ -320,7 +333,7 @@ CC3Node *_mazeMap;
     [monkey.node addChild:marker];
 
     //add to character array and add the node to the scene
-    [self.charactersArray addObject:monkey];
+    [_playerArray addObject:monkey];
     
     [_allCharacters addChild:monkey.node];
 
@@ -446,13 +459,13 @@ CC3Node *_mazeMap;
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
 //    [self.activeCamera moveWithDuration: 1.0 toShowAllOf: [[self.charactersArray objectAtIndex:0] node]];
     
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray firstObject] node] afterDelay:3.0f];
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[self.charactersArray lastObject] node] afterDelay:6.0f];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray firstObject] node] afterDelay:3.0f];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray lastObject] node] afterDelay:6.0f];
     [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:8.0f];
     
     
-    NSTimer *cameraTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES];
-//    [cameraTimer fire];
+    [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES];
+
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
 }
@@ -601,14 +614,14 @@ CC3Node *_mazeMap;
 -(void) otherPlayerPressed:(ButtonPressMessage *)buttonPressMessage
 {
     
-    if ([[buttonPressMessage playerNumber] intValue] >= [self.charactersArray count])
+    if ([[buttonPressMessage playerNumber] intValue] >= [_playerArray count])
     {
         return;
     }
     
 //    NSLog(@"%@ player: %@" , [buttonPressMessage buttonNumber], [buttonPressMessage playerNumber]);
     
-    Player* character = [self.charactersArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
+    Player* character = [_playerArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
     int buttonNumberInt = [[buttonPressMessage buttonNumber] intValue];
     
 //    NSLog(@"%@" ,[character.node name]);
@@ -756,7 +769,7 @@ CC3Node *_mazeMap;
 -(void) checkForCollisions
 {
     //For each player
-    for (Player *player in self.charactersArray)
+    for (Player *player in _playerArray)
     {
         // Test whether the player intersects the wall.
         if (![player.node shouldMove])
@@ -767,7 +780,7 @@ CC3Node *_mazeMap;
         }
 
         //For each player
-        for (Player *player2 in self.charactersArray)
+        for (Player *player2 in _playerArray)
         {
             if (player2 != player)
             {

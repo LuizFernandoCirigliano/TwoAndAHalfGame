@@ -130,7 +130,7 @@
     }
     data = [[[ButtonPressMessage alloc] initWithButtonNumber:tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
     NSLog(@"%d", tag);
-    [[Connection myConnection] sendData:data];
+    [[Connection myConnection] sendDataToServer:data];
 }
 
 - (void)dPadDidReleaseDirection:(JSDPad *)dPad
