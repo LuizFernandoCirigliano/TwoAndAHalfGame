@@ -203,22 +203,29 @@ static Connection *myConnectionConfiguration = nil;
     if (message == nil) {
         NSLog(@"erro, mensagem nula");
     } else if ([message isKindOfClass:[StartGameMessage class]]) {
+        //Game started
         if ([self.delegate respondsToSelector:@selector(startGame)])
         {
             [self.advertiser stopAdvertisingPeer];
             [self.delegate performSelector:@selector(startGame)];
         }
     } else if ([message isKindOfClass:[EndRoundMessage class]]) {
+        //Game ended
         if ([self.delegate respondsToSelector:@selector(roundEnded)])
         {
             [self.delegate performSelector:@selector(roundEnded)];
         }
     } else if ([message isKindOfClass:[ButtonPressMessage class]]) {
+        //Button was pressed on one of the controllers
         if ([self.delegate respondsToSelector:@selector(otherPlayerPressed: )])
         {
             ButtonPressMessage *buttonMessage = (ButtonPressMessage *) message;
             [self.delegate performSelector:@selector(otherPlayerPressed: ) withObject:buttonMessage];
         }
+    } else if ([message isKindOfClass:[JankenResultMessage class]]) {
+        //Janken minigame ended
+        
+        
     }
 }
 

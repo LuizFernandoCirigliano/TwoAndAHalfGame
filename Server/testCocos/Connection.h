@@ -14,6 +14,8 @@
 #import "ButtonPressMessage.h"
 #import "SetPlayerNumberMessage.h"
 #import "StartMinigameMessage.h"
+#import "JankenResultMessage.h"
+
 #define MAX_PLAYERS 4
 
 #warning Protocol should be documented.
