@@ -163,13 +163,17 @@ CC3Node *_mazeMap;
     [[Map myMap] readMapFile];
     
     //leave the mazeWalls as the first method
+
+    
     [self addMazeWalls];
     
     [self createTerrain];
     
+
     [self addPlayerCharacter];
     [self addPlayerCharacter];
-    
+    [self addPlayerCharacter];
+    [self addPlayerCharacter];
     
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
@@ -196,7 +200,8 @@ CC3Node *_mazeMap;
     
     //update the size of the tiles based on the size of POD file
     
-    [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x  andMapZ:_mazeMap.boundingBox.maximum.z*_mazeMap.scale.z];
+    [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x*2  andMapZ:_mazeMap.boundingBox.maximum.z*2*_mazeMap.scale.z];
+    [[Map myMap] setScale:200];
     
     _mazeMap.shouldDrawBoundingVolume = YES;
     _mazeMap.shouldCullBackFaces = NO;
@@ -207,6 +212,8 @@ CC3Node *_mazeMap;
     static const ccColor3B color = {123,123,123};
     _mazeMap.color = color;
     
+    _mazeMap.shouldCullFrontFaces = NO;
+
     [self addChild:_mazeMap];
     
 }
@@ -222,8 +229,26 @@ CC3Node *_mazeMap;
     [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.7f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
-//    monkey.node.location = cc3v(-120.0*[self.charactersArray count], 0, 50);
-    monkey.node.location = cc3v(0, 0, 0);
+    //temporary spawn position methods, replace with positions on map text file
+    CGPoint spawnPoint;
+    switch ([self.charactersArray count]) {
+        case 0:
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,1)];
+            break;
+        case 1:
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,38)];
+            break;
+        case 2:
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,38)];
+            break;
+        case 3:
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,1)];
+            break;
+        default:
+            break;
+    }
+    
+    monkey.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
     monkey.node.scale = cc3v(15,15,15);

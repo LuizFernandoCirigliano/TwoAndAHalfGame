@@ -36,7 +36,7 @@
 @property (nonatomic) CGPoint playerBSpawnPoint;
 @property (nonatomic) CGPoint playerCSpawnPoint;
 @property (nonatomic) CGPoint playerDSpawnPoint;
-
+@property float scale;
 
 + (Map *) myMap;
 
@@ -44,5 +44,6 @@
 
 -(void) setSizesWithMapX : (float) xSize andMapZ: (float) zSize;
 -(CGPoint) locationInMapWithPosition: (CGPoint) position;
+-(CGPoint) positionInMapWithLocation: (CGPoint) location;
 -(char) contentOfMapAtLocation: (CGPoint) location;
 @end
