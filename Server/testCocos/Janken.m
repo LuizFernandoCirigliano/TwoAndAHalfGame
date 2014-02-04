@@ -8,6 +8,29 @@
 
 #import "Janken.h"
 
+@interface Janken ()
+
+/**
+ * The ID of player number A
+ */
+@property (nonatomic) NSInteger playerAID;
+
+/**
+ * The ID of player number B
+ */
+@property (nonatomic) NSInteger playerBID;
+
+/**
+ * The gesture of player number A
+ */
+@property (nonatomic) JankenType playerAGesture;
+
+/**
+ * The gesture of player number A
+ */
+@property (nonatomic) JankenType playerBGesture;
+
+@end
 @implementation Janken
 
 #warning Add documentation
