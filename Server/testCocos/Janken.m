@@ -7,6 +7,7 @@
 //
 
 #import "Janken.h"
+#import "Game.h"
 
 @interface Janken ()
 
@@ -110,14 +111,17 @@
  */
 - (void) setWinner:(NSInteger)winner
 {
+    Game *game = [Game myGame];
     _winner = winner;
     if (winner == kJankenTie)
     {
         //TIE ==> REMATCH
+        [game jankenTie];
     }
     else
     {
         //WE HAVE A WINNER
+        [game jankenWithWinner: winner];
     }
     self = [[Janken alloc] init];
 }
