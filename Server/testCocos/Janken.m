@@ -8,68 +8,93 @@
 
 #import "Janken.h"
 
-#define kJankenTie -1
-
-typedef NS_ENUM(NSInteger, JankenType)
-{
-    Rock,
-    Paper,
-    Scissors
-};
-
 @implementation Janken
 
-
-/*
- * Return the ID of the winning player or kJankenTie in case of a tie
- \param playerAID The ID of the A player
- \param playerAGesture The gesture of the A player
- \param playerBID The ID of the B player
- \param playerBGesture The gesture of the B player
+#warning Add documentation
+/**
+ * Sets the gesture chosen by a given player
+ \param playerID The ID of the player
+ \param playerGesture The gesture chosen by the player
  */
-- (NSInteger) winningPlayerWhenPlayer: (NSInteger) playerAID chose: (JankenType) playerAGesture andPlayer: (NSInteger) playerBID chose: (JankenType) playerBGesture
+- (void) player: (NSInteger) playerID chose: (JankenType) playerGesture
 {
-    switch (playerAGesture)
+    if (!self.playerAGesture)
+    {
+        self.playerAID = playerID;
+        self.playerAGesture = playerGesture;
+    }
+    else
+    {
+        self.playerBID = playerID;
+        self.playerBGesture = playerGesture;
+        self.winner = [self winningPlayer];
+    }
+}
+
+
+/**
+ * Returns the ID of the winning player or kJankenTie in case of a tie
+ */
+- (NSInteger) winningPlayer
+{
+    switch (self.playerAGesture)
     {
         case Rock:
         {
-            switch (playerBGesture)
+            switch (self.playerBGesture)
             {
                 case Rock:
                     return kJankenTie;
                 case Paper:
-                    return playerBID;
+                    return self.playerBID;
                 case Scissors:
-                    return playerAID;
+                    return self.playerAID;
             }
             break;
         }
         case Paper:
         {
-            switch (playerBGesture)
+            switch (self.playerBGesture)
             {
                 case Rock:
-                    return playerAID;
+                    return self.playerAID;
                 case Paper:
                     return kJankenTie;
                 case Scissors:
-                    return playerBID;
+                    return self.playerBID;
             }
             break;
         }
         case Scissors:
         {
-            switch (playerBGesture)
+            switch (self.playerBGesture)
             {
                 case Rock:
-                    return playerBID;
+                    return self.playerBID;
                 case Paper:
-                    return playerAID;
+                    return self.playerAID;
                 case Scissors:
                     return kJankenTie;
             }
             break;
         }
+    }
+}
+
+/**
+ * Sets the winner
+ \param winner The ID of the winning player
+ */
+- (void) setWinner:(NSInteger)winner
+{
+    _winner = winner;
+    if (winner == kJankenTie)
+    {
+        //TIE ==> REMATCH
+    }
+    else
+    {
+        //WE HAVE A WINNER
     }
 }
 @end
