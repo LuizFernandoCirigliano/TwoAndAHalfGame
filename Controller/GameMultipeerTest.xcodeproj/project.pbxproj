@@ -32,6 +32,7 @@
 		A3B8D24C189A7DE2009FFE5C /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D245189A7DE2009FFE5C /* StartGameMessage.m */; };
 		A3B8D24D189A7DE2009FFE5C /* StartMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D247189A7DE2009FFE5C /* StartMinigameMessage.m */; };
 		A3B8D262189A8ED7009FFE5C /* JSDPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D261189A8ED7009FFE5C /* JSDPad.m */; };
+		A3B92F6F18A1232900EFF763 /* JankenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B92F6E18A1232900EFF763 /* JankenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		A3B8D247189A7DE2009FFE5C /* StartMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartMinigameMessage.m; path = ../../Shared/StartMinigameMessage.m; sourceTree = "<group>"; };
 		A3B8D260189A8ED7009FFE5C /* JSDPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDPad.h; sourceTree = "<group>"; };
 		A3B8D261189A8ED7009FFE5C /* JSDPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDPad.m; sourceTree = "<group>"; };
+		A3B92F6D18A1232900EFF763 /* JankenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JankenViewController.h; sourceTree = "<group>"; };
+		A3B92F6E18A1232900EFF763 /* JankenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JankenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 				3A44A5101888395A00777286 /* ConnectViewController.m */,
 				3A44A54418883CE300777286 /* ControllerViewController.h */,
 				3A44A54518883CE300777286 /* ControllerViewController.m */,
+				A3B92F6D18A1232900EFF763 /* JankenViewController.h */,
+				A3B92F6E18A1232900EFF763 /* JankenViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				A3B8D24A189A7DE2009FFE5C /* NewMessage.m in Sources */,
 				A3B4719C189AB97F0043BFAC /* JSButton.m in Sources */,
 				A3B8D248189A7DE2009FFE5C /* ButtonPressMessage.m in Sources */,
+				A3B92F6F18A1232900EFF763 /* JankenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
