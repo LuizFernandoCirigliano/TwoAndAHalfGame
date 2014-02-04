@@ -103,7 +103,7 @@ static Connection *myConnectionConfiguration = nil;
     } else if ([message isKindOfClass:[StartMinigameMessage class]]) {
         if([self.delegate respondsToSelector:@selector(startMinigame)]) {
             NSLog(@"MESSAGE RECEIVED");
-            [self.delegate performSelector:@selector(startMinigame)];
+            [self.delegate performSelectorOnMainThread:@selector(startMinigame) withObject:nil waitUntilDone:NO];
         }
     }
     
