@@ -102,6 +102,7 @@ static Connection *myConnectionConfiguration = nil;
         self.playerNumber = [[playerNumberMessage playerNumber] intValue];
     } else if ([message isKindOfClass:[StartMinigameMessage class]]) {
         if([self.delegate respondsToSelector:@selector(startMinigame)]) {
+            NSLog(@"MESSAGE RECEIVED");
             [self.delegate performSelector:@selector(startMinigame)];
         }
     }

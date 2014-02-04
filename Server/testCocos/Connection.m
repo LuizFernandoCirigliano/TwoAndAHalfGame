@@ -112,8 +112,10 @@ static Connection *myConnectionConfiguration = nil;
     NSError *error;
     [self.mySession sendData:data toPeers:[NSArray arrayWithObject:peer] withMode:MCSessionSendDataUnreliable error: &error];
     if(error) {
-//        NSLog(@"%@", [error description]);
+        NSLog(@"%@", [error description]);
     }
+    
+    NSLog(@"message sent");
 }
 
 /**
