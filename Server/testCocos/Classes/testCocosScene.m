@@ -22,7 +22,7 @@
 #import "Game.h"
 
 #define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
-
+#define COLISSION_CHECK_INTERVAL 60.0f
 @implementation testCocosScene
 
 NSMutableArray *_walls;
@@ -789,15 +789,15 @@ NSMutableArray *_playerArray;
                 {
                     NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
                     NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
-                    if (interval > 60.0f)
-#warning Fix hardcoded 60.0f (One minute)
+                    if (interval > COLISSION_CHECK_INTERVAL)
+
                     {
                         // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
                         NSDate *now = [[NSDate date] copy];
                         [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
                         [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
 //                        NSLog(@"Players collided; minigame should start!!");
-                        [self startMinigame: @[player, player2]];
+                        [[Game myGame] startMinigame: @[player, player2]];
                     }
                     else
                     {
@@ -811,21 +811,7 @@ NSMutableArray *_playerArray;
     }
 }
 
-/**
- * Sets players in minigame mode and starts a minigame
- \param players NSArray of Player containing players who shall play a minigame
- */
-- (void) startMinigame: (NSArray*) players
-{
-    //One player is already playing a minigame case not handled! #FIXME
-    for (Player *player in players)
-    {
-        MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:player.index];
-        NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
-        [[Connection myConnection] sendData: data toPeer: peer];
-        player.isPlayingMinigame = YES;
-    }
-}
+
 
 @end
 

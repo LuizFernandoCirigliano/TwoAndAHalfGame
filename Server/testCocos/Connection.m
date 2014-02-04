@@ -11,7 +11,7 @@
 #import "StartGameMessage.h"
 #import "EndRoundMessage.h"
 #import "ButtonPressMessage.h"
-
+#import "Game.h"
 #warning Add pragma marks to this file.
 
 @implementation Connection
@@ -224,8 +224,8 @@ static Connection *myConnectionConfiguration = nil;
         }
     } else if ([message isKindOfClass:[JankenResultMessage class]]) {
         //Janken minigame ended
-        
-        
+        JankenResultMessage *jankenMessage = (JankenResultMessage *) message;
+        [[[Game myGame] janken] player:[[jankenMessage playerNumber] intValue] chose:[[jankenMessage jankenResult] intValue]];
     }
 }
 

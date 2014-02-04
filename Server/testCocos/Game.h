@@ -8,15 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "Janken.h"
+#import "Player.h"
+#import "Connection.h"
 
 @interface Game : NSObject
 
 +(Game *)myGame;
 
 - (void) configureGame;
-
+- (void) startMinigame: (NSArray*) players;
+- (void) jankenWithWinner: (NSInteger)winner;
 
 @property (strong, nonatomic) Janken *janken;
 @property (strong, nonatomic) NSMutableArray *playerArray;
+
 
 @end
