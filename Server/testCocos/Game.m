@@ -51,11 +51,12 @@ static Game *myGameConfiguration = nil;
 {
     Player *winnerPlayer = [self.playerArray objectAtIndex:winner];
     winnerPlayer.playerScore += 10;
+    self.janken = [[Janken alloc] init];
 }
 
 - (void) jankenTie
 {
-    //
+    self.janken = [[Janken alloc] init];
 }
 
 @end

@@ -167,6 +167,5 @@
         //WE HAVE A WINNER
         [game jankenWithWinner: winner];
     }
-    [self init];
 }
 @end
