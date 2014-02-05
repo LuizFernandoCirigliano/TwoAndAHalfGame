@@ -23,7 +23,8 @@ static Game *myGameConfiguration = nil;
     return myGameConfiguration;
 }
 
-- (void) configureGame {
+- (void) configureGame
+{
     
     self.janken = [[Janken alloc] init];
     self.playerArray = [[NSMutableArray alloc] init];
@@ -46,11 +47,18 @@ static Game *myGameConfiguration = nil;
     }
 }
 
+
 -(void) jankenWithWinner:(NSInteger)winner andLooser:(NSInteger)looser {
+
     Player *winnerPlayer = [self.playerArray objectAtIndex:winner];
     Player *looserPlayer = [self.playerArray objectAtIndex:looser];
     winnerPlayer.playerScore += 10;
     looserPlayer.playerScore -= 10;
+}
+
+- (void) jankenTie
+{
+    //
 }
 
 @end

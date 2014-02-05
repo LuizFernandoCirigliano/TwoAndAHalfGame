@@ -76,10 +76,10 @@
     {
         GLfloat radius = ((CC3NodeSphericalBoundingVolume*)boundingVolume).radius * self.scale.x;
         
-        CGPoint bounds[4] =    {CGPointMake(self.location.x         , self.location.z - radius), //UP
-                                CGPointMake(self.location.x + radius, self.location.z         ), //RIGHT
-                                CGPointMake(self.location.x         , self.location.z + radius), //DOWN
-                                CGPointMake(self.location.x - radius, self.location.z         )};//LEFT
+        CGPoint bounds[4] =    {CGPointMake(position.x         , position.y + radius), //UP
+                                CGPointMake(position.x - radius, position.y         ), //RIGHT
+                                CGPointMake(position.x         , position.y - radius), //DOWN
+                                CGPointMake(position.x + radius, position.y         )};//LEFT
     
         CGPoint locationInMap[4];
         
@@ -91,6 +91,66 @@
             {
                 return NO; //The node should not move
             }
+        }
+        
+        return YES;
+    }
+    else
+    {
+        //If the bounding volume is not spherical than the node is free to move
+        return YES;
+    }
+    
+}
+
+
+/**
+ * Returns whether the node should move in a given direction considering its location and the map
+ */
+- (BOOL) shouldMove: (Direction) direction
+{
+    CGPoint position = CGPointMake(self.location.x, self.location.z);
+    
+    CC3BoundingVolume *boundingVolume = self.boundingVolume;
+    if ([boundingVolume isKindOfClass:[CC3NodeSphericalBoundingVolume class]])
+    {
+        CGPoint bound;
+        GLfloat radius = ((CC3NodeSphericalBoundingVolume*)boundingVolume).radius * self.scale.x;
+
+        
+        switch (direction)
+        {
+            case Up:
+            {
+                bound = CGPointMake(position.x         , position.y + radius);
+                break;
+            }
+            case Right:
+            {
+                bound = CGPointMake(position.x - radius, position.y         );
+                break;
+            }
+            case Down:
+            {
+                bound = CGPointMake(position.x         , position.y - radius);
+                break;
+            }
+            case Left:
+            {
+                bound = CGPointMake(position.x + radius, position.y         );
+                break;
+            }
+            case Other:
+            {
+                return [self shouldMove];
+            }
+        }
+        
+        CGPoint locationInMap = [[Map myMap] locationInMapWithPosition: bound];
+        char c = [[Map myMap] contentOfMapAtLocation: locationInMap];
+        if (isdigit(c) && c != '0') //If the new location is not free
+        {
+            return NO; //The node should not move
         }
         
         return YES;

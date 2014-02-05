@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.
 //
 
+#define kJankenError -666
+
 #import "Janken.h"
 #import "Game.h"
 
@@ -85,6 +87,8 @@
                     return self.playerAID;
                 case TLE:
                     return self.playerAID;
+                case nothing:
+                    return kJankenError;
             }
             break;
         }
@@ -100,6 +104,8 @@
                     return self.playerBID;
                 case TLE:
                     return self.playerAID;
+                case nothing:
+                    return kJankenError;
             }
             break;
         }
@@ -115,6 +121,8 @@
                     return kJankenTie;
                 case TLE:
                     return self.playerAID;
+                case nothing:
+                    return kJankenError;
             }
             break;
         }
@@ -124,14 +132,20 @@
             {
                 return kJankenTie;
             }
+            else if (self.playerBGesture == nothing)
+            {
+                return kJankenError;
+            }
             else
             {
                 return self.playerBID;
             }
         }
+        case nothing:
+        {
+            return kJankenError;
+        }
     }
-    
-    return -666; //ERROR!!!!!
 }
 
 /**
@@ -145,7 +159,7 @@
     if (winner == kJankenTie)
     {
         //TIE ==> REMATCH
-//        [game jankenTie];
+        [game jankenTie];
     }
     else
     {
@@ -153,6 +167,6 @@
         NSInteger looser = (winner == self.playerAID) ? self.playerBID : self.playerAID;
         [game jankenWithWinner: winner andLooser: looser];
     }
-    self = [[Janken alloc] init];
+    [self init];
 }
 @end

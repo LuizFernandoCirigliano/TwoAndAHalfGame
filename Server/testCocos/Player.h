@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.
 //
 
-#import "CC3Node.h"
+#import "CC3Node+Collision.h"
 
 @interface Player : NSObject
 
@@ -39,6 +39,7 @@
  */
 @property (nonatomic) BOOL isPlayingMinigame;
 
+@property (nonatomic) Direction direction;
 
 - (id) initWithIndex: (NSInteger) index;
 @end

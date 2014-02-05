@@ -47,7 +47,7 @@ static Connection *myConnectionConfiguration = nil;
     
     if (!myConnectionConfiguration)
     {
-        myConnectionConfiguration = [[super allocWithZone:nil] initWithName:@"simulador"];
+        myConnectionConfiguration = [[super allocWithZone:nil] initWithName:@"Simulador"];
 #warning Possible incomplete method implementation.
     }
     
