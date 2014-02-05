@@ -167,6 +167,5 @@
         NSInteger looser = (winner == self.playerAID) ? self.playerBID : self.playerAID;
         [game jankenWithWinner: winner andLooser: looser];
     }
-    [self init];
 }
 @end

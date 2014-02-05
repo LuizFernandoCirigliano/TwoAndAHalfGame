@@ -161,7 +161,7 @@ NSMutableArray *_playerArray;
     
 
     //load the model content from the file
-    [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
+    [self addContentFromPODFile:@"marcelo_model.pod" withName:@"monkey"];
     _monkeyModel = [self getNodeNamed:@"monkey"];
     
     
@@ -351,7 +351,7 @@ NSMutableArray *_playerArray;
     monkey.node = [_monkeyModel copy];
     
     //create bounding volume
-    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.6f];
+    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
     //temporary spawn position methods, replace with positions on map text file
@@ -376,7 +376,7 @@ NSMutableArray *_playerArray;
     monkey.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
-    monkey.node.scale = cc3v(15,15,15);
+    monkey.node.scale = cc3v(22,22,22);
     
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
@@ -474,7 +474,7 @@ NSMutableArray *_playerArray;
 -(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor
 {
 //    NSLog(@"%d", [_coinEmitter particleCount]);
-    [((testCocosLayer *)self.cc3Layer) updateHUD];
+//    [((testCocosLayer *)self.cc3Layer) updateHUD];
 }
 
 /**
@@ -487,8 +487,8 @@ NSMutableArray *_playerArray;
  */
 -(void) updateAfterTransform: (CC3NodeUpdatingVisitor*) visitor
 {
+//    Game *game = [Game myGame];
     [self checkForCollisions];
-    [self updateLives];
 }
 
 
@@ -848,9 +848,6 @@ NSMutableArray *_playerArray;
     //For each player
     for (Player *player in _playerArray)
     {
-        CC3Vector playerPos = player.node.location;
-        CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:CGPointMake(playerPos.x, playerPos.z)];
-        
         // Test whether the player intersects the wall.
         if (![player.node shouldMove: player.direction])
         {
@@ -861,15 +858,35 @@ NSMutableArray *_playerArray;
         
         
         //check if he's going over a coin
-        NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
-        CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
+        CGPoint position = CGPointMake(player.node.location.x, player.node.location.z);
+
+        GLfloat radius = ((CC3NodeSphericalBoundingVolume*)player.node.boundingVolume).radius * self.scale.x;
         
-        if(coin) {
-            [coin setIsAlive:NO];
-            player.playerScore++;
-            [_coinDictionary removeObjectForKey:coinKey];
+        CGPoint bounds[5] =    {CGPointMake(position.x + radius, position.y + radius), //UPLEFT
+                                CGPointMake(position.x + radius, position.y - radius), //UPRIGHT
+                                CGPointMake(position.x - radius, position.y + radius), //DOWNLEFT
+                                CGPointMake(position.x - radius, position.y - radius), //DOWNRIGHT
+                                CGPointMake(position.x         , position.y         )}; //CENTER
+
+        for (int i = 0; i < 5; i++)
+        {
+            CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:bounds[i]];
+            
+            
+            NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
+            CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
+            
+            if(coin) {
+                [coin setIsAlive:NO];
+                player.playerScore++;
+                [_coinDictionary removeObjectForKey:coinKey];
+                
+                
+            }
+
             
         }
+        
         
         //For each player
         for (Player *player2 in _playerArray)
@@ -903,9 +920,7 @@ NSMutableArray *_playerArray;
     }
 }
 
-- (void)updateLives {
 
-}
 
 @end
 
