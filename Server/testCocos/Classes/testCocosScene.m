@@ -157,7 +157,7 @@ NSMutableArray *_playerArray;
     
 
     //load the model content from the file
-    [self addContentFromPODFile:@"suzanne.pod" withName:@"monkey"];
+    [self addContentFromPODFile:@"marcelo_model.pod" withName:@"monkey"];
     _monkeyModel = [self getNodeNamed:@"monkey"];
     
     
@@ -345,7 +345,7 @@ NSMutableArray *_playerArray;
     monkey.node = [_monkeyModel copy];
     
     //create bounding volume
-    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.6f];
+    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
     monkey.node.shouldDrawBoundingVolume = YES;
     
     //temporary spawn position methods, replace with positions on map text file
@@ -370,7 +370,7 @@ NSMutableArray *_playerArray;
     monkey.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
-    monkey.node.scale = cc3v(15,15,15);
+    monkey.node.scale = cc3v(22,22,22);
     
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number

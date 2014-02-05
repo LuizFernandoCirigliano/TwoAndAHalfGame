@@ -315,6 +315,12 @@
 		A344F5411892D57C00355248 /* CC3Node+Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = A344F5401892D57C00355248 /* CC3Node+Collision.m */; };
 		A3561CD8189BD798005207A1 /* school.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3561CD7189BD798005207A1 /* school.pod */; };
 		A3561CF7189FC4D8005207A1 /* schoolmap.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3561CF6189FC4D8005207A1 /* schoolmap.pod */; };
+		A3A0272C18A2B9F8000BAB87 /* camisa_portugal.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */; };
+		A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272718A2B9F8000BAB87 /* khakishorts.png */; };
+		A3A0272F18A2B9F8000BAB87 /* marcelo_model_animation1.blend in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272918A2B9F8000BAB87 /* marcelo_model_animation1.blend */; };
+		A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272A18A2B9F8000BAB87 /* skin1.png */; };
+		A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272B18A2B9F8000BAB87 /* tenis.png */; };
+		A3A0281218A2BBAE000BAB87 /* marcelo_model.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3A0281118A2BBAE000BAB87 /* marcelo_model.pod */; };
 		A3B2978E189825C9003949D3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2978D189825C9003949D3 /* Player.m */; };
 		A3B8D25A189A7DF8009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D24F189A7DF8009FFE5C /* ButtonPressMessage.m */; };
 		A3B8D25B189A7DF8009FFE5C /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D251189A7DF8009FFE5C /* EndRoundMessage.m */; };
@@ -929,6 +935,12 @@
 		A344F5401892D57C00355248 /* CC3Node+Collision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CC3Node+Collision.m"; sourceTree = "<group>"; };
 		A3561CD7189BD798005207A1 /* school.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = school.pod; sourceTree = "<group>"; };
 		A3561CF6189FC4D8005207A1 /* schoolmap.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = schoolmap.pod; sourceTree = "<group>"; };
+		A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camisa_portugal.png; sourceTree = "<group>"; };
+		A3A0272718A2B9F8000BAB87 /* khakishorts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = khakishorts.png; sourceTree = "<group>"; };
+		A3A0272918A2B9F8000BAB87 /* marcelo_model_animation1.blend */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_animation1.blend; sourceTree = "<group>"; };
+		A3A0272A18A2B9F8000BAB87 /* skin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin1.png; sourceTree = "<group>"; };
+		A3A0272B18A2B9F8000BAB87 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
+		A3A0281118A2BBAE000BAB87 /* marcelo_model.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model.pod; sourceTree = "<group>"; };
 		A3B2978C189825C9003949D3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		A3B2978D189825C9003949D3 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		A3B8D24E189A7DF8009FFE5C /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonPressMessage.h; path = ../../Shared/ButtonPressMessage.h; sourceTree = "<group>"; };
@@ -1905,6 +1917,7 @@
 		3A4EAB75188D927D00E6C9F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A3A0272518A2B9F8000BAB87 /* marcelo */,
 				A3561CF6189FC4D8005207A1 /* schoolmap.pod */,
 				A3561CD7189BD798005207A1 /* school.pod */,
 				3A2F428518968B1A0088C77D /* simpleCube2.pod */,
@@ -2044,6 +2057,19 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		A3A0272518A2B9F8000BAB87 /* marcelo */ = {
+			isa = PBXGroup;
+			children = (
+				A3A0281118A2BBAE000BAB87 /* marcelo_model.pod */,
+				A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */,
+				A3A0272718A2B9F8000BAB87 /* khakishorts.png */,
+				A3A0272918A2B9F8000BAB87 /* marcelo_model_animation1.blend */,
+				A3A0272A18A2B9F8000BAB87 /* skin1.png */,
+				A3A0272B18A2B9F8000BAB87 /* tenis.png */,
+			);
+			path = marcelo;
+			sourceTree = "<group>";
+		};
 		A3BD53E118A14EB4002E3564 /* Minigames */ = {
 			isa = PBXGroup;
 			children = (
@@ -2096,7 +2122,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A4EA81D188D927900E6C9F5 = {
-						DevelopmentTeam = B6U8VQEK7Q;
+						DevelopmentTeam = SEN7LPK7DZ;
 					};
 				};
 			};
@@ -2143,6 +2169,7 @@
 				3A2F4282189678ED0088C77D /* grass.png in Resources */,
 				3A4EAB4B188D927D00E6C9F5 /* CC3BumpMapTangentSpace.fsh in Resources */,
 				3A4EAB6D188D927D00E6C9F5 /* CC3SingleTextureReflect.fsh in Resources */,
+				A3A0272F18A2B9F8000BAB87 /* marcelo_model_animation1.blend in Resources */,
 				3A4EAB5F188D927D00E6C9F5 /* CC3PointSprites.fsh in Resources */,
 				3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */,
 				3A4EAB98188D927D00E6C9F5 /* Default-568h@2x.png in Resources */,
@@ -2151,6 +2178,8 @@
 				3A4EAB5D188D927D00E6C9F5 /* CC3NoTextureReflectAlphaTest.fsh in Resources */,
 				A3561CF7189FC4D8005207A1 /* schoolmap.pod in Resources */,
 				3A4EAB6B188D927D00E6C9F5 /* CC3SingleTextureAlphaTest.fsh in Resources */,
+				A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */,
+				A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */,
 				A31C86B41899184D00769876 /* p1.png in Resources */,
 				3A4EAB55188D927D00E6C9F5 /* CC3MultiTextureConfigurable.fsh in Resources */,
 				3A4EAB87188D927D00E6C9F5 /* Icon-57@2x.png in Resources */,
@@ -2160,10 +2189,13 @@
 				3A4EAB59188D927D00E6C9F5 /* CC3NoTextureAlphaTest.fsh in Resources */,
 				A3561CD8189BD798005207A1 /* school.pod in Resources */,
 				3A4EA98E188D927A00E6C9F5 /* ChangeLog in Resources */,
+				A3A0272C18A2B9F8000BAB87 /* camisa_portugal.png in Resources */,
 				3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */,
 				3A4EAB65188D927D00E6C9F5 /* CC3PureColor.fsh in Resources */,
 				3A4EAB57188D927D00E6C9F5 /* CC3NoTexture.fsh in Resources */,
+				A3A0281218A2BBAE000BAB87 /* marcelo_model.pod in Resources */,
 				3A4EAB9A188D927D00E6C9F5 /* Default-Portrait~ipad.png in Resources */,
+				A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */,
 				A31C86B61899184D00769876 /* p3.png in Resources */,
 				3A4EAB71188D927D00E6C9F5 /* CC3Texturable.vsh in Resources */,
 				3A4EAB69188D927D00E6C9F5 /* CC3SingleTexture.fsh in Resources */,
