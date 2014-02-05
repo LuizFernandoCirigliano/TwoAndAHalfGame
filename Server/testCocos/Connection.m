@@ -175,6 +175,7 @@ static Connection *myConnectionConfiguration = nil;
             if ([[[self.peerArray objectAtIndex:i] displayName] isEqualToString: [peerID displayName]])
             {
                 [self.peerArray replaceObjectAtIndex:i withObject:peerID];
+                return;
             }
         }
         
