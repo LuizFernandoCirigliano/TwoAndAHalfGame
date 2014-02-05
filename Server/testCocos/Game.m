@@ -47,8 +47,8 @@ static Game *myGameConfiguration = nil;
 }
 
 -(void) jankenWithWinner:(NSInteger)winner {
-    CC3Vector oldScale = [[[self.playerArray objectAtIndex:winner] node] scale];
-    [[self.playerArray objectAtIndex:winner] node].scale = cc3v(oldScale.x, 5*oldScale.y, oldScale.z);
+    Player *winnerPlayer = [self.playerArray objectAtIndex:winner];
+    winnerPlayer.playerScore += 10;
 }
 
 @end

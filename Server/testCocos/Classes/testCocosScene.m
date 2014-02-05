@@ -843,6 +843,7 @@ NSMutableArray *_playerArray;
         
         if(coin) {
             [coin setIsAlive:NO];
+            player.playerScore++;
             [_coinDictionary removeObjectForKey:coinKey];
         }
         
