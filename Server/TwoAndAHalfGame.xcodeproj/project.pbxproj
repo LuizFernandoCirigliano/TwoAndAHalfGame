@@ -10,6 +10,8 @@
 		3A25F106189FFC10005FD2F3 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F105189FFC10005FD2F3 /* Map.m */; };
 		3A25F10F18A15398005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */; };
 		3A25F11318A156B4005FD2F3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F11218A156B4005FD2F3 /* Game.m */; };
+		3A25F11618A26F9E005FD2F3 /* CoinParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F11518A26F9E005FD2F3 /* CoinParticle.m */; };
+		3A25F11818A27866005FD2F3 /* cubo.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A25F11718A27695005FD2F3 /* cubo.pod */; };
 		3A2F4282189678ED0088C77D /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F4281189678ED0088C77D /* grass.png */; };
 		3A2F428618968B1A0088C77D /* simpleCube2.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F428518968B1A0088C77D /* simpleCube2.pod */; };
 		3A2F428A1896B8F80088C77D /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42891896B8F80088C77D /* map01.txt */; };
@@ -330,6 +332,9 @@
 		3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JankenResultMessage.m; path = ../../Shared/JankenResultMessage.m; sourceTree = "<group>"; };
 		3A25F11118A156B4005FD2F3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		3A25F11218A156B4005FD2F3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		3A25F11418A26F9E005FD2F3 /* CoinParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinParticle.h; sourceTree = "<group>"; };
+		3A25F11518A26F9E005FD2F3 /* CoinParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinParticle.m; sourceTree = "<group>"; };
+		3A25F11718A27695005FD2F3 /* cubo.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = cubo.pod; sourceTree = "<group>"; };
 		3A2F4281189678ED0088C77D /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		3A2F428518968B1A0088C77D /* simpleCube2.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = simpleCube2.pod; sourceTree = "<group>"; };
 		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
@@ -971,6 +976,8 @@
 				3A4EABA5188D927D00E6C9F5 /* testCocosLayer.m */,
 				3A4EABA7188D927D00E6C9F5 /* testCocosScene.h */,
 				3A4EABA8188D927D00E6C9F5 /* testCocosScene.m */,
+				3A25F11418A26F9E005FD2F3 /* CoinParticle.h */,
+				3A25F11518A26F9E005FD2F3 /* CoinParticle.m */,
 			);
 			name = 3d;
 			sourceTree = "<group>";
@@ -1907,6 +1914,7 @@
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
+				3A25F11718A27695005FD2F3 /* cubo.pod */,
 				A31C86B81899185400769876 /* images2D */,
 				3A2F42921896D8630088C77D /* Suzanne */,
 				3A4EAB77188D927D00E6C9F5 /* Icons */,
@@ -2170,6 +2178,7 @@
 				3A4EAB7F188D927D00E6C9F5 /* Icon-40@2x.png in Resources */,
 				3A4EAB81188D927D00E6C9F5 /* Icon-50.png in Resources */,
 				3A4EAB67188D927D00E6C9F5 /* CC3PureColor.vsh in Resources */,
+				3A25F11818A27866005FD2F3 /* cubo.pod in Resources */,
 				3A4EAB7D188D927D00E6C9F5 /* Icon-40.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2243,6 +2252,7 @@
 				3A4EA90C188D927A00E6C9F5 /* CCTransition.m in Sources */,
 				3A4EA8B4188D927A00E6C9F5 /* CCParticleExamples.m in Sources */,
 				3A4EA8B1188D927A00E6C9F5 /* CCParticleBatchNode.m in Sources */,
+				3A25F11618A26F9E005FD2F3 /* CoinParticle.m in Sources */,
 				3A4EAAF5188D927C00E6C9F5 /* CC3NodeSequencer.m in Sources */,
 				3A4EA8F4188D927A00E6C9F5 /* CCTextureAtlas.m in Sources */,
 				3A4EAAB5188D927C00E6C9F5 /* CC3GLView-GLES2.m in Sources */,

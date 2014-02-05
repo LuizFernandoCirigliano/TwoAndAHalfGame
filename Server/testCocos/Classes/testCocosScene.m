@@ -18,6 +18,7 @@
 #import "Player.h"
 #import "CC3BillBoard.h"
 #import "CC3ParametricMeshNodes.h"
+#import "CoinParticle.h"
 #import "Map.h"
 #import "Game.h"
 
@@ -32,6 +33,10 @@ CC3Node *_monkeyModel;
 CC3Node *_allCharacters;
 
 CC3Node *_mazeMap;
+
+CC3MeshParticleEmitter *_emitter;
+
+NSMutableDictionary *_coinDictionary;
 
 NSMutableArray *_playerArray;
 
@@ -177,6 +182,9 @@ NSMutableArray *_playerArray;
     
     [self addChild:_allCharacters];
     
+//    [self addCoins];
+    
+    [self createParticles];
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
 	[self createGLBuffers];
@@ -185,22 +193,69 @@ NSMutableArray *_playerArray;
 
 }
 
+
+//called in initializeScene
+-(void)createParticles{
+
+    CC3MeshNode *particleTemplate = [CC3MeshNode node];
+    
+    const float partSize = 20;
+    [particleTemplate populateAsSolidBox:CC3BoxMake(0, 0, 0, partSize, partSize , partSize)];
+    ccColor3B gold = {255,215,0};
+    
+    particleTemplate.color = gold;
+    
+//    [self addContentFromPODFile:@"cubo.pod" withName:@"coin"];
+//    CC3PODResourceNode *resourceNode = [CC3PODResourceNode nodeFromFile:@"cubo.pod"];
+//    CC3MeshNode *coinNode = [resourceNode getMeshNodeNamed:@"Cube"];
+//
+//    
+//    particleTemplate.texture = coinNode.texture;
+    
+    _emitter = [CC3MeshParticleEmitter node];
+    _emitter.tag = 0; //index of current color
+    _emitter.location = kCC3VectorZero;
+    _emitter.particleTemplate = particleTemplate;
+    _emitter.particleClass = [CC3MeshParticle class];
+    _emitter.vertexContentTypes = kCC3VertexContentLocation | kCC3VertexContentColor | kCC3VertexContentNormal;
+    [self addChild:_emitter];
+    
+    for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
+        for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
+            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
+            if ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] == '0') {
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 50, position.y);
+                CC3MeshParticle *particle = (CC3MeshParticle*)[_emitter emitParticle];
+
+                particle.location = pos;
+                particle.color = gold;
+                
+                [_coinDictionary setObject:particle forKey:[NSString stringWithFormat:@"%d-%d", i, j]] ;
+
+            }
+        }
+    }
+}
+
 //all variable and property initializations go here
 -(void) performInitializations {
     [Connection myConnection];
     [Connection myConnection].delegate = self;
     _allCharacters = [CC3Node node];
+
+    
     _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
     
-//    self.charactersArray = [[NSMutableArray alloc] init];
     self.flip = NO;
     self.isTouchEnabled = YES;
     
     [[Game myGame] configureGame];
     
     _playerArray = [[Game myGame] playerArray];
-    
+    _coinDictionary = [[NSMutableDictionary alloc] init];
 }
+
 -(void) createTestTerrain
 {
     //hocus pocus add grass
@@ -232,21 +287,20 @@ NSMutableArray *_playerArray;
                 [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
 //                [tile setT]
                 
-                CGPoint location = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
-                CC3Vector loc = cc3v(location.x, LOCATION_Z, location.y);
-                [tile setLocation: loc];
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, LOCATION_Z, position.y);
+                [tile setLocation: pos];
                 [tile retainVertexLocations];
                 
                 
                 [self addChild: tile];
                 
-                loc = [tile location];
-                CCLOG(@"Added tile at : %f / %f / %f", loc.x, loc.y, loc.z);
-                
             }
         }
     }
 }
+
+
 
 /**
  *
@@ -413,7 +467,7 @@ NSMutableArray *_playerArray;
  */
 -(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor
 {
-
+//    NSLog(@"%d", [_coinEmitter particleCount]);
 }
 
 /**
@@ -771,6 +825,9 @@ NSMutableArray *_playerArray;
     //For each player
     for (Player *player in _playerArray)
     {
+        CC3Vector playerPos = player.node.location;
+        CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:CGPointMake(playerPos.x, playerPos.z)];
+        
         // Test whether the player intersects the wall.
         if (![player.node shouldMove])
         {
@@ -778,7 +835,17 @@ NSMutableArray *_playerArray;
             [player.node stopAllActions];
             player.node.location = player.oldLocation;
         }
-
+        
+        
+        //check if he's going over a coin
+        NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
+        CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
+        
+        if(coin) {
+            [coin setIsAlive:NO];
+            [_coinDictionary removeObjectForKey:coinKey];
+        }
+        
         //For each player
         for (Player *player2 in _playerArray)
         {
