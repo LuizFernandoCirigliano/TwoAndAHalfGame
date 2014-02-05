@@ -154,7 +154,6 @@
  */
 - (void) setWinner:(NSInteger)winner
 {
-    
     Game *game = [Game myGame];
     _winner = winner;
     if (winner == kJankenTie)
@@ -165,7 +164,8 @@
     else
     {
         //WE HAVE A WINNER
-        [game jankenWithWinner: winner];
+        NSInteger looser = (winner == self.playerAID) ? self.playerBID : self.playerAID;
+        [game jankenWithWinner: winner andLooser: looser];
     }
 }
 @end
