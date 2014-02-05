@@ -169,21 +169,23 @@ static Connection *myConnectionConfiguration = nil;
 {
     if (state ==  MCSessionStateConnected)
     {
+        NSData *data;
         //checks if it's a reconnection
         for (int i = 0; i < [self.peerArray count]; i++)
         {
             if ([[[self.peerArray objectAtIndex:i] displayName] isEqualToString: [peerID displayName]])
             {
+                data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:[self.peerArray count]] archiveData];
+                [self sendData:data toPeer:peerID];
                 [self.peerArray replaceObjectAtIndex:i withObject:peerID];
                 return;
             }
         }
         
         
-
-        NSData *data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:[self.peerArray count]] archiveData];
-        
+        data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:[self.peerArray count]] archiveData];
         [self.peerArray addObject:peerID];
+        
         NSLog(@"Player Number: %d", [self.peerArray count]);
         
         
