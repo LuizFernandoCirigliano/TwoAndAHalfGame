@@ -176,7 +176,8 @@ static Connection *myConnectionConfiguration = nil;
             if ([[[self.peerArray objectAtIndex:i] displayName] isEqualToString: [peerID displayName]])
             {
 
-                data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:[self.peerArray count]] archiveData];
+                data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:i] archiveData];
+
                 [self sendData:data toPeer:peerID];
                 [self.peerArray replaceObjectAtIndex:i withObject:peerID];
                 return;
