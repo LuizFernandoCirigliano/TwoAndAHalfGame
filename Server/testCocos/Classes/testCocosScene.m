@@ -833,9 +833,6 @@ NSMutableArray *_playerArray;
     //For each player
     for (Player *player in _playerArray)
     {
-        CC3Vector playerPos = player.node.location;
-        CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:CGPointMake(playerPos.x, playerPos.z)];
-        
         // Test whether the player intersects the wall.
         if (![player.node shouldMove: player.direction])
         {
@@ -846,14 +843,32 @@ NSMutableArray *_playerArray;
         
         
         //check if he's going over a coin
-        NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
-        CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
+        CGPoint position = CGPointMake(player.node.location.x, player.node.location.z);
+
+        GLfloat radius = ((CC3NodeSphericalBoundingVolume*)player.node.boundingVolume).radius * self.scale.x;
         
-        if(coin) {
-            [coin setIsAlive:NO];
-            player.playerScore++;
-            [_coinDictionary removeObjectForKey:coinKey];
+        CGPoint bounds[5] =    {CGPointMake(position.x + radius, position.y + radius), //UPLEFT
+                                CGPointMake(position.x + radius, position.y - radius), //UPRIGHT
+                                CGPointMake(position.x - radius, position.y + radius), //DOWNLEFT
+                                CGPointMake(position.x - radius, position.y - radius), //DOWNRIGHT
+                                CGPointMake(position.x         , position.y         )}; //CENTER
+
+        for (int i = 0; i < 5; i++)
+        {
+            CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:bounds[i]];
+            
+            
+            NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
+            CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
+            
+            if(coin) {
+                [coin setIsAlive:NO];
+                player.playerScore++;
+                [_coinDictionary removeObjectForKey:coinKey];
+            }
+            
         }
+        
         
         //For each player
         for (Player *player2 in _playerArray)
