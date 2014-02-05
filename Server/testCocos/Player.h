@@ -17,6 +17,8 @@
 @property (nonatomic) NSInteger index;
 
 @property (nonatomic) NSInteger playerScore;
+
+@property (strong, nonatomic) NSString *deviceID;
 /**
  * Node location before movement
  */
