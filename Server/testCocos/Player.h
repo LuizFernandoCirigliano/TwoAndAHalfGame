@@ -15,6 +15,7 @@
  */
 @property (nonatomic) NSInteger index;
 
+@property (nonatomic) NSInteger playerScore;
 /**
  * Node location before movement
  */
