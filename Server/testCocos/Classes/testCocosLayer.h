@@ -16,4 +16,5 @@
     
 }
 
+-(void) updateHUD;
 @end

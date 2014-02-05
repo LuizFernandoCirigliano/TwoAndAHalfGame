@@ -7,14 +7,22 @@
  */
 
 #import "testCocosLayer.h"
-#import "testCocosScene.h"
+
 #import "CC3Light.h"
 
+#import "Game.h"
+
+
+
 @implementation testCocosLayer 
+
+NSMutableArray *_scoreLabelArray;
 
 -(void) dealloc {
     [super dealloc];
 }
+
+
 
 /**
  * Override to set up your 2D controls and other initial state, and to initialize update processing.
@@ -26,12 +34,17 @@
     
     self.isTouchEnabled = YES;
     
-//    [self setColor:ccWHITE];
-//    [self.cc3Scene setColor:ccWHITE];
-    
-//    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 }
 
+-(void) updateHUD {
+    for (int i = 0 ; i < [[[Game myGame] playerArray] count]; i ++)
+    {
+        Player *player = [[Game myGame].playerArray objectAtIndex: i];
+        NSString *score = [NSString stringWithFormat:@"Player %d : %d", i + 1, player.playerScore];
+        
+        [[_scoreLabelArray objectAtIndex:i] setString:score];
+    }
+}
 
 #pragma mark Updating layer
 
@@ -44,9 +57,41 @@
 -(void) onOpenCC3Layer {
     NSLog(@"open la") ;
 
-    [self setColor:ccWHITE];
-    [self.cc3Scene setColor:ccWHITE];
+
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+    
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    _scoreLabelArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [[[Game myGame]playerArray] count] ; i++) {
+        CCLabelTTF * _statusLabel;
+        
+        _statusLabel = [CCLabelTTF labelWithString:@"tes" fontName:@"Arial" fontSize:46];
+        const float xoffset = 0.12;
+        const float yoffset = 0.05;
+        switch (i) {
+                
+            case 0:
+                _statusLabel.position = ccp(winSize.width*xoffset, winSize.height * (1- yoffset));
+                break;
+            case 1:
+                 _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (yoffset));
+                break;
+            case 2:
+                _statusLabel.position = ccp(winSize.width*(xoffset), winSize.height * (yoffset));
+                break;
+            case 3:
+                _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (1 - yoffset));
+                break;
+            default:
+                break;
+        }
+        ccColor3B color = {255, 215, 0};
+        _statusLabel.color = color;
+        
+        [self addChild:_statusLabel];
+        [_scoreLabelArray addObject:_statusLabel];
+    }
 }
 
 /**
@@ -68,48 +113,5 @@
 //-(void) ccTouchMoved: (UITouch *)touch withEvent: (UIEvent *)event {
 //	[self handleTouch: touch ofType: kCCTouchMoved];
 //}
-
-/**
- * Add method description here
- *
- \param touches Parameter Description
- \param event Parameter Description
- */
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"Touch Began");
-    #warning Possible incomplete method implementation.
-}
-
-/**
- * Add method description here
- *
- \param touches Parameter Description
- \param event Parameter Description
- */
--(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    #warning Possible incomplete method implementation.
-}
-
-/**
- * Add method description here
- \param touches Parameter Description
- \param event Parameter Description
- */
--(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    #warning Possible incomplete method implementation.
-}
-
-/**
- * Add method description here
- \param touches Parameter Description
- \param event Parameter Description
- */
--(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    #warning Possible incomplete method implementation.
-}
 
 @end

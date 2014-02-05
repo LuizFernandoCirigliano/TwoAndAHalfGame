@@ -7,6 +7,7 @@
  */
 
 #import "testCocosScene.h"
+#import "testCocosLayer.h"
 #import "CC3PODResourceNode.h"
 #import "CC3ActionInterval.h"
 #import "CC3MeshNode.h"
@@ -21,6 +22,7 @@
 #import "CoinParticle.h"
 #import "Map.h"
 #import "Game.h"
+
 
 #define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
 #define COLISSION_CHECK_INTERVAL 60.0f
@@ -39,6 +41,8 @@ CC3MeshParticleEmitter *_emitter;
 NSMutableDictionary *_coinDictionary;
 
 NSMutableArray *_playerArray;
+
+//HUDLayer * _hud;
 
 -(void) dealloc
 {
@@ -181,7 +185,7 @@ NSMutableArray *_playerArray;
     [self addPlayerCharacter];
     
     [self addChild:_allCharacters];
-    
+
 //    [self addCoins];
     
     [self createParticles];
@@ -254,6 +258,8 @@ NSMutableArray *_playerArray;
     
     _playerArray = [[Game myGame] playerArray];
     _coinDictionary = [[NSMutableDictionary alloc] init];
+
+    
 }
 
 -(void) createTestTerrain
@@ -468,6 +474,7 @@ NSMutableArray *_playerArray;
 -(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor
 {
 //    NSLog(@"%d", [_coinEmitter particleCount]);
+    [((testCocosLayer *)self.cc3Layer) updateHUD];
 }
 
 /**
@@ -481,6 +488,7 @@ NSMutableArray *_playerArray;
 -(void) updateAfterTransform: (CC3NodeUpdatingVisitor*) visitor
 {
     [self checkForCollisions];
+    [self updateLives];
 }
 
 
@@ -508,7 +516,11 @@ NSMutableArray *_playerArray;
 	[self.viewSurfaceManager.backgrounder runBlock: ^{
 		[self addSceneContentAsynchronously];
 	}];
-
+ 
+    Game *game = [Game myGame];
+    game.hudLayer = (testCocosLayer *)self.cc3Layer;
+    NSLog(@"%@", [Game myGame].hudLayer  );
+    
 	// Move the camera to frame the scene. The resulting configuration of the camera is output as
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
 //    [self.activeCamera moveWithDuration: 1.0 toShowAllOf: [[self.charactersArray objectAtIndex:0] node]];
@@ -520,10 +532,13 @@ NSMutableArray *_playerArray;
     
     [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES];
 
+    
+    
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
 }
 -(void) zoomCameraOnPlayers {
+
     NSLog(@"moving camera");
     [self.activeCamera moveWithDuration:1.0f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
 }
@@ -853,6 +868,7 @@ NSMutableArray *_playerArray;
             [coin setIsAlive:NO];
             player.playerScore++;
             [_coinDictionary removeObjectForKey:coinKey];
+            
         }
         
         //For each player
@@ -887,7 +903,9 @@ NSMutableArray *_playerArray;
     }
 }
 
+- (void)updateLives {
 
+}
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "CC3Node+Collision.h"
+#import "Game.h"
 
 @interface Player : NSObject
 
