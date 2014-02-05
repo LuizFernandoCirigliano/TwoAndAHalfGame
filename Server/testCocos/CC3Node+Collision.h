@@ -8,12 +8,22 @@
 
 #import "CC3Node.h"
 
+typedef NS_ENUM(NSInteger, Direction)
+{
+    Up,
+    Right,
+    Down,
+    Left,
+    Other
+};
+
 @interface CC3Node (Collision)
 
 - (void) createBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBox;
 - (void) createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio: (float) ratio;
 - (BOOL) shouldMove;
+- (BOOL) shouldMove: (Direction) direction;
 
 
 @end

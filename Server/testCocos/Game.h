@@ -18,6 +18,8 @@
 - (void) configureGame;
 - (void) startMinigame: (NSArray*) players;
 - (void) jankenWithWinner: (NSInteger)winner;
+- (void) jankenTie;
+
 
 @property (strong, nonatomic) Janken *janken;
 @property (strong, nonatomic) NSMutableArray *playerArray;

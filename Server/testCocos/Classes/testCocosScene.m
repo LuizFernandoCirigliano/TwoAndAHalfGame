@@ -628,7 +628,7 @@ NSMutableArray *_playerArray;
     CC3Vector moveDirection;
     CCActionInterval *move;
 
-    const int speed = 10;
+    const int speed = 20;
     //sets the direction of movement based on the number passed by the connexion, rotates the dragon to face the direction of movement.
     switch (buttonNumberInt)
     {
@@ -640,6 +640,7 @@ NSMutableArray *_playerArray;
                 [character.node runAction:rotate];
             }
             moveDirection = cc3v(0, 0, speed);
+            character.direction = Up;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
@@ -653,6 +654,7 @@ NSMutableArray *_playerArray;
                 [character.node runAction:rotate];
             }
             moveDirection = cc3v(-speed, 0, 0);
+            character.direction = Right;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
@@ -667,6 +669,7 @@ NSMutableArray *_playerArray;
             }
             
             moveDirection = cc3v(0, 0, -speed);
+            character.direction = Down;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
@@ -680,6 +683,7 @@ NSMutableArray *_playerArray;
             }
             
             moveDirection = cc3v(speed, 0, 0);
+            character.direction = Left;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
@@ -692,7 +696,8 @@ NSMutableArray *_playerArray;
                 [character.node runAction:rotate];
             }
             
-            moveDirection = cc3v(-speed*sqrt(2.0f), 0, speed*sqrt(2.0f));
+            moveDirection = cc3v(-speed/sqrt(2.0f), 0, speed/sqrt(2.0f));
+            character.direction = Other;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
@@ -705,7 +710,8 @@ NSMutableArray *_playerArray;
                 [character.node runAction:rotate];
             }
             
-            moveDirection = cc3v(-speed*sqrt(2.0f), 0, -speed*sqrt(2.0f));
+            moveDirection = cc3v(-speed/sqrt(2.0f), 0, -speed/sqrt(2.0f));
+            character.direction = Other;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
@@ -718,8 +724,9 @@ NSMutableArray *_playerArray;
                 [character.node runAction:rotate];
             }
             
-            moveDirection = cc3v(speed*sqrt(2.0f), 0, -speed*sqrt(2.0f));
+            moveDirection = cc3v(speed/sqrt(2.0f), 0, -speed/sqrt(2.0f));
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
+            character.direction = Other;
             [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
@@ -731,7 +738,8 @@ NSMutableArray *_playerArray;
                 [character.node runAction:rotate];
             }
             
-            moveDirection = cc3v(speed*sqrt(2.0f), 0, speed*sqrt(2.0f));
+            moveDirection = cc3v(speed/sqrt(2.0f), 0, speed/sqrt(2.0f));
+            character.direction = Other;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
             [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
@@ -772,7 +780,7 @@ NSMutableArray *_playerArray;
     for (Player *player in _playerArray)
     {
         // Test whether the player intersects the wall.
-        if (![player.node shouldMove])
+        if (![player.node shouldMove: player.direction])
         {
             //If the player should not move it is intersecting the wall
             [player.node stopAllActions];

@@ -23,7 +23,8 @@ static Game *myGameConfiguration = nil;
     return myGameConfiguration;
 }
 
-- (void) configureGame {
+- (void) configureGame
+{
     
     self.janken = [[Janken alloc] init];
     self.playerArray = [[NSMutableArray alloc] init];
@@ -46,9 +47,15 @@ static Game *myGameConfiguration = nil;
     }
 }
 
--(void) jankenWithWinner:(NSInteger)winner {
+- (void) jankenWithWinner:(NSInteger)winner
+{
     CC3Vector oldScale = [[[self.playerArray objectAtIndex:winner] node] scale];
     [[self.playerArray objectAtIndex:winner] node].scale = cc3v(oldScale.x, 5*oldScale.y, oldScale.z);
+}
+
+- (void) jankenTie
+{
+    //
 }
 
 @end
