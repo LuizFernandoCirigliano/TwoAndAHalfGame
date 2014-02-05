@@ -46,9 +46,11 @@ static Game *myGameConfiguration = nil;
     }
 }
 
--(void) jankenWithWinner:(NSInteger)winner {
+-(void) jankenWithWinner:(NSInteger)winner andLooser:(NSInteger)looser {
     Player *winnerPlayer = [self.playerArray objectAtIndex:winner];
+    Player *looserPlayer = [self.playerArray objectAtIndex:looser];
     winnerPlayer.playerScore += 10;
+    looserPlayer.playerScore -= 10;
 }
 
 @end
