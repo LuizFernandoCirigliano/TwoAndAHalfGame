@@ -129,4 +129,8 @@ static Map *myMapConfiguration = nil;
 {
     return [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] characterAtIndex:self.zTileCount - (int)location.y - 1];
 }
+
+-(void) pickCoinAtLocation:(CGPoint) location {
+    [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] replaceCharactersInRange:NSMakeRange(self.zTileCount - (int)location.y - 1, 1) withString:@"x"];
+}
 @end
