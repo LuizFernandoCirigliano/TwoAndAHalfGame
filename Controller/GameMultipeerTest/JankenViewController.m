@@ -9,6 +9,8 @@
 #import "JankenViewController.h"
 #import "Connection.h"
 
+#define kJankenTLE 3
+
 @interface JankenViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *pickLabel;
 
@@ -28,7 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(timeLimitExceeded)
+                                   userInfo:nil
+                                    repeats:NO];
     self.view.userInteractionEnabled = YES;
 	// Do any additional setup after loading the view.
 }
@@ -42,13 +48,8 @@
 
 - (IBAction)click:(UIButton *)sender
 {
-    NSData *data = [[[JankenResultMessage alloc] initWithJankenResult:sender.tag andPlayerNumber:[[Connection myConnection] playerNumber]] archiveData];
-    
-    //currently sending to all peers, limit to send only to server
-    [[Connection myConnection] sendDataToServer:data];
-    self.view.userInteractionEnabled = NO;
-    [self.navigationController popViewControllerAnimated:YES];
-    switch (sender.tag) {
+    switch (sender.tag)
+    {
         case 0:
             self.pickLabel.text = @"rock";
             break;
@@ -61,6 +62,22 @@
         default:
             break;
     }
+    [self send:sender.tag];
+}
+
+- (void) timeLimitExceeded
+{
+    [self send:kJankenTLE];
+}
+
+- (void) send: (NSInteger) gestureID
+{
+    NSData *data = [[[JankenResultMessage alloc] initWithJankenResult:gestureID andPlayerNumber:[[Connection myConnection] playerNumber]] archiveData];
+    
+    //currently sending to all peers, limit to send only to server
+    [[Connection myConnection] sendDataToServer:data];
+    self.view.userInteractionEnabled = NO;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

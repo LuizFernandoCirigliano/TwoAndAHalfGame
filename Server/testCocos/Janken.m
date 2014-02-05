@@ -51,7 +51,7 @@
 }
 - (void) player: (NSInteger) playerID chose: (JankenType) playerGesture
 {
-    NSLog(@"ID -> %d, Gesture -> %d", playerID, playerGesture);
+//    NSLog(@"ID -> %d, Gesture -> %d", playerID, playerGesture);
     if (self.playerAGesture == nothing)
     {
         self.playerAID = playerID;
@@ -83,6 +83,8 @@
                     return self.playerBID;
                 case Scissors:
                     return self.playerAID;
+                case TLE:
+                    return self.playerAID;
             }
             break;
         }
@@ -96,6 +98,8 @@
                     return kJankenTie;
                 case Scissors:
                     return self.playerBID;
+                case TLE:
+                    return self.playerAID;
             }
             break;
         }
@@ -109,10 +113,25 @@
                     return self.playerAID;
                 case Scissors:
                     return kJankenTie;
+                case TLE:
+                    return self.playerAID;
             }
             break;
         }
+        case TLE:
+        {
+            if (self.playerBGesture == TLE)
+            {
+                return kJankenTie;
+            }
+            else
+            {
+                return self.playerBID;
+            }
+        }
     }
+    
+    return -666; //ERROR!!!!!
 }
 
 /**
