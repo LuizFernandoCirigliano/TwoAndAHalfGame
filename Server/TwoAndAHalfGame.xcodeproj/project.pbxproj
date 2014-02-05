@@ -306,6 +306,7 @@
 		3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */; };
 		3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */; };
 		3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABB3188D927D00E6C9F5 /* configuration.json */; };
+		3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5B18A2A19800FEFD9E /* arial16.fnt */; };
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
@@ -924,6 +925,7 @@
 		3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-hd.png"; path = "Resources/fps_images-hd.png"; sourceTree = "<group>"; };
 		3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-ipadhd.png"; path = "Resources/fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		3A4EABB3188D927D00E6C9F5 /* configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = configuration.json; path = testCocos.approj/configuration.json; sourceTree = SOURCE_ROOT; };
+		3A920F5B18A2A19800FEFD9E /* arial16.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arial16.fnt; sourceTree = "<group>"; };
 		3AD47EC1189020F900623ACA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -1928,6 +1930,7 @@
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
 				3A25F11718A27695005FD2F3 /* cubo.pod */,
+				3A920F5B18A2A19800FEFD9E /* arial16.fnt */,
 				A31C86B81899185400769876 /* images2D */,
 				3A2F42921896D8630088C77D /* Suzanne */,
 				3A4EAB77188D927D00E6C9F5 /* Icons */,
@@ -2164,6 +2167,7 @@
 				3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */,
 				3A4EAB96188D927D00E6C9F5 /* Default.png in Resources */,
 				3A4EAB47188D927D00E6C9F5 /* CC3BumpMapObjectSpace.fsh in Resources */,
+				3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */,
 				3A4EAB79188D927D00E6C9F5 /* Icon-29.png in Resources */,
 				3A2F428618968B1A0088C77D /* simpleCube2.pod in Resources */,
 				3A2F4282189678ED0088C77D /* grass.png in Resources */,

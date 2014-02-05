@@ -172,8 +172,9 @@ static Connection *myConnectionConfiguration = nil;
         //checks if it's a reconnection
         for (int i = 0; i < [self.peerArray count]; i++)
         {
-            if ([self.peerArray objectAtIndex:i] == peerID)
+            if ([[[self.peerArray objectAtIndex:i] displayName] isEqualToString: [peerID displayName]])
             {
+                [self.peerArray replaceObjectAtIndex:i withObject:peerID];
                 return;
             }
         }

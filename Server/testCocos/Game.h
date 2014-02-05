@@ -10,6 +10,7 @@
 #import "Janken.h"
 #import "Player.h"
 #import "Connection.h"
+#import "testCocosLayer.h"
 
 @interface Game : NSObject
 
@@ -25,5 +26,6 @@
 @property (strong, nonatomic) Janken *janken;
 @property (strong, nonatomic) NSMutableArray *playerArray;
 
+@property (strong, nonatomic) testCocosLayer *hudLayer;
 
 @end

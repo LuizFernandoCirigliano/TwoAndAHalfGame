@@ -7,6 +7,7 @@
 //
 
 #import "CC3Node+Collision.h"
+#import "Game.h"
 
 @interface Player : NSObject
 
@@ -16,6 +17,8 @@
 @property (nonatomic) NSInteger index;
 
 @property (nonatomic) NSInteger playerScore;
+
+@property (strong, nonatomic) NSString *deviceID;
 /**
  * Node location before movement
  */

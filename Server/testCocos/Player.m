@@ -52,4 +52,9 @@
     return self;
 }
 
+-(void) setPlayerScore:(NSInteger)playerScore {
+    _playerScore = playerScore;
+    [[[Game myGame] hudLayer] updateHUD];
+    NSLog (@"%@", [[Game myGame] hudLayer] );
+}
 @end
