@@ -34,7 +34,7 @@ static Connection *myConnectionConfiguration = nil;
     
     if (!myConnectionConfiguration)
     {
-        myConnectionConfiguration = [[super allocWithZone:nil] initWithName:[UIDevice currentDevice].name];
+        myConnectionConfiguration = [[super allocWithZone:nil] initWithName:[UIDevice currentDevice].identifierForVendor.UUIDString];
     }
     
     return myConnectionConfiguration;
