@@ -136,7 +136,7 @@
 
 -(void) endGame
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [[Connection myConnection].mySession disconnect];
 }
 

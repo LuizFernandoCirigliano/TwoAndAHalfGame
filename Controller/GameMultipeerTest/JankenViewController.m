@@ -77,7 +77,7 @@
     //currently sending to all peers, limit to send only to server
     [[Connection myConnection] sendDataToServer:data];
     self.view.userInteractionEnabled = NO;
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

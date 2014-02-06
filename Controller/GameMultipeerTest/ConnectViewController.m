@@ -7,7 +7,7 @@
 //
 
 #import "ConnectViewController.h"
-
+#import "Connection.h"
 #import "StartGameMessage.h"
 
 
@@ -20,23 +20,31 @@
 
 @implementation ConnectViewController
 
--(void)viewDidLoad{
+- (void) viewDidLoad
+{
     [Connection myConnection];
     [Connection myConnection].delegate = self;
-    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.scrollview.contentSize = self.view.bounds.size;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([Connection myConnection].mySession.connectedPeers.count > 0)
+    {
+        [self startGameAction];
+    }
 }
 
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     self.scrollview.contentSize = self.view.bounds.size;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    self.scrollview.contentSize = self.view.bounds.size;
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -46,10 +54,13 @@
 }
 
 
-- (IBAction)showBrowserVC:(id)sender {
+- (IBAction)showBrowserVC:(id)sender
+{
     [[Connection myConnection] showBrowserVC:self];
 }
-- (IBAction)startGameAction:(id)sender {
+
+- (void) startGameAction
+{
     NSData *data = [[[StartGameMessage alloc] init] archiveData];
     [[Connection myConnection] sendData:data];
     [self startGame];
