@@ -322,6 +322,7 @@
 		A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272718A2B9F8000BAB87 /* khakishorts.png */; };
 		A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272A18A2B9F8000BAB87 /* skin1.png */; };
 		A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272B18A2B9F8000BAB87 /* tenis.png */; };
+		A3A96D3C18A3BFF200FE7910 /* Minigame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A96D3B18A3BFF200FE7910 /* Minigame.m */; };
 		A3B2978E189825C9003949D3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2978D189825C9003949D3 /* Player.m */; };
 		A3B8D25A189A7DF8009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D24F189A7DF8009FFE5C /* ButtonPressMessage.m */; };
 		A3B8D25B189A7DF8009FFE5C /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D251189A7DF8009FFE5C /* EndRoundMessage.m */; };
@@ -943,6 +944,8 @@
 		A3A0272718A2B9F8000BAB87 /* khakishorts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = khakishorts.png; sourceTree = "<group>"; };
 		A3A0272A18A2B9F8000BAB87 /* skin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin1.png; sourceTree = "<group>"; };
 		A3A0272B18A2B9F8000BAB87 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
+		A3A96D3A18A3BFF200FE7910 /* Minigame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minigame.h; sourceTree = "<group>"; };
+		A3A96D3B18A3BFF200FE7910 /* Minigame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minigame.m; sourceTree = "<group>"; };
 		A3B2978C189825C9003949D3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		A3B2978D189825C9003949D3 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		A3B8D24E189A7DF8009FFE5C /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonPressMessage.h; path = ../../Shared/ButtonPressMessage.h; sourceTree = "<group>"; };
@@ -2078,6 +2081,8 @@
 			children = (
 				A3B92F6A18A1159B00EFF763 /* Janken.h */,
 				A3B92F6B18A1159B00EFF763 /* Janken.m */,
+				A3A96D3A18A3BFF200FE7910 /* Minigame.h */,
+				A3A96D3B18A3BFF200FE7910 /* Minigame.m */,
 			);
 			name = Minigames;
 			sourceTree = "<group>";
@@ -2462,6 +2467,7 @@
 				3A4EAAD8188D927C00E6C9F5 /* CC3NSViewController.m in Sources */,
 				3A4EA886188D927900E6C9F5 /* CCGLProgram.m in Sources */,
 				3A4EA9FF188D927B00E6C9F5 /* PVRTTextureAPI.cpp in Sources */,
+				A3A96D3C18A3BFF200FE7910 /* Minigame.m in Sources */,
 				3A4EAA3A188D927B00E6C9F5 /* PVRTVertex.cpp in Sources */,
 				3A4EAA63188D927B00E6C9F5 /* CC3ProjectionMatrix.m in Sources */,
 				3A4EA976188D927A00E6C9F5 /* SimpleAudioEngine.m in Sources */,

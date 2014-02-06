@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Minigame.h"
 
 #define kJankenTie -1
 
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, JankenType)
 };
 
 
-@interface Janken : NSObject
+@interface Janken : Minigame
 
 /**
  * The ID of the winning player

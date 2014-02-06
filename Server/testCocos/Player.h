@@ -8,6 +8,7 @@
 
 #import "CC3Node+Collision.h"
 #import "Game.h"
+#import "Minigame.h"
 
 @interface Player : NSObject
 
@@ -43,6 +44,8 @@
 @property (nonatomic) BOOL isPlayingMinigame;
 
 @property (nonatomic) Direction direction;
+
+@property (nonatomic, strong) Minigame *minigame;
 
 - (id) initWithIndex: (NSInteger) index;
 @end

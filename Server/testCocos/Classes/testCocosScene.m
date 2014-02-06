@@ -24,6 +24,7 @@
 #import "Game.h"
 #import "SimpleAudioEngine.h"
 
+#define COLLISION_DEBUG 0
 @interface testCocosScene()
 
 @property (nonatomic) BOOL collisionEnabled;
@@ -359,7 +360,10 @@ NSMutableArray *_playerArray;
     
     //create bounding volume
     [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
+    
+#if COLLISION_DEBUG
     monkey.node.shouldDrawBoundingVolume = YES;
+#endif
     
     //temporary spawn position methods, replace with positions on map text file
     CGPoint spawnPoint;
