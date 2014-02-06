@@ -121,7 +121,7 @@ CCLabelTTF *_roundTimer;
 
 -(void) updateTimer {
     static int time = 120;
-    _roundTimer.string = [NSString stringWithFormat:@"%d:%2d", time/60, time%60];
+    _roundTimer.string = [NSString stringWithFormat:@"%02d:%02d", time/60, time%60];
     
     if (time > 0)
         time--;

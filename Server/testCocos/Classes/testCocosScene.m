@@ -87,22 +87,15 @@ NSTimer *_cameraPlayersTimer;
 
     
     [self performInitializations];
-    // Create the camera, place it back a bit, and add it to the scene
-	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = CAMERA_ANGLE;
-//    cam set
-//    cam.targetLocation = cc3v(0, 0, 0);
-    cam.hasInfiniteDepthOfField = YES;
-    cam.nearClippingDistance = 1000;
-//    cam.
-	[self addChild: cam];
+
 
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
 	lamp.location = cc3v( 0.0, 30.0, 50.0 );
 	lamp.isDirectionalOnly = NO;
-	[cam addChild: lamp];
+	
+    
     
     
     
@@ -200,6 +193,9 @@ NSTimer *_cameraPlayersTimer;
 //    [self addCoins];
     
     [self createParticles];
+    [self addCamera];
+    [self.activeCamera addChild:lamp];
+    
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
 	[self createGLBuffers];
@@ -273,6 +269,20 @@ NSTimer *_cameraPlayersTimer;
     
 }
 
+-(void) addCamera {
+    // Create the camera, place it back a bit, and add it to the scene
+	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
+    cam.location = cc3v(0,10, [[Map myMap] mapSizeZ]* 2);
+    
+    cam.targetLocation = cc3v(0, 0, 0);
+    
+    
+    cam.hasInfiniteDepthOfField = YES;
+    cam.nearClippingDistance = 1000;
+    
+	[self addChild: cam];
+    
+}
 -(void) createTestTerrain
 {
     //hocus pocus add grass
@@ -348,6 +358,11 @@ NSTimer *_cameraPlayersTimer;
 
     [self addChild:_mazeMap];
     
+    [self addContentFromPODFile:@"schoolentrance_textured.pod" withName:@"schoolEntrance"];
+    CC3Node *entrance = [self getNodeNamed:@"schoolEntrance"];
+    
+    entrance.scale = cc3v(200, 200, 200);
+    entrance.location = cc3v(-entrance.boundingBox.maximum.x*entrance.scale.x/2, 0, [[Map myMap] mapSizeZ] / 2 + entrance.boundingBox.maximum.z*entrance.scale.z*2.5/3);
 }
 
 -(void) addPlayerCharacter
@@ -533,14 +548,15 @@ NSTimer *_cameraPlayersTimer;
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
 //    [self.activeCamera moveWithDuration: 1.0 toShowAllOf: [[self.charactersArray objectAtIndex:0] node]];
     
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray firstObject] node] afterDelay:3.0f];
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray lastObject] node] afterDelay:6.0f];
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:8.0f];
+    [self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 0, 1)];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray firstObject] node] afterDelay:6.0f];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray lastObject] node] afterDelay:9.0f];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:12.0f];
+    [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:16.0f];
     
     
-    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES];
 
-    [NSTimer scheduledTimerWithTimeInterval:15.0f target:self selector:@selector(endGame) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:120.0f target:self selector:@selector(endGame) userInfo:nil repeats:NO];
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
@@ -553,6 +569,10 @@ NSTimer *_cameraPlayersTimer;
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
     [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
+}
+
+-(void) startZoomingOnPlayers {
+    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
 }
 
 -(void) endGame {
