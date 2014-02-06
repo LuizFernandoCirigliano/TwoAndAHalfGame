@@ -33,7 +33,7 @@
 @end
 
 
-#define CAMERA_ANGLE cc3v(0.0f,30.0f,15.0f)
+#define CAMERA_ANGLE cc3v(0.0f,20.0f,15.0f)
 #define COLISSION_CHECK_INTERVAL 60.0f
 #define playerScale 22
 
@@ -336,7 +336,7 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) addMazeWalls {
     //Add maze map mesh
-    [self addContentFromPODFile:@"schoolmap.pod" withName:@"school"];
+    [self addContentFromPODFile:@"school.pod" withName:@"school"];
     _mazeMap = [self getNodeNamed:@"school"];
 
     _mazeMap.scale = cc3v(200,200,200);
@@ -620,8 +620,15 @@ NSTimer *_cameraPlayersTimer;
     [[Connection myConnection] sendData:data];
     
     [[[Connection myConnection] advertiser] stopAdvertisingPeer];
+    
+    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
 }
 
+-(void) restartScene {
+    CCScene *currentScene = [CCDirector sharedDirector].runningScene;
+    CCScene *newScene = [[[currentScene class] alloc] init];
+    [[CCDirector sharedDirector] replaceScene:newScene];
+}
 /**
  * Callback template method that is invoked automatically when the CC3Layer that
  * holds this scene has been removed from display.
