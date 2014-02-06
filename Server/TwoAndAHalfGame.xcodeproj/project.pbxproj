@@ -308,6 +308,7 @@
 		3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABB3188D927D00E6C9F5 /* configuration.json */; };
 		3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5B18A2A19800FEFD9E /* arial16.fnt */; };
 		3A920F6018A3AEDE00FEFD9E /* marcelo_model_low.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */; };
+		3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F6118A3B4B200FEFD9E /* money.mp3 */; };
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
@@ -926,6 +927,7 @@
 		3A4EABB3188D927D00E6C9F5 /* configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = configuration.json; path = testCocos.approj/configuration.json; sourceTree = SOURCE_ROOT; };
 		3A920F5B18A2A19800FEFD9E /* arial16.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arial16.fnt; sourceTree = "<group>"; };
 		3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_low.pod; sourceTree = "<group>"; };
+		3A920F6118A3B4B200FEFD9E /* money.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = money.mp3; sourceTree = "<group>"; };
 		3AD47EC1189020F900623ACA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -1919,6 +1921,7 @@
 			children = (
 				A3A0272518A2B9F8000BAB87 /* marcelo */,
 				A3561CF6189FC4D8005207A1 /* schoolmap.pod */,
+				3A920F6118A3B4B200FEFD9E /* money.mp3 */,
 				A3561CD7189BD798005207A1 /* school.pod */,
 				3A2F428518968B1A0088C77D /* simpleCube2.pod */,
 				3A2F42891896B8F80088C77D /* map01.txt */,
@@ -2199,6 +2202,7 @@
 				A31C86B61899184D00769876 /* p3.png in Resources */,
 				3A4EAB71188D927D00E6C9F5 /* CC3Texturable.vsh in Resources */,
 				3A4EAB69188D927D00E6C9F5 /* CC3SingleTexture.fsh in Resources */,
+				3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */,
 				3A4EAB4D188D927D00E6C9F5 /* CC3BumpMapTangentSpaceAlphaTest.fsh in Resources */,
 				3A4EAB53188D927D00E6C9F5 /* CC3ClipSpaceTexturable.vsh in Resources */,
 				3A4EAB8D188D927D00E6C9F5 /* Icon-72.png in Resources */,

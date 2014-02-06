@@ -58,7 +58,7 @@ static Map *myMapConfiguration = nil;
             nextLine = (NSMutableString *) [[content substringFromIndex:(NSUInteger) initialPos] substringToIndex:(NSUInteger) lineSize - 1];
         }
         
-        nextLine = [nextLine stringByReplacingOccurrencesOfString:@" " withString:@""];
+        nextLine = (NSMutableString *) [nextLine stringByReplacingOccurrencesOfString:@" " withString:@""];
         
         for (int i = 0; i < nextLine.length; i++)
         {

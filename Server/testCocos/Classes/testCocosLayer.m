@@ -40,7 +40,7 @@ NSMutableArray *_scoreLabelArray;
     for (int i = 0 ; i < [[[Game myGame] playerArray] count]; i ++)
     {
         Player *player = [[Game myGame].playerArray objectAtIndex: i];
-        NSString *score = [NSString stringWithFormat:@"Player %d : %d", i + 1, player.playerScore];
+        NSString *score = [NSString stringWithFormat:@"Player %d: %d", i + 1, player.playerScore];
         
         [[_scoreLabelArray objectAtIndex:i] setString:score];
     }

@@ -22,6 +22,7 @@
 #import "CoinParticle.h"
 #import "Map.h"
 #import "Game.h"
+#import "SimpleAudioEngine.h"
 
 
 #define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
@@ -518,7 +519,6 @@ NSMutableArray *_playerArray;
  
     Game *game = [Game myGame];
     game.hudLayer = (testCocosLayer *)self.cc3Layer;
-    NSLog(@"%@", [Game myGame].hudLayer  );
     
 	// Move the camera to frame the scene. The resulting configuration of the camera is output as
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
@@ -871,19 +871,17 @@ NSMutableArray *_playerArray;
         {
             CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:bounds[i]];
             
-            
             NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
             CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
             
             if(coin) {
+                //sound from http://www.freesfx.co.uk
+                [[SimpleAudioEngine sharedEngine] playEffect:@"money.mp3"];
+                
                 [coin setIsAlive:NO];
                 player.playerScore++;
                 [_coinDictionary removeObjectForKey:coinKey];
-                
-                
             }
-
-            
         }
         
         
