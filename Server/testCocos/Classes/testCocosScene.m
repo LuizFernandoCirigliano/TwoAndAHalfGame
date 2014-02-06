@@ -161,7 +161,7 @@ NSMutableArray *_playerArray;
     
 
     //load the model content from the file
-    [self addContentFromPODFile:@"marcelo_model.pod" withName:@"player"];
+    [self addContentFromPODFile:@"marcelo_model_low.pod" withName:@"player"];
     _playerModel = [self getNodeNamed:@"player"];
     
     
