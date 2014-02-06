@@ -309,6 +309,7 @@
 		3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5B18A2A19800FEFD9E /* arial16.fnt */; };
 		3A920F6018A3AEDE00FEFD9E /* marcelo_model_low.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */; };
 		3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F6118A3B4B200FEFD9E /* money.mp3 */; };
+		3A9A1D4B18A3C1F200B82385 /* schoolmap_textured.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D4A18A3C1F200B82385 /* schoolmap_textured.pod */; };
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
@@ -928,6 +929,7 @@
 		3A920F5B18A2A19800FEFD9E /* arial16.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arial16.fnt; sourceTree = "<group>"; };
 		3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_low.pod; sourceTree = "<group>"; };
 		3A920F6118A3B4B200FEFD9E /* money.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = money.mp3; sourceTree = "<group>"; };
+		3A9A1D4A18A3C1F200B82385 /* schoolmap_textured.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = schoolmap_textured.pod; sourceTree = "<group>"; };
 		3AD47EC1189020F900623ACA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -1928,6 +1930,7 @@
 				3A4EAB76188D927D00E6C9F5 /* Info.plist */,
 				3A2F4281189678ED0088C77D /* grass.png */,
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
+				3A9A1D4A18A3C1F200B82385 /* schoolmap_textured.pod */,
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
 				3A25F11718A27695005FD2F3 /* cubo.pod */,
@@ -2200,6 +2203,7 @@
 				3A4EAB9A188D927D00E6C9F5 /* Default-Portrait~ipad.png in Resources */,
 				A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */,
 				A31C86B61899184D00769876 /* p3.png in Resources */,
+				3A9A1D4B18A3C1F200B82385 /* schoolmap_textured.pod in Resources */,
 				3A4EAB71188D927D00E6C9F5 /* CC3Texturable.vsh in Resources */,
 				3A4EAB69188D927D00E6C9F5 /* CC3SingleTexture.fsh in Resources */,
 				3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */,

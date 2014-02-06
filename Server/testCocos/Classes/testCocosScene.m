@@ -33,6 +33,7 @@
 
 #define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
 #define COLISSION_CHECK_INTERVAL 60.0f
+#define playerScale 22
 @implementation testCocosScene
 
 NSMutableArray *_walls;
@@ -325,7 +326,7 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) addMazeWalls {
     //Add maze map mesh
-    [self addContentFromPODFile:@"schoolmap.pod" withName:@"school"];
+    [self addContentFromPODFile:@"schoolmap_textured.pod" withName:@"school"];
     _mazeMap = [self getNodeNamed:@"school"];
 
     _mazeMap.scale = cc3v(200,200,200);
@@ -336,15 +337,11 @@ NSTimer *_cameraPlayersTimer;
     
     [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x*2  andMapZ:_mazeMap.boundingBox.maximum.z*2*_mazeMap.scale.z];
     [[Map myMap] setScale:200];
-    
-    _mazeMap.shouldDrawBoundingVolume = YES;
+
     _mazeMap.shouldCullBackFaces = NO;
     
     _mazeMap.shouldCastShadows = YES;
     _mazeMap.shouldUseLighting = YES;
-    
-    static const ccColor3B color = {123,123,123};
-    _mazeMap.color = color;
     
     _mazeMap.shouldCullFrontFaces = NO;
 
@@ -385,7 +382,7 @@ NSTimer *_cameraPlayersTimer;
     monkey.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
     
     monkey.node.rotationAxis = kCC3VectorUnitYPositive;
-    monkey.node.scale = cc3v(22,22,22);
+    monkey.node.scale = cc3v(playerScale, playerScale, playerScale);
     
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
@@ -559,14 +556,18 @@ NSTimer *_cameraPlayersTimer;
     Player *winner = [[Game myGame] topScorer];
     
     self.collisionEnabled = NO;
+    winner.node.location = cc3v(winner.node.location.x, 500, winner.node.location.z);
+    winner.node.scale = cc3v(2*playerScale, 2*playerScale, 2*playerScale);
+    [self.activeCamera moveWithDuration:1.0f toShowAllOf:winner.node fromDirection:cc3v(0, 0, 1)];
     
-    [self.activeCamera moveWithDuration:1.0f toShowAllOf:winner.node];
     self.activeCamera.target = winner.node;
+
     self.activeCamera.shouldTrackTarget = YES;
     
     
-    CCActionInterval *moveAction = [CC3MoveTo actionWithDuration:10.0f moveTo:cc3v(0, 100, 0)];
-    CCActionInterval *rotateAction = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:45.0f];
+    CCActionInterval *moveAction = [CC3MoveTo actionWithDuration:10.0f moveTo:cc3v(0, 500, 0)];
+    [winner.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+    CCActionInterval *rotateAction = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:-30.0f];
     
     [winner.node runAction:moveAction];
     [winner.node runAction:[CCRepeatForever actionWithAction:rotateAction]];
