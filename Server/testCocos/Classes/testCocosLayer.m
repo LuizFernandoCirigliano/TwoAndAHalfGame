@@ -18,6 +18,9 @@
 
 NSMutableArray *_scoreLabelArray;
 
+CCLabelTTF *_roundTimer;
+
+
 -(void) dealloc {
     [super dealloc];
 }
@@ -75,13 +78,14 @@ NSMutableArray *_scoreLabelArray;
     
     CGSize winSize = [CCDirector sharedDirector].winSize;
     _scoreLabelArray = [[NSMutableArray alloc] init];
+    const float xoffset = 0.12;
+    const float yoffset = 0.05;
     
     for (int i = 0; i < [[[Game myGame]playerArray] count] ; i++) {
         CCLabelTTF * _statusLabel;
         
         _statusLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Player %d: %d", i + 1, 0] fontName:@"Arial" fontSize:46];
-        const float xoffset = 0.12;
-        const float yoffset = 0.05;
+        
         switch (i) {
                 
             case 0:
@@ -105,10 +109,25 @@ NSMutableArray *_scoreLabelArray;
         [self addChild:_statusLabel];
         [_scoreLabelArray addObject:_statusLabel];
     }
+    
+    
+    _roundTimer = [CCLabelTTF labelWithString:@"2:00" fontName:@"Arial" fontSize:46];
+    _roundTimer.position = ccp(winSize.width/2, winSize.height*(1-yoffset));
+    [self addChild:_roundTimer];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 
+-(void) updateTimer {
+    static int time = 120;
+    _roundTimer.string = [NSString stringWithFormat:@"%d:%2d", time/60, time%60];
+    
+    if (time > 0)
+        time--;
+    
 
+}
 /**
  * Override to perform tear-down activity prior to the scene disappearing.
  *

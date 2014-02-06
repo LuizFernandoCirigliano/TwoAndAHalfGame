@@ -186,7 +186,7 @@ NSTimer *_cameraPlayersTimer;
     
     [self addMazeWalls];
     
-    [self createTerrain];
+//    [self createTerrain];
     
 //    [self createTestTerrain];
 
@@ -327,7 +327,7 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) addMazeWalls {
     //Add maze map mesh
-    [self addContentFromPODFile:@"schoolmap_textured.pod" withName:@"school"];
+    [self addContentFromPODFile:@"schoolmap_only_textured.pod" withName:@"school"];
     _mazeMap = [self getNodeNamed:@"school"];
 
     _mazeMap.scale = cc3v(200,200,200);
@@ -560,8 +560,9 @@ NSTimer *_cameraPlayersTimer;
     Player *winner = [[Game myGame] topScorer];
     
     self.collisionEnabled = NO;
-    winner.node.location = cc3v(winner.node.location.x, 500, winner.node.location.z);
+    winner.node.location = cc3v(winner.node.location.x, 300, winner.node.location.z);
     winner.node.scale = cc3v(2*playerScale, 2*playerScale, 2*playerScale);
+    
     [self.activeCamera moveWithDuration:1.0f toShowAllOf:winner.node fromDirection:cc3v(0, 0, 1)];
     
     self.activeCamera.target = winner.node;
@@ -569,11 +570,11 @@ NSTimer *_cameraPlayersTimer;
     self.activeCamera.shouldTrackTarget = YES;
     
     
-    CCActionInterval *moveAction = [CC3MoveTo actionWithDuration:10.0f moveTo:cc3v(0, 500, 0)];
+//    CCActionInterval *moveAction = [CC3MoveTo actionWithDuration:10.0f moveTo:cc3v(0, 500, 0)];
     [winner.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
     CCActionInterval *rotateAction = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:-30.0f];
     
-    [winner.node runAction:moveAction];
+//    [winner.node runAction:moveAction];
     [winner.node runAction:[CCRepeatForever actionWithAction:rotateAction]];
     
     [[[Game myGame] hudLayer] displayWinnerMessageWithNumber:winner.index];
