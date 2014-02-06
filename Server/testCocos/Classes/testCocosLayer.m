@@ -46,34 +46,7 @@ NSMutableArray *_scoreLabelArray;
     }
 }
 
--(void) updateHUDPosition {
-    CGSize winSize = [CCDirector sharedDirector].winSize;
-    
-    for (int i = 0; i < [_scoreLabelArray count] ; i++) {
-        
-        CCLabelTTF * _statusLabel = [_scoreLabelArray objectAtIndex: i];
-        
-        const float xoffset = 0.12;
-        const float yoffset = 0.05;
-        switch (i) {
-                
-            case 0:
-                _statusLabel.position = ccp(winSize.width*xoffset, winSize.height * (1- yoffset));
-                break;
-            case 1:
-                _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (yoffset));
-                break;
-            case 2:
-                _statusLabel.position = ccp(winSize.width*(xoffset), winSize.height * (yoffset));
-                break;
-            case 3:
-                _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (1 - yoffset));
-                break;
-            default:
-                break;
-        }
-    }
-}
+
 #pragma mark Updating layer
 
 /**
