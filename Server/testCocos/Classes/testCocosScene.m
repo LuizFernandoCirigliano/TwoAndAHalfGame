@@ -558,7 +558,7 @@ NSTimer *_cameraPlayersTimer;
     [_cameraPlayersTimer invalidate];
     Player *winner = [[Game myGame] topScorer];
     
-//    self.collisionEnabled = NO;
+    self.collisionEnabled = NO;
     
     [self.activeCamera moveWithDuration:1.0f toShowAllOf:winner.node];
     self.activeCamera.target = winner.node;
