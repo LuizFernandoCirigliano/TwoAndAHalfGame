@@ -8,6 +8,7 @@
 
 #import "Game.h"
 
+
 @implementation Game
 
 static Game *myGameConfiguration = nil;
@@ -60,6 +61,17 @@ static Game *myGameConfiguration = nil;
 - (void) jankenTie
 {
     self.janken = [[Janken alloc] init];
+}
+
+-(Player *) topScorer {
+    Player *topScoringPlayer = [self.playerArray firstObject];
+ 
+    for (Player *player in self.playerArray) {
+        if (player.playerScore > topScoringPlayer.playerScore)
+            topScoringPlayer = player;
+    }
+    
+    return topScoringPlayer;
 }
 
 @end

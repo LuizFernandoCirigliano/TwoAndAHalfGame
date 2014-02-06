@@ -49,6 +49,8 @@ NSMutableDictionary *_coinDictionary;
 
 NSMutableArray *_playerArray;
 
+NSTimer *_cameraPlayersTimer;
+
 //HUDLayer * _hud;
 
 -(void) dealloc
@@ -535,15 +537,14 @@ NSMutableArray *_playerArray;
     [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:8.0f];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES];
+    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES];
 
-    
+    [NSTimer scheduledTimerWithTimeInterval:15.0f target:self selector:@selector(endGame) userInfo:nil repeats:NO];
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
 }
 -(void) zoomCameraOnPlayers {
-
     NSLog(@"moving camera");
     [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
 }
@@ -551,6 +552,27 @@ NSMutableArray *_playerArray;
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
     [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
+}
+
+-(void) endGame {
+    [_cameraPlayersTimer invalidate];
+    Player *winner = [[Game myGame] topScorer];
+    
+//    self.collisionEnabled = NO;
+    
+    [self.activeCamera moveWithDuration:1.0f toShowAllOf:winner.node];
+    self.activeCamera.target = winner.node;
+    self.activeCamera.shouldTrackTarget = YES;
+    
+    
+    CCActionInterval *moveAction = [CC3MoveTo actionWithDuration:10.0f moveTo:cc3v(0, 100, 0)];
+    CCActionInterval *rotateAction = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:45.0f];
+    
+    [winner.node runAction:moveAction];
+    [winner.node runAction:[CCRepeatForever actionWithAction:rotateAction]];
+    
+    [[[Game myGame] hudLayer] displayWinnerMessageWithNumber:winner.index];
+    
 }
 
 /**
