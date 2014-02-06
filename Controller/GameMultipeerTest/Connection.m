@@ -96,26 +96,38 @@ static Connection *myConnectionConfiguration = nil;
 // data - Encapsulates one of the message classes. Use the archive/unarchive methods to obtain the message with the properties
 // peerID - the ID from the device that sent the data on the current session. Can be used to send some sort of response message
 
-- (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID{
+- (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID
+{
     NewMessage *message = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    if (message == nil) {
+    if (message == nil)
+    {
         NSLog(@"erro, mensagem nula");
-    } else if ([message isKindOfClass:[SetPlayerNumberMessage class]]) {
-        
+    }
+    else if ([message isKindOfClass:[SetPlayerNumberMessage class]])
+    {
         SetPlayerNumberMessage *playerNumberMessage = (SetPlayerNumberMessage *)message;
         NSLog(@"%d", [[playerNumberMessage playerNumber] intValue]);
         self.playerNumber = [[playerNumberMessage playerNumber] intValue];
         self.serverPeerID = peerID;
         
-    } else if ([message isKindOfClass:[StartMinigameMessage class]]) {
-        
-        if([self.delegate respondsToSelector:@selector(startMinigame)]) {
+    }
+    else if ([message isKindOfClass:[StartMinigameMessage class]])
+    {
+        if([self.delegate respondsToSelector:@selector(startMinigame)])
+        {
             NSLog(@"MESSAGE RECEIVED");
             [self.delegate performSelectorOnMainThread:@selector(startMinigame) withObject:nil waitUntilDone:NO];
         }
         
     }
-    
+    else if ([message isKindOfClass:[EndRoundMessage class]])
+    {
+        if([self.delegate respondsToSelector:@selector(startMinigame)])
+        {
+            [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:NO];
+        }
+    }
+
     //for example on how to use delegates to handle events based on the type of messages that arrive, check the server connection class
 }
 

@@ -129,9 +129,16 @@
     [[Connection myConnection] sendData:data];
 }
 
--(void) startMinigame {
-    
+- (void) startMinigame
+{
     [self performSegueWithIdentifier:@"startMinigame" sender:nil];
 }
+
+-(void) endGame
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [[Connection myConnection].mySession disconnect];
+}
+
 #warning Add credits do JSController
 @end
