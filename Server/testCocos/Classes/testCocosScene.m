@@ -776,7 +776,7 @@ NSTimer *_cameraPlayersTimer;
     CC3Vector moveDirection;
     CCActionInterval *move;
 
-    const int speed = 20;
+    const int speed = 30;
     //sets the direction of movement based on the number passed by the connexion, rotates the dragon to face the direction of movement.
     switch (buttonNumberInt)
     {
@@ -969,6 +969,7 @@ NSTimer *_cameraPlayersTimer;
             for (CC3Node *coin in [_bonusCoinCollection children]) {
                 if ([player.node doesIntersectBoundingVolume:coin.boundingVolume]) {
                     [_bonusCoinCollection removeChild:coin];
+                    
                     player.playerScore += 20;
                     
                     [[SimpleAudioEngine sharedEngine] playEffect:@"bell.mp3"];

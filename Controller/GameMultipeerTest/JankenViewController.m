@@ -30,15 +30,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [NSTimer scheduledTimerWithTimeInterval:5.0
+    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(enableTouch) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:8.0f
                                      target:self
                                    selector:@selector(timeLimitExceeded)
                                    userInfo:nil
                                     repeats:NO];
-    self.view.userInteractionEnabled = YES;
+    self.view.userInteractionEnabled = NO;
 	// Do any additional setup after loading the view.
 }
 
+-(void) enableTouch {
+    self.view.userInteractionEnabled = YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -54,8 +54,10 @@ static Game *myGameConfiguration = nil;
     Player *winnerPlayer = [self.playerArray objectAtIndex:winner];
     Player *looserPlayer = [self.playerArray objectAtIndex:looser];
     winnerPlayer.playerScore += 10;
-    self.janken = [[Janken alloc] init];
     looserPlayer.playerScore -= 10;
+   
+    self.janken = [[Janken alloc] init];
+    [_hudLayer updateHUD];
 }
 
 - (void) jankenTie
