@@ -24,6 +24,12 @@
 #import "Game.h"
 #import "SimpleAudioEngine.h"
 
+@interface testCocosScene()
+
+@property (nonatomic) BOOL collisionEnabled;
+
+@end
+
 
 #define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
 #define COLISSION_CHECK_INTERVAL 60.0f
@@ -195,7 +201,7 @@ NSMutableArray *_playerArray;
 	[self createGLBuffers];
     [self releaseRedundantContent];
     
-
+    self.collisionEnabled = YES;
 }
 
 
@@ -844,77 +850,84 @@ NSMutableArray *_playerArray;
  */
 -(void) checkForCollisions
 {
-    //For each player
-    for (Player *player in _playerArray)
+    if (self.collisionEnabled)
     {
-        // Test whether the player intersects the wall.
-        if (![player.node shouldMove: player.direction])
-        {
-            //If the player should not move it is intersecting the wall
-            [player.node stopAllActions];
-            player.node.location = player.oldLocation;
-        }
-        
-        
-        //check if he's going over a coin
-        CGPoint position = CGPointMake(player.node.location.x, player.node.location.z);
-
-        GLfloat radius = ((CC3NodeSphericalBoundingVolume*)player.node.boundingVolume).radius * self.scale.x;
-        
-        CGPoint bounds[5] =    {CGPointMake(position.x + radius, position.y + radius), //UPLEFT
-                                CGPointMake(position.x + radius, position.y - radius), //UPRIGHT
-                                CGPointMake(position.x - radius, position.y + radius), //DOWNLEFT
-                                CGPointMake(position.x - radius, position.y - radius), //DOWNRIGHT
-                                CGPointMake(position.x         , position.y         )}; //CENTER
-
-        for (int i = 0; i < 5; i++)
-        {
-            CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:bounds[i]];
-            
-            NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
-            CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
-            
-            if(coin) {
-                //sound from http://www.freesfx.co.uk
-                [[SimpleAudioEngine sharedEngine] playEffect:@"money.mp3"];
-                
-                [coin setIsAlive:NO];
-                player.playerScore++;
-                [_coinDictionary removeObjectForKey:coinKey];
-            }
-        }
-        
-        
         //For each player
-        for (Player *player2 in _playerArray)
+        for (Player *player in _playerArray)
         {
-            //add check to see if both of the players are connected
-            if (player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
+            // Test whether the player intersects the wall.
+            if (![player.node shouldMove: player.direction])
             {
-                // Test whether player1 is intersecting player2.
-                if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
-                {
-                    NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
-                    NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
-                    if (interval > COLISSION_CHECK_INTERVAL)
+                //If the player should not move it is intersecting the wall
+                [player.node stopAllActions];
+                player.node.location = player.oldLocation;
+            }
+            
+            
+            //check if he's going over a coin
+            CGPoint position = CGPointMake(player.node.location.x, player.node.location.z);
 
+            GLfloat radius = ((CC3NodeSphericalBoundingVolume*)player.node.boundingVolume).radius * self.scale.x;
+            
+            CGPoint bounds[5] =    {CGPointMake(position.x + radius, position.y + radius), //UPLEFT
+                                    CGPointMake(position.x + radius, position.y - radius), //UPRIGHT
+                                    CGPointMake(position.x - radius, position.y + radius), //DOWNLEFT
+                                    CGPointMake(position.x - radius, position.y - radius), //DOWNRIGHT
+                                    CGPointMake(position.x         , position.y         )}; //CENTER
+
+            for (int i = 0; i < 5; i++)
+            {
+                CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:bounds[i]];
+                
+                NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
+                CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
+                
+                if(coin) {
+                    //sound from http://www.freesfx.co.uk
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"money.mp3"];
+                    
+                    [coin setIsAlive:NO];
+                    player.playerScore++;
+                    [_coinDictionary removeObjectForKey:coinKey];
+                }
+            }
+            
+            
+            //For each player
+            for (Player *player2 in _playerArray)
+            {
+                //add check to see if both of the players are connected
+                if (player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
+                {
+                    // Test whether player1 is intersecting player2.
+                    if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
                     {
-                        // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
-                        NSDate *now = [[NSDate date] copy];
-                        [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
-                        [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
-//                        NSLog(@"Players collided; minigame should start!!");
-                        [[Game myGame] startMinigame: @[player, player2]];
-                    }
-                    else
-                    {
-//                        NSLog(@"Players already collided %fseconds ago", interval);
+                        NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
+                        NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
+                        if (interval > COLISSION_CHECK_INTERVAL)
+
+                        {
+                            // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
+                            NSDate *now = [[NSDate date] copy];
+                            [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
+                            [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
+    //                        NSLog(@"Players collided; minigame should start!!");
+                            [[Game myGame] startMinigame: @[player, player2]];
+                        }
+                        else
+                        {
+    //                        NSLog(@"Players already collided %fseconds ago", interval);
+                        }
                     }
                 }
             }
+            
+            player.oldLocation = player.node.location;
         }
-        
-        player.oldLocation = player.node.location;
+    }
+    else
+    {
+        return;
     }
 }
 
