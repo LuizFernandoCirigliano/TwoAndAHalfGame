@@ -28,13 +28,15 @@
 @interface testCocosScene()
 
 @property (nonatomic) BOOL collisionEnabled;
+@property (nonatomic) float roundDuration;
 
 @end
 
 
-#define CAMERA_ANGLE cc3v(0.0f,20.0f,15.0f)
+#define CAMERA_ANGLE cc3v(0.0f,30.0f,15.0f)
 #define COLISSION_CHECK_INTERVAL 60.0f
 #define playerScale 22
+
 @implementation testCocosScene
 
 NSMutableArray *_walls;
@@ -252,6 +254,7 @@ NSTimer *_cameraPlayersTimer;
     
     self.flip = NO;
     self.isTouchEnabled = YES;
+    self.roundDuration = 121.0f;
     
     [[Game myGame] configureGame];
     
@@ -262,9 +265,11 @@ NSTimer *_cameraPlayersTimer;
     [self addChild:_bonusCoinCollection];
     
     [self addContentFromPODFile:@"simpleCube2.pod" withName:@"bonusCoinModel"];
-    _bonusCoin = [self getNodeNamed:@"bonusCoinModel"];
+    _bonusCoin = [[self getNodeNamed:@"bonusCoinModel"] copy];
+    _bonusCoin.scale = cc3v(50, 50, 50);
+    [_bonusCoin createBoundingVolumeFromBoundingBox];
     
-    [self removeChild:_bonusCoin];
+    [self removeChild:[self getNodeNamed:@"bonusCoinModel"]];
 }
 
 -(void) addCamera {
@@ -286,9 +291,6 @@ NSTimer *_cameraPlayersTimer;
     //hocus pocus add grass
     
     const float LOCATION_Z = (0.0f);
-    
-//    float xstart = (float)(([[Map myMap] xTileCount] * [[Map myMap] tileSizeX]) / 2.0f);
-//    float ystart = (float)(([[Map myMap] zTileCount] * [[Map myMap] tileSizeZ]) / 2.0f);
     
     for (int i = 0; i < [[Map myMap] xTileCount]; i++)
     {
@@ -361,6 +363,20 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) addBonusCoin {
     
+    CC3Node *coin = [_bonusCoin copy];
+    int i, j;
+    
+    do {
+        i = rand() % [[Map myMap] xTileCount];
+        j = rand() % [[Map myMap] zTileCount];
+    } while ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] != '0');
+    
+    CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+    coin.location = cc3v(position.x, 500, position.y) ;
+    CCActionInterval *moveCoin = [CC3MoveTo actionWithDuration:1.0f moveTo:cc3v(position.x, 10, position.y)];
+    [coin runAction: moveCoin];
+    
+    [_bonusCoinCollection addChild:coin];
     
 }
 
@@ -558,8 +574,8 @@ NSTimer *_cameraPlayersTimer;
     [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:16.0f];
     
     
-
-    [NSTimer scheduledTimerWithTimeInterval:121.0f target:self selector:@selector(endGame) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:15.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:self.roundDuration target:self selector:@selector(endGame) userInfo:nil repeats:NO];
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
@@ -746,12 +762,10 @@ NSTimer *_cameraPlayersTimer;
         return;
     }
     
-//    NSLog(@"%@ player: %@" , [buttonPressMessage buttonNumber], [buttonPressMessage playerNumber]);
     
     Player* character = [_playerArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
     int buttonNumberInt = [[buttonPressMessage buttonNumber] intValue];
     
-//    NSLog(@"%@" ,[character.node name]);
     CC3Vector moveDirection;
     CCActionInterval *move;
 
@@ -945,7 +959,14 @@ NSTimer *_cameraPlayersTimer;
                 }
             }
             
-            
+            for (CC3Node *coin in [_bonusCoinCollection children]) {
+                if ([player.node doesIntersectBoundingVolume:coin.boundingVolume]) {
+                    [_bonusCoinCollection removeChild:coin];
+                    player.playerScore += 20;
+                    
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"bell.mp3"];
+                }
+            }
             //For each player
             for (Player *player2 in _playerArray)
             {

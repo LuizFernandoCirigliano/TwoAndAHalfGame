@@ -30,7 +30,6 @@
 @protocol GameConnectionDelegate <NSObject>
 
 @required
--(void) roundEnded;
 -(void) otherPlayerPressed:(ButtonPressMessage *) buttonPressMessage ;
 @end
 
