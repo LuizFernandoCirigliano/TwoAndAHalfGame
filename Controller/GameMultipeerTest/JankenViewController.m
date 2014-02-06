@@ -8,6 +8,7 @@
 
 #import "JankenViewController.h"
 #import "Connection.h"
+#import "SimpleAudioPlayer.h"
 
 #define kJankenTLE 3
 
@@ -43,14 +44,18 @@
 	// Do any additional setup after loading the view.
 }
 
--(void) startTimer {
+-(void) startTimer
+{
     static int count = 3;
     
     self.countDownLabel.text = [NSString stringWithFormat:@"%d", count];
     
-
-    
-    if (count == 0) {
+    if (count == 3)
+    {
+        [[SimpleAudioPlayer sharedPlayer] playSoundWithFileName:@"3210" andExtension:@"wav"];
+    }
+    else if (count == 0)
+    {
         self.view.userInteractionEnabled = YES;
         self.countDownLabel.hidden = YES;
         [self.countDownTimer invalidate];

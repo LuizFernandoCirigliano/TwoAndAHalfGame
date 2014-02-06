@@ -27,6 +27,7 @@
 		A3A96D3F18A3C86A00FE7910 /* SimpleAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A96D3E18A3C86A00FE7910 /* SimpleAudioPlayer.m */; };
 		A3A96D4118A3CA2700FE7910 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3A96D4018A3CA2700FE7910 /* AVFoundation.framework */; };
 		A3A96D4318A3CF0900FE7910 /* button.wav in Resources */ = {isa = PBXBuildFile; fileRef = A3A96D4218A3CF0900FE7910 /* button.wav */; };
+		A3A96D4518A4097900FE7910 /* 3210.wav in Resources */ = {isa = PBXBuildFile; fileRef = A3A96D4418A4097900FE7910 /* 3210.wav */; };
 		A3B4719C189AB97F0043BFAC /* JSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4719B189AB97F0043BFAC /* JSButton.m */; };
 		A3B8D23B189A7BB3009FFE5C /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23A189A7BB3009FFE5C /* Connection.m */; };
 		A3B8D248189A7DE2009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D23D189A7DE2009FFE5C /* ButtonPressMessage.m */; };
@@ -78,6 +79,7 @@
 		A3A96D3E18A3C86A00FE7910 /* SimpleAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioPlayer.m; sourceTree = "<group>"; };
 		A3A96D4018A3CA2700FE7910 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A3A96D4218A3CF0900FE7910 /* button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button.wav; sourceTree = "<group>"; };
+		A3A96D4418A4097900FE7910 /* 3210.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 3210.wav; sourceTree = "<group>"; };
 		A3B4719A189AB97F0043BFAC /* JSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSButton.h; sourceTree = "<group>"; };
 		A3B4719B189AB97F0043BFAC /* JSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSButton.m; sourceTree = "<group>"; };
 		A3B8D239189A7BB3009FFE5C /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				3A44A53518883A5400777286 /* Controller */,
 				3A44A5121888395A00777286 /* Images.xcassets */,
 				A3A96D4218A3CF0900FE7910 /* button.wav */,
+				A3A96D4418A4097900FE7910 /* 3210.wav */,
 				3A44A5011888395A00777286 /* Supporting Files */,
 				A3A96D3D18A3C86A00FE7910 /* SimpleAudioPlayer.h */,
 				A3A96D3E18A3C86A00FE7910 /* SimpleAudioPlayer.m */,
@@ -308,7 +311,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A44A4F61888395A00777286 = {
-						DevelopmentTeam = QHL9JXYSYP;
+						DevelopmentTeam = B6U8VQEK7Q;
 					};
 					3A44A5171888395A00777286 = {
 						TestTargetID = 3A44A4F61888395A00777286;
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A44A5131888395A00777286 /* Images.xcassets in Resources */,
+				A3A96D4518A4097900FE7910 /* 3210.wav in Resources */,
 				3A44A5051888395A00777286 /* InfoPlist.strings in Resources */,
 				A3A96D4318A3CF0900FE7910 /* button.wav in Resources */,
 				3A44A53818883AFA00777286 /* Main.storyboard in Resources */,
