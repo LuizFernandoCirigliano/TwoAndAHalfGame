@@ -66,7 +66,7 @@ NSMutableArray *_scoreLabelArray;
     for (int i = 0; i < [[[Game myGame]playerArray] count] ; i++) {
         CCLabelTTF * _statusLabel;
         
-        _statusLabel = [CCLabelTTF labelWithString:@"tes" fontName:@"Arial" fontSize:46];
+        _statusLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Player %d: %d", i + 1, 0] fontName:@"Arial" fontSize:46];
         const float xoffset = 0.12;
         const float yoffset = 0.05;
         switch (i) {

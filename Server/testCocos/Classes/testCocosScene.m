@@ -473,8 +473,7 @@ NSMutableArray *_playerArray;
  */
 -(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor
 {
-//    NSLog(@"%d", [_coinEmitter particleCount]);
-//    [((testCocosLayer *)self.cc3Layer) updateHUD];
+
 }
 
 /**
@@ -487,7 +486,7 @@ NSMutableArray *_playerArray;
  */
 -(void) updateAfterTransform: (CC3NodeUpdatingVisitor*) visitor
 {
-//    Game *game = [Game myGame];
+
     [self checkForCollisions];
 }
 
