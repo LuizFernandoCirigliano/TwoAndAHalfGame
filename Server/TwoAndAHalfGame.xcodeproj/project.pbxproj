@@ -314,6 +314,7 @@
 		A31C86B71899184D00769876 /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B31899184D00769876 /* p4.png */; };
 		A31C86BE18991B3600769876 /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86BD18991B3600769876 /* p2.png */; };
 		A344F5411892D57C00355248 /* CC3Node+Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = A344F5401892D57C00355248 /* CC3Node+Collision.m */; };
+		A34A7E1418A3A6D600CB4574 /* marcelo_model_animation2.pod in Resources */ = {isa = PBXBuildFile; fileRef = A34A7E1318A3A6D600CB4574 /* marcelo_model_animation2.pod */; };
 		A3561CD8189BD798005207A1 /* school.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3561CD7189BD798005207A1 /* school.pod */; };
 		A3561CF7189FC4D8005207A1 /* schoolmap.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3561CF6189FC4D8005207A1 /* schoolmap.pod */; };
 		A3A0272C18A2B9F8000BAB87 /* camisa_portugal.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */; };
@@ -935,6 +936,7 @@
 		A31C86BD18991B3600769876 /* p2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p2.png; sourceTree = "<group>"; };
 		A344F53F1892D57C00355248 /* CC3Node+Collision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CC3Node+Collision.h"; sourceTree = "<group>"; };
 		A344F5401892D57C00355248 /* CC3Node+Collision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CC3Node+Collision.m"; sourceTree = "<group>"; };
+		A34A7E1318A3A6D600CB4574 /* marcelo_model_animation2.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_animation2.pod; sourceTree = "<group>"; };
 		A3561CD7189BD798005207A1 /* school.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = school.pod; sourceTree = "<group>"; };
 		A3561CF6189FC4D8005207A1 /* schoolmap.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = schoolmap.pod; sourceTree = "<group>"; };
 		A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camisa_portugal.png; sourceTree = "<group>"; };
@@ -2063,6 +2065,7 @@
 		A3A0272518A2B9F8000BAB87 /* marcelo */ = {
 			isa = PBXGroup;
 			children = (
+				A34A7E1318A3A6D600CB4574 /* marcelo_model_animation2.pod */,
 				A3A0281118A2BBAE000BAB87 /* marcelo_model.pod */,
 				A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */,
 				A3A0272718A2B9F8000BAB87 /* khakishorts.png */,
@@ -2200,6 +2203,7 @@
 				A3A0281218A2BBAE000BAB87 /* marcelo_model.pod in Resources */,
 				3A4EAB9A188D927D00E6C9F5 /* Default-Portrait~ipad.png in Resources */,
 				A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */,
+				A34A7E1418A3A6D600CB4574 /* marcelo_model_animation2.pod in Resources */,
 				A31C86B61899184D00769876 /* p3.png in Resources */,
 				3A4EAB71188D927D00E6C9F5 /* CC3Texturable.vsh in Resources */,
 				3A4EAB69188D927D00E6C9F5 /* CC3SingleTexture.fsh in Resources */,
