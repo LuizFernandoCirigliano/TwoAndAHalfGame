@@ -46,6 +46,18 @@ NSMutableArray *_scoreLabelArray;
     }
 }
 
+-(void) displayWinnerMessageWithNumber: (NSInteger) winnerNumber {
+    CCLabelTTF *winLabel;
+    
+    winLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Player %d won!", winnerNumber + 1] fontName:@"Arial" fontSize:60];
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    winLabel.position = ccp(winSize.width/2, winSize.height/2);
+    ccColor3B color = {255, 215, 0};
+    winLabel.color = color;
+    
+    [self addChild:winLabel];
+}
+
 
 #pragma mark Updating layer
 

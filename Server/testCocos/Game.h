@@ -15,13 +15,15 @@
 @interface Game : NSObject
 
 +(Game *)myGame;
+-(Player *)topScorer;
 
 - (void) configureGame;
 - (void) startMinigame: (NSArray*) players;
 
 - (void) jankenWithWinner: (NSInteger)winner andLooser: (NSInteger)looser;
-
 - (void) jankenTie;
+
+
 
 @property (strong, nonatomic) Janken *janken;
 @property (strong, nonatomic) NSMutableArray *playerArray;

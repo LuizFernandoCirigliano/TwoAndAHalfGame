@@ -15,6 +15,6 @@
 {
     
 }
-
+-(void) displayWinnerMessageWithNumber: (NSInteger) winnerNumber;
 -(void) updateHUD;
 @end
