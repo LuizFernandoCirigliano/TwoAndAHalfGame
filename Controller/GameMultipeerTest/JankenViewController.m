@@ -48,13 +48,15 @@
     
     self.countDownLabel.text = [NSString stringWithFormat:@"%d", count];
     
-    count--;
+
     
     if (count == 0) {
         self.view.userInteractionEnabled = YES;
         self.countDownLabel.hidden = YES;
         [self.countDownTimer invalidate];
     }
+    
+    count--;
 }
 - (void)didReceiveMemoryWarning
 {
