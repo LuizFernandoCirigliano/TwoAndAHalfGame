@@ -316,6 +316,7 @@
 		3A9A1D6918A3FD1300B82385 /* janelas.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6818A3FD1300B82385 /* janelas.png */; };
 		3A9A1D6B18A3FD2300B82385 /* school.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6A18A3FD2300B82385 /* school.pod */; };
 		3A9A1D6D18A4052B00B82385 /* coin.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6C18A4052B00B82385 /* coin.pod */; };
+		3A9A1D6F18A40C2B00B82385 /* coin9.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6E18A40C2B00B82385 /* coin9.pod */; };
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
@@ -941,6 +942,7 @@
 		3A9A1D6818A3FD1300B82385 /* janelas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = janelas.png; sourceTree = "<group>"; };
 		3A9A1D6A18A3FD2300B82385 /* school.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = school.pod; sourceTree = "<group>"; };
 		3A9A1D6C18A4052B00B82385 /* coin.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = coin.pod; sourceTree = "<group>"; };
+		3A9A1D6E18A40C2B00B82385 /* coin9.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = coin9.pod; sourceTree = "<group>"; };
 		3AD47EC1189020F900623ACA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -1938,6 +1940,7 @@
 				3A2F428518968B1A0088C77D /* simpleCube2.pod */,
 				3A4EAB76188D927D00E6C9F5 /* Info.plist */,
 				3A9A1D6C18A4052B00B82385 /* coin.pod */,
+				3A9A1D6E18A40C2B00B82385 /* coin9.pod */,
 				3A2F4281189678ED0088C77D /* grass.png */,
 				3A9A1D5B18A3EC2A00B82385 /* school */,
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
@@ -2224,6 +2227,7 @@
 				3A9A1D6918A3FD1300B82385 /* janelas.png in Resources */,
 				3A4EAB98188D927D00E6C9F5 /* Default-568h@2x.png in Resources */,
 				3A4EAB8B188D927D00E6C9F5 /* Icon-60@2x.png in Resources */,
+				3A9A1D6F18A40C2B00B82385 /* coin9.pod in Resources */,
 				3A4EAB61188D927D00E6C9F5 /* CC3PointSprites.vsh in Resources */,
 				3A4EAB5D188D927D00E6C9F5 /* CC3NoTextureReflectAlphaTest.fsh in Resources */,
 				3A4EAB6B188D927D00E6C9F5 /* CC3SingleTextureAlphaTest.fsh in Resources */,

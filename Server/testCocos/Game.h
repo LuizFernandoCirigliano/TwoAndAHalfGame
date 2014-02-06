@@ -29,5 +29,6 @@
 @property (strong, nonatomic) NSMutableArray *playerArray;
 
 @property (strong, nonatomic) testCocosLayer *hudLayer;
+@property (nonatomic) int roundDuration;
 
 @end

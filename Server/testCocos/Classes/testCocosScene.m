@@ -28,13 +28,13 @@
 @interface testCocosScene()
 
 @property (nonatomic) BOOL collisionEnabled;
-@property (nonatomic) float roundDuration;
+
 
 @end
 
 
 #define CAMERA_ANGLE cc3v(0.0f,20.0f,15.0f)
-#define COLISSION_CHECK_INTERVAL 60.0f
+#define COLISSION_CHECK_INTERVAL 30.0f
 #define playerScale 22
 
 @implementation testCocosScene
@@ -95,7 +95,7 @@ NSTimer *_cameraPlayersTimer;
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( 0.0, 50.0, 0.0 );
+	lamp.location = cc3v( 0.0, 5000.0, 5000.0 );
 	lamp.isDirectionalOnly = NO;
 	
     
@@ -195,8 +195,9 @@ NSTimer *_cameraPlayersTimer;
     
     [self createCoinParticles];
     [self addCamera];
-    [self.activeCamera addChild:lamp];
+//    [self.activeCamera addChild:lamp];
     
+    [self addChild:lamp];
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
 	[self createGLBuffers];
@@ -254,7 +255,6 @@ NSTimer *_cameraPlayersTimer;
     
     self.flip = NO;
     self.isTouchEnabled = YES;
-    self.roundDuration = 121.0f;
     
     [[Game myGame] configureGame];
     
@@ -264,11 +264,11 @@ NSTimer *_cameraPlayersTimer;
     _bonusCoinCollection  = [CC3Node node];
     [self addChild:_bonusCoinCollection];
     
-    [self addContentFromPODFile:@"simpleCube2.pod" withName:@"bonusCoinModel"];
+    [self addContentFromPODFile:@"coin9.pod" withName:@"bonusCoinModel"];
     _bonusCoin = [[self getNodeNamed:@"bonusCoinModel"] copy];
     _bonusCoin.scale = cc3v(50, 50, 50);
     [_bonusCoin createBoundingVolumeFromBoundingBox];
-    
+    _bonusCoin.shouldUseFixedBoundingVolume = YES;
     [self removeChild:[self getNodeNamed:@"bonusCoinModel"]];
 }
 
@@ -344,12 +344,10 @@ NSTimer *_cameraPlayersTimer;
 
     [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x*2  andMapZ:_mazeMap.boundingBox.maximum.z*2*_mazeMap.scale.z];
     [[Map myMap] setScale:200];
-
-    _mazeMap.shouldCullBackFaces = NO;
     
     _mazeMap.shouldCastShadows = YES;
     _mazeMap.shouldUseLighting = YES;
-    
+
     _mazeMap.shouldCullFrontFaces = NO;
 
     [self addChild:_mazeMap];
@@ -372,9 +370,12 @@ NSTimer *_cameraPlayersTimer;
     } while ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] != '0');
     
     CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
-    coin.location = cc3v(position.x, 500, position.y) ;
-    CCActionInterval *moveCoin = [CC3MoveTo actionWithDuration:1.0f moveTo:cc3v(position.x, 10, position.y)];
+    coin.location = cc3v(position.x, 5000, position.y) ;
+    CCActionInterval *moveCoin = [CC3MoveTo actionWithDuration:1.0f moveTo:cc3v(position.x, 50, position.y)];
     [coin runAction: moveCoin];
+    
+//    CCActionInterval *rotateCoin = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:30];
+//    [coin runAction:[CCRepeatForever actionWithAction:rotateCoin]];
     
     [_bonusCoinCollection addChild:coin];
     
@@ -575,7 +576,7 @@ NSTimer *_cameraPlayersTimer;
     
     
     [NSTimer scheduledTimerWithTimeInterval:15.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:self.roundDuration target:self selector:@selector(endGame) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;

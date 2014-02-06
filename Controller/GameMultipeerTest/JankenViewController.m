@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pickLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 @property (strong, nonatomic) NSTimer *countDownTimer;
+@property (nonatomic) int count;
 @end
 
 @implementation JankenViewController
@@ -32,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.count = 3;
     self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
     [NSTimer scheduledTimerWithTimeInterval:9.0f
                                      target:self
@@ -46,22 +47,20 @@
 
 -(void) startTimer
 {
-    static int count = 3;
+    self.countDownLabel.text = [NSString stringWithFormat:@"%d", self.count];
     
-    self.countDownLabel.text = [NSString stringWithFormat:@"%d", count];
-    
-    if (count == 3)
+    if (self.count == 3)
     {
         [[SimpleAudioPlayer sharedPlayer] playSoundWithFileName:@"3210" andExtension:@"wav"];
     }
-    else if (count == 0)
+    else if (self.count == 0)
     {
         self.view.userInteractionEnabled = YES;
         self.countDownLabel.hidden = YES;
         [self.countDownTimer invalidate];
     }
     
-    count--;
+    self.count--;
 }
 - (void)didReceiveMemoryWarning
 {

@@ -20,6 +20,7 @@ NSMutableArray *_scoreLabelArray;
 
 CCLabelTTF *_roundTimer;
 
+int _time;
 
 -(void) dealloc {
     [super dealloc];
@@ -113,20 +114,21 @@ CCLabelTTF *_roundTimer;
     }
     
     
-    _roundTimer = [CCLabelTTF labelWithString:@"2:00" fontName:@"Arial" fontSize:46];
+    _roundTimer = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%02d:%02d", _time/60, _time%60] fontName:@"Arial" fontSize:46];
     _roundTimer.position = ccp(winSize.width/2, winSize.height*(1-yoffset));
     [self addChild:_roundTimer];
+    _time = [[Game myGame] roundDuration];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
 
 -(void) updateTimer {
-    static int time = 120;
-    _roundTimer.string = [NSString stringWithFormat:@"%02d:%02d", time/60, time%60];
     
-    if (time > 0)
-        time--;
+    _roundTimer.string = [NSString stringWithFormat:@"%02d:%02d", _time/60, _time%60];
+    
+    if (_time > 0)
+        _time--;
     
 
 }
