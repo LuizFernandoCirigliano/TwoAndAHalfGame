@@ -32,7 +32,7 @@
 @end
 
 
-#define CAMERA_ANGLE cc3v(0.0f,40.0f,15.0f)
+#define CAMERA_ANGLE cc3v(0.0f,20.0f,15.0f)
 #define COLISSION_CHECK_INTERVAL 60.0f
 #define playerScale 22
 @implementation testCocosScene
@@ -45,6 +45,10 @@ CC3Node *_allCharacters;
 
 CC3Node *_mazeMap;
 
+CC3Node *_bonusCoin;
+
+CC3Node *_bonusCoinCollection;
+
 CC3MeshParticleEmitter *_emitter;
 
 NSMutableDictionary *_coinDictionary;
@@ -52,8 +56,6 @@ NSMutableDictionary *_coinDictionary;
 NSMutableArray *_playerArray;
 
 NSTimer *_cameraPlayersTimer;
-
-//HUDLayer * _hud;
 
 -(void) dealloc
 {
@@ -85,18 +87,15 @@ NSTimer *_cameraPlayersTimer;
 -(void) initializeScene
 {
 
-    
+    //initializes variables
     [self performInitializations];
-
 
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( 0.0, 30.0, 50.0 );
+	lamp.location = cc3v( 0.0, 50.0, 0.0 );
 	lamp.isDirectionalOnly = NO;
 	
-    
-    
     
     
 	// Select an appropriate shader program for each mesh node in this scene now. If this step
@@ -192,7 +191,7 @@ NSTimer *_cameraPlayersTimer;
 
 //    [self addCoins];
     
-    [self createParticles];
+    [self createCoinParticles];
     [self addCamera];
     [self.activeCamera addChild:lamp];
     
@@ -206,7 +205,7 @@ NSTimer *_cameraPlayersTimer;
 
 
 //called in initializeScene
--(void)createParticles{
+-(void)createCoinParticles{
 
     CC3MeshNode *particleTemplate = [CC3MeshNode node];
     
@@ -215,13 +214,6 @@ NSTimer *_cameraPlayersTimer;
     ccColor3B gold = {255,215,0};
     
     particleTemplate.color = gold;
-    
-//    [self addContentFromPODFile:@"cubo.pod" withName:@"coin"];
-//    CC3PODResourceNode *resourceNode = [CC3PODResourceNode nodeFromFile:@"cubo.pod"];
-//    CC3MeshNode *coinNode = [resourceNode getMeshNodeNamed:@"Cube"];
-//
-//    
-//    particleTemplate.texture = coinNode.texture;
     
     _emitter = [CC3MeshParticleEmitter node];
     _emitter.tag = 0; //index of current color
@@ -266,7 +258,13 @@ NSTimer *_cameraPlayersTimer;
     _playerArray = [[Game myGame] playerArray];
     _coinDictionary = [[NSMutableDictionary alloc] init];
 
+    _bonusCoinCollection  = [CC3Node node];
+    [self addChild:_bonusCoinCollection];
     
+    [self addContentFromPODFile:@"simpleCube2.pod" withName:@"bonusCoinModel"];
+    _bonusCoin = [self getNodeNamed:@"bonusCoinModel"];
+    
+    [self removeChild:_bonusCoin];
 }
 
 -(void) addCamera {
@@ -302,12 +300,11 @@ NSTimer *_cameraPlayersTimer;
             CC3Texture * texture = [CC3Texture textureFromFile: name];
             if( texture != nil) {
                 CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
-//                CC3Texture * texture = [CC3Texture textureFromFile: name];
                 
                 tile.shouldCullBackFaces = NO;
                 
                 [tile populateAsCenteredRectangleWithSize: CGSizeMake ([[Map myMap] tileSizeX], [[Map myMap] tileSizeZ]) andTessellation:CC3TessellationMake(1, 1)];
-//                [tile setTexture: texture];
+
                 
                 ccColor3B color= {rand() % 255, rand() % 255, rand() % 255};
                 [tile setColor:color];
@@ -337,15 +334,12 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) addMazeWalls {
     //Add maze map mesh
-    [self addContentFromPODFile:@"schoolmap_only_textured.pod" withName:@"school"];
+    [self addContentFromPODFile:@"schoolmap.pod" withName:@"school"];
     _mazeMap = [self getNodeNamed:@"school"];
 
     _mazeMap.scale = cc3v(200,200,200);
     
 
-    
-    //update the size of the tiles based on the size of POD file
-    
     [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x*2  andMapZ:_mazeMap.boundingBox.maximum.z*2*_mazeMap.scale.z];
     [[Map myMap] setScale:200];
 
@@ -365,15 +359,20 @@ NSTimer *_cameraPlayersTimer;
     entrance.location = cc3v(-entrance.boundingBox.maximum.x*entrance.scale.x/2, 0, [[Map myMap] mapSizeZ] / 2 + entrance.boundingBox.maximum.z*entrance.scale.z*2.5/3);
 }
 
+-(void) addBonusCoin {
+    
+    
+}
+
 -(void) addPlayerCharacter
 {
-    Player *monkey = [[Player alloc] initWithIndex: [_playerArray count]];
+    Player *player = [[Player alloc] initWithIndex: [_playerArray count]];
     
     //copy the original model
-    monkey.node = [_playerModel copy];
+    player.node = [_playerModel copy];
     
     //create bounding volume
-    [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
+    [player.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
     
 #if COLLISION_DEBUG
     monkey.node.shouldDrawBoundingVolume = YES;
@@ -398,10 +397,10 @@ NSTimer *_cameraPlayersTimer;
             break;
     }
     
-    monkey.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
+    player.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
     
-    monkey.node.rotationAxis = kCC3VectorUnitYPositive;
-    monkey.node.scale = cc3v(playerScale, playerScale, playerScale);
+    player.node.rotationAxis = kCC3VectorUnitYPositive;
+    player.node.scale = cc3v(playerScale, playerScale, playerScale);
     
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
@@ -415,12 +414,12 @@ NSTimer *_cameraPlayersTimer;
     marker.shouldAutotargetCamera = YES;
     [marker setIsTouchEnabled:NO];
     
-    [monkey.node addChild:marker];
+    [player.node addChild:marker];
 
     //add to character array and add the node to the scene
-    [_playerArray addObject:monkey];
+    [_playerArray addObject:player];
     
-    [_allCharacters addChild:monkey.node];
+    [_allCharacters addChild:player.node];
 
     
 }
@@ -529,6 +528,13 @@ NSTimer *_cameraPlayersTimer;
  * For more info, read the notes of this method on CC3Scene.
  */
 -(void) onOpen {
+    //"Bushwick Tarantella Loop" Kevin MacLeod (incompetech.com)
+    //    Licensed under Creative Commons: By Attribution 3.0
+    //http://creativecommons.org/licenses/by/3.0/
+    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bkgMusic.mp3" loop:YES];
+    
+    
     
 	// Add additional scene content dynamically and asynchronously on a background thread
 	// after the scene is open and rendering has begun on the rendering thread. We use the
@@ -544,10 +550,7 @@ NSTimer *_cameraPlayersTimer;
     Game *game = [Game myGame];
     game.hudLayer = (testCocosLayer *)self.cc3Layer;
     
-	// Move the camera to frame the scene. The resulting configuration of the camera is output as
-	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
-//    [self.activeCamera moveWithDuration: 1.0 toShowAllOf: [[self.charactersArray objectAtIndex:0] node]];
-    
+    //schedule camera movements for the opening scene
     [self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 0, 1)];
     [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray firstObject] node] afterDelay:6.0f];
     [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray lastObject] node] afterDelay:9.0f];
@@ -556,7 +559,7 @@ NSTimer *_cameraPlayersTimer;
     
     
 
-    [NSTimer scheduledTimerWithTimeInterval:120.0f target:self selector:@selector(endGame) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:121.0f target:self selector:@selector(endGame) userInfo:nil repeats:NO];
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
@@ -583,22 +586,24 @@ NSTimer *_cameraPlayersTimer;
     winner.node.location = cc3v(winner.node.location.x, 300, winner.node.location.z);
     winner.node.scale = cc3v(2*playerScale, 2*playerScale, 2*playerScale);
     
+    //focus camera on the winner
     [self.activeCamera moveWithDuration:1.0f toShowAllOf:winner.node fromDirection:cc3v(0, 0, 1)];
-    
     self.activeCamera.target = winner.node;
-
     self.activeCamera.shouldTrackTarget = YES;
     
-    
-//    CCActionInterval *moveAction = [CC3MoveTo actionWithDuration:10.0f moveTo:cc3v(0, 500, 0)];
+    //animations to run on the winning player
     [winner.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
     CCActionInterval *rotateAction = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:-30.0f];
-    
-//    [winner.node runAction:moveAction];
     [winner.node runAction:[CCRepeatForever actionWithAction:rotateAction]];
     
+    //display player winner message
     [[[Game myGame] hudLayer] displayWinnerMessageWithNumber:winner.index];
     
+    //warn the controllers that the game is over
+    NSData *data = [[[EndRoundMessage alloc] init] archiveData];
+    [[Connection myConnection] sendData:data];
+    
+    [[[Connection myConnection] advertiser] stopAdvertisingPeer];
 }
 
 /**

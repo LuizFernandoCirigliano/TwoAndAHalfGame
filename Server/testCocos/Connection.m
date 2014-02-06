@@ -72,7 +72,7 @@ static Connection *myConnectionConfiguration = nil;
         
         //  Setup BrowserViewController
         self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:@"controllertest" session:self.mySession];
-        
+    
         //  Setup Advertiser
         self.advertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:self.myPeerID discoveryInfo:nil serviceType:@"controllertest"];
         [self.advertiser startAdvertisingPeer];
