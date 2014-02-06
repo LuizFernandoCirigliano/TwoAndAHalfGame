@@ -13,7 +13,8 @@
 
 @interface JankenViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *pickLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+@property (strong, nonatomic) NSTimer *countDownTimer;
 @end
 
 @implementation JankenViewController
@@ -30,18 +31,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(enableTouch) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:8.0f
+
+    self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:9.0f
                                      target:self
                                    selector:@selector(timeLimitExceeded)
                                    userInfo:nil
                                     repeats:NO];
     self.view.userInteractionEnabled = NO;
+    
 	// Do any additional setup after loading the view.
 }
 
--(void) enableTouch {
-    self.view.userInteractionEnabled = YES;
+-(void) startTimer {
+    static int count = 3;
+    
+    self.countDownLabel.text = [NSString stringWithFormat:@"%d", count];
+    
+    count--;
+    
+    if (count == 0) {
+        self.view.userInteractionEnabled = YES;
+        self.countDownLabel.hidden = YES;
+        [self.countDownTimer invalidate];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
