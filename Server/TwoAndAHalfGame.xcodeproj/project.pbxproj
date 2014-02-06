@@ -309,6 +309,12 @@
 		3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5B18A2A19800FEFD9E /* arial16.fnt */; };
 		3A920F6018A3AEDE00FEFD9E /* marcelo_model_low.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */; };
 		3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F6118A3B4B200FEFD9E /* money.mp3 */; };
+		3A9A1D4B18A3C1F200B82385 /* schoolmap_textured.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D4A18A3C1F200B82385 /* schoolmap_textured.pod */; };
+		3A9A1D5218A3C72A00B82385 /* BuildingsHighRise0315_1_S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D4D18A3C72A00B82385 /* BuildingsHighRise0315_1_S.jpg */; };
+		3A9A1D5318A3C72A00B82385 /* Lockers.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D4E18A3C72A00B82385 /* Lockers.png */; };
+		3A9A1D5418A3C72A00B82385 /* schoolentrance_textured.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D4F18A3C72A00B82385 /* schoolentrance_textured.pod */; };
+		3A9A1D5518A3C72A00B82385 /* schoolmap_only_textured.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D5018A3C72A00B82385 /* schoolmap_only_textured.pod */; };
+		3A9A1D5618A3C72A00B82385 /* tile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D5118A3C72A00B82385 /* tile.jpg */; };
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
@@ -929,6 +935,12 @@
 		3A920F5B18A2A19800FEFD9E /* arial16.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arial16.fnt; sourceTree = "<group>"; };
 		3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_low.pod; sourceTree = "<group>"; };
 		3A920F6118A3B4B200FEFD9E /* money.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = money.mp3; sourceTree = "<group>"; };
+		3A9A1D4A18A3C1F200B82385 /* schoolmap_textured.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = schoolmap_textured.pod; sourceTree = "<group>"; };
+		3A9A1D4D18A3C72A00B82385 /* BuildingsHighRise0315_1_S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BuildingsHighRise0315_1_S.jpg; sourceTree = "<group>"; };
+		3A9A1D4E18A3C72A00B82385 /* Lockers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lockers.png; sourceTree = "<group>"; };
+		3A9A1D4F18A3C72A00B82385 /* schoolentrance_textured.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = schoolentrance_textured.pod; sourceTree = "<group>"; };
+		3A9A1D5018A3C72A00B82385 /* schoolmap_only_textured.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = schoolmap_only_textured.pod; sourceTree = "<group>"; };
+		3A9A1D5118A3C72A00B82385 /* tile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tile.jpg; sourceTree = "<group>"; };
 		3AD47EC1189020F900623ACA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -1922,6 +1934,7 @@
 		3A4EAB75188D927D00E6C9F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3A9A1D4C18A3C72A00B82385 /* school */,
 				A3A0272518A2B9F8000BAB87 /* marcelo */,
 				A3561CF6189FC4D8005207A1 /* schoolmap.pod */,
 				3A920F6118A3B4B200FEFD9E /* money.mp3 */,
@@ -1931,6 +1944,7 @@
 				3A4EAB76188D927D00E6C9F5 /* Info.plist */,
 				3A2F4281189678ED0088C77D /* grass.png */,
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
+				3A9A1D4A18A3C1F200B82385 /* schoolmap_textured.pod */,
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
 				3A25F11718A27695005FD2F3 /* cubo.pod */,
@@ -1999,6 +2013,19 @@
 				3A4EABB3188D927D00E6C9F5 /* configuration.json */,
 			);
 			name = Apportable;
+			sourceTree = "<group>";
+		};
+		3A9A1D4C18A3C72A00B82385 /* school */ = {
+			isa = PBXGroup;
+			children = (
+				3A9A1D4D18A3C72A00B82385 /* BuildingsHighRise0315_1_S.jpg */,
+				3A9A1D4E18A3C72A00B82385 /* Lockers.png */,
+				3A9A1D4F18A3C72A00B82385 /* schoolentrance_textured.pod */,
+				3A9A1D5018A3C72A00B82385 /* schoolmap_only_textured.pod */,
+				3A9A1D5118A3C72A00B82385 /* tile.jpg */,
+			);
+			name = school;
+			path = marcelo/school;
 			sourceTree = "<group>";
 		};
 		3AD47EC81890210700623ACA /* Messages */ = {
@@ -2173,6 +2200,7 @@
 				3A4EAB96188D927D00E6C9F5 /* Default.png in Resources */,
 				3A4EAB47188D927D00E6C9F5 /* CC3BumpMapObjectSpace.fsh in Resources */,
 				3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */,
+				3A9A1D5618A3C72A00B82385 /* tile.jpg in Resources */,
 				3A4EAB79188D927D00E6C9F5 /* Icon-29.png in Resources */,
 				3A2F428618968B1A0088C77D /* simpleCube2.pod in Resources */,
 				3A2F4282189678ED0088C77D /* grass.png in Resources */,
@@ -2188,6 +2216,8 @@
 				3A4EAB6B188D927D00E6C9F5 /* CC3SingleTextureAlphaTest.fsh in Resources */,
 				A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */,
 				A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */,
+				3A9A1D5218A3C72A00B82385 /* BuildingsHighRise0315_1_S.jpg in Resources */,
+				3A9A1D5518A3C72A00B82385 /* schoolmap_only_textured.pod in Resources */,
 				A31C86B41899184D00769876 /* p1.png in Resources */,
 				3A4EAB55188D927D00E6C9F5 /* CC3MultiTextureConfigurable.fsh in Resources */,
 				3A920F6018A3AEDE00FEFD9E /* marcelo_model_low.pod in Resources */,
@@ -2204,9 +2234,12 @@
 				3A4EAB57188D927D00E6C9F5 /* CC3NoTexture.fsh in Resources */,
 				3A4EAB9A188D927D00E6C9F5 /* Default-Portrait~ipad.png in Resources */,
 				A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */,
+				3A9A1D5318A3C72A00B82385 /* Lockers.png in Resources */,
 				A31C86B61899184D00769876 /* p3.png in Resources */,
+				3A9A1D4B18A3C1F200B82385 /* schoolmap_textured.pod in Resources */,
 				3A4EAB71188D927D00E6C9F5 /* CC3Texturable.vsh in Resources */,
 				3A4EAB69188D927D00E6C9F5 /* CC3SingleTexture.fsh in Resources */,
+				3A9A1D5418A3C72A00B82385 /* schoolentrance_textured.pod in Resources */,
 				3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */,
 				3A4EAB4D188D927D00E6C9F5 /* CC3BumpMapTangentSpaceAlphaTest.fsh in Resources */,
 				3A4EAB53188D927D00E6C9F5 /* CC3ClipSpaceTexturable.vsh in Resources */,

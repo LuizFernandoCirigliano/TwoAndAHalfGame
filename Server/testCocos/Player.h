@@ -7,7 +7,6 @@
 //
 
 #import "CC3Node+Collision.h"
-#import "Game.h"
 #import "Minigame.h"
 
 
