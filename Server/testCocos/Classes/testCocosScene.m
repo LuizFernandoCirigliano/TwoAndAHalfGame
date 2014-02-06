@@ -30,7 +30,7 @@
 
 NSMutableArray *_walls;
 
-CC3Node *_monkeyModel;
+CC3Node *_playerModel;
 
 CC3Node *_allCharacters;
 
@@ -161,12 +161,12 @@ NSMutableArray *_playerArray;
     
 
     //load the model content from the file
-    [self addContentFromPODFile:@"marcelo_model.pod" withName:@"monkey"];
-    _monkeyModel = [self getNodeNamed:@"monkey"];
+    [self addContentFromPODFile:@"marcelo_model.pod" withName:@"player"];
+    _playerModel = [self getNodeNamed:@"player"];
     
     
     //remove this temp model from the world
-    [self removeChild:_monkeyModel];
+    [self removeChild:_playerModel];
     
     [[Map myMap] readMapFile];
     
@@ -348,7 +348,7 @@ NSMutableArray *_playerArray;
     Player *monkey = [[Player alloc] initWithIndex: [_playerArray count]];
     
     //copy the original model
-    monkey.node = [_monkeyModel copy];
+    monkey.node = [_playerModel copy];
     
     //create bounding volume
     [monkey.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
@@ -539,7 +539,7 @@ NSMutableArray *_playerArray;
 -(void) zoomCameraOnPlayers {
 
     NSLog(@"moving camera");
-    [self.activeCamera moveWithDuration:1.0f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
+    [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
 }
 
 -(void) zoomCameraOnObject: (CC3Node *)object {
@@ -890,7 +890,8 @@ NSMutableArray *_playerArray;
         //For each player
         for (Player *player2 in _playerArray)
         {
-            if (player2 != player)
+            //add check to see if both of the players are connected
+            if (player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
             {
                 // Test whether player1 is intersecting player2.
                 if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
