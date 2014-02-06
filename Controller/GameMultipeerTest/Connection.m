@@ -88,7 +88,7 @@ static Connection *myConnectionConfiguration = nil;
 }
 
 -(void) sendDataToServer: (NSData *) data {
-    [self.mySession sendData:data toPeers:[NSArray arrayWithObject:self.serverPeerID] withMode:MCSessionSendDataUnreliable error:nil];
+//    [self.mySession sendData:data toPeers:[NSArray arrayWithObject:self.serverPeerID] withMode:MCSessionSendDataUnreliable error:nil];
 }
 
 // Received data from remote peer

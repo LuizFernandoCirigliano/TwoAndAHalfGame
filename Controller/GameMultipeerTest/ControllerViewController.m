@@ -10,6 +10,7 @@
 #import "ButtonPressMessage.h"
 #import "JSDPad.h"
 #import "JSButton.h"
+#import "SimpleAudioPlayer.h"
 
 @interface ControllerViewController ()  <JSDPadDelegate>
 @property (weak, nonatomic) IBOutlet JSButton *button0;
@@ -65,18 +66,6 @@
 }
 
 
-- (IBAction)buttonPress:(UIButton *)sender
-{
-    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:sender.tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
-    [[Connection myConnection] sendData:data];
-}
-
-- (IBAction)buttonRelease:(UIButton *)sender {
-    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:4 andPlayer:[[Connection myConnection] playerNumber]] archiveData];
-    [[Connection myConnection] sendData:data];
-}
-
-
 -(void) otherPlayerPressed:(NSNumber *) buttonNumber {
     NSLog(@"%ld", (long)[buttonNumber integerValue]);
 }
@@ -97,7 +86,8 @@
     [[Connection myConnection] sendData:data];
     
     NSInteger tag;
-    
+    [[SimpleAudioPlayer sharedPlayer] playSoundWithFileName:@"button" andExtension:@"wav"];
+
     switch (direction)
     {
         case JSDPadDirectionUp:

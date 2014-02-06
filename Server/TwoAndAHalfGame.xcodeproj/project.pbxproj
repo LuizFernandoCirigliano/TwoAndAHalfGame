@@ -2563,7 +2563,7 @@
 				HEADER_SEARCH_PATHS = "\"testCocos/libs/kazmath/include\"";
 				INFOPLIST_FILE = testCocos/Resources/Info.plist;
 				PRODUCT_NAME = TwoAndAHalfGame;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1682AA5E-550F-4AD1-8995-ED3D6929528F";
 			};
 			name = Debug;
 		};
@@ -2575,7 +2575,7 @@
 				HEADER_SEARCH_PATHS = "\"testCocos/libs/kazmath/include\"";
 				INFOPLIST_FILE = testCocos/Resources/Info.plist;
 				PRODUCT_NAME = TwoAndAHalfGame;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1682AA5E-550F-4AD1-8995-ED3D6929528F";
 			};
 			name = Release;
 		};
