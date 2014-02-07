@@ -46,4 +46,5 @@
 -(CGPoint) locationInMapWithPosition: (CGPoint) position;
 -(CGPoint) positionInMapWithLocation: (CGPoint) location;
 -(char) contentOfMapAtLocation: (CGPoint) location;
+-(void) replaceAtLocation:(CGPoint) location withChar: (char) c;
 @end

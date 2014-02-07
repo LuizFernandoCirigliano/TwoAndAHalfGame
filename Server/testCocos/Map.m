@@ -119,7 +119,7 @@ static Map *myMapConfiguration = nil;
 //This method receives the tile indexes and returns the center position (float values) for the center of the tile
 -(CGPoint) positionInMapWithLocation: (CGPoint) location
 {
-    CGPoint position = CGPointMake(-self.mapSizeX/2 + self.tileSizeX*location.x + self.tileSizeX , -self.mapSizeZ/2 + self.tileSizeZ*location.y + self.tileSizeZ);
+    CGPoint position = CGPointMake(-self.mapSizeX/2 + self.tileSizeX*location.x , -self.mapSizeZ/2 + self.tileSizeZ*location.y );
     
     return position;
 }
@@ -130,7 +130,9 @@ static Map *myMapConfiguration = nil;
     return [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] characterAtIndex:self.zTileCount - (int)location.y - 1];
 }
 
--(void) pickCoinAtLocation:(CGPoint) location {
-    [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] replaceCharactersInRange:NSMakeRange(self.zTileCount - (int)location.y - 1, 1) withString:@"x"];
+-(void) replaceAtLocation:(CGPoint) location withChar: (char) c{
+    NSLog(@"%c", [self contentOfMapAtLocation:location]);
+    [[self.lines objectAtIndex:self.xTileCount - (int)location.x - 1] replaceCharactersInRange:NSMakeRange(self.zTileCount - (int)location.y - 1, 1) withString:[NSString stringWithFormat:@"%c",c]];
+    NSLog(@"%c", [self contentOfMapAtLocation:location]);
 }
 @end

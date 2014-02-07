@@ -51,6 +51,8 @@ CC3Node *_bonusCoin;
 
 CC3Node *_bonusCoinCollection;
 
+NSMutableArray *_tempWallsArray;
+
 CC3MeshParticleEmitter *_emitter;
 
 NSMutableDictionary *_coinDictionary;
@@ -189,7 +191,7 @@ NSTimer *_cameraPlayersTimer;
     [self createCoinParticles];
     [self addCamera];
 //    [self.activeCamera addChild:lamp];
-    
+    [self createTempWallsAndObjects];
     [self addChild:lamp];
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
@@ -237,6 +239,49 @@ NSTimer *_cameraPlayersTimer;
     }
 }
 
+
+-(void) createTempWallsAndObjects {
+    CC3MeshNode *cube = [CC3MeshNode node];
+    
+    float sizeX = [[Map myMap] tileSizeX];
+    float sizeZ = [[Map myMap] tileSizeZ];
+    
+    [cube populateAsSolidBox:CC3BoxMake(0, 0, 0, sizeX, 150, sizeZ)];
+    
+    
+    for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
+        for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
+            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
+            char content = [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)];
+            if (content == '2') {
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                CC3MeshNode *newCube = [cube copy];
+                
+                newCube.location = pos;
+                
+                //test
+                
+                CGPoint testPosition = CGPointMake(newCube.location.x, newCube.location.z);
+                CGPoint testLocation = [[Map myMap] locationInMapWithPosition:testPosition];
+                NSLog (@"CERTO: %d %d  TEST: %d %d" , i, j, (int)testLocation.x, (int)testLocation.y);
+                
+                [_tempWallsArray addObject:newCube];
+                [self addChild:newCube];
+            } else if (content == 3) {
+                [self addContentFromPODFile:@"big_mesa.pod" withName:@"bigMesa"];
+                CC3Node *mesa = [self getNodeNamed:@"bigMesa"];
+                mesa.scale = cc3v(500,500,500);
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            }
+        }
+    }
+
+}
 //all variable and property initializations go here
 -(void) performInitializations {
     [Connection myConnection];
@@ -245,9 +290,9 @@ NSTimer *_cameraPlayersTimer;
 
     
     _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
-    
+    _tempWallsArray = [[NSMutableArray alloc ] init];
     self.flip = NO;
-    self.isTouchEnabled = YES;
+    self.isTouchEnabled = NO;
     
     [[Game myGame] configureGame];
     
@@ -281,45 +326,6 @@ NSTimer *_cameraPlayersTimer;
 	[self addChild: cam];
     
 }
--(void) createTestTerrain
-{
-    //hocus pocus add grass
-    
-    const float LOCATION_Z = (0.0f);
-    
-    for (int i = 0; i < [[Map myMap] xTileCount]; i++)
-    {
-        for (int j = 0; j < [[Map myMap] zTileCount]; j++)
-        {
-            NSString * name = [NSString stringWithFormat:@"grass.png"];
-            CCLOG(@"tile : %@", name);
-            
-            CC3Texture * texture = [CC3Texture textureFromFile: name];
-            if( texture != nil) {
-                CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
-                
-                tile.shouldCullBackFaces = NO;
-                
-                [tile populateAsCenteredRectangleWithSize: CGSizeMake ([[Map myMap] tileSizeX], [[Map myMap] tileSizeZ]) andTessellation:CC3TessellationMake(1, 1)];
-
-                
-                ccColor3B color= {rand() % 255, rand() % 255, rand() % 255};
-                [tile setColor:color];
-                [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-//                [tile setT]
-                
-                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
-                CC3Vector pos = cc3v(position.x, LOCATION_Z, position.y);
-                [tile setLocation: pos];
-                [tile retainVertexLocations];
-                
-                
-                [self addChild: tile];
-                
-            }
-        }
-    }
-}
 
 
 
@@ -347,7 +353,7 @@ NSTimer *_cameraPlayersTimer;
 
     [self addChild:_mazeMap];
     
-    [self addContentFromPODFile:@"schoolentrance_textured.pod" withName:@"schoolEntrance"];
+    [self addContentFromPODFile:@"school_entrance.pod" withName:@"schoolEntrance"];
     CC3Node *entrance = [self getNodeNamed:@"schoolEntrance"];
     
     entrance.scale = cc3v(200, 200, 200);
@@ -383,10 +389,14 @@ NSTimer *_cameraPlayersTimer;
     NSString *modelString;
     switch (number) {
         case 0:
+            modelString = @"sergio1.pod";
+            break;
         case 2:
+        case 1:
+            
             modelString = @"boy3.pod";
             break;
-        case 1:
+        
         case 3:
             modelString = @"marcelo_model_low.pod";
             break;
@@ -405,16 +415,16 @@ NSTimer *_cameraPlayersTimer;
     CGPoint spawnPoint;
     switch ([_playerArray count]) {
         case 0:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,1)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,2)];
             break;
         case 1:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(57,37)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,38)];
             break;
         case 2:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(1,37)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,38)];
             break;
         case 3:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(57,1)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,2)];
             break;
         default:
             break;
@@ -582,24 +592,14 @@ NSTimer *_cameraPlayersTimer;
     
     
     [NSTimer scheduledTimerWithTimeInterval:15.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
+    
     [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
 }
--(void) zoomCameraOnPlayers {
-    NSLog(@"moving camera");
-    [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
-}
 
--(void) zoomCameraOnObject: (CC3Node *)object {
-    NSLog (@"camera luz acao")  ;
-    [self.activeCamera moveWithDuration:2.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
-}
-
--(void) startZoomingOnPlayers {
-    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
-}
 
 -(void) endGame {
     [_cameraPlayersTimer invalidate];
@@ -644,7 +644,19 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) onClose {}
 
-
+-(void) removeWall {
+    if ([_tempWallsArray count] > 0) {
+        CC3Node *tempWall = [_tempWallsArray firstObject];
+        CGPoint position = CGPointMake(tempWall.location.x, tempWall.location.z);
+        CGPoint location = [[Map myMap] locationInMapWithPosition:position];
+        
+        NSLog(@"%d %d", location.x, location.y);
+        [self removeChild:tempWall];
+        [[Map myMap] replaceAtLocation:location withChar:'0'];
+        [_tempWallsArray removeObject:tempWall];
+        
+    }
+}
 #pragma mark Drawing
 
 /**
@@ -696,68 +708,7 @@ NSTimer *_cameraPlayersTimer;
 }
 
 
-#pragma mark Handling touch events 
 
-/**
- * This method is invoked from the CC3Layer whenever a touch event occurs, if that layer
- * has indicated that it is interested in receiving touch events, and is handling them.
- *
- * Override this method to handle touch events, or remove this method to make use of
- * the superclass behaviour of selecting 3D nodes on each touch-down event.
- *
- * This method is not invoked when gestures are used for user interaction. Your custom
- * CC3Layer processes gestures and invokes higher-level application-defined behaviour
- * on this customized CC3Scene subclass.
- *
- * For more info, read the notes of this method on CC3Scene.
- */
--(void) touchEvent: (uint) touchType at: (CGPoint) touchPoint {
-    
-    if (touchType != UITouchPhaseBegan)
-        return;
-    //using to change camera positions, alter as you need
-    
-    static int position = 0;
-    CC3Vector direction;
-    
-    switch (position) {
-        case 0:
-            direction = cc3v(1, 0, 1);
-            break;
-        case 1:
-            direction = cc3v(0, 1, 1);
-            break;
-        case 2:
-            direction = cc3v(-1, 1, 1);
-            break;
-        case 3:
-            direction = cc3v(0, 0, 1);
-        case 4:
-            direction = cc3v(1, 0, 0);
-            break;
-    
-        default:
-            break;
-    }
-    [self.activeCamera moveWithDuration:3.0f toShowAllOf:self fromDirection:direction];
-    
-    position = (position + 1) % 5;
-    [self.activeCamera setTargetLocation:kCC3VectorZero];
-
-}
-
-/**
- * This callback template method is invoked automatically when a node has been picked
- * by the invocation of the pickNodeFromTapAt: or pickNodeFromTouchEvent:at: methods,
- * as a result of a touch event or tap gesture.
- *
- * Override this method to perform activities on 3D nodes that have been picked by the user.
- *
- * For more info, read the notes of this method on CC3Scene.
- */
--(void) nodeSelected: (CC3Node*) aNode byTouchEvent: (uint) touchType at: (CGPoint) touchPoint {
-    
-}
 
 
 
@@ -1023,6 +974,65 @@ NSTimer *_cameraPlayersTimer;
         return;
     }
 }
+
+#pragma mark - CAMERA METHODS
+
+-(void) zoomCameraOnPlayers {
+    NSLog(@"moving camera");
+    [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
+}
+
+-(void) zoomCameraOnObject: (CC3Node *)object {
+    NSLog (@"camera luz acao")  ;
+    [self.activeCamera moveWithDuration:1.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
+}
+
+-(void) startZoomingOnPlayers {
+    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
+}
+
+#pragma mark - TEST METHODS
+
+-(void) createTestTerrain
+{
+    //hocus pocus add grass
+    
+    const float LOCATION_Z = (0.0f);
+    
+    for (int i = 0; i < [[Map myMap] xTileCount]; i++)
+    {
+        for (int j = 0; j < [[Map myMap] zTileCount]; j++)
+        {
+            NSString * name = [NSString stringWithFormat:@"grass.png"];
+            CCLOG(@"tile : %@", name);
+            
+            CC3Texture * texture = [CC3Texture textureFromFile: name];
+            if( texture != nil) {
+                CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
+                
+                tile.shouldCullBackFaces = NO;
+                
+                [tile populateAsCenteredRectangleWithSize: CGSizeMake ([[Map myMap] tileSizeX], [[Map myMap] tileSizeZ]) andTessellation:CC3TessellationMake(1, 1)];
+                
+                
+                ccColor3B color= {rand() % 255, rand() % 255, rand() % 255};
+                [tile setColor:color];
+                [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
+
+                
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, LOCATION_Z, position.y);
+                [tile setLocation: pos];
+                [tile retainVertexLocations];
+                
+                
+                [self addChild: tile];
+                
+            }
+        }
+    }
+}
+
 
 
 

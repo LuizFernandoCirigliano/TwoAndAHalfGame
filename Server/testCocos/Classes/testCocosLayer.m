@@ -37,8 +37,6 @@ int _time;
  */
 -(void) initializeControls {
 	[self scheduleUpdate];
-    
-    self.isTouchEnabled = YES;
 }
 
 -(void) updateHUD {
