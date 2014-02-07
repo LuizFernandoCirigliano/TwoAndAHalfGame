@@ -165,16 +165,6 @@ NSTimer *_cameraPlayersTimer;
 	// ------------------------------------------
     
     
-    
-
-    //load the model content from the file
-//    [self addContentFromPODFile:@"boy3.pod" withName:@"player"];
-//    _playerModel = [self getNodeNamed:@"player"];
-    
-    
-    //remove this temp model from the world
-//    [self removeChild:_playerModel];
-    
     [[Map myMap] readMapFile];
     
     //leave the mazeWalls as the first method
@@ -190,7 +180,7 @@ NSTimer *_cameraPlayersTimer;
 
     [self createCoinParticles];
     [self addCamera];
-//    [self.activeCamera addChild:lamp];
+
     [self createTempWallsAndObjects];
     [self addChild:lamp];
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
