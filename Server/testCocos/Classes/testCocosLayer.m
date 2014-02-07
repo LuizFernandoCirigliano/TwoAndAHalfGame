@@ -70,12 +70,12 @@ int _time;
     
     _middleLabel.string = messageString ;
     
-    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(hideMiddleLabelForString)  userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(hideMiddleLabel)  userInfo:nil repeats:NO];
     
     
 }
 
--(void) hideMinigameLabelForString {
+-(void) hideMiddleLabel {
     _middleLabel.string = @"";
 }
 
