@@ -19,7 +19,7 @@
 #import "Player.h"
 #import "CC3BillBoard.h"
 #import "CC3ParametricMeshNodes.h"
-#import "CoinParticle.h"
+#import "CC3MeshParticles.h"
 #import "Map.h"
 #import "Game.h"
 #import "SimpleAudioEngine.h"
@@ -1000,12 +1000,10 @@ NSTimer *_cameraPlayersTimer;
                             NSDate *now = [[NSDate date] copy];
                             [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
                             [player2.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player.index ]];
-    //                        NSLog(@"Players collided; minigame should start!!");
                             [[Game myGame] startMinigame: @[player, player2]];
                         }
                         else
                         {
-    //                        NSLog(@"Players already collided %fseconds ago", interval);
                         }
                     }
                 }
