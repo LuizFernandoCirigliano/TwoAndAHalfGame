@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A14E52A18A55FAD00B28B0B /* shelf.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A14E52918A55FAD00B28B0B /* shelf.pod */; };
 		3A25F106189FFC10005FD2F3 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F105189FFC10005FD2F3 /* Map.m */; };
 		3A25F10F18A15398005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */; };
 		3A25F11318A156B4005FD2F3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F11218A156B4005FD2F3 /* Game.m */; };
@@ -328,11 +329,10 @@
 		3AFAB73318A557180093FDCB /* chalkboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72318A557180093FDCB /* chalkboard.jpg */; };
 		3AFAB73418A557180093FDCB /* dark-wood-texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */; };
 		3AFAB73518A557180093FDCB /* lousa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72518A557180093FDCB /* lousa.pod */; };
-		3AFAB73618A557180093FDCB /* mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72618A557180093FDCB /* mesa.pod */; };
 		3AFAB73718A557180093FDCB /* quadra.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72718A557180093FDCB /* quadra.pod */; };
-		3AFAB73918A557180093FDCB /* shelf.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72918A557180093FDCB /* shelf.pod */; };
 		3AFAB73A18A557180093FDCB /* wooden floor texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */; };
 		3AFAB73B18A557180093FDCB /* WoodFine0005_1_S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */; };
+		3AFAB73D18A55F470093FDCB /* mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB73C18A55F470093FDCB /* mesa.pod */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
 		A31C86B61899184D00769876 /* p3.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B21899184D00769876 /* p3.png */; };
 		A31C86B71899184D00769876 /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B31899184D00769876 /* p4.png */; };
@@ -357,6 +357,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A14E52918A55FAD00B28B0B /* shelf.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = shelf.pod; sourceTree = "<group>"; };
 		3A25F104189FFC10005FD2F3 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		3A25F105189FFC10005FD2F3 /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
 		3A25F10D18A15398005FD2F3 /* JankenResultMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JankenResultMessage.h; path = ../../Shared/JankenResultMessage.h; sourceTree = "<group>"; };
@@ -971,11 +972,10 @@
 		3AFAB72318A557180093FDCB /* chalkboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chalkboard.jpg; sourceTree = "<group>"; };
 		3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dark-wood-texture.jpg"; sourceTree = "<group>"; };
 		3AFAB72518A557180093FDCB /* lousa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = lousa.pod; sourceTree = "<group>"; };
-		3AFAB72618A557180093FDCB /* mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = mesa.pod; sourceTree = "<group>"; };
 		3AFAB72718A557180093FDCB /* quadra.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = quadra.pod; sourceTree = "<group>"; };
-		3AFAB72918A557180093FDCB /* shelf.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = shelf.pod; sourceTree = "<group>"; };
 		3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wooden floor texture.jpg"; sourceTree = "<group>"; };
 		3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WoodFine0005_1_S.jpg; sourceTree = "<group>"; };
+		3AFAB73C18A55F470093FDCB /* mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = mesa.pod; sourceTree = "<group>"; };
 		A31C86B01899184D00769876 /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
 		A31C86B21899184D00769876 /* p3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p3.png; sourceTree = "<group>"; };
 		A31C86B31899184D00769876 /* p4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4.png; sourceTree = "<group>"; };
@@ -2141,9 +2141,9 @@
 				3AFAB72318A557180093FDCB /* chalkboard.jpg */,
 				3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */,
 				3AFAB72518A557180093FDCB /* lousa.pod */,
-				3AFAB72618A557180093FDCB /* mesa.pod */,
 				3AFAB72718A557180093FDCB /* quadra.pod */,
-				3AFAB72918A557180093FDCB /* shelf.pod */,
+				3A14E52918A55FAD00B28B0B /* shelf.pod */,
+				3AFAB73C18A55F470093FDCB /* mesa.pod */,
 				3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */,
 				3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */,
 			);
@@ -2246,7 +2246,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A4EA81D188D927900E6C9F5 = {
-						DevelopmentTeam = B6U8VQEK7Q;
+						DevelopmentTeam = QHL9JXYSYP;
 					};
 				};
 			};
@@ -2293,8 +2293,8 @@
 				3A4EAB51188D927D00E6C9F5 /* CC3ClipSpaceSingleTexture.fsh in Resources */,
 				3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */,
 				3AFAB73218A557180093FDCB /* cesta.pod in Resources */,
+				3A14E52A18A55FAD00B28B0B /* shelf.pod in Resources */,
 				3A4EAB96188D927D00E6C9F5 /* Default.png in Resources */,
-				3AFAB73918A557180093FDCB /* shelf.pod in Resources */,
 				3A4EAB47188D927D00E6C9F5 /* CC3BumpMapObjectSpace.fsh in Resources */,
 				3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */,
 				3AFAB71418A53B770093FDCB /* sergio1.pod in Resources */,
@@ -2309,6 +2309,7 @@
 				3AFAB71818A53BB30093FDCB /* tenis.png in Resources */,
 				3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */,
 				3A9A1D6918A3FD1300B82385 /* janelas.png in Resources */,
+				3AFAB73D18A55F470093FDCB /* mesa.pod in Resources */,
 				3A4EAB98188D927D00E6C9F5 /* Default-568h@2x.png in Resources */,
 				A3CB075F18A524ED00E153E5 /* tenis.png in Resources */,
 				3A4EAB8B188D927D00E6C9F5 /* Icon-60@2x.png in Resources */,
@@ -2356,7 +2357,6 @@
 				3A4EAB7F188D927D00E6C9F5 /* Icon-40@2x.png in Resources */,
 				3A4EAB81188D927D00E6C9F5 /* Icon-50.png in Resources */,
 				3A4EAB67188D927D00E6C9F5 /* CC3PureColor.vsh in Resources */,
-				3AFAB73618A557180093FDCB /* mesa.pod in Resources */,
 				3AFAB73118A557180093FDCB /* cadeira_mesa.pod in Resources */,
 				3AFAB73018A557180093FDCB /* bookshelf.png in Resources */,
 				3A4EAB7D188D927D00E6C9F5 /* Icon-40.png in Resources */,
