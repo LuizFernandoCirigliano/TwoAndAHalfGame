@@ -9,7 +9,7 @@
 #import "SimpleAudioPlayer.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface SimpleAudioPlayer ()
+@interface SimpleAudioPlayer () <AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 

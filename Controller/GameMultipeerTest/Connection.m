@@ -120,15 +120,7 @@ static Connection *myConnectionConfiguration = nil;
         }
         
     }
-    else if ([message isKindOfClass:[EndRoundMessage class]])
-    {
-        if([self.delegate respondsToSelector:@selector(startMinigame)])
-        {
-            [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:NO];
-        }
-    }
 
-    //for example on how to use delegates to handle events based on the type of messages that arrive, check the server connection class
 }
 
 - (void) showBrowserVC:(UIViewController*)controller{

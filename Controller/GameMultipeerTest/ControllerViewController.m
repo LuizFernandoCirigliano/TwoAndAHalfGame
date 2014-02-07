@@ -119,7 +119,7 @@
             break;
     }
     data = [[[ButtonPressMessage alloc] initWithButtonNumber:tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
-    NSLog(@"%d", tag);
+
     [[Connection myConnection] sendDataToServer:data];
 }
 
