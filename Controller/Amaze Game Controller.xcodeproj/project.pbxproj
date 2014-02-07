@@ -20,7 +20,7 @@
 		3A44A51B1888395A00777286 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FA1888395A00777286 /* Foundation.framework */; };
 		3A44A51C1888395A00777286 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A4FE1888395A00777286 /* UIKit.framework */; };
 		3A44A5241888395A00777286 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A44A5221888395A00777286 /* InfoPlist.strings */; };
-		3A44A5261888395A00777286 /* GameMultipeerTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A5251888395A00777286 /* GameMultipeerTestTests.m */; };
+		3A44A5261888395A00777286 /* AmazeGameControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A5251888395A00777286 /* AmazeGameControllerTests.m */; };
 		3A44A53318883A3F00777286 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A53218883A3F00777286 /* MultipeerConnectivity.framework */; };
 		3A44A53818883AFA00777286 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A44A53718883AFA00777286 /* Main.storyboard */; };
 		3A44A54618883CE300777286 /* ControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A54518883CE300777286 /* ControllerViewController.m */; };
@@ -53,24 +53,24 @@
 /* Begin PBXFileReference section */
 		3A25F10A18A1534F005FD2F3 /* JankenResultMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JankenResultMessage.h; path = ../../Shared/JankenResultMessage.h; sourceTree = "<group>"; };
 		3A25F10B18A1534F005FD2F3 /* JankenResultMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JankenResultMessage.m; path = ../../Shared/JankenResultMessage.m; sourceTree = "<group>"; };
-		3A44A4F71888395A00777286 /* GameMultipeerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameMultipeerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A44A4F71888395A00777286 /* Amaze Game Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amaze Game Controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A44A4FA1888395A00777286 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A44A4FC1888395A00777286 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3A44A4FE1888395A00777286 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		3A44A5021888395A00777286 /* GameMultipeerTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameMultipeerTest-Info.plist"; sourceTree = "<group>"; };
+		3A44A5021888395A00777286 /* Amaze Game Controller-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Amaze Game Controller-Info.plist"; sourceTree = "<group>"; };
 		3A44A5041888395A00777286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A44A5061888395A00777286 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3A44A5081888395A00777286 /* GameMultipeerTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GameMultipeerTest-Prefix.pch"; sourceTree = "<group>"; };
+		3A44A5081888395A00777286 /* Amaze Game Controller-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Amaze Game Controller-Prefix.pch"; sourceTree = "<group>"; };
 		3A44A5091888395A00777286 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A44A50A1888395A00777286 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3A44A50F1888395A00777286 /* ConnectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
 		3A44A5101888395A00777286 /* ConnectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
 		3A44A5121888395A00777286 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3A44A5181888395A00777286 /* GameMultipeerTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameMultipeerTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A44A5181888395A00777286 /* Amaze Game ControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Amaze Game ControllerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A44A5191888395A00777286 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		3A44A5211888395A00777286 /* GameMultipeerTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameMultipeerTestTests-Info.plist"; sourceTree = "<group>"; };
+		3A44A5211888395A00777286 /* Amaze Game ControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Amaze Game ControllerTests-Info.plist"; sourceTree = "<group>"; };
 		3A44A5231888395A00777286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3A44A5251888395A00777286 /* GameMultipeerTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameMultipeerTestTests.m; sourceTree = "<group>"; };
+		3A44A5251888395A00777286 /* AmazeGameControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmazeGameControllerTests.m; sourceTree = "<group>"; };
 		3A44A53218883A3F00777286 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		3A44A53718883AFA00777286 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3A44A54418883CE300777286 /* ControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerViewController.h; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 		3A44A4EE1888395A00777286 = {
 			isa = PBXGroup;
 			children = (
-				3A44A5001888395A00777286 /* GameMultipeerTest */,
-				3A44A51F1888395A00777286 /* GameMultipeerTestTests */,
+				3A44A5001888395A00777286 /* AmazeGameController */,
+				3A44A51F1888395A00777286 /* AmazeGameControllerTests */,
 				3A44A4F91888395A00777286 /* Frameworks */,
 				3A44A4F81888395A00777286 /* Products */,
 			);
@@ -141,8 +141,8 @@
 		3A44A4F81888395A00777286 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A44A4F71888395A00777286 /* GameMultipeerTest.app */,
-				3A44A5181888395A00777286 /* GameMultipeerTestTests.xctest */,
+				3A44A4F71888395A00777286 /* Amaze Game Controller.app */,
+				3A44A5181888395A00777286 /* Amaze Game ControllerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3A44A5001888395A00777286 /* GameMultipeerTest */ = {
+		3A44A5001888395A00777286 /* AmazeGameController */ = {
 			isa = PBXGroup;
 			children = (
 				3A44A5091888395A00777286 /* AppDelegate.h */,
@@ -175,33 +175,35 @@
 				A3A96D3D18A3C86A00FE7910 /* SimpleAudioPlayer.h */,
 				A3A96D3E18A3C86A00FE7910 /* SimpleAudioPlayer.m */,
 			);
+			name = AmazeGameController;
 			path = GameMultipeerTest;
 			sourceTree = "<group>";
 		};
 		3A44A5011888395A00777286 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A44A5021888395A00777286 /* GameMultipeerTest-Info.plist */,
+				3A44A5021888395A00777286 /* Amaze Game Controller-Info.plist */,
 				3A44A5031888395A00777286 /* InfoPlist.strings */,
 				3A44A5061888395A00777286 /* main.m */,
-				3A44A5081888395A00777286 /* GameMultipeerTest-Prefix.pch */,
+				3A44A5081888395A00777286 /* Amaze Game Controller-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3A44A51F1888395A00777286 /* GameMultipeerTestTests */ = {
+		3A44A51F1888395A00777286 /* AmazeGameControllerTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A44A5251888395A00777286 /* GameMultipeerTestTests.m */,
+				3A44A5251888395A00777286 /* AmazeGameControllerTests.m */,
 				3A44A5201888395A00777286 /* Supporting Files */,
 			);
+			name = AmazeGameControllerTests;
 			path = GameMultipeerTestTests;
 			sourceTree = "<group>";
 		};
 		3A44A5201888395A00777286 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A44A5211888395A00777286 /* GameMultipeerTestTests-Info.plist */,
+				3A44A5211888395A00777286 /* Amaze Game ControllerTests-Info.plist */,
 				3A44A5221888395A00777286 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -266,9 +268,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A44A4F61888395A00777286 /* GameMultipeerTest */ = {
+		3A44A4F61888395A00777286 /* Amaze Game Controller */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A44A5291888395A00777286 /* Build configuration list for PBXNativeTarget "GameMultipeerTest" */;
+			buildConfigurationList = 3A44A5291888395A00777286 /* Build configuration list for PBXNativeTarget "Amaze Game Controller" */;
 			buildPhases = (
 				3A44A4F31888395A00777286 /* Sources */,
 				3A44A4F41888395A00777286 /* Frameworks */,
@@ -278,14 +280,14 @@
 			);
 			dependencies = (
 			);
-			name = GameMultipeerTest;
+			name = "Amaze Game Controller";
 			productName = GameMultipeerTest;
-			productReference = 3A44A4F71888395A00777286 /* GameMultipeerTest.app */;
+			productReference = 3A44A4F71888395A00777286 /* Amaze Game Controller.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3A44A5171888395A00777286 /* GameMultipeerTestTests */ = {
+		3A44A5171888395A00777286 /* Amaze Game ControllerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A44A52C1888395A00777286 /* Build configuration list for PBXNativeTarget "GameMultipeerTestTests" */;
+			buildConfigurationList = 3A44A52C1888395A00777286 /* Build configuration list for PBXNativeTarget "Amaze Game ControllerTests" */;
 			buildPhases = (
 				3A44A5141888395A00777286 /* Sources */,
 				3A44A5151888395A00777286 /* Frameworks */,
@@ -296,9 +298,9 @@
 			dependencies = (
 				3A44A51E1888395A00777286 /* PBXTargetDependency */,
 			);
-			name = GameMultipeerTestTests;
+			name = "Amaze Game ControllerTests";
 			productName = GameMultipeerTestTests;
-			productReference = 3A44A5181888395A00777286 /* GameMultipeerTestTests.xctest */;
+			productReference = 3A44A5181888395A00777286 /* Amaze Game ControllerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -311,14 +313,14 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A44A4F61888395A00777286 = {
-						DevelopmentTeam = QHL9JXYSYP;
+						DevelopmentTeam = B6U8VQEK7Q;
 					};
 					3A44A5171888395A00777286 = {
 						TestTargetID = 3A44A4F61888395A00777286;
 					};
 				};
 			};
-			buildConfigurationList = 3A44A4F21888395A00777286 /* Build configuration list for PBXProject "GameMultipeerTest" */;
+			buildConfigurationList = 3A44A4F21888395A00777286 /* Build configuration list for PBXProject "Amaze Game Controller" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -331,8 +333,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A44A4F61888395A00777286 /* GameMultipeerTest */,
-				3A44A5171888395A00777286 /* GameMultipeerTestTests */,
+				3A44A4F61888395A00777286 /* Amaze Game Controller */,
+				3A44A5171888395A00777286 /* Amaze Game ControllerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -388,7 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A44A5261888395A00777286 /* GameMultipeerTestTests.m in Sources */,
+				3A44A5261888395A00777286 /* AmazeGameControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +399,7 @@
 /* Begin PBXTargetDependency section */
 		3A44A51E1888395A00777286 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3A44A4F61888395A00777286 /* GameMultipeerTest */;
+			target = 3A44A4F61888395A00777286 /* Amaze Game Controller */;
 			targetProxy = 3A44A51D1888395A00777286 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -504,9 +506,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GameMultipeerTest/GameMultipeerTest-Prefix.pch";
-				INFOPLIST_FILE = "GameMultipeerTest/GameMultipeerTest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "GameMultipeerTest/Amaze Game Controller-Prefix.pch";
+				INFOPLIST_FILE = "GameMultipeerTest/Amaze Game Controller-Info.plist";
+				PRODUCT_NAME = "Amaze Game Controller";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -521,9 +523,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GameMultipeerTest/GameMultipeerTest-Prefix.pch";
-				INFOPLIST_FILE = "GameMultipeerTest/GameMultipeerTest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "GameMultipeerTest/Amaze Game Controller-Prefix.pch";
+				INFOPLIST_FILE = "GameMultipeerTest/Amaze Game Controller-Info.plist";
+				PRODUCT_NAME = "Amaze Game Controller";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -546,8 +548,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "GameMultipeerTestTests/GameMultipeerTestTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GameMultipeerTestTests/Amaze Game ControllerTests-Info.plist";
+				PRODUCT_NAME = "Amaze Game ControllerTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -565,8 +567,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GameMultipeerTest/GameMultipeerTest-Prefix.pch";
-				INFOPLIST_FILE = "GameMultipeerTestTests/GameMultipeerTestTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GameMultipeerTestTests/Amaze Game ControllerTests-Info.plist";
+				PRODUCT_NAME = "Amaze Game ControllerTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -575,7 +577,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A44A4F21888395A00777286 /* Build configuration list for PBXProject "GameMultipeerTest" */ = {
+		3A44A4F21888395A00777286 /* Build configuration list for PBXProject "Amaze Game Controller" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A44A5271888395A00777286 /* Debug */,
@@ -584,7 +586,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A44A5291888395A00777286 /* Build configuration list for PBXNativeTarget "GameMultipeerTest" */ = {
+		3A44A5291888395A00777286 /* Build configuration list for PBXNativeTarget "Amaze Game Controller" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A44A52A1888395A00777286 /* Debug */,
@@ -593,7 +595,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A44A52C1888395A00777286 /* Build configuration list for PBXNativeTarget "GameMultipeerTestTests" */ = {
+		3A44A52C1888395A00777286 /* Build configuration list for PBXNativeTarget "Amaze Game ControllerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A44A52D1888395A00777286 /* Debug */,

@@ -1,6 +1,6 @@
 /**
- *  testCocosLayer.h
- *  testCocos
+ *  AmazeGameLayer.h
+ *  AmazeGame
  *
  *  Created by Luiz Fernando 2 on 1/20/14.
  *  Copyright Luiz Fernando 2 2014. All rights reserved.
@@ -11,7 +11,7 @@
 
 
 /** A sample application-specific CC3Layer subclass. */
-@interface testCocosLayer : CC3Layer
+@interface AmazeGameLayer : CC3Layer
 {
     
 }

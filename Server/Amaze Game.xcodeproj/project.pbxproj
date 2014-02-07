@@ -295,9 +295,9 @@
 		3A4EAB9A188D927D00E6C9F5 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EAB99188D927D00E6C9F5 /* Default-Portrait~ipad.png */; };
 		3A4EAB9C188D927D00E6C9F5 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EAB9B188D927D00E6C9F5 /* Default-Landscape~ipad.png */; };
 		3A4EAB9F188D927D00E6C9F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EAB9E188D927D00E6C9F5 /* main.m */; };
-		3A4EABA3188D927D00E6C9F5 /* testCocosAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EABA2188D927D00E6C9F5 /* testCocosAppDelegate.m */; };
-		3A4EABA6188D927D00E6C9F5 /* testCocosLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EABA5188D927D00E6C9F5 /* testCocosLayer.m */; };
-		3A4EABA9188D927D00E6C9F5 /* testCocosScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EABA8188D927D00E6C9F5 /* testCocosScene.m */; };
+		3A4EABA3188D927D00E6C9F5 /* AmazeGameAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EABA2188D927D00E6C9F5 /* AmazeGameAppDelegate.m */; };
+		3A4EABA6188D927D00E6C9F5 /* AmazeGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EABA5188D927D00E6C9F5 /* AmazeGameLayer.m */; };
+		3A4EABA9188D927D00E6C9F5 /* AmazeGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */; };
 		3A4EABAD188D927D00E6C9F5 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABAC188D927D00E6C9F5 /* fps_images.png */; };
 		3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */; };
 		3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */; };
@@ -366,7 +366,7 @@
 		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
 		3A2F42951896D8630088C77D /* uvmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uvmap.png; sourceTree = "<group>"; };
 		3A2F42991896DC0B0088C77D /* suzanne.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = suzanne.pod; sourceTree = "<group>"; };
-		3A4EA81E188D927900E6C9F5 /* TwoAndAHalfGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoAndAHalfGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A4EA81E188D927900E6C9F5 /* Amaze Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amaze Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4EA821188D927900E6C9F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3A4EA823188D927900E6C9F5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3A4EA825188D927900E6C9F5 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -934,12 +934,12 @@
 		3A4EAB99188D927D00E6C9F5 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Resources/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		3A4EAB9B188D927D00E6C9F5 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		3A4EAB9E188D927D00E6C9F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3A4EABA1188D927D00E6C9F5 /* testCocosAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testCocosAppDelegate.h; path = Classes/testCocosAppDelegate.h; sourceTree = "<group>"; };
-		3A4EABA2188D927D00E6C9F5 /* testCocosAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = testCocosAppDelegate.m; path = Classes/testCocosAppDelegate.m; sourceTree = "<group>"; };
-		3A4EABA4188D927D00E6C9F5 /* testCocosLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testCocosLayer.h; path = Classes/testCocosLayer.h; sourceTree = "<group>"; };
-		3A4EABA5188D927D00E6C9F5 /* testCocosLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = testCocosLayer.m; path = Classes/testCocosLayer.m; sourceTree = "<group>"; };
-		3A4EABA7188D927D00E6C9F5 /* testCocosScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testCocosScene.h; path = Classes/testCocosScene.h; sourceTree = "<group>"; };
-		3A4EABA8188D927D00E6C9F5 /* testCocosScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = testCocosScene.m; path = Classes/testCocosScene.m; sourceTree = "<group>"; };
+		3A4EABA1188D927D00E6C9F5 /* AmazeGameAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AmazeGameAppDelegate.h; path = Classes/AmazeGameAppDelegate.h; sourceTree = "<group>"; };
+		3A4EABA2188D927D00E6C9F5 /* AmazeGameAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AmazeGameAppDelegate.m; path = Classes/AmazeGameAppDelegate.m; sourceTree = "<group>"; };
+		3A4EABA4188D927D00E6C9F5 /* AmazeGameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AmazeGameLayer.h; path = Classes/AmazeGameLayer.h; sourceTree = "<group>"; };
+		3A4EABA5188D927D00E6C9F5 /* AmazeGameLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AmazeGameLayer.m; path = Classes/AmazeGameLayer.m; sourceTree = "<group>"; };
+		3A4EABA7188D927D00E6C9F5 /* AmazeGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AmazeGameScene.h; path = Classes/AmazeGameScene.h; sourceTree = "<group>"; };
+		3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AmazeGameScene.m; path = Classes/AmazeGameScene.m; sourceTree = "<group>"; };
 		3A4EABAC188D927D00E6C9F5 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/fps_images.png; sourceTree = "<group>"; };
 		3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-hd.png"; path = "Resources/fps_images-hd.png"; sourceTree = "<group>"; };
 		3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-ipadhd.png"; path = "Resources/fps_images-ipadhd.png"; sourceTree = "<group>"; };
@@ -1034,10 +1034,10 @@
 		3A25F11018A15691005FD2F3 /* 3d */ = {
 			isa = PBXGroup;
 			children = (
-				3A4EABA4188D927D00E6C9F5 /* testCocosLayer.h */,
-				3A4EABA5188D927D00E6C9F5 /* testCocosLayer.m */,
-				3A4EABA7188D927D00E6C9F5 /* testCocosScene.h */,
-				3A4EABA8188D927D00E6C9F5 /* testCocosScene.m */,
+				3A4EABA4188D927D00E6C9F5 /* AmazeGameLayer.h */,
+				3A4EABA5188D927D00E6C9F5 /* AmazeGameLayer.m */,
+				3A4EABA7188D927D00E6C9F5 /* AmazeGameScene.h */,
+				3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */,
 			);
 			name = 3d;
 			sourceTree = "<group>";
@@ -1054,7 +1054,7 @@
 		3A4EA815188D927900E6C9F5 = {
 			isa = PBXGroup;
 			children = (
-				3A4EA835188D927900E6C9F5 /* testCocos */,
+				3A4EA835188D927900E6C9F5 /* AmazeGame */,
 				3A4EA820188D927900E6C9F5 /* Frameworks */,
 				3A4EA81F188D927900E6C9F5 /* Products */,
 			);
@@ -1063,7 +1063,7 @@
 		3A4EA81F188D927900E6C9F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A4EA81E188D927900E6C9F5 /* TwoAndAHalfGame.app */,
+				3A4EA81E188D927900E6C9F5 /* Amaze Game.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1086,7 +1086,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3A4EA835188D927900E6C9F5 /* testCocos */ = {
+		3A4EA835188D927900E6C9F5 /* AmazeGame */ = {
 			isa = PBXGroup;
 			children = (
 				3A4EAB74188D927D00E6C9F5 /* README! */,
@@ -1097,6 +1097,7 @@
 				3A4EABB2188D927D00E6C9F5 /* Apportable */,
 				3A4EAB9D188D927D00E6C9F5 /* Supporting Files */,
 			);
+			name = AmazeGame;
 			path = testCocos;
 			sourceTree = "<group>";
 		};
@@ -2108,8 +2109,8 @@
 		3AD47ECA1890212C00623ACA /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				3A4EABA1188D927D00E6C9F5 /* testCocosAppDelegate.h */,
-				3A4EABA2188D927D00E6C9F5 /* testCocosAppDelegate.m */,
+				3A4EABA1188D927D00E6C9F5 /* AmazeGameAppDelegate.h */,
+				3A4EABA2188D927D00E6C9F5 /* AmazeGameAppDelegate.m */,
 				A3BD53E218A14ECA002E3564 /* Model */,
 				3A25F11018A15691005FD2F3 /* 3d */,
 				A3BD53E118A14EB4002E3564 /* Minigames */,
@@ -2218,9 +2219,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A4EA81D188D927900E6C9F5 /* TwoAndAHalfGame */ = {
+		3A4EA81D188D927900E6C9F5 /* Amaze Game */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A4EABB7188D927D00E6C9F5 /* Build configuration list for PBXNativeTarget "TwoAndAHalfGame" */;
+			buildConfigurationList = 3A4EABB7188D927D00E6C9F5 /* Build configuration list for PBXNativeTarget "Amaze Game" */;
 			buildPhases = (
 				3A4EA81A188D927900E6C9F5 /* Sources */,
 				3A4EA81B188D927900E6C9F5 /* Frameworks */,
@@ -2230,9 +2231,9 @@
 			);
 			dependencies = (
 			);
-			name = TwoAndAHalfGame;
+			name = "Amaze Game";
 			productName = testCocos;
-			productReference = 3A4EA81E188D927900E6C9F5 /* TwoAndAHalfGame.app */;
+			productReference = 3A4EA81E188D927900E6C9F5 /* Amaze Game.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2249,7 +2250,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A4EA819188D927900E6C9F5 /* Build configuration list for PBXProject "TwoAndAHalfGame" */;
+			buildConfigurationList = 3A4EA819188D927900E6C9F5 /* Build configuration list for PBXProject "Amaze Game" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2261,7 +2262,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A4EA81D188D927900E6C9F5 /* TwoAndAHalfGame */,
+				3A4EA81D188D927900E6C9F5 /* Amaze Game */,
 			);
 		};
 /* End PBXProject section */
@@ -2399,14 +2400,14 @@
 				3A4EAA51188D927B00E6C9F5 /* CC3AffineMatrix.m in Sources */,
 				3A25F11318A156B4005FD2F3 /* Game.m in Sources */,
 				3A4EAAA4188D927C00E6C9F5 /* CC3OpenGL2.m in Sources */,
-				3A4EABA9188D927D00E6C9F5 /* testCocosScene.m in Sources */,
+				3A4EABA9188D927D00E6C9F5 /* AmazeGameScene.m in Sources */,
 				3A4EAB3C188D927D00E6C9F5 /* CC3VertexArrayMesh.m in Sources */,
 				3A4EAA67188D927B00E6C9F5 /* CC3Mesh.m in Sources */,
 				3A4EAAAB188D927C00E6C9F5 /* CC3GLView-GLES1.m in Sources */,
 				3A4EA909188D927A00E6C9F5 /* CCTMXXMLParser.m in Sources */,
 				3A4EA9A0188D927A00E6C9F5 /* ray2.c in Sources */,
 				3A4EAA89188D927C00E6C9F5 /* CC3NodeVisitor.m in Sources */,
-				3A4EABA6188D927D00E6C9F5 /* testCocosLayer.m in Sources */,
+				3A4EABA6188D927D00E6C9F5 /* AmazeGameLayer.m in Sources */,
 				3A4EA93B188D927A00E6C9F5 /* base64.c in Sources */,
 				3A4EA85E188D927900E6C9F5 /* CCActionTween.m in Sources */,
 				3A4EA9CD188D927B00E6C9F5 /* CC3PFXResource.mm in Sources */,
@@ -2530,7 +2531,7 @@
 				3A4EA9B2188D927A00E6C9F5 /* CC3CALNode.m in Sources */,
 				3A4EAA70188D927C00E6C9F5 /* CC3VertexSkinning.m in Sources */,
 				A3B8D25D189A7DF8009FFE5C /* SetPlayerNumberMessage.m in Sources */,
-				3A4EABA3188D927D00E6C9F5 /* testCocosAppDelegate.m in Sources */,
+				3A4EABA3188D927D00E6C9F5 /* AmazeGameAppDelegate.m in Sources */,
 				3A4EA958188D927A00E6C9F5 /* TGAlib.m in Sources */,
 				3A4EAA1E188D927B00E6C9F5 /* PVRTModelPOD.cpp in Sources */,
 				3A4EA861188D927900E6C9F5 /* CCAnimation.m in Sources */,
@@ -2700,7 +2701,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = "\"testCocos/libs/kazmath/include\"";
 				INFOPLIST_FILE = testCocos/Resources/Info.plist;
-				PRODUCT_NAME = TwoAndAHalfGame;
+				PRODUCT_NAME = "Amaze Game";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -2712,7 +2713,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = "\"testCocos/libs/kazmath/include\"";
 				INFOPLIST_FILE = testCocos/Resources/Info.plist;
-				PRODUCT_NAME = TwoAndAHalfGame;
+				PRODUCT_NAME = "Amaze Game";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -2720,7 +2721,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A4EA819188D927900E6C9F5 /* Build configuration list for PBXProject "TwoAndAHalfGame" */ = {
+		3A4EA819188D927900E6C9F5 /* Build configuration list for PBXProject "Amaze Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A4EABB5188D927D00E6C9F5 /* Debug */,
@@ -2729,7 +2730,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A4EABB7188D927D00E6C9F5 /* Build configuration list for PBXNativeTarget "TwoAndAHalfGame" */ = {
+		3A4EABB7188D927D00E6C9F5 /* Build configuration list for PBXNativeTarget "Amaze Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A4EABB8188D927D00E6C9F5 /* Debug */,

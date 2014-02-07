@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
+	<string>Amaze Controller</string>
 	<key>CFBundleIdentifier</key>
-	<string>lfcv.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.twoAndAHalfDevs.AmazeGame.controller</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

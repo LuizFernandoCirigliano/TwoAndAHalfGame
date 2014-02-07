@@ -1,6 +1,6 @@
 //
 //  ControllerViewController.m
-//  GameMultipeerTest
+//  AmazeGameController
 //
 //  Created by Luiz Fernando 2 on 1/16/14.
 //  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.
@@ -140,5 +140,5 @@
     [[Connection myConnection].mySession disconnect];
 }
 
-#warning Add credits do JSController
+//w Add credits do JSController
 @end

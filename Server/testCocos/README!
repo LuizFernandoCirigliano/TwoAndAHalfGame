@@ -16,13 +16,13 @@ This starter application presents a 3D take on the ubiquitous "hello, world" app
 and can be compiled to run on any iOS devices.
 
 The content of the scene is constructed in the initializeScene method in the
-testCocosScene.m file. To add your own 3D content, edit that method.
+AmazeGameScene.m file. To add your own 3D content, edit that method.
 
-The testCocosScene.m file is also where you add interactive behaviour,
+The AmazeGameScene.m file is also where you add interactive behaviour,
 typically in the updateBeforeTransform: method.
 
 You can also edit the applicationDidFinishLaunching: method in the
-testCocosAppDelegate.m file to tweak the basic setup of your
+AmazeGameAppDelegate.m file to tweak the basic setup of your
 cocos3d application. This method is where the cocos3d framework is hooked into the
 cocos2d framework, and Apple's OpenGL ES framework.
 

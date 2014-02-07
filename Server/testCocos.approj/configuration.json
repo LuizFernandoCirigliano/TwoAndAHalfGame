@@ -8,7 +8,7 @@
 {
   "configuration_format_version": 2,
 
-  "default_target": {"project": "testCocos", "project_config": "Debug", "target": "testCocos"},
+  "default_target": {"project": "AmazeGame", "project_config": "Debug", "target": "AmazeGame"},
 
   // Dictionary of global configuration parameters.
   // These parameters are not taken from the xcode project,
@@ -84,7 +84,7 @@
 
     // Path to the image to use for the app's icon.
     // Usually something like "./Icon.png".
-    "ICON": "testCocos/Resources/Icon-72@2x.png",
+    "ICON": "AmazeGame/Resources/Icon-72@2x.png",
 
     // A regular expression to determine which assets
     // should be compressed when building the final app.

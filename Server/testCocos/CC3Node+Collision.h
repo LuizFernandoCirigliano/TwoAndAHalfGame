@@ -1,6 +1,6 @@
 //
 //  CC3Node+Collision.h
-//  testCocos
+//  AmazeGame
 //
 //  Created by Francesco Perrotti-Garcia on 1/24/14.
 //  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  GameMultipeerTestTests.m
-//  GameMultipeerTestTests
+//  AmazeGameControllerTests.m
+//  AmazeGameControllerTests
 //
 //  Created by Luiz Fernando 2 on 1/16/14.
 //  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface GameMultipeerTestTests : XCTestCase
+@interface AmazeGameControllerTests : XCTestCase
 
 @end
 
-@implementation GameMultipeerTestTests
+@implementation AmazeGameControllerTests
 
 - (void)setUp
 {

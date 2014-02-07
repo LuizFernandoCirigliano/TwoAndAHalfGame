@@ -10,7 +10,7 @@
 #import "Janken.h"
 #import "Player.h"
 #import "Connection.h"
-#import "testCocosLayer.h"
+#import "AmazeGameLayer.h"
 
 @interface Game : NSObject
 
@@ -28,7 +28,7 @@
 @property (strong, nonatomic) Janken *janken;
 @property (strong, nonatomic) NSMutableArray *playerArray;
 
-@property (strong, nonatomic) testCocosLayer *hudLayer;
+@property (strong, nonatomic) AmazeGameLayer *hudLayer;
 @property (nonatomic) int roundDuration;
 
 @end
