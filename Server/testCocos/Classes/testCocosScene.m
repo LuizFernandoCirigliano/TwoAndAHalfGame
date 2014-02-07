@@ -248,6 +248,12 @@ NSTimer *_cameraPlayersTimer;
     
     [cube populateAsSolidBox:CC3BoxMake(0, 0, 0, sizeX, 150, sizeZ)];
     
+    [self addContentFromPODFile:@"cadeira_mesa.pod" withName:@"caideraMesa"];
+    CC3Node *mesaModel = [self getNodeNamed:@"caideraMesa"];
+    
+    [self addContentFromPODFile:@"shelf.pod" withName:@"shelf"];
+    CC3Node *shelfModel = [self getNodeNamed:@"shelf"];
+
     
     for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
         for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
@@ -268,16 +274,49 @@ NSTimer *_cameraPlayersTimer;
                 
                 [_tempWallsArray addObject:newCube];
                 [self addChild:newCube];
-            } else if (content == 3) {
+            } else if (content == '3') {
                 [self addContentFromPODFile:@"big_mesa.pod" withName:@"bigMesa"];
                 CC3Node *mesa = [self getNodeNamed:@"bigMesa"];
-                mesa.scale = cc3v(500,500,500);
+                mesa.scale = cc3v(40,40,40);
+                mesa.rotationAngle = 180;
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            } else if (content == '4') {
+                CC3Node *mesa = [mesaModel copy];
+                mesa.scale = cc3v(40,40,40);
+//                mesa.rotationAngle = 180;
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            } else if (content == '5') {
+                [self addContentFromPODFile:@"lousa.pod" withName:@"lousa"];
+                CC3Node *mesa = [self getNodeNamed:@"lousa"];
+                mesa.scale = cc3v(30,30,30);
+                mesa.rotationAngle = 180;
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            } else if (content == '6') {
+                CC3Node *mesa = [shelfModel copy];
+                
+                mesa.scale = cc3v(40,40,40);
+
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
                 [self addChild:mesa];
                 mesa.location = pos;
             }
+
+            
+            
         }
     }
 
