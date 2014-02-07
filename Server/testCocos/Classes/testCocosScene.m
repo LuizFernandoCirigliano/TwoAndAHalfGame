@@ -941,18 +941,24 @@ NSTimer *_cameraPlayersTimer;
             
             //check if he's going over a coin
             CGPoint position = CGPointMake(player.node.location.x, player.node.location.z);
-
-            GLfloat radius = ((CC3NodeSphericalBoundingVolume*)player.node.boundingVolume).radius * self.scale.x;
+            CGPoint locationTile = [[Map myMap] locationInMapWithPosition:position];
             
-            CGPoint bounds[5] =    {CGPointMake(position.x + radius, position.y + radius), //UPLEFT
-                                    CGPointMake(position.x + radius, position.y - radius), //UPRIGHT
-                                    CGPointMake(position.x - radius, position.y + radius), //DOWNLEFT
-                                    CGPointMake(position.x - radius, position.y - radius), //DOWNRIGHT
-                                    CGPointMake(position.x         , position.y         )}; //CENTER
+//            GLfloat radius = ((CC3NodeSphericalBoundingVolume*)player.node.boundingVolume).radius * self.scale.x;
+            
+            CGPoint bounds[10] =    {CGPointMake(locationTile.x -1 , locationTile.y - 1), //UPLEFT
+                                    CGPointMake(locationTile.x + 1, locationTile.y - 1), //UPRIGHT
+                                    CGPointMake(locationTile.x - 1, locationTile.y + 1), //DOWNLEFT
+                                    CGPointMake(locationTile.x  + 1, locationTile.y + 1), //DOWNRIGHT
+                                    CGPointMake(locationTile.x         , locationTile.y),     //CENTER
+                                    CGPointMake(locationTile.x  +  1   , locationTile.y),   //RIGHT
+                                    CGPointMake(locationTile.x         , locationTile.y + 1), //DOWN
+                                    CGPointMake(locationTile.x  -1     , locationTile.y),      //LEFT
+                                    CGPointMake(locationTile.x         , locationTile.y - 1),  //UP
+                                    }; //CENTER
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
-                CGPoint playerLocation = [[Map myMap] locationInMapWithPosition:bounds[i]];
+                CGPoint playerLocation = bounds[i];
                 
                 NSString *coinKey = [NSString stringWithFormat:@"%d-%d", (int)playerLocation.x, (int)playerLocation.y];
                 CC3MeshParticle *coin = [_coinDictionary objectForKey:coinKey];
