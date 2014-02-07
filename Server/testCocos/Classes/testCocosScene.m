@@ -180,9 +180,6 @@ NSTimer *_cameraPlayersTimer;
     
     [self addMazeWalls];
     
-//    [self createTerrain];
-    
-//    [self createTestTerrain];
 
     [self addPlayerCharacter];
     [self addPlayerCharacter];
@@ -191,8 +188,6 @@ NSTimer *_cameraPlayersTimer;
     
     [self addChild:_allCharacters];
 
-//    [self addCoins];
-    
     [self createCoinParticles];
     [self addCamera];
 //    [self.activeCamera addChild:lamp];
@@ -270,6 +265,8 @@ NSTimer *_cameraPlayersTimer;
     [_bonusCoin createBoundingVolumeFromBoundingBox];
     _bonusCoin.shouldUseFixedBoundingVolume = YES;
     [self removeChild:[self getNodeNamed:@"bonusCoinModel"]];
+    
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 -(void) addCamera {
