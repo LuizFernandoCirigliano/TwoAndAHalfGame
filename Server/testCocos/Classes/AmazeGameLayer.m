@@ -1,12 +1,12 @@
 /**
- *  testCocosLayer.m
- *  testCocos
+ *  AmazeGameLayer.m
+ *  AmazeGame
  *
  *  Created by Luiz Fernando 2 on 1/20/14.
  *  Copyright Luiz Fernando 2 2014. All rights reserved.
  */
 
-#import "testCocosLayer.h"
+#import "AmazeGameLayer.h"
 
 #import "CC3Light.h"
 
@@ -14,7 +14,7 @@
 
 
 
-@implementation testCocosLayer 
+@implementation AmazeGameLayer 
 
 NSMutableArray *_scoreLabelArray;
 

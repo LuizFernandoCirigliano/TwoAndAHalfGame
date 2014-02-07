@@ -6,8 +6,8 @@
  *  Copyright Luiz Fernando 2 2014. All rights reserved.
  */
 
-#import "testCocosScene.h"
-#import "testCocosLayer.h"
+#import "AmazeGameScene.h"
+#import "AmazeGameLayer.h"
 #import "CC3PODResourceNode.h"
 #import "CC3ActionInterval.h"
 #import "CC3MeshNode.h"
@@ -25,7 +25,7 @@
 #import "SimpleAudioEngine.h"
 
 #define COLLISION_DEBUG 0
-@interface testCocosScene()
+@interface AmazeGameScene()
 
 @property (nonatomic) BOOL collisionEnabled;
 
@@ -37,7 +37,7 @@
 #define COLISSION_CHECK_INTERVAL 30.0f
 #define playerScale 22
 
-@implementation testCocosScene
+@implementation AmazeGameScene
 
 NSMutableArray *_walls;
 
@@ -620,7 +620,7 @@ NSTimer *_cameraPlayersTimer;
 	}];
  
     Game *game = [Game myGame];
-    game.hudLayer = (testCocosLayer *)self.cc3Layer;
+    game.hudLayer = (AmazeGameLayer *)self.cc3Layer;
     
     //schedule camera movements for the opening scene
     [self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 0, 1)];

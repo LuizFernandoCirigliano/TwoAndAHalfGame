@@ -1,20 +1,20 @@
 /**
- *  testCocosAppDelegate.m
- *  testCocos
+ *  AmazeGameAppDelegate.m
+ *  AmazeGame
  *
  *  Created by Luiz Fernando 2 on 1/20/14.
  *  Copyright Luiz Fernando 2 2014. All rights reserved.
  */
 
-#import "testCocosAppDelegate.h"
-#import "testCocosLayer.h"
-#import "testCocosScene.h"
+#import "AmazeGameAppDelegate.h"
+#import "AmazeGameLayer.h"
+#import "AmazeGameScene.h"
 #import "CC3CC2Extensions.h"
 
 
 #define kAnimationFrameRate		60		// Animation frame rate
 
-@implementation testCocosAppDelegate
+@implementation AmazeGameAppDelegate
 
 /**
  * Add method description here
@@ -118,11 +118,11 @@
 	// ******** START OF COCOS3D SETUP CODE... ********
 	
 	// Create the customized CC3Layer that supports 3D rendering.
-	CC3Layer* cc3Layer = [testCocosLayer layerWithController: _viewController];
+	CC3Layer* cc3Layer = [AmazeGameLayer layerWithController: _viewController];
 	
 	// Create the customized 3D scene and attach it to the layer.
 	// Could also just create this inside the customer layer.
-	cc3Layer.cc3Scene = [testCocosScene scene];
+	cc3Layer.cc3Scene = [AmazeGameScene scene];
 	
 	// Assign to a generic variable so we can uncomment options below to play with the capabilities
 	CC3ControllableLayer* mainLayer = cc3Layer;
