@@ -166,12 +166,12 @@ NSTimer *_cameraPlayersTimer;
     
 
     //load the model content from the file
-    [self addContentFromPODFile:@"boy3.pod" withName:@"player"];
-    _playerModel = [self getNodeNamed:@"player"];
+//    [self addContentFromPODFile:@"boy3.pod" withName:@"player"];
+//    _playerModel = [self getNodeNamed:@"player"];
     
     
     //remove this temp model from the world
-    [self removeChild:_playerModel];
+//    [self removeChild:_playerModel];
     
     [[Map myMap] readMapFile];
     
@@ -180,11 +180,9 @@ NSTimer *_cameraPlayersTimer;
     
     [self addMazeWalls];
     
-
-    [self addPlayerCharacter];
-    [self addPlayerCharacter];
-    [self addPlayerCharacter];
-    [self addPlayerCharacter];
+    for (int i = 0; i < 4 ; i++) {
+        [self addPlayerCharacterWithNumber: i];
+    }
     
     [self addChild:_allCharacters];
 
@@ -378,13 +376,24 @@ NSTimer *_cameraPlayersTimer;
     
 }
 
--(void) addPlayerCharacter
+-(void) addPlayerCharacterWithNumber:(NSInteger) number
 {
     Player *player = [[Player alloc] initWithIndex: [_playerArray count]];
     
+    NSString *modelString;
+    switch (number) {
+        case 0:
+        case 2:
+            modelString = @"boy3.pod";
+            break;
+        case 1:
+        case 3:
+            modelString = @"marcelo_model_low.pod";
+            break;
+    }
     //copy the original model
-    player.node = [_playerModel copy];
-    
+    [self addContentFromPODFile:modelString withName:[NSString stringWithFormat:@"player%d",number]];
+    player.node = [[self getNodeNamed:[NSString stringWithFormat:@"player%d",number]] copy];
     //create bounding volume
     [player.node createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
     

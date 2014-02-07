@@ -63,7 +63,7 @@ static Game *myGameConfiguration = nil;
     looserPlayer.playerScore -= 40;
    
     self.janken = [[Janken alloc] init];
-    [_hudLayer updateHUD];
+//    [_hudLayer updateHUD];
     [_hudLayer displayMiddleLabelWithString:[NSString stringWithFormat:@"Player %d beat Player %d!", winner+1, looser+1]];
 }
 

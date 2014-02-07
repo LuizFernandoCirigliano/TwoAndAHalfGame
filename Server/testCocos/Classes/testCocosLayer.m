@@ -44,10 +44,16 @@ int _time;
 -(void) updateHUD {
     for (int i = 0 ; i < [[[Game myGame] playerArray] count]; i ++)
     {
-        Player *player = [[Game myGame].playerArray objectAtIndex: i];
-        NSString *score = [NSString stringWithFormat:@"Player %d: %d", i + 1, player.playerScore];
         
-        [[_scoreLabelArray objectAtIndex:i] setString:score];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            Player *player = [[Game myGame].playerArray objectAtIndex: i];
+            
+            NSString *score = [NSString stringWithFormat:@"Player %d: %d", i + 1, player.playerScore];
+            
+            [[_scoreLabelArray objectAtIndex:i] setString:score];
+
+            // Create your Labels or other Cocos2D objects that use Labels or UIKit here…
+        });
     }
 }
 
@@ -68,11 +74,12 @@ int _time;
 -(void) displayMiddleLabelWithString: (NSString *) messageString {
 //#Error FIX LABELZ
     
-    _middleLabel.string = messageString ;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _middleLabel.string = messageString ;
     
-    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(hideMiddleLabel)  userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(hideMiddleLabel)  userInfo:nil repeats:NO];
     
-    
+     });
 }
 
 -(void) hideMiddleLabel {
