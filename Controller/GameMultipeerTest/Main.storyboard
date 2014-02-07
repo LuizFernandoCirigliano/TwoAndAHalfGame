@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kgB-jt-y5C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kgB-jt-y5C">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Connect View Controller-->
@@ -24,11 +24,11 @@
                                         <rect key="frame" x="80" y="43" width="408" height="182"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUC-JF-BqK">
-                                                <rect key="frame" x="20" y="70" width="176" height="42"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUC-JF-BqK">
+                                                <rect key="frame" x="32" y="57" width="97" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" backgroundImage="conectar">
+                                                <state key="normal" title="Conectar">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -84,84 +84,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVE-fa-4JG">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVE-fa-4JG">
                                 <rect key="frame" x="20" y="72" width="528" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4O-ns-KR6">
-                                <rect key="frame" x="20" y="101" width="528" height="199"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rom-hU-POq" customClass="JSDPad">
+                                <rect key="frame" x="20" y="101" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rom-hU-POq" customClass="JSDPad">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="5SS-d9-aDS"/>
-                                            <constraint firstAttribute="width" constant="200" id="gaJ-07-lMR"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="delegate" destination="lT1-83-275" id="8E7-CR-zy0"/>
-                                        </connections>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lu-lM-May">
-                                        <rect key="frame" x="328" y="0.0" width="200" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1a-PO-bbK" customClass="JSButton">
-                                                <rect key="frame" x="1" y="75" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="lT1-83-275" id="ddK-CZ-hgf"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gye-va-3ho" customClass="JSButton">
-                                                <rect key="frame" x="75" y="150" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="lT1-83-275" id="RDU-kz-SVX"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GxO-ht-z12" customClass="JSButton">
-                                                <rect key="frame" x="75" y="0.0" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="lT1-83-275" id="QBj-Kd-WJD"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Z4-OP-bmE" customClass="JSButton">
-                                                <rect key="frame" x="150" y="75" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="lT1-83-275" id="Cvz-1s-vYb"/>
-                                                </connections>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="6td-98-COF"/>
-                                            <constraint firstAttribute="height" constant="200" id="a6v-ld-vp3"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <constraints>
-                                    <constraint firstItem="Rom-hU-POq" firstAttribute="top" secondItem="n4O-ns-KR6" secondAttribute="top" id="1Vh-XE-Via"/>
-                                    <constraint firstItem="5lu-lM-May" firstAttribute="top" secondItem="Rom-hU-POq" secondAttribute="top" id="ZD6-nT-KUb"/>
-                                    <constraint firstItem="Rom-hU-POq" firstAttribute="leading" secondItem="n4O-ns-KR6" secondAttribute="leading" id="n9q-yM-F1e"/>
-                                    <constraint firstAttribute="trailing" secondItem="5lu-lM-May" secondAttribute="trailing" id="q3t-di-d2z"/>
+                                    <constraint firstAttribute="height" constant="200" id="5SS-d9-aDS"/>
+                                    <constraint firstAttribute="width" constant="200" id="gaJ-07-lMR"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="lT1-83-275" id="8E7-CR-zy0"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GxO-ht-z12" customClass="JSButton">
+                                <rect key="frame" x="424" y="101" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lT1-83-275" id="QBj-Kd-WJD"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gye-va-3ho" customClass="JSButton">
+                                <rect key="frame" x="424" y="250" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lT1-83-275" id="RDU-kz-SVX"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1a-PO-bbK" customClass="JSButton">
+                                <rect key="frame" x="358" y="176" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lT1-83-275" id="ddK-CZ-hgf"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Z4-OP-bmE" customClass="JSButton">
+                                <rect key="frame" x="498" y="176" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lT1-83-275" id="Cvz-1s-vYb"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="KVE-fa-4JG" firstAttribute="leading" secondItem="n4O-ns-KR6" secondAttribute="leading" id="7Ed-6j-MN1"/>
-                            <constraint firstItem="n4O-ns-KR6" firstAttribute="leading" secondItem="aJh-7h-YL6" secondAttribute="leading" constant="20" id="E0B-Em-MYa"/>
-                            <constraint firstItem="KVE-fa-4JG" firstAttribute="top" secondItem="Wa4-Eq-23w" secondAttribute="bottom" constant="52" id="SdD-IS-5DF"/>
-                            <constraint firstItem="n4O-ns-KR6" firstAttribute="top" secondItem="KVE-fa-4JG" secondAttribute="bottom" constant="8" symbolic="YES" id="VCQ-iM-mts"/>
-                            <constraint firstAttribute="trailing" secondItem="n4O-ns-KR6" secondAttribute="trailing" constant="20" id="Vg9-pm-Gg4"/>
-                            <constraint firstItem="1Kz-sH-4x7" firstAttribute="top" secondItem="n4O-ns-KR6" secondAttribute="bottom" constant="20" id="iZW-4d-O14"/>
-                            <constraint firstItem="KVE-fa-4JG" firstAttribute="trailing" secondItem="n4O-ns-KR6" secondAttribute="trailing" id="xn8-fK-osm"/>
+                            <constraint firstItem="KVE-fa-4JG" firstAttribute="top" secondItem="Wa4-Eq-23w" secondAttribute="bottom" constant="20" symbolic="YES" id="8Fr-B3-Zs3"/>
+                            <constraint firstItem="Rom-hU-POq" firstAttribute="top" secondItem="KVE-fa-4JG" secondAttribute="bottom" constant="8" symbolic="YES" id="FRm-Ye-Zxw"/>
+                            <constraint firstItem="KVE-fa-4JG" firstAttribute="leading" secondItem="aJh-7h-YL6" secondAttribute="leading" constant="20" symbolic="YES" id="TLB-1t-ruj"/>
+                            <constraint firstItem="Rom-hU-POq" firstAttribute="leading" secondItem="aJh-7h-YL6" secondAttribute="leading" constant="20" symbolic="YES" id="noI-in-e8F"/>
+                            <constraint firstAttribute="trailing" secondItem="KVE-fa-4JG" secondAttribute="trailing" constant="20" symbolic="YES" id="ukH-Fi-LVV"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -251,7 +230,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="conectar" width="390" height="101"/>
         <image name="paper" width="250" height="250"/>
         <image name="rock" width="250" height="250"/>
         <image name="scissors" width="250" height="250"/>
