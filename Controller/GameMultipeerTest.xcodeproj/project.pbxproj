@@ -311,7 +311,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A44A4F61888395A00777286 = {
-						DevelopmentTeam = QHL9JXYSYP;
+						DevelopmentTeam = SEN7LPK7DZ;
 					};
 					3A44A5171888395A00777286 = {
 						TestTargetID = 3A44A4F61888395A00777286;

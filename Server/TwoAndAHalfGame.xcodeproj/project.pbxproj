@@ -334,6 +334,9 @@
 		A3B8D25E189A7DF8009FFE5C /* StartGameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D257189A7DF8009FFE5C /* StartGameMessage.m */; };
 		A3B8D25F189A7DF8009FFE5C /* StartMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D259189A7DF8009FFE5C /* StartMinigameMessage.m */; };
 		A3B92F6C18A1159B00EFF763 /* Janken.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B92F6B18A1159B00EFF763 /* Janken.m */; };
+		A3CB075C18A524ED00E153E5 /* boy3.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3CB075318A524ED00E153E5 /* boy3.pod */; };
+		A3CB075D18A524ED00E153E5 /* boy_skin.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CB075418A524ED00E153E5 /* boy_skin.png */; };
+		A3CB075F18A524ED00E153E5 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CB075618A524ED00E153E5 /* tenis.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -967,6 +970,9 @@
 		A3B8D259189A7DF8009FFE5C /* StartMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartMinigameMessage.m; path = ../../Shared/StartMinigameMessage.m; sourceTree = "<group>"; };
 		A3B92F6A18A1159B00EFF763 /* Janken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Janken.h; sourceTree = "<group>"; };
 		A3B92F6B18A1159B00EFF763 /* Janken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Janken.m; sourceTree = "<group>"; };
+		A3CB075318A524ED00E153E5 /* boy3.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = boy3.pod; sourceTree = "<group>"; };
+		A3CB075418A524ED00E153E5 /* boy_skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boy_skin.png; sourceTree = "<group>"; };
+		A3CB075618A524ED00E153E5 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1925,6 +1931,7 @@
 		3A4EAB75188D927D00E6C9F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A3CB074D18A524ED00E153E5 /* boy */,
 				3A9A1D5A18A3E98300B82385 /* Maps */,
 				3A9A1D5918A3E97800B82385 /* Sounds */,
 				A3A0272518A2B9F8000BAB87 /* marcelo */,
@@ -2131,6 +2138,16 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		A3CB074D18A524ED00E153E5 /* boy */ = {
+			isa = PBXGroup;
+			children = (
+				A3CB075318A524ED00E153E5 /* boy3.pod */,
+				A3CB075418A524ED00E153E5 /* boy_skin.png */,
+				A3CB075618A524ED00E153E5 /* tenis.png */,
+			);
+			path = boy;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2214,6 +2231,7 @@
 				3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */,
 				3A9A1D6918A3FD1300B82385 /* janelas.png in Resources */,
 				3A4EAB98188D927D00E6C9F5 /* Default-568h@2x.png in Resources */,
+				A3CB075F18A524ED00E153E5 /* tenis.png in Resources */,
 				3A4EAB8B188D927D00E6C9F5 /* Icon-60@2x.png in Resources */,
 				3A9A1D6F18A40C2B00B82385 /* coin9.pod in Resources */,
 				3A4EAB61188D927D00E6C9F5 /* CC3PointSprites.vsh in Resources */,
@@ -2229,6 +2247,7 @@
 				3A4EAB85188D927D00E6C9F5 /* Icon-57.png in Resources */,
 				3A4EAB49188D927D00E6C9F5 /* CC3BumpMapObjectSpaceAlphaTest.fsh in Resources */,
 				3A4EAB59188D927D00E6C9F5 /* CC3NoTextureAlphaTest.fsh in Resources */,
+				A3CB075D18A524ED00E153E5 /* boy_skin.png in Resources */,
 				3A4EA98E188D927A00E6C9F5 /* ChangeLog in Resources */,
 				A3A0272C18A2B9F8000BAB87 /* camisa_portugal.png in Resources */,
 				3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */,
@@ -2256,6 +2275,7 @@
 				3A4EAB81188D927D00E6C9F5 /* Icon-50.png in Resources */,
 				3A4EAB67188D927D00E6C9F5 /* CC3PureColor.vsh in Resources */,
 				3A4EAB7D188D927D00E6C9F5 /* Icon-40.png in Resources */,
+				A3CB075C18A524ED00E153E5 /* boy3.pod in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
