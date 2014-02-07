@@ -36,7 +36,7 @@
 @end
 @implementation Janken
 
-#warning Add documentation
+//w Add documentation
 /**
  * Sets the gesture chosen by a given player
  \param playerID The ID of the player

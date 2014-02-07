@@ -18,7 +18,7 @@
 
 #define MAX_PLAYERS 4
 
-#warning Protocol should be documented.
+//w Protocol should be documented.
 @protocol ConnectionDelegate <NSObject>
 
 @required
@@ -26,7 +26,7 @@
 - (void)ready;
 @end
 
-#warning Protocol should be documented.
+//w Protocol should be documented.
 @protocol GameConnectionDelegate <NSObject>
 
 @required

@@ -35,7 +35,7 @@
 {
     if (self = [super init])
     {
-        #warning Possible incomplete method implementation.
+    //wpimi
     }
     return self;
 }
@@ -47,7 +47,7 @@
  */
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
-    #warning Possible incomplete method implementation.
+    //wpimi
 }
 
 

@@ -650,7 +650,7 @@ NSTimer *_cameraPlayersTimer;
         CGPoint position = CGPointMake(tempWall.location.x, tempWall.location.z);
         CGPoint location = [[Map myMap] locationInMapWithPosition:position];
         
-        NSLog(@"%d %d", location.x, location.y);
+        NSLog(@"%d %d", (int)location.x, (int)location.y);
         [self removeChild:tempWall];
         [[Map myMap] replaceAtLocation:location withChar:'0'];
         [_tempWallsArray removeObject:tempWall];

@@ -12,7 +12,7 @@
 #import "EndRoundMessage.h"
 #import "ButtonPressMessage.h"
 #import "Game.h"
-#warning Add pragma marks to this file.
+//w Add pragma marks to this file.
 
 @implementation Connection
 
@@ -48,7 +48,6 @@ static Connection *myConnectionConfiguration = nil;
     if (!myConnectionConfiguration)
     {
         myConnectionConfiguration = [[super allocWithZone:nil] initWithName:@"Simulador"];
-#warning Possible incomplete method implementation.
     }
     
     return myConnectionConfiguration;
@@ -245,7 +244,7 @@ static Connection *myConnectionConfiguration = nil;
 - (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID
 {
     // Received a byte stream from remote peer
-    #warning Possible incomplete method implementation.
+//wpimi
 }
 
 
@@ -260,7 +259,7 @@ static Connection *myConnectionConfiguration = nil;
 - (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress
 {
     // Start receiving a resource from remote peer
-    #warning Possible incomplete method implementation.
+    //wpimi
 }
 
 /**
@@ -275,7 +274,7 @@ static Connection *myConnectionConfiguration = nil;
 - (void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error
 {
     // Finished receiving a resource from remote peer and saved the content in a temporary location - the app is responsible for moving the file to a permanent location within its sandbox
-    #warning Possible incomplete method implementation.
+    //wpimi
 }
 
 #pragma marks MCNearbyServiceAdvertiserDelegate

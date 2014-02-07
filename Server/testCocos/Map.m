@@ -18,7 +18,6 @@ static Map *myMapConfiguration = nil;
     if (!myMapConfiguration)
     {
         myMapConfiguration = [[super allocWithZone:nil] init];
-#warning Possible incomplete method implementation.
     }
     
     return myMapConfiguration;
