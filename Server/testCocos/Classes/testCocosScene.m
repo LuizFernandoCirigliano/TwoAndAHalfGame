@@ -166,7 +166,7 @@ NSTimer *_cameraPlayersTimer;
     
 
     //load the model content from the file
-    [self addContentFromPODFile:@"marcelo_model_low.pod" withName:@"player"];
+    [self addContentFromPODFile:@"boy3.pod" withName:@"player"];
     _playerModel = [self getNodeNamed:@"player"];
     
     
