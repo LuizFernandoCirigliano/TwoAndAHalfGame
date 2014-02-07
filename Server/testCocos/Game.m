@@ -38,6 +38,11 @@ static Game *myGameConfiguration = nil;
  */
 - (void) startMinigame: (NSArray*) players
 {
+    Player *a = [players firstObject];
+    Player *b = [players lastObject];
+    
+    [_hudLayer displayMiddleLabelWithString:[NSString stringWithFormat:@"Player %d vs Player %d \r (look to your devices)!", a.index+1, b.index+1]];
+
     //One player is already playing a minigame case not handled! #FIXME
     for (Player *player in players)
     {
@@ -54,11 +59,12 @@ static Game *myGameConfiguration = nil;
 
     Player *winnerPlayer = [self.playerArray objectAtIndex:winner];
     Player *looserPlayer = [self.playerArray objectAtIndex:looser];
-    winnerPlayer.playerScore += 10;
-    looserPlayer.playerScore -= 10;
+    winnerPlayer.playerScore += 40;
+    looserPlayer.playerScore -= 40;
    
     self.janken = [[Janken alloc] init];
     [_hudLayer updateHUD];
+    [_hudLayer displayMiddleLabelWithString:[NSString stringWithFormat:@"Player %d beat Player %d!", winner+1, looser+1]];
 }
 
 - (void) jankenTie

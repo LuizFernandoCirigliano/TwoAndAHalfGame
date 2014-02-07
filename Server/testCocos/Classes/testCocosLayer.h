@@ -17,4 +17,5 @@
 }
 -(void) displayWinnerMessageWithNumber: (NSInteger) winnerNumber;
 -(void) updateHUD;
+-(void) displayMiddleLabelWithString: (NSString *) messageString;
 @end

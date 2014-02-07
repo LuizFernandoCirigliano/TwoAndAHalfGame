@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pickLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 @property (strong, nonatomic) NSTimer *countDownTimer;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 @property (nonatomic) int count;
 @end
 
@@ -86,6 +87,11 @@
             break;
     }
     [self send:sender.tag];
+    
+    for (UIButton *button in self.buttons) {
+        if (button.tag != sender.tag)
+            button.hidden = YES;
+    }
 }
 
 - (void) timeLimitExceeded

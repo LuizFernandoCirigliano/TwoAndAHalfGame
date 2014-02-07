@@ -95,7 +95,7 @@ NSTimer *_cameraPlayersTimer;
 	// Create a light, place it back and to the left at a specific
 	// position (not just directional lighting), and add it to the scene
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
-	lamp.location = cc3v( 0.0, 5000.0, 5000.0 );
+	lamp.location = cc3v( 0.0, 10000.0, 5000.0 );
 	lamp.isDirectionalOnly = NO;
 	
     

@@ -218,6 +218,10 @@
                     <connections>
                         <outlet property="countDownLabel" destination="iRk-za-iDE" id="GEe-ZR-Yaj"/>
                         <outlet property="pickLabel" destination="gVs-Qq-SM9" id="yn8-Fs-FNh"/>
+                        <outletCollection property="rockButton" destination="Dl3-Co-uaM" id="iDQ-cJ-X4q"/>
+                        <outletCollection property="buttons" destination="Dl3-Co-uaM" id="93d-kU-ozE"/>
+                        <outletCollection property="buttons" destination="kTd-Me-jXC" id="WUt-Et-3h8"/>
+                        <outletCollection property="buttons" destination="XUf-xd-Xy7" id="Wbz-lw-e4c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPK-4K-10d" userLabel="First Responder" sceneMemberID="firstResponder"/>

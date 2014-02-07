@@ -18,7 +18,9 @@
 
 NSMutableArray *_scoreLabelArray;
 
+CCLabelTTF *_middleLabel;
 CCLabelTTF *_roundTimer;
+
 
 int _time;
 
@@ -37,7 +39,6 @@ int _time;
 	[self scheduleUpdate];
     
     self.isTouchEnabled = YES;
-    
 }
 
 -(void) updateHUD {
@@ -64,6 +65,19 @@ int _time;
     [self addChild:winLabel];
 }
 
+-(void) displayMiddleLabelWithString: (NSString *) messageString {
+//#Error FIX LABELZ
+    
+    _middleLabel.string = messageString ;
+    
+    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(hideMiddleLabelForString)  userInfo:nil repeats:NO];
+    
+    
+}
+
+-(void) hideMinigameLabelForString {
+    _middleLabel.string = @"";
+}
 
 #pragma mark Updating layer
 
@@ -77,7 +91,7 @@ int _time;
     NSLog(@"open la") ;
 
 
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     
     CGSize winSize = [CCDirector sharedDirector].winSize;
     _scoreLabelArray = [[NSMutableArray alloc] init];
@@ -106,6 +120,7 @@ int _time;
             default:
                 break;
         }
+        
         ccColor3B color = {255, 215, 0};
         _statusLabel.color = color;
         
@@ -120,6 +135,12 @@ int _time;
     _time = [[Game myGame] roundDuration];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    
+    _middleLabel = [CCLabelTTF labelWithString:@"" fontName:@"Arial" fontSize:60];
+    ccColor3B color = {255, 215, 0};
+    _middleLabel.color = color;
+    _middleLabel.position = ccp(winSize.width/2, winSize.height/2);
+    [self addChild:_middleLabel];
 }
 
 
