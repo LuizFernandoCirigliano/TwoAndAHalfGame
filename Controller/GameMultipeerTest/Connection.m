@@ -7,7 +7,7 @@
 //
 
 #import "Connection.h"
-
+#import "ControllerViewController.h"
 @implementation Connection
 
 /* This classes sets up the remote connection between devices, and handles interactions using the message transfer system
@@ -144,7 +144,7 @@ static Connection *myConnectionConfiguration = nil;
 #pragma marks MCSessionDelegate
 // Remote peer changed state
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
-    if (state == MCSessionStateNotConnected && peerID == self.serverPeerID) {
+    if (state == MCSessionStateNotConnected && peerID == self.serverPeerID && [self.delegate isKindOfClass:[ControllerViewController class]]) {
 //        [self showBrowserVC:self.delegate];
         [self.delegate dismissViewControllerAnimated:YES completion:nil];
     }
