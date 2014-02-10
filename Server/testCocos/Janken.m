@@ -13,15 +13,6 @@
 
 @interface Janken ()
 
-/**
- * The ID of player number A
- */
-@property (nonatomic) NSInteger playerAID;
-
-/**
- * The ID of player number B
- */
-@property (nonatomic) NSInteger playerBID;
 
 /**
  * The gesture of player number A
