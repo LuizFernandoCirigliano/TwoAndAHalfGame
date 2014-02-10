@@ -333,11 +333,12 @@ NSTimer *_cameraPlayersTimer;
     _bonusCoinCollection  = [CC3Node node];
     [self addChild:_bonusCoinCollection];
     
-    [self addContentFromPODFile:@"coin9.pod" withName:@"bonusCoinModel"];
+    [self addContentFromPODFile:@"coin.pod" withName:@"bonusCoinModel"];
     _bonusCoin = [[self getNodeNamed:@"bonusCoinModel"] copy];
-    _bonusCoin.scale = cc3v(50, 50, 50);
+    _bonusCoin.scale = cc3v(70,70,70);
     [_bonusCoin createBoundingVolumeFromBoundingBox];
     _bonusCoin.shouldUseFixedBoundingVolume = YES;
+    
     [self removeChild:[self getNodeNamed:@"bonusCoinModel"]];
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -392,8 +393,9 @@ NSTimer *_cameraPlayersTimer;
 }
 
 -(void) addBonusCoin {
-    [_bonusCoinCollection removeChild:_bonusCoin];
+//    [_bonusCoinCollection removeChild:_bonusCoin];
     
+    CC3Node *coin = [_bonusCoin copy];
     int i, j;
     
     do {
@@ -402,11 +404,11 @@ NSTimer *_cameraPlayersTimer;
     } while ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] != '0');
     
     CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
-    _bonusCoin.location = cc3v(position.x, 5000, position.y) ;
+    coin.location = cc3v(position.x, 5000, position.y) ;
     CCActionInterval *moveCoin = [CC3MoveTo actionWithDuration:1.0f moveTo:cc3v(position.x, 50, position.y)];
-    [_bonusCoin runAction: moveCoin];
+    [coin runAction: moveCoin];
     
-    [_bonusCoinCollection addChild:_bonusCoin];
+    [_bonusCoinCollection addChild:coin];
 }
 
 -(void) addPlayerCharacterWithNumber:(NSInteger) number
@@ -618,7 +620,7 @@ NSTimer *_cameraPlayersTimer;
     [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:16.0f];
     
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:30.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:20.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
     [_timersArray addObject:timer];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
@@ -908,7 +910,6 @@ NSTimer *_cameraPlayersTimer;
             [character.node stopActionByTag:1];
             break;
     }
-    CGPoint tile = [[Map myMap] locationInMapWithPosition:CGPointMake(character.node.location.x, character.node.location.z)];
     
 //    NSLog(@"%c" , [[Map myMap] contentOfMapAtLocation:tile]);
 }
