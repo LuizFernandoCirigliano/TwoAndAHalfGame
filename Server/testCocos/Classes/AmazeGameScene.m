@@ -998,7 +998,7 @@ NSTimer *_cameraPlayersTimer;
                 if (player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
                 {
                     // Test whether player1 is intersecting player2.
-                    if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
+                    if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume] && player.isPlayingMinigame == NO && player2.isPlayingMinigame == NO)
                     {
                         NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
                         NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
