@@ -58,6 +58,7 @@ CC3MeshParticleEmitter *_emitter;
 NSMutableDictionary *_coinDictionary;
 
 NSMutableArray *_playerArray;
+NSMutableArray *_timersArray;
 
 NSTimer *_cameraPlayersTimer;
 
@@ -326,8 +327,9 @@ NSTimer *_cameraPlayersTimer;
     [[Game myGame] configureGame];
     
     _playerArray = [[Game myGame] playerArray];
+    _timersArray = [[NSMutableArray alloc] init];
     _coinDictionary = [[NSMutableDictionary alloc] init];
-
+    
     _bonusCoinCollection  = [CC3Node node];
     [self addChild:_bonusCoinCollection];
     
@@ -616,10 +618,14 @@ NSTimer *_cameraPlayersTimer;
     [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:16.0f];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:30.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:30.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
+    [_timersArray addObject:timer];
     
-    [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
+    [_timersArray addObject:timer];
+    
+    timer  = [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
+    [_timersArray addObject:timer];
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
@@ -651,7 +657,8 @@ NSTimer *_cameraPlayersTimer;
     NSData *data = [[[EndRoundMessage alloc] init] archiveData];
     [[Connection myConnection] sendData:data];
     
-    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
+    [_timersArray addObject:timer];
 }
 
 -(void) restartScene {
@@ -682,7 +689,11 @@ NSTimer *_cameraPlayersTimer;
  *
  * For more info, read the notes of this method on CC3Scene.
  */
--(void) onClose {}
+-(void) onClose {
+    for (NSTimer *timer in _timersArray) {
+        [timer invalidate];
+    }
+}
 
 -(void) removeWall {
     if ([_tempWallsArray count] > 0) {
@@ -1029,6 +1040,7 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) startZoomingOnPlayers {
     _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
+//    [_timersArray addObject:_cameraPlayersTimer];
 }
 
 #pragma mark - TEST METHODS
