@@ -45,10 +45,12 @@
 @property int playerNumber;
 
 @property (nonatomic, strong) MCPeerID *serverPeerID;
+@property (nonatomic, strong) NSString *peerName;
 
 + (Connection *) myConnection;
 + (Connection *) myConnectionWithName: (NSString *) peerName;
 
+-(void) configureConnection ;
 - (void) showBrowserVC:(UIViewController*)controller;
 - (void) sendData: (NSData *)data;
 - (void) sendDataToServer: (NSData *)data;

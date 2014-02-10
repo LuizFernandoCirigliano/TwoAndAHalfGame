@@ -42,6 +42,8 @@
     if ([Connection myConnection].mySession.connectedPeers.count > 0)
     {
         [self startGameAction];
+    } else {
+        [[Connection myConnection] configureConnection];
     }
 }
 

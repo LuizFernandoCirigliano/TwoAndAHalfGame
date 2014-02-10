@@ -46,21 +46,25 @@ static Connection *myConnectionConfiguration = nil;
     
     if(self){
         //  Setup peer ID
-        self.myPeerID = [[MCPeerID alloc] initWithDisplayName:peerName];
-        
-        //  Setup session
-        self.mySession = [[MCSession alloc] initWithPeer:self.myPeerID];
-        
-        //  Setup BrowserViewController
-        self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:@"controllertest" session:self.mySession];
-
-        self.browserVC.delegate = self;
-        self.mySession.delegate = self;
+        self.peerName = peerName;
+        [self configureConnection];
     }
     
     return self;
 }
 
+-(void) configureConnection {
+    self.myPeerID = [[MCPeerID alloc] initWithDisplayName:self.peerName];
+    
+    //  Setup session
+    self.mySession = [[MCSession alloc] initWithPeer:self.myPeerID];
+    
+    //  Setup BrowserViewController
+    self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:@"controllertest" session:self.mySession];
+    
+    self.browserVC.delegate = self;
+    self.mySession.delegate = self;
+}
 #pragma mark - Connection event handling
 
 //this is used to send messages to all the connected devices for the current session
@@ -119,7 +123,7 @@ static Connection *myConnectionConfiguration = nil;
     {
         if ([self.delegate respondsToSelector:@selector(endGame)])
         {
-            [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:nil];
+            [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:NO];
         }
     }
 
