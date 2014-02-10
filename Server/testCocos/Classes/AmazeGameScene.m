@@ -626,8 +626,8 @@ NSTimer *_cameraPlayersTimer;
     timer = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
     [_timersArray addObject:timer];
     
-    timer  = [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
-    [_timersArray addObject:timer];
+    [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
+
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
@@ -635,6 +635,10 @@ NSTimer *_cameraPlayersTimer;
 
 
 -(void) endGame {
+    for (NSTimer *timer in _timersArray) {
+        [timer invalidate];
+    }
+    
     [_cameraPlayersTimer invalidate];
     Player *winner = [[Game myGame] topScorer];
     
@@ -659,8 +663,7 @@ NSTimer *_cameraPlayersTimer;
     NSData *data = [[[EndRoundMessage alloc] init] archiveData];
     [[Connection myConnection] sendData:data];
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
-    [_timersArray addObject:timer];
+    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
 }
 
 -(void) restartScene {
@@ -692,9 +695,7 @@ NSTimer *_cameraPlayersTimer;
  * For more info, read the notes of this method on CC3Scene.
  */
 -(void) onClose {
-    for (NSTimer *timer in _timersArray) {
-        [timer invalidate];
-    }
+ 
 }
 
 -(void) removeWall {
