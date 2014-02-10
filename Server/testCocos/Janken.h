@@ -26,6 +26,16 @@ typedef NS_ENUM(NSInteger, JankenType)
  * The ID of the winning player
  */
 @property (nonatomic) NSInteger winner;
+/**
+ * The ID of player number A
+ */
+@property (nonatomic) NSInteger playerAID;
+
+/**
+ * The ID of player number B
+ */
+@property (nonatomic) NSInteger playerBID;
+
 
 - (void) player: (NSInteger) playerID chose: (JankenType) playerGesture;
 

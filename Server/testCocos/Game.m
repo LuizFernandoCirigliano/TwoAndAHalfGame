@@ -26,7 +26,6 @@ static Game *myGameConfiguration = nil;
 
 - (void) configureGame
 {
-    
     self.janken = [[Janken alloc] init];
     self.playerArray = [[NSMutableArray alloc] init];
     self.roundDuration = 240;
@@ -46,8 +45,8 @@ static Game *myGameConfiguration = nil;
     //One player is already playing a minigame case not handled! #FIXME
     for (Player *player in players)
     {
-        MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:player.index];
         NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
+        MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:player.index];
         [[Connection myConnection] sendData: data toPeer: peer];
         player.isPlayingMinigame = YES;
         [player.node stopAllActions];
@@ -59,16 +58,29 @@ static Game *myGameConfiguration = nil;
 
     Player *winnerPlayer = [self.playerArray objectAtIndex:winner];
     Player *looserPlayer = [self.playerArray objectAtIndex:looser];
+    
     winnerPlayer.playerScore += 40;
     looserPlayer.playerScore -= 40;
-   
+    
+    winnerPlayer.isPlayingMinigame = NO;
+    looserPlayer.isPlayingMinigame = NO;
+    
     self.janken = [[Janken alloc] init];
-//    [_hudLayer updateHUD];
+
     [_hudLayer displayMiddleLabelWithString:[NSString stringWithFormat:@"Player %d beat Player %d!", winner+1, looser+1]];
 }
 
 - (void) jankenTie
 {
+    NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
+   
+    MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerAID];
+    [[Connection myConnection] sendData: data toPeer: peer];
+    
+    peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerBID];
+    [[Connection myConnection] sendData: data toPeer: peer];
+    
+    
     self.janken = [[Janken alloc] init];
 }
 
