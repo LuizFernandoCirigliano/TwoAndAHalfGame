@@ -159,6 +159,11 @@
     if (winner == kJankenTie)
     {
         //TIE ==> REMATCH
+        NSDate *now = [NSDate date];
+        Player *playerA = [[Game myGame].playerArray objectAtIndex:self.playerAID];
+        Player *playerB = [[Game myGame].playerArray objectAtIndex:self.playerBID];
+        [playerA.lastPlayerCollisionTimestamp setObject:now forKey:[NSString stringWithFormat:@"%d", self.playerBID]];
+        [playerB.lastPlayerCollisionTimestamp setObject:now forKey:[NSString stringWithFormat:@"%d", self.playerAID]];
         [game jankenTie];
     }
     else
