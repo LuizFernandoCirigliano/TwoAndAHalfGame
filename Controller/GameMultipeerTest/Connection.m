@@ -53,12 +53,7 @@ static Connection *myConnectionConfiguration = nil;
         
         //  Setup BrowserViewController
         self.browserVC = [[MCBrowserViewController alloc] initWithServiceType:@"controllertest" session:self.mySession];
-        
-        //  Setup Advertiser - Allows for other devices to connect directly to this one
-        // This can be removed since the controllers should connect to the server.
-//        self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:@"controllertest" discoveryInfo:nil session:self.mySession];
-//        [self.advertiser start];
-        
+
         self.browserVC.delegate = self;
         self.mySession.delegate = self;
     }
@@ -120,6 +115,13 @@ static Connection *myConnectionConfiguration = nil;
         }
         
     }
+    else if ([message isKindOfClass:[EndRoundMessage class]])
+    {
+        if ([self.delegate respondsToSelector:@selector(endGame)])
+        {
+            [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:nil];
+        }
+    }
 
 }
 
@@ -142,10 +144,13 @@ static Connection *myConnectionConfiguration = nil;
 #pragma marks MCSessionDelegate
 // Remote peer changed state
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
-    
+    if (state == MCSessionStateNotConnected && peerID == self.serverPeerID) {
+//        [self showBrowserVC:self.delegate];
+        [self.delegate dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
-// Received a byte stream from remote peer
+// Received; a byte stream from remote peer
 - (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID{
 }
 

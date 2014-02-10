@@ -390,8 +390,8 @@ NSTimer *_cameraPlayersTimer;
 }
 
 -(void) addBonusCoin {
+    [_bonusCoinCollection removeChild:_bonusCoin];
     
-    CC3Node *coin = [_bonusCoin copy];
     int i, j;
     
     do {
@@ -400,15 +400,11 @@ NSTimer *_cameraPlayersTimer;
     } while ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] != '0');
     
     CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
-    coin.location = cc3v(position.x, 5000, position.y) ;
+    _bonusCoin.location = cc3v(position.x, 5000, position.y) ;
     CCActionInterval *moveCoin = [CC3MoveTo actionWithDuration:1.0f moveTo:cc3v(position.x, 50, position.y)];
-    [coin runAction: moveCoin];
+    [_bonusCoin runAction: moveCoin];
     
-//    CCActionInterval *rotateCoin = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:30];
-//    [coin runAction:[CCRepeatForever actionWithAction:rotateCoin]];
-    
-    [_bonusCoinCollection addChild:coin];
-    
+    [_bonusCoinCollection addChild:_bonusCoin];
 }
 
 -(void) addPlayerCharacterWithNumber:(NSInteger) number
@@ -620,7 +616,7 @@ NSTimer *_cameraPlayersTimer;
     [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:16.0f];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:15.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:30.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
     [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
     
     [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
@@ -655,16 +651,31 @@ NSTimer *_cameraPlayersTimer;
     NSData *data = [[[EndRoundMessage alloc] init] archiveData];
     [[Connection myConnection] sendData:data];
     
-    [[[Connection myConnection] advertiser] stopAdvertisingPeer];
-    
     [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
 }
 
 -(void) restartScene {
-    CCScene *currentScene = [CCDirector sharedDirector].runningScene;
-    CCScene *newScene = [[[currentScene class] alloc] init];
-    [[CCDirector sharedDirector] replaceScene:newScene];
+
+    [Game myGame].hudLayer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
+//    CC3Layer* cc3Layer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
+	
+	// Create the customized 3D scene and attach it to the layer.
+	// Could also just create this inside the customer layer.
+	[Game myGame].hudLayer.cc3Scene = [AmazeGameScene scene];
+	
+	// Assign to a generic variable so we can uncomment options below to play with the capabilities
+	CC3ControllableLayer* mainLayer = [Game myGame].hudLayer;
+	
+	
+	// Set the layer in the controller
+	[Game myGame].viewController.controlledNode = mainLayer;
+	
+	// Run the layer in the director
+	CCScene *scene = [CCScene node];
+	[scene addChild: mainLayer];
+	[CCDirector.sharedDirector replaceScene: scene];
 }
+
 /**
  * Callback template method that is invoked automatically when the CC3Layer that
  * holds this scene has been removed from display.

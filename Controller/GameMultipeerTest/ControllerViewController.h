@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Connection.h"
 
-@interface ControllerViewController : UIViewController <GameDelegate>
+@interface ControllerViewController : UIViewController <GameControllerDelegate>
 
--(void) otherPlayerPressed:(NSNumber *) buttonNumber;
+
 -(void) startMinigame;
+-(void) endGame;
 
 @end

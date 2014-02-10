@@ -24,12 +24,12 @@
 - (void)ready;
 @end
 
-@protocol GameDelegate <NSObject>
+@protocol GameControllerDelegate <NSObject>
 
 @required
--(void) roundEnded;
--(void) otherPlayerPressed:(NSNumber *) buttonNumber ;
+
 -(void) startMinigame;
+-(void) endGame;
 @end
 
 

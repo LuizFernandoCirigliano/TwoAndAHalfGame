@@ -34,7 +34,11 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    
     [super viewDidAppear:animated];
+    
+    [Connection myConnection].delegate = self;
+    
     if ([Connection myConnection].mySession.connectedPeers.count > 0)
     {
         [self startGameAction];
@@ -67,7 +71,7 @@
 }
 
 -(void) startGame {
-    [self performSegueWithIdentifier:@"startGameSegue" sender:self];
+    [self performSegueWithIdentifier:@"startGameSegue" sender:nil];
 }
 
 -(void) ready {

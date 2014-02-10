@@ -66,9 +66,6 @@
 }
 
 
--(void) otherPlayerPressed:(NSNumber *) buttonNumber {
-    NSLog(@"%ld", (long)[buttonNumber integerValue]);
-}
 -(void) roundEnded {
     NSLog(@"test");
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"fim de jogo" message:@"fim de jogo" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -136,8 +133,8 @@
 
 -(void) endGame
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
     [[Connection myConnection].mySession disconnect];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //w Add credits do JSController

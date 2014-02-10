@@ -14,15 +14,17 @@
 
 
 
+
 @implementation AmazeGameLayer 
 
 NSMutableArray *_scoreLabelArray;
 
 CCLabelTTF *_middleLabel;
-CCLabelTTF *_roundTimer;
+CCLabelTTF *_roundTimerLabel;
 
+NSTimer *_roundTimer;
 
-int _time;
+Game *_game;
 
 -(void) dealloc {
     [super dealloc];
@@ -100,6 +102,8 @@ int _time;
     
     CGSize winSize = [CCDirector sharedDirector].winSize;
     _scoreLabelArray = [[NSMutableArray alloc] init];
+    _game = [Game myGame];
+    
     const float xoffset = 0.12;
     const float yoffset = 0.05;
     
@@ -134,12 +138,12 @@ int _time;
     }
     
     
-    _roundTimer = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%02d:%02d", _time/60, _time%60] fontName:@"Arial" fontSize:46];
-    _roundTimer.position = ccp(winSize.width/2, winSize.height*(1-yoffset));
-    [self addChild:_roundTimer];
-    _time = [[Game myGame] roundDuration];
+    _roundTimerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60] fontName:@"Arial" fontSize:46];
+    _roundTimerLabel.position = ccp(winSize.width/2, winSize.height*(1-yoffset));
+    [self addChild:_roundTimerLabel];
+
     
-    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    _roundTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
     
     _middleLabel = [CCLabelTTF labelWithString:@"" fontName:@"Arial" fontSize:60];
     ccColor3B color = {255, 215, 0};
@@ -149,13 +153,12 @@ int _time;
 }
 
 
--(void) updateTimer {
+-(void) updateTimer: (NSTimer *) timer {
+    NSLog(@"%@", [timer description]);
+    _roundTimerLabel.string = [NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60];
     
-    _roundTimer.string = [NSString stringWithFormat:@"%02d:%02d", _time/60, _time%60];
-    
-    if (_time > 0)
-        _time--;
-    
+    if (_game.roundDuration > 0)
+        _game.roundDuration--;
 
 }
 /**
@@ -163,7 +166,9 @@ int _time;
  *
  * For more info, read the notes of this method on CC3Layer.
  */
--(void) onCloseCC3Layer {}
+-(void) onCloseCC3Layer {
+    [_roundTimer invalidate];
+}
 
 /**
  * The ccTouchMoved:withEvent: method is optional for the <CCTouchDelegateProtocol>.

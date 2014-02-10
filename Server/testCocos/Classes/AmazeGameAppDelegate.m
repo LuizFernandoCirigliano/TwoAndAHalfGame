@@ -10,7 +10,7 @@
 #import "AmazeGameLayer.h"
 #import "AmazeGameScene.h"
 #import "CC3CC2Extensions.h"
-
+#import "Game.h"
 
 #define kAnimationFrameRate		60		// Animation frame rate
 
@@ -150,7 +150,9 @@
 	CCScene *scene = [CCScene node];
 	[scene addChild: mainLayer];
 	[CCDirector.sharedDirector runWithScene: scene];
-    CCDirector.sharedDirector.displayFPS = NO;
+    CCDirector.sharedDirector.displayFPS = YES;
+    
+    [Game myGame].viewController = _viewController;
 }
 
 /**
