@@ -70,7 +70,11 @@
 	HASH_DEL(targets, element);
 //	CCLOG(@"cocos2d: ---- buckets: %d/%d - %@", targets->entries, targets->size, element->target);
 	[element->target release];
-	free(element);
+    
+    if (element) {
+        free(element);
+    }
+
 }
 
 -(void) actionAllocWithHashElement:(tHashElement*)element
