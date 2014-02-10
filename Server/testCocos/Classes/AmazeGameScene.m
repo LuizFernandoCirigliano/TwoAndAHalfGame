@@ -213,7 +213,7 @@ NSTimer *_cameraPlayersTimer;
     
     for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
         for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
-            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
+//            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
             if ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] == '0') {
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 50, position.y);
@@ -247,7 +247,7 @@ NSTimer *_cameraPlayersTimer;
     
     for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
         for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
-            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
+//            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
             char content = [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)];
             if (content == '2') {
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
@@ -258,9 +258,9 @@ NSTimer *_cameraPlayersTimer;
                 
                 //test
                 
-                CGPoint testPosition = CGPointMake(newCube.location.x, newCube.location.z);
-                CGPoint testLocation = [[Map myMap] locationInMapWithPosition:testPosition];
-                NSLog (@"CERTO: %d %d  TEST: %d %d" , i, j, (int)testLocation.x, (int)testLocation.y);
+//                CGPoint testPosition = CGPointMake(newCube.location.x, newCube.location.z);
+//                CGPoint testLocation = [[Map myMap] locationInMapWithPosition:testPosition];
+//                NSLog (@"CERTO: %d %d  TEST: %d %d" , i, j, (int)testLocation.x, (int)testLocation.y);
                 
                 [_tempWallsArray addObject:newCube];
                 [self addChild:newCube];
@@ -690,7 +690,7 @@ NSTimer *_cameraPlayersTimer;
         CGPoint position = CGPointMake(tempWall.location.x, tempWall.location.z);
         CGPoint location = [[Map myMap] locationInMapWithPosition:position];
         
-        NSLog(@"%d %d", (int)location.x, (int)location.y);
+//        NSLog(@"%d %d", (int)location.x, (int)location.y);
         [self removeChild:tempWall];
         [[Map myMap] replaceAtLocation:location withChar:'0'];
         [_tempWallsArray removeObject:tempWall];
@@ -899,7 +899,7 @@ NSTimer *_cameraPlayersTimer;
     }
     CGPoint tile = [[Map myMap] locationInMapWithPosition:CGPointMake(character.node.location.x, character.node.location.z)];
     
-    NSLog(@"%c" , [[Map myMap] contentOfMapAtLocation:tile]);
+//    NSLog(@"%c" , [[Map myMap] contentOfMapAtLocation:tile]);
 }
 
 

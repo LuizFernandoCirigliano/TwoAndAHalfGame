@@ -83,13 +83,13 @@ static Map *myMapConfiguration = nil;
         
         [self.lines addObject: nextLine]; //adiciona string a array de linhas
         
-        NSLog(@"%@", nextLine);
+//        NSLog(@"%@", nextLine);
     }
     
     self.xTileCount = [self.lines count];
     self.zTileCount = [[self.lines firstObject] length];
     
-    NSLog(@"%d %d", self.xTileCount, self.zTileCount);
+//    NSLog(@"%d %d", self.xTileCount, self.zTileCount);
 
 }
 
