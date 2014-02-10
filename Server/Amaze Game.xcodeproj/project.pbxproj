@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A14E52A18A55FAD00B28B0B /* shelf.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A14E52918A55FAD00B28B0B /* shelf.pod */; };
+		3A20055C18A92E5A00716CEE /* coin.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A20055B18A92E5A00716CEE /* coin.pod */; };
 		3A25F106189FFC10005FD2F3 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F105189FFC10005FD2F3 /* Map.m */; };
 		3A25F10F18A15398005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */; };
 		3A25F11318A156B4005FD2F3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F11218A156B4005FD2F3 /* Game.m */; };
@@ -312,7 +313,6 @@
 		3A9A1D6718A3F73400B82385 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6618A3F73400B82385 /* bell.mp3 */; };
 		3A9A1D6918A3FD1300B82385 /* janelas.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6818A3FD1300B82385 /* janelas.png */; };
 		3A9A1D6B18A3FD2300B82385 /* school.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6A18A3FD2300B82385 /* school.pod */; };
-		3A9A1D6F18A40C2B00B82385 /* coin9.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6E18A40C2B00B82385 /* coin9.pod */; };
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		3AFAB71418A53B770093FDCB /* sergio1.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71318A53B770093FDCB /* sergio1.pod */; };
@@ -358,6 +358,7 @@
 
 /* Begin PBXFileReference section */
 		3A14E52918A55FAD00B28B0B /* shelf.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = shelf.pod; sourceTree = "<group>"; };
+		3A20055B18A92E5A00716CEE /* coin.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = coin.pod; sourceTree = "<group>"; };
 		3A25F104189FFC10005FD2F3 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		3A25F105189FFC10005FD2F3 /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
 		3A25F10D18A15398005FD2F3 /* JankenResultMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JankenResultMessage.h; path = ../../Shared/JankenResultMessage.h; sourceTree = "<group>"; };
@@ -954,7 +955,6 @@
 		3A9A1D6618A3F73400B82385 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
 		3A9A1D6818A3FD1300B82385 /* janelas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = janelas.png; sourceTree = "<group>"; };
 		3A9A1D6A18A3FD2300B82385 /* school.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = school.pod; sourceTree = "<group>"; };
-		3A9A1D6E18A40C2B00B82385 /* coin9.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = coin9.pod; sourceTree = "<group>"; };
 		3AD47EC1189020F900623ACA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -1973,7 +1973,7 @@
 				3A9A1D5918A3E97800B82385 /* Sounds */,
 				A3A0272518A2B9F8000BAB87 /* marcelo */,
 				3A4EAB76188D927D00E6C9F5 /* Info.plist */,
-				3A9A1D6E18A40C2B00B82385 /* coin9.pod */,
+				3A20055B18A92E5A00716CEE /* coin.pod */,
 				3A9A1D5B18A3EC2A00B82385 /* school */,
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
@@ -2313,7 +2313,6 @@
 				3A4EAB98188D927D00E6C9F5 /* Default-568h@2x.png in Resources */,
 				A3CB075F18A524ED00E153E5 /* tenis.png in Resources */,
 				3A4EAB8B188D927D00E6C9F5 /* Icon-60@2x.png in Resources */,
-				3A9A1D6F18A40C2B00B82385 /* coin9.pod in Resources */,
 				3A4EAB61188D927D00E6C9F5 /* CC3PointSprites.vsh in Resources */,
 				3AFAB73518A557180093FDCB /* lousa.pod in Resources */,
 				3A4EAB5D188D927D00E6C9F5 /* CC3NoTextureReflectAlphaTest.fsh in Resources */,
@@ -2352,6 +2351,7 @@
 				3A4EAB5B188D927D00E6C9F5 /* CC3NoTextureReflect.fsh in Resources */,
 				3A4EAB89188D927D00E6C9F5 /* Icon-60.png in Resources */,
 				3AFAB73B18A557180093FDCB /* WoodFine0005_1_S.jpg in Resources */,
+				3A20055C18A92E5A00716CEE /* coin.pod in Resources */,
 				3A4EAB63188D927D00E6C9F5 /* CC3PointSpritesAlphaTest.fsh in Resources */,
 				3A4EAB4F188D927D00E6C9F5 /* CC3ClipSpaceNoTexture.fsh in Resources */,
 				3A4EAB7F188D927D00E6C9F5 /* Icon-40@2x.png in Resources */,

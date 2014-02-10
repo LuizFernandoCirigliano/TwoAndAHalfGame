@@ -333,7 +333,7 @@ NSTimer *_cameraPlayersTimer;
     _bonusCoinCollection  = [CC3Node node];
     [self addChild:_bonusCoinCollection];
     
-    [self addContentFromPODFile:@"coin9.pod" withName:@"bonusCoinModel"];
+    [self addContentFromPODFile:@"coin.pod" withName:@"bonusCoinModel"];
     _bonusCoin = [[self getNodeNamed:@"bonusCoinModel"] copy];
     _bonusCoin.scale = cc3v(50, 50, 50);
     [_bonusCoin createBoundingVolumeFromBoundingBox];
@@ -908,7 +908,6 @@ NSTimer *_cameraPlayersTimer;
             [character.node stopActionByTag:1];
             break;
     }
-    CGPoint tile = [[Map myMap] locationInMapWithPosition:CGPointMake(character.node.location.x, character.node.location.z)];
     
 //    NSLog(@"%c" , [[Map myMap] contentOfMapAtLocation:tile]);
 }
