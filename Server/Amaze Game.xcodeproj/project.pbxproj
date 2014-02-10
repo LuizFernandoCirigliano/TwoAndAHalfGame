@@ -13,8 +13,6 @@
 		3A25F10F18A15398005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */; };
 		3A25F11318A156B4005FD2F3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F11218A156B4005FD2F3 /* Game.m */; };
 		3A2F428A1896B8F80088C77D /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42891896B8F80088C77D /* map01.txt */; };
-		3A2F42981896D8630088C77D /* uvmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42951896D8630088C77D /* uvmap.png */; };
-		3A2F429A1896DC0B0088C77D /* suzanne.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42991896DC0B0088C77D /* suzanne.pod */; };
 		3A4EA822188D927900E6C9F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA821188D927900E6C9F5 /* QuartzCore.framework */; };
 		3A4EA824188D927900E6C9F5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA823188D927900E6C9F5 /* OpenGLES.framework */; };
 		3A4EA826188D927900E6C9F5 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA825188D927900E6C9F5 /* OpenAL.framework */; };
@@ -366,8 +364,6 @@
 		3A25F11118A156B4005FD2F3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		3A25F11218A156B4005FD2F3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
-		3A2F42951896D8630088C77D /* uvmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uvmap.png; sourceTree = "<group>"; };
-		3A2F42991896DC0B0088C77D /* suzanne.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = suzanne.pod; sourceTree = "<group>"; };
 		3A4EA81E188D927900E6C9F5 /* Amaze Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amaze Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4EA821188D927900E6C9F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3A4EA823188D927900E6C9F5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1040,15 +1036,6 @@
 				3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */,
 			);
 			name = 3d;
-			sourceTree = "<group>";
-		};
-		3A2F42921896D8630088C77D /* Suzanne */ = {
-			isa = PBXGroup;
-			children = (
-				3A2F42991896DC0B0088C77D /* suzanne.pod */,
-				3A2F42951896D8630088C77D /* uvmap.png */,
-			);
-			path = Suzanne;
 			sourceTree = "<group>";
 		};
 		3A4EA815188D927900E6C9F5 = {
@@ -1980,7 +1967,6 @@
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
 				3A920F5B18A2A19800FEFD9E /* arial16.fnt */,
 				A31C86B81899185400769876 /* images2D */,
-				3A2F42921896D8630088C77D /* Suzanne */,
 				3A4EAB77188D927D00E6C9F5 /* Icons */,
 				3A4EAB94188D927D00E6C9F5 /* Launch Images */,
 			);
@@ -2275,7 +2261,6 @@
 				3AFAB73A18A557180093FDCB /* wooden floor texture.jpg in Resources */,
 				A31C86BE18991B3600769876 /* p2.png in Resources */,
 				3A4EAB9C188D927D00E6C9F5 /* Default-Landscape~ipad.png in Resources */,
-				3A2F42981896D8630088C77D /* uvmap.png in Resources */,
 				3A4EAB91188D927D00E6C9F5 /* Icon-76.png in Resources */,
 				3A4EAB6F188D927D00E6C9F5 /* CC3SingleTextureReflectAlphaTest.fsh in Resources */,
 				3AFAB72C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png in Resources */,
@@ -2284,7 +2269,6 @@
 				3A4EAB73188D927D00E6C9F5 /* CC3TexturableRigidBones.vsh in Resources */,
 				3A2F428A1896B8F80088C77D /* map01.txt in Resources */,
 				3A4EAB8F188D927D00E6C9F5 /* Icon-72@2x.png in Resources */,
-				3A2F429A1896DC0B0088C77D /* suzanne.pod in Resources */,
 				3AFAB73718A557180093FDCB /* quadra.pod in Resources */,
 				3AFAB72E18A557180093FDCB /* big_mesa.pod in Resources */,
 				3A9A1D6218A3EC2A00B82385 /* piso.png in Resources */,
