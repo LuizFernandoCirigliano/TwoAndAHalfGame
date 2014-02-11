@@ -118,7 +118,7 @@ static Map *myMapConfiguration = nil;
 //This method receives the tile indexes and returns the center position (float values) for the center of the tile
 -(CGPoint) positionInMapWithLocation: (CGPoint) location
 {
-    CGPoint position = CGPointMake(-self.mapSizeX/2 + self.tileSizeX*location.x , -self.mapSizeZ/2 + self.tileSizeZ*location.y );
+    CGPoint position = CGPointMake(-self.mapSizeX/2 + self.tileSizeX*location.x + self.tileSizeX/2, -self.mapSizeZ/2 + self.tileSizeZ*location.y + self.tileSizeZ/2 );
     
     return position;
 }

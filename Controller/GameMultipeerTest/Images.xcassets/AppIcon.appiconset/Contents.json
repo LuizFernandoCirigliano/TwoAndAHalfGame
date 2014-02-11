@@ -1,33 +1,99 @@
 {
   "images" : [
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "amazeparty_controller_icon29x.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "amazeparty_controller_icon58x-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "ipad",
-      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "amazeparty_controller_icon80x.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
-      "size" : "76x76",
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "amazeparty_controller_icon57x.png",
       "scale" : "1x"
     },
     {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "amazeparty_controller_icon114x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "amazeparty_controller_icon120x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
       "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon29x-1.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon58x-1-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon40x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon80x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon50x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon100x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon72x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon144x.png",
+      "scale" : "2x"
+    },
+    {
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon76x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "amazeparty_controller_icon152x.png",
       "scale" : "2x"
     }
   ],

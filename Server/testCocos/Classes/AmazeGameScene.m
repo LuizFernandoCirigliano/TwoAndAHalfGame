@@ -248,6 +248,12 @@ NSTimer *_cameraPlayersTimer;
     [self addContentFromPODFile:@"mesa.pod" withName:@"mesa"];
     CC3Node *mesaModelLib = [self getNodeNamed:@"mesa"];
     
+    [self addContentFromPODFile:@"cesta.pod" withName:@"cesta"];
+    CC3Node *cestaModel = [self getNodeNamed:@"cesta"];
+    
+    [self addContentFromPODFile:@"bleacher4.pod" withName:@"bleacher"];
+    CC3Node *bleacherModel = [self getNodeNamed:@"bleacher"];
+    
     for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
         for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
 //            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
@@ -316,7 +322,51 @@ NSTimer *_cameraPlayersTimer;
                 
                 [self addChild:mesa];
                 mesa.location = pos;
+            } else if (content == '8') {
+                CC3Node *mesa = [cestaModel copy];
+                mesa.scale = cc3v(45,45,45);
+                mesa.rotationAxis = kCC3VectorUnitYPositive;
+                mesa.rotationAngle = 180;
+
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            } else if (content == '9') {
+                CC3Node *mesa = [bleacherModel copy];
+                
+                mesa.scale = cc3v(20,20,20);
+                mesa.rotationAngle = 180;
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            } else if (content == 'l') {
+                [self addContentFromPODFile:@"quadra.pod" withName:@"quadra"];
+                CC3Node *mesa = [self getNodeNamed:@"quadra"];
+                mesa.scale = cc3v(20,20,20);
+                mesa.rotationAngle = 180;
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 10, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            } else if (content == 'f') {
+                CC3Node *mesa = [cestaModel copy];
+                
+                mesa.scale = cc3v(45,45,45);
+                mesa.rotationAxis = kCC3VectorUnitYPositive;
+                mesa.rotationAngle = 0;
+                
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
             }
+            
 
             
             
@@ -471,7 +521,7 @@ NSTimer *_cameraPlayersTimer;
             break;
     }
     
-    player.node.location = cc3v(spawnPoint.x, 0 , spawnPoint.y) ;
+    player.node.location = cc3v(spawnPoint.x - [[Map myMap] tileSizeX]/2, 0 , spawnPoint.y - [[Map myMap] tileSizeZ]/2) ;
     
     player.node.rotationAxis = kCC3VectorUnitYPositive;
     player.node.scale = cc3v(playerScale, playerScale, playerScale);
@@ -481,7 +531,7 @@ NSTimer *_cameraPlayersTimer;
     CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[_playerArray count]+1]];
     //Add sprite to billboard
     CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
-    [marker setScale:cc3v(0.1f, 0.1f, 0.1f)];
+    [marker setScale:cc3v(0.2f, 0.2f, 0.2f)];
     marker.location = cc3v(0,25,0);
     //Always face the camera
     

@@ -318,13 +318,10 @@
 		3AFAB72C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */; };
 		3AFAB72D18A557180093FDCB /* Backboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71D18A557180093FDCB /* Backboard.jpg */; };
 		3AFAB72E18A557180093FDCB /* big_mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71E18A557180093FDCB /* big_mesa.pod */; };
-		3AFAB72F18A557180093FDCB /* bleacher.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71F18A557180093FDCB /* bleacher.pod */; };
 		3AFAB73018A557180093FDCB /* bookshelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72018A557180093FDCB /* bookshelf.png */; };
 		3AFAB73118A557180093FDCB /* cadeira_mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72118A557180093FDCB /* cadeira_mesa.pod */; };
-		3AFAB73218A557180093FDCB /* cesta.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72218A557180093FDCB /* cesta.pod */; };
 		3AFAB73318A557180093FDCB /* chalkboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72318A557180093FDCB /* chalkboard.jpg */; };
 		3AFAB73418A557180093FDCB /* dark-wood-texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */; };
-		3AFAB73718A557180093FDCB /* quadra.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72718A557180093FDCB /* quadra.pod */; };
 		3AFAB73A18A557180093FDCB /* wooden floor texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */; };
 		3AFAB73B18A557180093FDCB /* WoodFine0005_1_S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
@@ -352,6 +349,9 @@
 		A3F0309918AA606F00AB48D7 /* school_entrance1.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F0309818AA606F00AB48D7 /* school_entrance1.pod */; };
 		A3F0309F18AA61EB00AB48D7 /* mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F0309E18AA61EB00AB48D7 /* mesa.pod */; };
 		A3F030AB18AA64B600AB48D7 /* lousa.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F030AA18AA64B600AB48D7 /* lousa.pod */; };
+		A3F030BB18AA74A000AB48D7 /* cesta.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F030B918AA74A000AB48D7 /* cesta.pod */; };
+		A3F030C318AA7F5B00AB48D7 /* bleacher4.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F030C218AA7F5B00AB48D7 /* bleacher4.pod */; };
+		A3F030C718AA811200AB48D7 /* quadra.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F030C618AA811200AB48D7 /* quadra.pod */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -959,13 +959,10 @@
 		3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2000px-Basketball_court_dimensions_no_label.png"; sourceTree = "<group>"; };
 		3AFAB71D18A557180093FDCB /* Backboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Backboard.jpg; sourceTree = "<group>"; };
 		3AFAB71E18A557180093FDCB /* big_mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = big_mesa.pod; sourceTree = "<group>"; };
-		3AFAB71F18A557180093FDCB /* bleacher.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = bleacher.pod; sourceTree = "<group>"; };
 		3AFAB72018A557180093FDCB /* bookshelf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookshelf.png; sourceTree = "<group>"; };
 		3AFAB72118A557180093FDCB /* cadeira_mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = cadeira_mesa.pod; sourceTree = "<group>"; };
-		3AFAB72218A557180093FDCB /* cesta.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = cesta.pod; sourceTree = "<group>"; };
 		3AFAB72318A557180093FDCB /* chalkboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chalkboard.jpg; sourceTree = "<group>"; };
 		3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dark-wood-texture.jpg"; sourceTree = "<group>"; };
-		3AFAB72718A557180093FDCB /* quadra.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = quadra.pod; sourceTree = "<group>"; };
 		3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wooden floor texture.jpg"; sourceTree = "<group>"; };
 		3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WoodFine0005_1_S.jpg; sourceTree = "<group>"; };
 		A31C86B01899184D00769876 /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
@@ -1003,6 +1000,9 @@
 		A3F0309818AA606F00AB48D7 /* school_entrance1.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = school_entrance1.pod; sourceTree = "<group>"; };
 		A3F0309E18AA61EB00AB48D7 /* mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = mesa.pod; sourceTree = "<group>"; };
 		A3F030AA18AA64B600AB48D7 /* lousa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = lousa.pod; sourceTree = "<group>"; };
+		A3F030B918AA74A000AB48D7 /* cesta.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = cesta.pod; sourceTree = "<group>"; };
+		A3F030C218AA7F5B00AB48D7 /* bleacher4.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = bleacher4.pod; sourceTree = "<group>"; };
+		A3F030C618AA811200AB48D7 /* quadra.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = quadra.pod; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2120,15 +2120,15 @@
 				3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */,
 				3AFAB71D18A557180093FDCB /* Backboard.jpg */,
 				3AFAB71E18A557180093FDCB /* big_mesa.pod */,
-				3AFAB71F18A557180093FDCB /* bleacher.pod */,
 				3AFAB72018A557180093FDCB /* bookshelf.png */,
 				3AFAB72118A557180093FDCB /* cadeira_mesa.pod */,
-				3AFAB72218A557180093FDCB /* cesta.pod */,
 				3AFAB72318A557180093FDCB /* chalkboard.jpg */,
+				A3F030B918AA74A000AB48D7 /* cesta.pod */,
 				3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */,
+				A3F030C618AA811200AB48D7 /* quadra.pod */,
 				A3F0309E18AA61EB00AB48D7 /* mesa.pod */,
 				A3F0309418AA5DA000AB48D7 /* shelf.pod */,
-				3AFAB72718A557180093FDCB /* quadra.pod */,
+				A3F030C218AA7F5B00AB48D7 /* bleacher4.pod */,
 				A3F030AA18AA64B600AB48D7 /* lousa.pod */,
 				3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */,
 				3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */,
@@ -2270,14 +2270,14 @@
 				3A4EAB73188D927D00E6C9F5 /* CC3TexturableRigidBones.vsh in Resources */,
 				3A2F428A1896B8F80088C77D /* map01.txt in Resources */,
 				3A4EAB8F188D927D00E6C9F5 /* Icon-72@2x.png in Resources */,
-				3AFAB73718A557180093FDCB /* quadra.pod in Resources */,
+				A3F030C718AA811200AB48D7 /* quadra.pod in Resources */,
 				3AFAB72E18A557180093FDCB /* big_mesa.pod in Resources */,
 				3A9A1D6218A3EC2A00B82385 /* piso.png in Resources */,
 				3AFAB71618A53B8D0093FDCB /* skin.png in Resources */,
 				3A4EAB83188D927D00E6C9F5 /* Icon-50@2x.png in Resources */,
 				3A4EAB51188D927D00E6C9F5 /* CC3ClipSpaceSingleTexture.fsh in Resources */,
+				A3F030C318AA7F5B00AB48D7 /* bleacher4.pod in Resources */,
 				3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */,
-				3AFAB73218A557180093FDCB /* cesta.pod in Resources */,
 				3A4EAB96188D927D00E6C9F5 /* Default.png in Resources */,
 				3A4EAB47188D927D00E6C9F5 /* CC3BumpMapObjectSpace.fsh in Resources */,
 				3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */,
@@ -2286,6 +2286,7 @@
 				3A4EAB79188D927D00E6C9F5 /* Icon-29.png in Resources */,
 				3A4EAB4B188D927D00E6C9F5 /* CC3BumpMapTangentSpace.fsh in Resources */,
 				3AFAB73318A557180093FDCB /* chalkboard.jpg in Resources */,
+				A3F030BB18AA74A000AB48D7 /* cesta.pod in Resources */,
 				3A4EAB6D188D927D00E6C9F5 /* CC3SingleTextureReflect.fsh in Resources */,
 				3A4EAB5F188D927D00E6C9F5 /* CC3PointSprites.fsh in Resources */,
 				3AFAB73418A557180093FDCB /* dark-wood-texture.jpg in Resources */,
@@ -2315,7 +2316,6 @@
 				3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */,
 				3A9A1D5818A3E78E00B82385 /* bkgMusic.mp3 in Resources */,
 				3A4EAB65188D927D00E6C9F5 /* CC3PureColor.fsh in Resources */,
-				3AFAB72F18A557180093FDCB /* bleacher.pod in Resources */,
 				A3F030AB18AA64B600AB48D7 /* lousa.pod in Resources */,
 				3A9A1D6B18A3FD2300B82385 /* school.pod in Resources */,
 				3A4EAB57188D927D00E6C9F5 /* CC3NoTexture.fsh in Resources */,
