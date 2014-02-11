@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet JSButton *button1;
 @property (weak, nonatomic) IBOutlet JSButton *button2;
 @property (weak, nonatomic) IBOutlet JSButton *button3;
+@property (weak, nonatomic) IBOutlet UIImageView *playerImage;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *playerLabel;
@@ -40,7 +41,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [Connection myConnection].delegate = self;
+    
     self.playerLabel.text = [NSString stringWithFormat:@"Player %d", [[Connection myConnection] playerNumber]+1];
+    
+    [self.playerImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"p%d.png", [[Connection myConnection] playerNumber]+1]]];
     
     [[self.button0 titleLabel] setText:@"0"];
 	[self.button0 setBackgroundImage:[UIImage imageNamed:@"button"]];

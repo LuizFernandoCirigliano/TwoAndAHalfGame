@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A14E52A18A55FAD00B28B0B /* shelf.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A14E52918A55FAD00B28B0B /* shelf.pod */; };
 		3A20055C18A92E5A00716CEE /* coin.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A20055B18A92E5A00716CEE /* coin.pod */; };
 		3A25F106189FFC10005FD2F3 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F105189FFC10005FD2F3 /* Map.m */; };
 		3A25F10F18A15398005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */; };
@@ -316,7 +315,6 @@
 		3AFAB71418A53B770093FDCB /* sergio1.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71318A53B770093FDCB /* sergio1.pod */; };
 		3AFAB71618A53B8D0093FDCB /* skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71518A53B8D0093FDCB /* skin.png */; };
 		3AFAB71818A53BB30093FDCB /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71718A53BB30093FDCB /* tenis.png */; };
-		3AFAB71A18A556C60093FDCB /* school_entrance.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71918A556C60093FDCB /* school_entrance.pod */; };
 		3AFAB72C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */; };
 		3AFAB72D18A557180093FDCB /* Backboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71D18A557180093FDCB /* Backboard.jpg */; };
 		3AFAB72E18A557180093FDCB /* big_mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71E18A557180093FDCB /* big_mesa.pod */; };
@@ -326,11 +324,9 @@
 		3AFAB73218A557180093FDCB /* cesta.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72218A557180093FDCB /* cesta.pod */; };
 		3AFAB73318A557180093FDCB /* chalkboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72318A557180093FDCB /* chalkboard.jpg */; };
 		3AFAB73418A557180093FDCB /* dark-wood-texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */; };
-		3AFAB73518A557180093FDCB /* lousa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72518A557180093FDCB /* lousa.pod */; };
 		3AFAB73718A557180093FDCB /* quadra.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72718A557180093FDCB /* quadra.pod */; };
 		3AFAB73A18A557180093FDCB /* wooden floor texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */; };
 		3AFAB73B18A557180093FDCB /* WoodFine0005_1_S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */; };
-		3AFAB73D18A55F470093FDCB /* mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB73C18A55F470093FDCB /* mesa.pod */; };
 		A31C86B41899184D00769876 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B01899184D00769876 /* p1.png */; };
 		A31C86B61899184D00769876 /* p3.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B21899184D00769876 /* p3.png */; };
 		A31C86B71899184D00769876 /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B31899184D00769876 /* p4.png */; };
@@ -352,10 +348,13 @@
 		A3CB075C18A524ED00E153E5 /* boy3.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3CB075318A524ED00E153E5 /* boy3.pod */; };
 		A3CB075D18A524ED00E153E5 /* boy_skin.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CB075418A524ED00E153E5 /* boy_skin.png */; };
 		A3CB075F18A524ED00E153E5 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CB075618A524ED00E153E5 /* tenis.png */; };
+		A3F0309518AA5DA000AB48D7 /* shelf.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F0309418AA5DA000AB48D7 /* shelf.pod */; };
+		A3F0309918AA606F00AB48D7 /* school_entrance1.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F0309818AA606F00AB48D7 /* school_entrance1.pod */; };
+		A3F0309F18AA61EB00AB48D7 /* mesa.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F0309E18AA61EB00AB48D7 /* mesa.pod */; };
+		A3F030AB18AA64B600AB48D7 /* lousa.pod in Resources */ = {isa = PBXBuildFile; fileRef = A3F030AA18AA64B600AB48D7 /* lousa.pod */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A14E52918A55FAD00B28B0B /* shelf.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = shelf.pod; sourceTree = "<group>"; };
 		3A20055B18A92E5A00716CEE /* coin.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = coin.pod; sourceTree = "<group>"; };
 		3A25F104189FFC10005FD2F3 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		3A25F105189FFC10005FD2F3 /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
@@ -957,7 +956,6 @@
 		3AFAB71318A53B770093FDCB /* sergio1.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = sergio1.pod; sourceTree = "<group>"; };
 		3AFAB71518A53B8D0093FDCB /* skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin.png; sourceTree = "<group>"; };
 		3AFAB71718A53BB30093FDCB /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
-		3AFAB71918A556C60093FDCB /* school_entrance.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = school_entrance.pod; sourceTree = "<group>"; };
 		3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2000px-Basketball_court_dimensions_no_label.png"; sourceTree = "<group>"; };
 		3AFAB71D18A557180093FDCB /* Backboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Backboard.jpg; sourceTree = "<group>"; };
 		3AFAB71E18A557180093FDCB /* big_mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = big_mesa.pod; sourceTree = "<group>"; };
@@ -967,11 +965,9 @@
 		3AFAB72218A557180093FDCB /* cesta.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = cesta.pod; sourceTree = "<group>"; };
 		3AFAB72318A557180093FDCB /* chalkboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chalkboard.jpg; sourceTree = "<group>"; };
 		3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dark-wood-texture.jpg"; sourceTree = "<group>"; };
-		3AFAB72518A557180093FDCB /* lousa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = lousa.pod; sourceTree = "<group>"; };
 		3AFAB72718A557180093FDCB /* quadra.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = quadra.pod; sourceTree = "<group>"; };
 		3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wooden floor texture.jpg"; sourceTree = "<group>"; };
 		3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WoodFine0005_1_S.jpg; sourceTree = "<group>"; };
-		3AFAB73C18A55F470093FDCB /* mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = mesa.pod; sourceTree = "<group>"; };
 		A31C86B01899184D00769876 /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
 		A31C86B21899184D00769876 /* p3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p3.png; sourceTree = "<group>"; };
 		A31C86B31899184D00769876 /* p4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4.png; sourceTree = "<group>"; };
@@ -1003,6 +999,10 @@
 		A3CB075318A524ED00E153E5 /* boy3.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = boy3.pod; sourceTree = "<group>"; };
 		A3CB075418A524ED00E153E5 /* boy_skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boy_skin.png; sourceTree = "<group>"; };
 		A3CB075618A524ED00E153E5 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
+		A3F0309418AA5DA000AB48D7 /* shelf.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = shelf.pod; sourceTree = "<group>"; };
+		A3F0309818AA606F00AB48D7 /* school_entrance1.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = school_entrance1.pod; sourceTree = "<group>"; };
+		A3F0309E18AA61EB00AB48D7 /* mesa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = mesa.pod; sourceTree = "<group>"; };
+		A3F030AA18AA64B600AB48D7 /* lousa.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = lousa.pod; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2054,9 +2054,9 @@
 			children = (
 				3A9A1D5C18A3EC2A00B82385 /* Lockers.png */,
 				3A9A1D5D18A3EC2A00B82385 /* piso.png */,
+				A3F0309818AA606F00AB48D7 /* school_entrance1.pod */,
 				3A9A1D6818A3FD1300B82385 /* janelas.png */,
 				3A9A1D6A18A3FD2300B82385 /* school.pod */,
-				3AFAB71918A556C60093FDCB /* school_entrance.pod */,
 			);
 			path = school;
 			sourceTree = "<group>";
@@ -2126,10 +2126,10 @@
 				3AFAB72218A557180093FDCB /* cesta.pod */,
 				3AFAB72318A557180093FDCB /* chalkboard.jpg */,
 				3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */,
-				3AFAB72518A557180093FDCB /* lousa.pod */,
+				A3F0309E18AA61EB00AB48D7 /* mesa.pod */,
+				A3F0309418AA5DA000AB48D7 /* shelf.pod */,
 				3AFAB72718A557180093FDCB /* quadra.pod */,
-				3A14E52918A55FAD00B28B0B /* shelf.pod */,
-				3AFAB73C18A55F470093FDCB /* mesa.pod */,
+				A3F030AA18AA64B600AB48D7 /* lousa.pod */,
 				3AFAB72A18A557180093FDCB /* wooden floor texture.jpg */,
 				3AFAB72B18A557180093FDCB /* WoodFine0005_1_S.jpg */,
 			);
@@ -2232,7 +2232,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A4EA81D188D927900E6C9F5 = {
-						DevelopmentTeam = QHL9JXYSYP;
+						DevelopmentTeam = SEN7LPK7DZ;
 					};
 				};
 			};
@@ -2261,6 +2261,7 @@
 				3AFAB73A18A557180093FDCB /* wooden floor texture.jpg in Resources */,
 				A31C86BE18991B3600769876 /* p2.png in Resources */,
 				3A4EAB9C188D927D00E6C9F5 /* Default-Landscape~ipad.png in Resources */,
+				A3F0309F18AA61EB00AB48D7 /* mesa.pod in Resources */,
 				3A4EAB91188D927D00E6C9F5 /* Icon-76.png in Resources */,
 				3A4EAB6F188D927D00E6C9F5 /* CC3SingleTextureReflectAlphaTest.fsh in Resources */,
 				3AFAB72C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png in Resources */,
@@ -2277,7 +2278,6 @@
 				3A4EAB51188D927D00E6C9F5 /* CC3ClipSpaceSingleTexture.fsh in Resources */,
 				3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */,
 				3AFAB73218A557180093FDCB /* cesta.pod in Resources */,
-				3A14E52A18A55FAD00B28B0B /* shelf.pod in Resources */,
 				3A4EAB96188D927D00E6C9F5 /* Default.png in Resources */,
 				3A4EAB47188D927D00E6C9F5 /* CC3BumpMapObjectSpace.fsh in Resources */,
 				3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */,
@@ -2288,17 +2288,15 @@
 				3AFAB73318A557180093FDCB /* chalkboard.jpg in Resources */,
 				3A4EAB6D188D927D00E6C9F5 /* CC3SingleTextureReflect.fsh in Resources */,
 				3A4EAB5F188D927D00E6C9F5 /* CC3PointSprites.fsh in Resources */,
-				3AFAB71A18A556C60093FDCB /* school_entrance.pod in Resources */,
 				3AFAB73418A557180093FDCB /* dark-wood-texture.jpg in Resources */,
 				3AFAB71818A53BB30093FDCB /* tenis.png in Resources */,
 				3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */,
 				3A9A1D6918A3FD1300B82385 /* janelas.png in Resources */,
-				3AFAB73D18A55F470093FDCB /* mesa.pod in Resources */,
 				3A4EAB98188D927D00E6C9F5 /* Default-568h@2x.png in Resources */,
 				A3CB075F18A524ED00E153E5 /* tenis.png in Resources */,
+				A3F0309518AA5DA000AB48D7 /* shelf.pod in Resources */,
 				3A4EAB8B188D927D00E6C9F5 /* Icon-60@2x.png in Resources */,
 				3A4EAB61188D927D00E6C9F5 /* CC3PointSprites.vsh in Resources */,
-				3AFAB73518A557180093FDCB /* lousa.pod in Resources */,
 				3A4EAB5D188D927D00E6C9F5 /* CC3NoTextureReflectAlphaTest.fsh in Resources */,
 				3A4EAB6B188D927D00E6C9F5 /* CC3SingleTextureAlphaTest.fsh in Resources */,
 				A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */,
@@ -2318,9 +2316,11 @@
 				3A9A1D5818A3E78E00B82385 /* bkgMusic.mp3 in Resources */,
 				3A4EAB65188D927D00E6C9F5 /* CC3PureColor.fsh in Resources */,
 				3AFAB72F18A557180093FDCB /* bleacher.pod in Resources */,
+				A3F030AB18AA64B600AB48D7 /* lousa.pod in Resources */,
 				3A9A1D6B18A3FD2300B82385 /* school.pod in Resources */,
 				3A4EAB57188D927D00E6C9F5 /* CC3NoTexture.fsh in Resources */,
 				3A4EAB9A188D927D00E6C9F5 /* Default-Portrait~ipad.png in Resources */,
+				A3F0309918AA606F00AB48D7 /* school_entrance1.pod in Resources */,
 				3A9A1D6718A3F73400B82385 /* bell.mp3 in Resources */,
 				A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */,
 				A31C86B61899184D00769876 /* p3.png in Resources */,

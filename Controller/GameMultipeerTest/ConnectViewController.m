@@ -14,7 +14,6 @@
 @interface ConnectViewController()
 
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 
 @end
 
@@ -24,12 +23,12 @@
 {
     [Connection myConnection];
     [Connection myConnection].delegate = self;
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.scrollview.contentSize = self.view.bounds.size;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -45,12 +44,6 @@
     } else {
         [[Connection myConnection] configureConnection];
     }
-}
-
-
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    self.scrollview.contentSize = self.view.bounds.size;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

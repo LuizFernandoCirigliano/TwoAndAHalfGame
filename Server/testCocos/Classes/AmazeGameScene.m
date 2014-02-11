@@ -244,7 +244,9 @@ NSTimer *_cameraPlayersTimer;
     
     [self addContentFromPODFile:@"shelf.pod" withName:@"shelf"];
     CC3Node *shelfModel = [self getNodeNamed:@"shelf"];
-
+    
+    [self addContentFromPODFile:@"mesa.pod" withName:@"mesa"];
+    CC3Node *mesaModelLib = [self getNodeNamed:@"mesa"];
     
     for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
         for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
@@ -299,6 +301,16 @@ NSTimer *_cameraPlayersTimer;
                 
                 mesa.scale = cc3v(40,40,40);
 
+                CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+                CC3Vector pos = cc3v(position.x, 0, position.y);
+                
+                [self addChild:mesa];
+                mesa.location = pos;
+            } else if (content == '7') {
+                CC3Node *mesa = [mesaModelLib copy];
+                
+                mesa.scale = cc3v(40,40,40);
+                mesa.rotationAngle = 180;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
@@ -385,7 +397,7 @@ NSTimer *_cameraPlayersTimer;
 
     [self addChild:_mazeMap];
     
-    [self addContentFromPODFile:@"school_entrance.pod" withName:@"schoolEntrance"];
+    [self addContentFromPODFile:@"school_entrance1.pod" withName:@"schoolEntrance"];
     CC3Node *entrance = [self getNodeNamed:@"schoolEntrance"];
     
     entrance.scale = cc3v(200, 200, 200);
