@@ -483,12 +483,12 @@ NSTimer *_cameraPlayersTimer;
             modelString = @"sergio1.pod";
             break;
         case 2:
-        case 1:
+        case 3:
             
             modelString = @"boy3.pod";
             break;
         
-        case 3:
+        case 1:
             modelString = @"marcelo_model_low.pod";
             break;
     }
