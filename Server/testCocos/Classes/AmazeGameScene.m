@@ -260,7 +260,7 @@ NSTimer *_cameraPlayersTimer;
             char content = [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)];
             if (content == '2') {
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
-                CC3Vector pos = cc3v(position.x, 0, position.y);
+                CC3Vector pos = cc3v(position.x - [[Map myMap] tileSizeX]/2, 0, position.y - [[Map myMap] tileSizeZ]/2);
                 CC3MeshNode *newCube = [cube copy];
                 
                 newCube.location = pos;
