@@ -40,7 +40,7 @@
 @implementation AmazeGameScene
 
 NSMutableArray *_walls;
-
+bool _startMinigame;
 CC3Node *_playerModel;
 
 CC3Node *_allCharacters;
@@ -101,6 +101,8 @@ NSTimer *_cameraPlayersTimer;
 	lamp.location = cc3v( 0.0, 10000.0, 5000.0 );
 	lamp.isDirectionalOnly = NO;
 	
+#warning tirar isso
+    _startMinigame = YES;
     
     
 	// Select an appropriate shader program for each mesh node in this scene now. If this step
@@ -1058,16 +1060,18 @@ NSTimer *_cameraPlayersTimer;
             for (Player *player2 in _playerArray)
             {
                 //add check to see if both of the players are connected
-                if (player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
+                if (_startMinigame && player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
                 {
+                    
                     // Test whether player1 is intersecting player2.
-                    if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume] && player.isPlayingMinigame == NO && player2.isPlayingMinigame == NO)
+                    if ([player.node.boundingVolume doesIntersect:player2.node.boundingVolume])
                     {
                         NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
                         NSTimeInterval interval = -[lastCollision timeIntervalSinceNow];
-                        if (interval > COLISSION_CHECK_INTERVAL)
+                        if (interval > COLISSION_CHECK_INTERVAL  && player.isPlayingMinigame == NO && player2.isPlayingMinigame == NO)
 
                         {
+                            _startMinigame = NO;
                             // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
                             NSDate *now = [[NSDate date] copy];
                             [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];

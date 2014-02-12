@@ -150,7 +150,7 @@
 	CCScene *scene = [CCScene node];
 	[scene addChild: mainLayer];
 	[CCDirector.sharedDirector runWithScene: scene];
-    CCDirector.sharedDirector.displayFPS = YES;
+    CCDirector.sharedDirector.displayFPS = NO;
     
     [Game myGame].viewController = _viewController;
 }
