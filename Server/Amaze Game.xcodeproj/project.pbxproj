@@ -329,6 +329,7 @@
 		A31C86B71899184D00769876 /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86B31899184D00769876 /* p4.png */; };
 		A31C86BE18991B3600769876 /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = A31C86BD18991B3600769876 /* p2.png */; };
 		A344F5411892D57C00355248 /* CC3Node+Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = A344F5401892D57C00355248 /* CC3Node+Collision.m */; };
+		A39F717F18AD0B3A00F0CC5B /* sergio2.pod in Resources */ = {isa = PBXBuildFile; fileRef = A39F717E18AD0B3A00F0CC5B /* sergio2.pod */; };
 		A3A0272C18A2B9F8000BAB87 /* camisa_portugal.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */; };
 		A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272718A2B9F8000BAB87 /* khakishorts.png */; };
 		A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272A18A2B9F8000BAB87 /* skin1.png */; };
@@ -971,6 +972,7 @@
 		A31C86BD18991B3600769876 /* p2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p2.png; sourceTree = "<group>"; };
 		A344F53F1892D57C00355248 /* CC3Node+Collision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CC3Node+Collision.h"; sourceTree = "<group>"; };
 		A344F5401892D57C00355248 /* CC3Node+Collision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CC3Node+Collision.m"; sourceTree = "<group>"; };
+		A39F717E18AD0B3A00F0CC5B /* sergio2.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = sergio2.pod; sourceTree = "<group>"; };
 		A3A0272618A2B9F8000BAB87 /* camisa_portugal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camisa_portugal.png; sourceTree = "<group>"; };
 		A3A0272718A2B9F8000BAB87 /* khakishorts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = khakishorts.png; sourceTree = "<group>"; };
 		A3A0272A18A2B9F8000BAB87 /* skin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin1.png; sourceTree = "<group>"; };
@@ -2109,6 +2111,7 @@
 			children = (
 				3AFAB71518A53B8D0093FDCB /* skin.png */,
 				3AFAB71318A53B770093FDCB /* sergio1.pod */,
+				A39F717E18AD0B3A00F0CC5B /* sergio2.pod */,
 				3AFAB71718A53BB30093FDCB /* tenis.png */,
 			);
 			name = Sergio;
@@ -2265,6 +2268,7 @@
 				3A4EAB91188D927D00E6C9F5 /* Icon-76.png in Resources */,
 				3A4EAB6F188D927D00E6C9F5 /* CC3SingleTextureReflectAlphaTest.fsh in Resources */,
 				3AFAB72C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png in Resources */,
+				A39F717F18AD0B3A00F0CC5B /* sergio2.pod in Resources */,
 				3A4EAB93188D927D00E6C9F5 /* Icon-76@2x.png in Resources */,
 				A31C86B71899184D00769876 /* p4.png in Resources */,
 				3A4EAB73188D927D00E6C9F5 /* CC3TexturableRigidBones.vsh in Resources */,

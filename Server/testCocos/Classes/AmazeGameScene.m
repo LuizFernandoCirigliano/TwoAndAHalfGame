@@ -40,7 +40,7 @@
 @implementation AmazeGameScene
 
 NSMutableArray *_walls;
-bool _startMinigame;
+
 CC3Node *_playerModel;
 
 CC3Node *_allCharacters;
@@ -100,10 +100,6 @@ NSTimer *_cameraPlayersTimer;
 	CC3Light* lamp = [CC3Light nodeWithName: @"Lamp"];
 	lamp.location = cc3v( 0.0, 10000.0, 5000.0 );
 	lamp.isDirectionalOnly = NO;
-	
-#warning tirar isso
-    _startMinigame = YES;
-    
     
 	// Select an appropriate shader program for each mesh node in this scene now. If this step
 	// is omitted, a shader program will be selected for each mesh node the first time that mesh
@@ -482,7 +478,7 @@ NSTimer *_cameraPlayersTimer;
     NSString *modelString;
     switch (number) {
         case 0:
-            modelString = @"sergio1.pod";
+            modelString = @"sergio2.pod";
             break;
         case 2:
         case 3:
@@ -715,6 +711,7 @@ NSTimer *_cameraPlayersTimer;
     self.activeCamera.target = winner.node;
     self.activeCamera.shouldTrackTarget = YES;
     
+    [winner.node stopAllActions];
     //animations to run on the winning player
     [winner.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
     CCActionInterval *rotateAction = [CC3RotateByAngle actionWithDuration:1.0f rotateByAngle:-30.0f];
@@ -1060,7 +1057,7 @@ NSTimer *_cameraPlayersTimer;
             for (Player *player2 in _playerArray)
             {
                 //add check to see if both of the players are connected
-                if (_startMinigame && player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
+                if (player2 != player && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
                 {
                     
                     // Test whether player1 is intersecting player2.
@@ -1071,7 +1068,6 @@ NSTimer *_cameraPlayersTimer;
                         if (interval > COLISSION_CHECK_INTERVAL  && player.isPlayingMinigame == NO && player2.isPlayingMinigame == NO)
 
                         {
-                            _startMinigame = NO;
                             // Set timestamp on both players: this way player collision won't be handled twice (P1 touching P2 = P2 touching P1).
                             NSDate *now = [[NSDate date] copy];
                             [player.lastPlayerCollisionTimestamp setObject:now forKey: [NSString stringWithFormat: @"%d", player2.index ]];
