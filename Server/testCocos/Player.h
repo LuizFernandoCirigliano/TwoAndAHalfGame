@@ -13,20 +13,27 @@
 @interface Player : NSObject
 
 /**
- * Player index in the characters array
+ * Player index in the characters array.
  */
 @property (nonatomic) NSInteger index;
 
+/**
+ * Score of the player.
+ */
 @property (nonatomic) NSInteger playerScore;
 
-@property (strong, nonatomic) NSString *deviceID;
 /**
- * Node location before movement
+ * ID of the device (used by Multipeer connectivity).
+ */
+@property (strong, nonatomic) NSString *deviceID;
+
+/**
+ * Node location before movement.
  */
 @property (nonatomic, assign) CC3Vector oldLocation;
 
 /**
- * Player node
+ * Player node.
  */
 @property (nonatomic, strong) CC3Node *node;
 
@@ -45,6 +52,11 @@
 
 @property (nonatomic) Direction direction;
 
+/**
+ * Minigame currently being played by the player.
+ *
+ * nil if the player is not in a minigame.
+ */
 @property (nonatomic, strong) Minigame *minigame;
 
 - (id) initWithIndex: (NSInteger) index;

@@ -507,7 +507,7 @@ NSTimer *_cameraPlayersTimer;
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,2)];
             break;
         case 1:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,38)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(4,2)];
             break;
         case 2:
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,38)];

@@ -154,6 +154,7 @@
     _winner = winner;
     if (winner == kJankenTie)
     {
+        NSLog(@"OIII");
         //TIE ==> REMATCH
 //        NSDate *now = [NSDate date];
 //        Player *playerA = [[Game myGame].playerArray objectAtIndex:self.playerAID];

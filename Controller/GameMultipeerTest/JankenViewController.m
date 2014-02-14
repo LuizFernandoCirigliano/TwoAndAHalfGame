@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 @property (strong, nonatomic) NSTimer *countDownTimer;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
+@property (strong , nonatomic) NSTimer *TLETimer;
 @property (nonatomic) int count;
 @end
 
@@ -36,7 +37,7 @@
     [super viewDidLoad];
     self.count = 3;
     self.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:9.0f
+    self.TLETimer = [NSTimer scheduledTimerWithTimeInterval:9.0f
                                      target:self
                                    selector:@selector(timeLimitExceeded)
                                    userInfo:nil
@@ -72,6 +73,7 @@
 
 - (IBAction)click:(UIButton *)sender
 {
+    [self.TLETimer invalidate];
     switch (sender.tag)
     {
         case 0:
