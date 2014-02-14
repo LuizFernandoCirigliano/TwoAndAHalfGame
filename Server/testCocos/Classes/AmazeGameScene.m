@@ -547,7 +547,7 @@ NSTimer *_cameraPlayersTimer;
 }
 
 /**
- * Add method description here
+ * Creates the terrain.
  *
  */
 -(void) createTerrain
@@ -694,7 +694,11 @@ NSTimer *_cameraPlayersTimer;
 }
 
 
--(void) endGame {
+/**
+ * Method called when the game ends.
+ */
+-(void) endGame
+{
     for (NSTimer *timer in _timersArray) {
         [timer invalidate];
     }
@@ -727,7 +731,12 @@ NSTimer *_cameraPlayersTimer;
     [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
 }
 
--(void) restartScene {
+
+/**
+ * Restarts the scene
+ */
+-(void) restartScene
+{
 
     [Game myGame].hudLayer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
 //    CC3Layer* cc3Layer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
@@ -759,7 +768,11 @@ NSTimer *_cameraPlayersTimer;
  
 }
 
--(void) removeWall {
+/**
+ * Removes a random wall block.
+ */
+-(void) removeWall
+{
     if ([_tempWallsArray count] > 0) {
         CC3Node *tempWall = [_tempWallsArray firstObject];
         CGPoint position = CGPointMake(tempWall.location.x, tempWall.location.z);
@@ -772,6 +785,7 @@ NSTimer *_cameraPlayersTimer;
         
     }
 }
+
 #pragma mark Drawing
 
 /**
@@ -830,9 +844,9 @@ NSTimer *_cameraPlayersTimer;
 #pragma mark - GameConnectionDelegate
 //Methods that handle multipeer controller interaction
 /**
- * Add method description here!
+ * Delegate method called when a button is pressed by a player.
  *
- \param buttonPressMessage Parameter Description
+ \param buttonPressMessage The button press message
  */
 -(void) otherPlayerPressed:(ButtonPressMessage *)buttonPressMessage
 {
@@ -1090,25 +1104,40 @@ NSTimer *_cameraPlayersTimer;
     }
 }
 
-#pragma mark - CAMERA METHODS
+#pragma mark - Camera Methods
 
--(void) zoomCameraOnPlayers {
+/**
+ * Moves the camera to frame all the players.
+ */
+-(void) zoomCameraOnPlayers
+{
     NSLog(@"moving camera");
     [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
 }
 
+/**
+ * Moves the camera to frame a specific object
+ \param object The object that should be framed by the camera.
+ */
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
     [self.activeCamera moveWithDuration:1.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
 }
 
--(void) startZoomingOnPlayers {
+/**
+ * Creates a 5.0 second-timer that triggers a zoomCameraOnPlayers selector.
+ */
+- (void) startZoomingOnPlayers
+{
     _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
 //    [_timersArray addObject:_cameraPlayersTimer];
 }
 
 #pragma mark - TEST METHODS
 
+/**
+ * Creates a test terrain
+ */
 -(void) createTestTerrain
 {
     //hocus pocus add grass

@@ -27,7 +27,6 @@
 @end
 @implementation Janken
 
-//w Add documentation
 /**
  * Sets the gesture chosen by a given player
  \param playerID The ID of the player
@@ -42,6 +41,12 @@
     
     return self;
 }
+
+/**
+ * Sets a gesture chosen by a player and checks for the winning player (If both players have already played).
+ \param playerID The ID of the player
+ \param playerGesture The gesture chosen by the player
+ */
 - (void) player: (NSInteger) playerID chose: (JankenType) playerGesture
 {
 //    NSLog(@"ID -> %d, Gesture -> %d", playerID, playerGesture);
