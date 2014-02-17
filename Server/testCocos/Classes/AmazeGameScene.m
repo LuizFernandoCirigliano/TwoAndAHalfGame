@@ -212,7 +212,6 @@ NSTimer *_cameraPlayersTimer;
     
     for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
         for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
-//            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
             if ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] == '0') {
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 50, position.y);
@@ -857,133 +856,150 @@ NSTimer *_cameraPlayersTimer;
     }
     
     
-    Player* character = [_playerArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
+    Player* player = [_playerArray objectAtIndex:[[buttonPressMessage playerNumber] intValue]];
     int buttonNumberInt = [[buttonPressMessage buttonNumber] intValue];
     
     CC3Vector moveDirection;
     CCActionInterval *move;
-
+    
+    int teleportTarget;
+    
     const int speed = 30;
     //sets the direction of movement based on the number passed by the connexion, rotates the dragon to face the direction of movement.
     switch (buttonNumberInt)
     {
         //up button
         case 2:
-            if(character.node.rotationAngle != 0)
+            if(player.node.rotationAngle != 0)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:0];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             moveDirection = cc3v(0, 0, speed);
-            character.direction = Up;
+            player.direction = Up;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [player.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             
             break;
         //right button
         case 3:
-            if(character.node.rotationAngle != -90)
+            if(player.node.rotationAngle != -90)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-90];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             moveDirection = cc3v(-speed, 0, 0);
-            character.direction = Right;
+            player.direction = Right;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [player.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             
             break;
         //bottom button
         case 0:
-            if(character.node.rotationAngle != 180)
+            if(player.node.rotationAngle != 180)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:180];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             
             moveDirection = cc3v(0, 0, -speed);
-            character.direction = Down;
+            player.direction = Down;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [character.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [player.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //left button
         case 1:
-            if(character.node.rotationAngle != 90)
+            if(player.node.rotationAngle != 90)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:90];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             
             moveDirection = cc3v(speed, 0, 0);
-            character.direction = Left;
+            player.direction = Left;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [player.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //upright button
         case 30:
-            if(character.node.rotationAngle != -45)
+            if(player.node.rotationAngle != -45)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-45];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             
             moveDirection = cc3v(-speed/sqrt(2.0f), 0, speed/sqrt(2.0f));
-            character.direction = Other;
+            player.direction = Other;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [player.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //downright button
         case 40:
-            if(character.node.rotationAngle != -135)
+            if(player.node.rotationAngle != -135)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:-135];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             
             moveDirection = cc3v(-speed/sqrt(2.0f), 0, -speed/sqrt(2.0f));
-            character.direction = Other;
+            player.direction = Other;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [player.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //downleft button
         case 10:
-            if(character.node.rotationAngle != 135)
+            if(player.node.rotationAngle != 135)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:135];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             
             moveDirection = cc3v(speed/sqrt(2.0f), 0, -speed/sqrt(2.0f));
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            character.direction = Other;
-            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            player.direction = Other;
+            [player.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
         //upleft button
         case 20:
-            if(character.node.rotationAngle != 45)
+            if(player.node.rotationAngle != 45)
             {
                 CCActionInterval *rotate = [CC3RotateToAngle actionWithDuration:0.5f rotateToAngle:45];
-                [character.node runAction:rotate];
+                [player.node runAction:rotate];
             }
             
             moveDirection = cc3v(speed/sqrt(2.0f), 0, speed/sqrt(2.0f));
-            character.direction = Other;
+            player.direction = Other;
             move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
-            [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
-            [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+            [player.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
+            [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
-
+        case 100:
+            teleportTarget = arc4random()%4;
+            if (teleportTarget != player.index) {
+                self.collisionEnabled = NO;
+                Player *targetTeleportPlayer = [_playerArray objectAtIndex: teleportTarget];
+                CC3Vector tempLocation = player.node.location;
+                
+                [targetTeleportPlayer.node stopAllActions];
+                [player.node stopAllActions];
+                
+                player.node.location = targetTeleportPlayer.node.location;
+                targetTeleportPlayer.node.location = tempLocation;
+                self.collisionEnabled = YES;
+            }
+            break;
+        
         //movement end
         default:
-            [character.node stopActionByTag:0];
-            [character.node stopActionByTag:1];
+            [player.node stopActionByTag:0];
+            [player.node stopActionByTag:1];
             break;
     }
     
