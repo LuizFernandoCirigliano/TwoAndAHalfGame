@@ -72,15 +72,15 @@ static Game *myGameConfiguration = nil;
 
 - (void) jankenTie
 {
-    NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
-   
-    MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerAID];
-    [[Connection myConnection] sendData: data toPeer: peer];
-    
-    peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerBID];
-    [[Connection myConnection] sendData: data toPeer: peer];
-    
-    
+//    NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
+//   
+//    MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerAID];
+//    [[Connection myConnection] sendData: data toPeer: peer];
+//    
+//    peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerBID];
+//    [[Connection myConnection] sendData: data toPeer: peer];
+//    
+    [_hudLayer displayMiddleLabelWithString:@"Draw!"];
     self.janken = [[Janken alloc] init];
 }
 

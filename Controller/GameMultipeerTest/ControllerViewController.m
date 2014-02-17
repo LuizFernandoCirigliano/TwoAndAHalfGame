@@ -12,7 +12,7 @@
 #import "JSButton.h"
 #import "SimpleAudioPlayer.h"
 
-@interface ControllerViewController ()  <JSDPadDelegate>
+@interface ControllerViewController ()  <JSDPadDelegate, JSButtonDelegate>
 @property (weak, nonatomic) IBOutlet JSButton *button0;
 @property (weak, nonatomic) IBOutlet JSButton *button1;
 @property (weak, nonatomic) IBOutlet JSButton *button2;
@@ -128,6 +128,16 @@
 {
 	NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:4 andPlayer:[[Connection myConnection] playerNumber]] archiveData];
     [[Connection myConnection] sendData:data];
+}
+
+#pragma mark - JSButtonDelegate
+
+- (void) buttonPressed:(JSButton *)button
+{
+#warning Fix hardcoded 100
+    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:100 andPlayer:[[Connection myConnection] playerNumber]] archiveData];
+    
+    [[Connection myConnection] sendDataToServer:data];
 }
 
 - (void) startMinigame

@@ -506,7 +506,7 @@ NSTimer *_cameraPlayersTimer;
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,2)];
             break;
         case 1:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(4,2)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,38)];
             break;
         case 2:
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,38)];
@@ -980,6 +980,7 @@ NSTimer *_cameraPlayersTimer;
             [player.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
+
         case 100:
             teleportTarget = arc4random()%4;
             if (teleportTarget != player.index) {
@@ -1193,6 +1194,7 @@ NSTimer *_cameraPlayersTimer;
         }
     }
 }
+
 
 
 
