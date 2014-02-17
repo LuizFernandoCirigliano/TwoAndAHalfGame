@@ -134,8 +134,7 @@
 
 - (void) buttonPressed:(JSButton *)button
 {
-#warning Fix hardcoded 100
-    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:100 andPlayer:[[Connection myConnection] playerNumber]] archiveData];
+    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:button.tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
     
     [[Connection myConnection] sendDataToServer:data];
 }

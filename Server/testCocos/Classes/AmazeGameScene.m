@@ -985,7 +985,7 @@ NSTimer *_cameraPlayersTimer;
             teleportTarget = arc4random()%4;
             if (teleportTarget != player.index) {
                 self.collisionEnabled = NO;
-                Player *targetTeleportPlayer = [_playerArray objectAtIndex: teleportTarget];
+                Player *xtargetTeleportPlayer = [_playerArray objectAtIndex: teleportTarget];
                 CC3Vector tempLocation = player.node.location;
                 
                 [targetTeleportPlayer.node stopAllActions];
