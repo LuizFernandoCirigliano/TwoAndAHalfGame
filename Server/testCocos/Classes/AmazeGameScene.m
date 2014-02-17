@@ -507,7 +507,7 @@ NSTimer *_cameraPlayersTimer;
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,2)];
             break;
         case 1:
-            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(4,2)];
+            spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,38)];
             break;
         case 2:
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(2,38)];
@@ -979,7 +979,7 @@ NSTimer *_cameraPlayersTimer;
             [character.node runAction:[CCRepeatForever actionWithAction:move]withTag:0];
             [character.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
             break;
-
+        
         //movement end
         default:
             [character.node stopActionByTag:0];
@@ -1177,6 +1177,7 @@ NSTimer *_cameraPlayersTimer;
         }
     }
 }
+
 
 
 
