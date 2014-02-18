@@ -11,6 +11,7 @@
 #import "JSDPad.h"
 #import "JSButton.h"
 #import "SimpleAudioPlayer.h"
+#import "CircularTimerView.h"
 
 @interface ControllerViewController ()  <JSDPadDelegate, JSButtonDelegate>
 @property (weak, nonatomic) IBOutlet JSButton *button0;
@@ -18,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet JSButton *button2;
 @property (weak, nonatomic) IBOutlet JSButton *button3;
 @property (weak, nonatomic) IBOutlet UIImageView *playerImage;
-
 
 @property (weak, nonatomic) IBOutlet UILabel *playerLabel;
 @end
@@ -46,21 +46,32 @@
     
     [self.playerImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"p%d.png", [[Connection myConnection] playerNumber]+1]]];
     
-    [[self.button0 titleLabel] setText:@"0"];
-	[self.button0 setBackgroundImage:[UIImage imageNamed:@"button"]];
-	[self.button0 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
+    NSArray *buttons = @[self.button0, self.button1, self.button2, self.button3];
+    NSArray *buttonColors = @[[UIColor blueColor], [UIColor redColor], [UIColor whiteColor], [UIColor greenColor]];
+    NSArray *buttonTimeIntervals = @[@60.0f, @30.0f, @45.0f, @15.0f];
     
-    [[self.button1 titleLabel] setText:@"1"];
-	[self.button1 setBackgroundImage:[UIImage imageNamed:@"button"]];
-	[self.button1 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
-    
-    [[self.button2 titleLabel] setText:@"2"];
-	[self.button2 setBackgroundImage:[UIImage imageNamed:@"button"]];
-	[self.button2 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
-    
-    [[self.button3 titleLabel] setText:@"3"];
-	[self.button3 setBackgroundImage:[UIImage imageNamed:@"button"]];
-	[self.button3 setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
+    for (int i = 0; i < buttons.count; i++)
+    {
+        JSButton *button = buttons[i];
+        UIColor *color = buttonColors[i];
+        
+        [button setBackgroundImage:[UIImage imageNamed:@"button"]];
+        [button setBackgroundImagePressed:[UIImage imageNamed:@"button-pressed"]];
+        
+        button.radius = button.frame.size.height /2;
+        button.size = button.radius * 0.2f;
+        button.timeInterval = [buttonTimeIntervals[i] doubleValue];
+        button.annulusColor = color;
+        
+        CircularTimerView *always = [[CircularTimerView alloc] initWithPosition:CGPointMake(-button.size, -button.size) radius:button.radius+button.size internalRadius:button.radius];
+        
+        always.backgroundColor = color;
+        always.foregroundColor = color;
+        always.direction = CircularTimerViewDirectionClockwise;
+        [always setupCountdown:NSTimeIntervalSince1970];
+        [button addSubview:always];
+
+        }
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,10 +145,37 @@
 
 - (void) buttonPressed:(JSButton *)button
 {
-#warning Fix hardcoded 100
-    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:100 andPlayer:[[Connection myConnection] playerNumber]] archiveData];
+    NSData *data = [[[ButtonPressMessage alloc] initWithButtonNumber:button.tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
     
     [[Connection myConnection] sendDataToServer:data];
+    
+    CircularTimerView *timerView;
+    timerView = [[CircularTimerView alloc] initWithPosition:CGPointMake(-button.size, -button.size) radius:button.radius+button.size internalRadius:button.radius];
+    
+    //Set background
+    timerView.backgroundColor = [UIColor lightGrayColor];
+    timerView.backgroundFadeColor = button.annulusColor;
+    
+    //Set fade
+    timerView.foregroundColor = [UIColor blackColor];
+    timerView.foregroundFadeColor = button.annulusColor;
+    timerView.direction = CircularTimerViewDirectionClockwise;
+    
+    
+    [timerView setupCountdown:button.timeInterval];
+    
+    timerView.startBlock = ^(CircularTimerView *timerView)
+    {
+        button.userInteractionEnabled = NO;
+    };
+    
+    timerView.endBlock = ^(CircularTimerView *timerView)
+    {
+        button.userInteractionEnabled = YES;
+    };
+    
+    [button addSubview:timerView];
+
 }
 
 - (void) startMinigame
@@ -152,5 +190,5 @@
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//w Add credits do JSController
+//w Add credits do JSController e CircularTimerView
 @end

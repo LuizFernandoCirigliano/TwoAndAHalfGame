@@ -27,4 +27,11 @@
 
 @property (nonatomic, weak) IBOutlet id <JSButtonDelegate> delegate;
 
+
+//FRANCESCO:
+@property (strong, nonatomic) UIColor *annulusColor;
+@property (nonatomic) double radius;
+@property (nonatomic) double size;
+@property (nonatomic) double timeInterval;
+
 @end
