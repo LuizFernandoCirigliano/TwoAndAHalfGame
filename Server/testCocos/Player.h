@@ -9,9 +9,16 @@
 #import "CC3Node+Collision.h"
 #import "Minigame.h"
 
+@class Player;
+
+@protocol PlayerSceneDelegate <NSObject>
+@required
+- (void) replaceNodeForPlayer: (Player *) player;
+@end
 
 @interface Player : NSObject
 
+@property (nonatomic) NSInteger state;
 /**
  * Player index in the characters array.
  */
@@ -37,10 +44,12 @@
  */
 @property (nonatomic, strong) CC3Node *node;
 
+
 /**
  * Dictionary containing the timestamp of the last time the player has collided with another player.
  * Set as default to unix time 0.
  */
+
 @property (nonatomic, strong) NSMutableDictionary *lastPlayerCollisionTimestamp;
 
 /**
@@ -59,5 +68,22 @@
  */
 @property (nonatomic, strong) Minigame *minigame;
 
+
+/**
+ * Add property description here
+ */
+@property (nonatomic, assign) id delegate;
+
+
+
 - (id) initWithIndex: (NSInteger) index;
+
+typedef enum playerStateEnum {
+    NORMAL,
+    THIEF,
+    FREEZER,
+    FROZEN,
+    SPRINT,
+} playerState;
+
 @end

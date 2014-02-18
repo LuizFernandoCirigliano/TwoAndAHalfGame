@@ -9,8 +9,10 @@
 
 #import "CC3Scene.h"
 #import "Connection.h"
+#import "Player.h"
 /** A sample application-specific CC3Scene subclass.*/
-@interface AmazeGameScene : CC3Scene <GameConnectionDelegate>
+@interface AmazeGameScene : CC3Scene
+
 {
     
 }
@@ -23,30 +25,7 @@
 /**
  * Add property description here
  */
-//@property (strong, nonatomic) NSMutableArray *charactersArray;
-
-/**
- * Add property description here
- */
 @property (strong, nonatomic) CC3Camera *cam;
 
-/**
- * Add property description here
- */
-//@property (strong, nonatomic) NSMutableArray *lines;
-//
-//#warning A pragma mark may be necessary here
-//
-///**
-// * Add property description here
-// */
-//@property int xTiles;
-//
-///**
-// * Add property description here
-// */
-//@property int yTiles;
-
-//@property (strong, nonatomic) Connection *myConnection;
 
 @end
