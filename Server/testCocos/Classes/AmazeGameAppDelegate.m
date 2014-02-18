@@ -28,38 +28,38 @@ CC3DeviceCameraOverlayUIViewController* _viewController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    [[CCDirector sharedDirector] pause];
+//    [[CCDirector sharedDirector] pause];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[CCDirector sharedDirector] resume];
+//    [[CCDirector sharedDirector] resume];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     LogInfo(@"applicationDidReceiveMemoryWarning");
-    [[CCDirector sharedDirector] purgeCachedData];
+//    [[CCDirector sharedDirector] purgeCachedData];
 }
 
 -(void) applicationDidEnterBackground:(UIApplication*)application {
-    [[CCDirector sharedDirector] stopAnimation];
+//    [[CCDirector sharedDirector] stopAnimation];
     
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application {
-    [[CCDirector sharedDirector] startAnimation];
+//    [[CCDirector sharedDirector] startAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    CCDirector *director = [CCDirector sharedDirector];
-    
-    [[director openGLView] removeFromSuperview];
-    
-    [director end];
+//    CCDirector *director = [CCDirector sharedDirector];
+//    
+//    [[director openGLView] removeFromSuperview];
+//    
+//    [director end];
     
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
-    [[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
+//    [[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
 @end
