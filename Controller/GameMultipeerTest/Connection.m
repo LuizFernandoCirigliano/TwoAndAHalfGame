@@ -149,7 +149,7 @@ static Connection *myConnectionConfiguration = nil;
 // Remote peer changed state
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
     if (state == MCSessionStateNotConnected && peerID == self.serverPeerID && [self.delegate isKindOfClass:[ControllerViewController class]]) {
-        [self.delegate dismissViewControllerAnimated:YES completion:nil];
+        [self.delegate dismissViewControllerAnimated:NO completion:nil];
     }
 }
 

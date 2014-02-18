@@ -187,7 +187,7 @@
 {
 #warning possible issue with controller reconnections
     [[Connection myConnection].mySession disconnect];
-//    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 //w Add credits do JSController e CircularTimerView

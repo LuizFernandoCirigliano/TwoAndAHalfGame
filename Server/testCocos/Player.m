@@ -55,31 +55,15 @@ CC3Billboard *_thiefMarker;
         self.index = index;
         self.isPlayingMinigame = NO;
         _state = NORMAL;
-        dispatch_async( dispatch_get_main_queue(), ^{
-            //Add Identifier on Player
-            //Make a 2D sprite with image = player's number
-            CCSprite *markerSprite = [CCSprite spriteWithFile: @"thief.png"];
-            //Add sprite to billboard
-            _thiefMarker = [CC3Billboard nodeWithName:[NSString stringWithFormat:@"thief%d", index] withBillboard: markerSprite];
-            [_thiefMarker setScale:cc3v(0.2f, 0.2f, 0.2f)];
-            _thiefMarker.location = cc3v(0,30,0);
-            //Always face the camera
-            
-            _thiefMarker.shouldAutotargetCamera = YES;
-            [_thiefMarker setIsTouchEnabled:NO];
-            [_thiefMarker hide];
-            
-            [_node addChild:_thiefMarker];
-        });
+
     }
     return self;
 }
 
--(void) returnToNormalState: (NSTimer *) timer{
+-(void) returnToNormalState{
     _state = NORMAL;
     
-    [_thiefMarker hide];
-//    _node.shouldDrawBoundingVolume = NO;
+    self.node.emissionColor = CCC4FMake(0.0, 0.0, 0.0, 0.0);
 }
 
 -(void) setPlayerScore:(NSInteger)playerScore {
@@ -89,14 +73,40 @@ CC3Billboard *_thiefMarker;
 
 -(void) setState:(NSInteger)state {
     _state = state;
-    
-    if (state != NORMAL) {
-        
+    if (state == NORMAL) {
+        self.node.emissionColor = CCC4FMake(0.0, 0.0, 0.0, 0.0);
+    } else if (state == THIEF) {
         dispatch_async( dispatch_get_main_queue(), ^{
-            [_thiefMarker show];
-            [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(returnToNormalState:) userInfo:nil repeats:NO];
+            
+            [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(returnToNormalState) userInfo:nil repeats:NO];
+            
+            self.node.emissionColor = CCC4FMake(1.0, 0, 0, 1.0);
+            
         });
-
+    } else if (state == FREEZER) {
+        dispatch_async( dispatch_get_main_queue(), ^{
+            
+            [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(returnToNormalState) userInfo:nil repeats:NO];
+            
+            self.node.emissionColor = CCC4FMake(0.0, 0, 0.5, 1.0);
+            
+        });
+    } else if (state == SPRINT) {
+        dispatch_async( dispatch_get_main_queue(), ^{
+            
+            [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(returnToNormalState) userInfo:nil repeats:NO];
+            
+            self.node.emissionColor = CCC4FMake(0.0, 1.0, 0.0, 1.0);
+            
+        });
+    } else if (state == FROZEN) {
+        dispatch_async( dispatch_get_main_queue(), ^{
+            
+            [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(returnToNormalState) userInfo:nil repeats:NO];
+            
+            self.node.emissionColor = CCC4FMake(0.0, 0, 0.5, 1.0);
+            
+        });
     }
 }
 @end

@@ -11,7 +11,7 @@
 #import "Connection.h"
 #import "Player.h"
 /** A sample application-specific CC3Scene subclass.*/
-@interface AmazeGameScene : CC3Scene
+@interface AmazeGameScene : CC3Scene 
 
 {
     
