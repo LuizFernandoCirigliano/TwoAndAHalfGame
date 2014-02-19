@@ -107,13 +107,17 @@
     glViewController.displayStats = YES;
     [glViewController enableRetinaDisplay: YES];
     glViewController.view.frame = self.view.frame;
+    
     // Add the 3D view to the view cotroller
     [self.view addSubview:glViewController.view];
     // Create the customized CC3Layer that supports 3D rendering.
     CC3Layer *cc3Layer = [AmazeGameLayer layerWithController:glViewController];
     // Create the customized 3D scene and attach it to the layer.
     // Could also just create this inside the customer layer.
-    cc3Layer.cc3Scene = [AmazeGameScene scene];
+    AmazeGameScene *gameScene = [AmazeGameScene scene];
+    gameScene.delegate = self;
+    cc3Layer.cc3Scene = gameScene;
+    
     // Assign to a generic variable so we can uncomment options below to play with the capabilities.
     CC3ControllableLayer* mainLayer = cc3Layer;
     // The 3D layer can run either directly in the scene, or it can run as a smaller "sub-window"
@@ -139,4 +143,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) dissmissVC {
+    [self dismissViewControllerAnimated:YES completion:NO];
+}
 @end

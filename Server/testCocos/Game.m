@@ -28,7 +28,7 @@ static Game *myGameConfiguration = nil;
 {
     self.janken = [[Janken alloc] init];
     self.playerArray = [[NSMutableArray alloc] init];
-    self.roundDuration = 90;
+    self.roundDuration = 20;
 }
 
 /**

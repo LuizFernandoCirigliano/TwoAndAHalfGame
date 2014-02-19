@@ -111,6 +111,7 @@ NSTimer *_cameraPlayersTimer;
 	// consume GPU resources unnecessarily, and potentially degrading app performance. We can
 	// avoid drawing objects that are not within view of the camera by assigning a bounding
 	// volume to each mesh node. Once assigned, the bounding volume is automatically checked
+    
 	// to see if it intersects the camera's frustum before the mesh node is drawn. If the node's
 	// bounding volume intersects the camera frustum, the node will be drawn. If the bounding
 	// volume does not intersect the camera's frustum, the node will not be visible to the camera,
@@ -374,7 +375,6 @@ NSTimer *_cameraPlayersTimer;
 }
 //all variable and property initializations go here
 -(void) performInitializations {
-    [Connection myConnection];
     [Connection myConnection].delegate = self;
     _allCharacters = [CC3Node node];
 
@@ -723,7 +723,7 @@ NSTimer *_cameraPlayersTimer;
 }
 
 -(void) restartScene {
-
+/******simple reset
     [Game myGame].hudLayer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
 //    CC3Layer* cc3Layer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
 	
@@ -743,6 +743,12 @@ NSTimer *_cameraPlayersTimer;
 	[scene addChild: mainLayer];
     
 	[CCDirector.sharedDirector replaceScene: scene];
+ 
+ *********/
+    [[CCDirector sharedDirector] replaceScene:[CCScene node]];
+    [CC3Resource removeAllResources];
+    
+    [self.delegate dissmissVC];
 }
 
 /**
