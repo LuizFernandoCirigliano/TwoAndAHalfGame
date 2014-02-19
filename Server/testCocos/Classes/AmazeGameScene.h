@@ -11,6 +11,15 @@
 #import "Connection.h"
 #import "Player.h"
 /** A sample application-specific CC3Scene subclass.*/
+
+@protocol Cocos3DViewControllerDelegate <NSObject>
+
+@required
+
+- (void) dissmissVC;
+
+@end
+
 @interface AmazeGameScene : CC3Scene 
 
 {

@@ -111,7 +111,7 @@ static Connection *myConnectionConfiguration = nil;
     NSError *error;
     [self.mySession sendData:data toPeers:[NSArray arrayWithObject:peer] withMode:MCSessionSendDataUnreliable error: &error];
     if(error) {
-//        NSLog(@"%@", [error description]);
+
     }
     
     NSLog(@"message sent");
@@ -212,6 +212,11 @@ static Connection *myConnectionConfiguration = nil;
                     [self.delegate changeConnectionToState:state forPlayerNumber:playerNumber];
                 }
             }
+        }
+    } else if (state == MCSessionStateConnecting) {
+        NSInteger playerNumber = [self.peerArray count];
+        if ([self.delegate respondsToSelector:@selector(changeConnectionToState:forPlayerNumber:)]) {
+            [self.delegate changeConnectionToState:state forPlayerNumber:playerNumber];
         }
     }
 }

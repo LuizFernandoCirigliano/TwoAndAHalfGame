@@ -15,7 +15,7 @@
 
 #define kAnimationFrameRate		60	
 
-@interface cocos3DViewController ()
+@interface cocos3DViewController () <Cocos3DViewControllerDelegate>
 {
     CC3Layer                                    *cc3Layer;
     CC3UIViewController      *director;
@@ -24,6 +24,14 @@
 @end
 
 @implementation cocos3DViewController
+- (IBAction)buttonPress:(id)sender {
+    if ([CC3UIViewController.sharedDirector isPaused]) {
+        [CC3UIViewController.sharedDirector resume];
+    } else {
+        [CC3UIViewController.sharedDirector pause];
+    }
+    NSLog(@"TESTE**");
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,50 +60,6 @@
     [self setupCocos3D];
 }
 
-//-(void) setupCocos3D
-//{
-//    // Establish the view controller and CCDirector (in cocos2d 2.x, these are one and the same)
-//    //[self establishDirectorController];
-//    director = [[CC3UIViewController alloc] init];
-//    director = [CC3UIViewController sharedDirector];
-//    director.supportedInterfaceOrientations = UIInterfaceOrientationMaskAll;
-//    director.viewShouldUseStencilBuffer = YES;        // Set to YES if using shadow volumes
-//    director.viewPixelSamples = 1;                    // Set to 4 for antialiasing multisampling
-//    director.animationInterval = (1.0f / kAnimationFrameRate);
-//    director.displayStats = YES;
-//    [director enableRetinaDisplay: YES];
-//    
-////    CC3GLView *glView = [CC3GLView viewWithFrame:self.view.bounds
-////                                   pixelFormat:kEAGLColorFormatRGB565 depthFormat:0];
-//    CC3GLView *glView = [CC3GLView viewWithFrame:self.view.bounds pixelFormat:kEAGLColorFormatRGB565 depthFormat:0];
-////    glView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    
-//    
-//    [self addChildViewController:director];
-//    
-//    [director setView: glView];
-////    director.openGLView = self.view;
-//    [self.view insertSubview:director.view
-//                     atIndex:0];
-//
-//    
-//    
-//    cc3Layer = [AmazeGameLayer layerWithController:director];
-//    
-//    cc3Layer.cc3Scene = [AmazeGameScene scene];
-//    
-//    CC3ControllableLayer *mainLayer = cc3Layer;
-//    
-//    CCScene *scene = [CCScene node];
-//    [scene addChild:mainLayer];
-//    [director runWithScene:scene];
-//    
-//    [Game myGame].viewController = director;
-//    
-//    NSLog(@"View bounds: %f, %f", self.view.bounds.size.width, self.view.bounds.size.height );
-//    NSLog(@"GL View Bounds: %f, %f",glView.bounds.size.width, glView.bounds.size.height );
-//    NSLog(@"Director Bounds: %f, %f", director.view.bounds.size.width, director.view.bounds.size.width );
-//}
 
 -(void) setupCocos3D {
 //    Establish the view controller and CCDirector (in cocos2d 2.x, these are one and the same)
@@ -110,12 +74,18 @@
     
     // Add the 3D view to the view cotroller
     [self.view addSubview:glViewController.view];
+    
+    [self.view sendSubviewToBack:glViewController.view];
     // Create the customized CC3Layer that supports 3D rendering.
+    
     CC3Layer *cc3Layer = [AmazeGameLayer layerWithController:glViewController];
+    
     // Create the customized 3D scene and attach it to the layer.
     // Could also just create this inside the customer layer.
+    
     AmazeGameScene *gameScene = [AmazeGameScene scene];
     gameScene.delegate = self;
+    
     cc3Layer.cc3Scene = gameScene;
     
     // Assign to a generic variable so we can uncomment options below to play with the capabilities.
@@ -127,7 +97,7 @@
     // Run the scene.
     [glViewController runSceneOnNode:mainLayer];
     
-    [Game myGame].viewController = glViewController;
+
 }
 
 -(BOOL) shouldAutorotate { return YES; }

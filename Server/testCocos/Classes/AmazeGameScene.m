@@ -634,6 +634,11 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) updateAfterTransform: (CC3NodeUpdatingVisitor*) visitor
 {
+    static bool ended = NO;
+    if ([Game myGame].roundDuration == 0 && !ended) {
+        ended = YES;
+        [self endGame];
+    }
 
     [self checkForCollisions];
 }
@@ -687,8 +692,6 @@ NSTimer *_cameraPlayersTimer;
     
     timer = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
     [_timersArray addObject:timer];
-    
-    [NSTimer scheduledTimerWithTimeInterval:[[Game myGame] roundDuration] target:self selector:@selector(endGame) userInfo:nil repeats:NO];
 
     
 	// Uncomment this line to draw the bounding box of the scene.
@@ -734,33 +737,12 @@ NSTimer *_cameraPlayersTimer;
 }
 
 -(void) restartScene {
-/******simple reset
 
-    [Game myGame].hudLayer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
-//    CC3Layer* cc3Layer = [AmazeGameLayer layerWithController: [Game myGame].viewController];
-	
-	// Create the customized 3D scene and attach it to the layer.
-	// Could also just create this inside the customer layer.
-	[Game myGame].hudLayer.cc3Scene = [AmazeGameScene scene];
-	
-	// Assign to a generic variable so we can uncomment options below to play with the capabilities
-	CC3ControllableLayer* mainLayer = [Game myGame].hudLayer;
-	
-	
-	// Set the layer in the controller
-	[Game myGame].viewController.controlledNode = mainLayer;
-	
-	// Run the layer in the director
-	CCScene *scene = [CCScene node];
-	[scene addChild: mainLayer];
-    
-	[CCDirector.sharedDirector replaceScene: scene];
- 
- *********/
     [[CCDirector sharedDirector] replaceScene:[CCScene node]];
     [CC3Resource removeAllResources];
     
-    [self.delegate dissmissVC];
+    if([self.delegate respondsToSelector:@selector(dissmissVC)])
+        [self.delegate dissmissVC];
 }
 
 /**

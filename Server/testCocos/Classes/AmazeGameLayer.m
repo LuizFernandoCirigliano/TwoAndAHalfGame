@@ -12,6 +12,7 @@
 
 #import "Game.h"
 
+#import "CCDirector.h"
 
 
 
@@ -154,10 +155,13 @@ Game *_game;
 
 
 -(void) updateTimer: (NSTimer *) timer {
-    _roundTimerLabel.string = [NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60];
+    if (![CCDirector.sharedDirector isPaused]) {
     
-    if (_game.roundDuration > 0)
-        _game.roundDuration--;
+        _roundTimerLabel.string = [NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60];
+        
+        if (_game.roundDuration > 0)
+            _game.roundDuration--;
+    }
 
 }
 /**

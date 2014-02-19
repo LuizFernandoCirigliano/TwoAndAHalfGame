@@ -38,7 +38,10 @@
         else return NSOrderedSame;
     }];
     
-
+    
+    for (UILabel *label in self.connectionStatusLabels) {
+        label.text = @"Not Connected!";
+    }
 	// Do any additional setup after loading the view.
 }
 
@@ -70,6 +73,11 @@
                 
             });
             break;
+        case MCSessionStateConnecting:
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [label setText:@"connecting"];
+                
+            });
         default:
             break;
     }
