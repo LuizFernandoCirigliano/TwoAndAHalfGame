@@ -1,0 +1,77 @@
+//
+//  StartViewController.m
+//  Amaze Game
+//
+//  Created by Luiz Fernando 2 on 2/14/14.
+//  Copyright (c) 2014 Luiz Fernando 2. All rights reserved.
+//
+
+#import "StartViewController.h"
+#import "Connection.h"
+
+@interface StartViewController () <ConnectionDelegate>
+
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *connectionStatusLabels;
+
+@end
+
+@implementation StartViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [Connection myConnection].delegate = self;
+    
+    self.connectionStatusLabels = [self.connectionStatusLabels sortedArrayUsingComparator:^NSComparisonResult(id label1, id label2) {
+        if ([label1 frame].origin.x < [label2 frame].origin.x) return NSOrderedAscending;
+        else if ([label1 frame].origin.x > [label2 frame].origin.x) return NSOrderedDescending;
+        else return NSOrderedSame;
+    }];
+    
+
+	// Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [_connectionStatusLabels release];
+    [super dealloc];
+}
+
+- (void) changeConnectionToState:(MCSessionState)state forPlayerNumber:(NSInteger)playerNumber {
+    UILabel *label= [self.connectionStatusLabels objectAtIndex:playerNumber];
+    switch (state) {
+        case MCSessionStateConnected:
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [label setText:@"connected"];
+                
+            });
+            break;
+        case MCSessionStateNotConnected:
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [label setText:@"disconnected"];
+                
+            });
+            break;
+        default:
+            break;
+    }
+}
+@end

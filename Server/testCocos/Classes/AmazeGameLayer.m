@@ -169,17 +169,5 @@ Game *_game;
     [_roundTimer invalidate];
 }
 
-/**
- * The ccTouchMoved:withEvent: method is optional for the <CCTouchDelegateProtocol>.
- * The event dispatcher will not dispatch events for which there is no method
- * implementation. Since the touch-move events are both voluminous and seldom used,
- * the implementation of ccTouchMoved:withEvent: has been left out of the default
- * CC3Layer implementation. To receive and handle touch-move events for object
- * picking, uncomment the following method implementation.
- */
-
-//-(void) ccTouchMoved: (UITouch *)touch withEvent: (UIEvent *)event {
-//	[self handleTouch: touch ofType: kCCTouchMoved];
-//}
 
 @end

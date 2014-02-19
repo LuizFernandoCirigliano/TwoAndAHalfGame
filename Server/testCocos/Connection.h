@@ -22,8 +22,9 @@
 @protocol ConnectionDelegate <NSObject>
 
 @required
-- (void)startGame;
-- (void)ready;
+
+- (void) changeConnectionToState: (MCSessionState)state forPlayerNumber: (NSInteger)playerNumber;
+
 @end
 
 //w Protocol should be documented.

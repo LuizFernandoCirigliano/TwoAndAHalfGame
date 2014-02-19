@@ -28,4 +28,6 @@
 @property (strong, nonatomic) CC3Camera *cam;
 
 
+@property (nonatomic, assign) id delegate;
+
 @end

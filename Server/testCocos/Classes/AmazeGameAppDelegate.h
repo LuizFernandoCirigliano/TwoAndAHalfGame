@@ -9,18 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CC3DeviceCameraOverlayUIViewController.h"
 
-@interface AmazeGameAppDelegate : NSObject <UIApplicationDelegate>
-{
-    /**
-     * Add instance variable description here
-     *
-     */
-	UIWindow* _window;
-    
-    /**
-     * Add instance variable description here
-     *
-     */
-	CC3DeviceCameraOverlayUIViewController* _viewController;
-}
+@interface AmazeGameAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow* window;
+
 @end
+
+
