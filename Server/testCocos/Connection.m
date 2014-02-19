@@ -170,15 +170,20 @@ static Connection *myConnectionConfiguration = nil;
     {
         NSData *data;
         //checks if it's a reconnection
-        for (int i = 0; i < [self.peerArray count]; i++)
+        for (int playerNumber = 0; playerNumber < [self.peerArray count]; playerNumber++)
         {
-            if ([[[self.peerArray objectAtIndex:i] displayName] isEqualToString: [peerID displayName]])
+            if ([[[self.peerArray objectAtIndex:playerNumber] displayName] isEqualToString: [peerID displayName]])
             {
 
-                data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:i] archiveData];
+                data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:playerNumber] archiveData];
 
                 [self sendData:data toPeer:peerID];
-                [self.peerArray replaceObjectAtIndex:i withObject:peerID];
+                
+                if ([self.delegate respondsToSelector:@selector(changeConnectionToState:forPlayerNumber:)]) {
+                    [self.delegate changeConnectionToState:state forPlayerNumber:playerNumber];
+                }
+                
+                [self.peerArray replaceObjectAtIndex:playerNumber withObject:peerID];
                 return;
             }
         }
