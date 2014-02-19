@@ -154,7 +154,6 @@ Game *_game;
 
 
 -(void) updateTimer: (NSTimer *) timer {
-    NSLog(@"%@", [timer description]);
     _roundTimerLabel.string = [NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60];
     
     if (_game.roundDuration > 0)

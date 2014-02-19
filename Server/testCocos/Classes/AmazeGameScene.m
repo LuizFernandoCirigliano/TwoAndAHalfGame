@@ -438,11 +438,6 @@ NSTimer *_cameraPlayersTimer;
     [[Map myMap] setSizesWithMapX:_mazeMap.boundingBox.maximum.x*_mazeMap.scale.x*2  andMapZ:_mazeMap.boundingBox.maximum.z*2*_mazeMap.scale.z];
     [[Map myMap] setScale:200];
     
-    _mazeMap.shouldCastShadows = YES;
-    _mazeMap.shouldUseLighting = YES;
-
-    _mazeMap.shouldCullFrontFaces = NO;
-
     [self addChild:_mazeMap];
     
     [self addContentFromPODFile:@"school_entrance1.pod" withName:@"schoolEntrance"];
@@ -746,6 +741,7 @@ NSTimer *_cameraPlayersTimer;
 	// Run the layer in the director
 	CCScene *scene = [CCScene node];
 	[scene addChild: mainLayer];
+    
 	[CCDirector.sharedDirector replaceScene: scene];
 }
 

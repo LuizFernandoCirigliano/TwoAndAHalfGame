@@ -14,13 +14,8 @@
 
 #define kAnimationFrameRate		60		// Animation frame rate
 
-CC3DeviceCameraOverlayUIViewController* _viewController;
-
 @implementation AmazeGameAppDelegate
 
-- (void)dealloc {
-    
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -28,38 +23,38 @@ CC3DeviceCameraOverlayUIViewController* _viewController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-//    [[CCDirector sharedDirector] pause];
+    [[CC3UIViewController sharedDirector] pause];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-//    [[CCDirector sharedDirector] resume];
+    [[CC3UIViewController sharedDirector] resume];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     LogInfo(@"applicationDidReceiveMemoryWarning");
-//    [[CCDirector sharedDirector] purgeCachedData];
+    [[CC3UIViewController sharedDirector] purgeCachedData];
 }
 
 -(void) applicationDidEnterBackground:(UIApplication*)application {
-//    [[CCDirector sharedDirector] stopAnimation];
+    [[CC3UIViewController sharedDirector] stopAnimation];
     
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application {
-//    [[CCDirector sharedDirector] startAnimation];
+    [[CC3UIViewController sharedDirector] startAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-//    CCDirector *director = [CCDirector sharedDirector];
-//    
-//    [[director openGLView] removeFromSuperview];
-//    
-//    [director end];
+    CC3UIViewController *director = [CC3UIViewController sharedDirector];
+    
+    [[director openGLView] removeFromSuperview];
+    
+    [director end];
     
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
-//    [[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
+    [[CC3UIViewController sharedDirector] setNextDeltaTimeZero:YES];
 }
 
 @end

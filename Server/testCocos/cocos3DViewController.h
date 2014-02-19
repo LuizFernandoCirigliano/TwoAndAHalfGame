@@ -7,15 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CC3DeviceCameraOverlayUIViewController.h"
 
 @interface cocos3DViewController : UIViewController
-{
-    UIWindow* _window;
-    
-    CC3DeviceCameraOverlayUIViewController* _viewController;
-    
-    
-}
+
+
 
 @end

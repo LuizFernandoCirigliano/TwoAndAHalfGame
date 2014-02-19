@@ -11,7 +11,7 @@
 #import "Player.h"
 #import "Connection.h"
 #import "AmazeGameLayer.h"
-#import "CC3DeviceCameraOverlayUIViewController.h"
+#import "CC3UIViewController.h"
 
 @interface Game : NSObject
 
@@ -32,6 +32,6 @@
 @property (strong, nonatomic) AmazeGameLayer *hudLayer;
 @property (nonatomic) int roundDuration;
 
-@property (strong,nonatomic) CC3DeviceCameraOverlayUIViewController *viewController;
+@property (strong,nonatomic) CC3UIViewController *viewController;
 
 @end

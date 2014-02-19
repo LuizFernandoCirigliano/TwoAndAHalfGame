@@ -2248,7 +2248,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A4EA81D188D927900E6C9F5 = {
-						DevelopmentTeam = SEN7LPK7DZ;
+						DevelopmentTeam = QHL9JXYSYP;
 					};
 				};
 			};
