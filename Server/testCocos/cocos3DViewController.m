@@ -28,8 +28,10 @@
 - (IBAction)buttonPress:(id)sender {
     if ([CC3UIViewController.sharedDirector isPaused]) {
         [CC3UIViewController.sharedDirector resume];
+        [self.pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
     } else {
         [CC3UIViewController.sharedDirector pause];
+        [self.pauseButton setTitle:@"Play" forState:UIControlStateNormal];
     }
     NSLog(@"TESTE**");
 }
@@ -133,5 +135,9 @@
 
 -(void) dissmissVC {
     [self dismissViewControllerAnimated:YES completion:NO];
+}
+- (void)dealloc {
+    [_pauseButton release];
+    [super dealloc];
 }
 @end

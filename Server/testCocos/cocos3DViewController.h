@@ -10,6 +10,7 @@
 
 @interface cocos3DViewController : UIViewController
 
+@property (retain, nonatomic) IBOutlet UIButton *pauseButton;
 
 
 @end

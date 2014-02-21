@@ -47,6 +47,7 @@
     
     for (UILabel *label in self.connectionStatusLabels) {
         label.text = @"Not Connected!";
+        label.textColor = [UIColor yellowColor];
     }
 }
 

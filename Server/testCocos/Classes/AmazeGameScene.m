@@ -1086,7 +1086,7 @@ BOOL _ended;
                     
                     player.playerScore += 20;
                     
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"bell.mp3"];
+//                    [[SimpleAudioEngine sharedEngine] playEffect:@"bell.mp3"];
                 }
             }
             //For each player
@@ -1102,9 +1102,8 @@ BOOL _ended;
                         player2.state = FROZEN;
                     }
                     //add check to see if both of the players are connected
-                    else if (player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
+                    else if (player.state == NORMAL && player2.state == NORMAL && player.index < player2.index && player2.index < [[[Connection myConnection] peerArray] count] && player.index < [[[Connection myConnection] peerArray] count])
                     {
-                        
                         // Test whether player1 is intersecting player2.
                         
                             NSDate *lastCollision = ([player.lastPlayerCollisionTimestamp objectForKey:[NSString stringWithFormat:@"%d", player2.index]]);
