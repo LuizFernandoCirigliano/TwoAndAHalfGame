@@ -649,7 +649,7 @@ NSTimer *_cameraPlayersTimer;
     //    Licensed under Creative Commons: By Attribution 3.0
     //http://creativecommons.org/licenses/by/3.0/
     
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bkgMusic.mp3" loop:YES];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"funky_music.wav" loop:YES];
     
     
     

@@ -337,6 +337,10 @@
 		A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272718A2B9F8000BAB87 /* khakishorts.png */; };
 		A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272A18A2B9F8000BAB87 /* skin1.png */; };
 		A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272B18A2B9F8000BAB87 /* tenis.png */; };
+		A3A73CB918B7E0B900E9B504 /* logo_transp.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CB818B7E0B900E9B504 /* logo_transp.png */; };
+		A3A73CBB18B7E4C500E9B504 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CBA18B7E4C500E9B504 /* frame.png */; };
+		A3A73CBD18B7E57700E9B504 /* BEBAS___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CBC18B7E57700E9B504 /* BEBAS___.TTF */; };
+		A3A73CBF18B7EC0A00E9B504 /* funky_music.wav in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CBE18B7EC0A00E9B504 /* funky_music.wav */; };
 		A3A96D3C18A3BFF200FE7910 /* Minigame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A96D3B18A3BFF200FE7910 /* Minigame.m */; };
 		A3B2978E189825C9003949D3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2978D189825C9003949D3 /* Player.m */; };
 		A3B8D25A189A7DF8009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D24F189A7DF8009FFE5C /* ButtonPressMessage.m */; };
@@ -985,6 +989,10 @@
 		A3A0272718A2B9F8000BAB87 /* khakishorts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = khakishorts.png; sourceTree = "<group>"; };
 		A3A0272A18A2B9F8000BAB87 /* skin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin1.png; sourceTree = "<group>"; };
 		A3A0272B18A2B9F8000BAB87 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
+		A3A73CB818B7E0B900E9B504 /* logo_transp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_transp.png; sourceTree = "<group>"; };
+		A3A73CBA18B7E4C500E9B504 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
+		A3A73CBC18B7E57700E9B504 /* BEBAS___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEBAS___.TTF"; sourceTree = "<group>"; };
+		A3A73CBE18B7EC0A00E9B504 /* funky_music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = funky_music.wav; sourceTree = "<group>"; };
 		A3A96D3A18A3BFF200FE7910 /* Minigame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minigame.h; sourceTree = "<group>"; };
 		A3A96D3B18A3BFF200FE7910 /* Minigame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minigame.m; sourceTree = "<group>"; };
 		A3B2978C189825C9003949D3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
@@ -1041,7 +1049,6 @@
 			isa = PBXGroup;
 			children = (
 				3A4EABA4188D927D00E6C9F5 /* AmazeGameLayer.h */,
-				3A4EABA5188D927D00E6C9F5 /* AmazeGameLayer.m */,
 				3A4EABA7188D927D00E6C9F5 /* AmazeGameScene.h */,
 				3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */,
 			);
@@ -1975,6 +1982,7 @@
 				3A4EABAC188D927D00E6C9F5 /* fps_images.png */,
 				3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */,
 				3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */,
+				A3A73CBC18B7E57700E9B504 /* BEBAS___.TTF */,
 				3A920F5B18A2A19800FEFD9E /* arial16.fnt */,
 				A31C86B81899185400769876 /* images2D */,
 				3A4EAB77188D927D00E6C9F5 /* Icons */,
@@ -2045,6 +2053,7 @@
 			isa = PBXGroup;
 			children = (
 				3A920F6118A3B4B200FEFD9E /* money.mp3 */,
+				A3A73CBE18B7EC0A00E9B504 /* funky_music.wav */,
 				3A9A1D5718A3E78E00B82385 /* bkgMusic.mp3 */,
 				3A9A1D6618A3F73400B82385 /* bell.mp3 */,
 			);
@@ -2114,6 +2123,7 @@
 				3AA4CE6C18AE31AF0013401F /* StartViewController.m */,
 				A3BD53E218A14ECA002E3564 /* Model */,
 				3A25F11018A15691005FD2F3 /* 3d */,
+				3A4EABA5188D927D00E6C9F5 /* AmazeGameLayer.m */,
 				A3BD53E118A14EB4002E3564 /* Minigames */,
 			);
 			name = Game;
@@ -2143,6 +2153,8 @@
 				3AFAB72418A557180093FDCB /* dark-wood-texture.jpg */,
 				A3F030C618AA811200AB48D7 /* quadra.pod */,
 				A3F0309E18AA61EB00AB48D7 /* mesa.pod */,
+				A3A73CBA18B7E4C500E9B504 /* frame.png */,
+				A3A73CB818B7E0B900E9B504 /* logo_transp.png */,
 				A3F0309418AA5DA000AB48D7 /* shelf.pod */,
 				A3F030C218AA7F5B00AB48D7 /* bleacher4.pod */,
 				A3F030AA18AA64B600AB48D7 /* lousa.pod */,
@@ -2300,6 +2312,7 @@
 				3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */,
 				3AFAB71418A53B770093FDCB /* sergio1.pod in Resources */,
 				3A9A1D6118A3EC2A00B82385 /* Lockers.png in Resources */,
+				A3A73CB918B7E0B900E9B504 /* logo_transp.png in Resources */,
 				3A4EAB79188D927D00E6C9F5 /* Icon-29.png in Resources */,
 				3A4EAB4B188D927D00E6C9F5 /* CC3BumpMapTangentSpace.fsh in Resources */,
 				3AFAB73318A557180093FDCB /* chalkboard.jpg in Resources */,
@@ -2319,6 +2332,7 @@
 				3A4EAB5D188D927D00E6C9F5 /* CC3NoTextureReflectAlphaTest.fsh in Resources */,
 				3A4EAB6B188D927D00E6C9F5 /* CC3SingleTextureAlphaTest.fsh in Resources */,
 				A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */,
+				A3A73CBB18B7E4C500E9B504 /* frame.png in Resources */,
 				A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */,
 				A31C86B41899184D00769876 /* p1.png in Resources */,
 				3A4EAB55188D927D00E6C9F5 /* CC3MultiTextureConfigurable.fsh in Resources */,
@@ -2334,6 +2348,7 @@
 				3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */,
 				3A9A1D5818A3E78E00B82385 /* bkgMusic.mp3 in Resources */,
 				3A4EAB65188D927D00E6C9F5 /* CC3PureColor.fsh in Resources */,
+				A3A73CBD18B7E57700E9B504 /* BEBAS___.TTF in Resources */,
 				A3F030AB18AA64B600AB48D7 /* lousa.pod in Resources */,
 				3A9A1D6B18A3FD2300B82385 /* school.pod in Resources */,
 				3A4EAB57188D927D00E6C9F5 /* CC3NoTexture.fsh in Resources */,
@@ -2341,6 +2356,7 @@
 				A3F0309918AA606F00AB48D7 /* school_entrance1.pod in Resources */,
 				3A9A1D6718A3F73400B82385 /* bell.mp3 in Resources */,
 				A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */,
+				A3A73CBF18B7EC0A00E9B504 /* funky_music.wav in Resources */,
 				A31C86B61899184D00769876 /* p3.png in Resources */,
 				3A4EAB71188D927D00E6C9F5 /* CC3Texturable.vsh in Resources */,
 				3A4EAB69188D927D00E6C9F5 /* CC3SingleTexture.fsh in Resources */,
