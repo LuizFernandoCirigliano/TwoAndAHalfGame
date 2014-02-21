@@ -10,4 +10,19 @@
 
 @interface PaperBattleButtonPressMessage : NewMessage
 
+- (NSData *)archiveData;
+
+/**
+ * Add property description here
+ */
+@property (strong, nonatomic) NSNumber *buttonNumber;
+
+/**
+ * Add property description here
+ */
+@property (strong, nonatomic) NSNumber *playerNumber;
+
+
+-(id) initWithButtonNumber: (NSInteger)buttonNumber andPlayer: (NSInteger)playerNumber;
+
 @end

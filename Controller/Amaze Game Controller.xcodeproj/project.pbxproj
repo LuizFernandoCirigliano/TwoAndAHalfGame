@@ -224,14 +224,14 @@
 		3A44A53518883A5400777286 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A3B2370418B7A1C0001E216A /* PaperBattleViewController.h */,
-				A3B2370518B7A1C0001E216A /* PaperBattleViewController.m */,
 				3A44A50F1888395A00777286 /* ConnectViewController.h */,
 				3A44A5101888395A00777286 /* ConnectViewController.m */,
 				3A44A54418883CE300777286 /* ControllerViewController.h */,
 				3A44A54518883CE300777286 /* ControllerViewController.m */,
 				A3B92F6D18A1232900EFF763 /* JankenViewController.h */,
 				A3B92F6E18A1232900EFF763 /* JankenViewController.m */,
+				A3B2370418B7A1C0001E216A /* PaperBattleViewController.h */,
+				A3B2370518B7A1C0001E216A /* PaperBattleViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
