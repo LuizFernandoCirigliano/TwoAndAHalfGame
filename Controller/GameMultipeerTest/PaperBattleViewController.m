@@ -7,6 +7,8 @@
 //
 
 #import "PaperBattleViewController.h"
+#import "PaperBattleButtonPressMessage.h"
+#import "Connection.h"
 
 @interface PaperBattleViewController ()
 
@@ -37,7 +39,8 @@
 
 - (IBAction)buttonClicked:(UIButton *)sender
 {
-    
+    NSData *data = [[[PaperBattleButtonPressMessage alloc] initWithButtonNumber:sender.tag andPlayer:[[Connection myConnection] playerNumber]] archiveData];
+    [[Connection myConnection] sendData:data];
 }
 
 

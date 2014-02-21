@@ -339,6 +339,8 @@
 		A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272A18A2B9F8000BAB87 /* skin1.png */; };
 		A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272B18A2B9F8000BAB87 /* tenis.png */; };
 		A3A96D3C18A3BFF200FE7910 /* Minigame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A96D3B18A3BFF200FE7910 /* Minigame.m */; };
+		A3B2371118B7CFBC001E216A /* PaperBattleButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2370E18B7CFBC001E216A /* PaperBattleButtonPressMessage.m */; };
+		A3B2371218B7CFBC001E216A /* PaperBattleCallbackMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2371018B7CFBC001E216A /* PaperBattleCallbackMessage.m */; };
 		A3B2978E189825C9003949D3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2978D189825C9003949D3 /* Player.m */; };
 		A3B8D25A189A7DF8009FFE5C /* ButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D24F189A7DF8009FFE5C /* ButtonPressMessage.m */; };
 		A3B8D25B189A7DF8009FFE5C /* EndRoundMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B8D251189A7DF8009FFE5C /* EndRoundMessage.m */; };
@@ -989,6 +991,10 @@
 		A3A0272B18A2B9F8000BAB87 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
 		A3A96D3A18A3BFF200FE7910 /* Minigame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minigame.h; sourceTree = "<group>"; };
 		A3A96D3B18A3BFF200FE7910 /* Minigame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minigame.m; sourceTree = "<group>"; };
+		A3B2370D18B7CFBC001E216A /* PaperBattleButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaperBattleButtonPressMessage.h; path = ../../Shared/PaperBattleButtonPressMessage.h; sourceTree = "<group>"; };
+		A3B2370E18B7CFBC001E216A /* PaperBattleButtonPressMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaperBattleButtonPressMessage.m; path = ../../Shared/PaperBattleButtonPressMessage.m; sourceTree = "<group>"; };
+		A3B2370F18B7CFBC001E216A /* PaperBattleCallbackMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaperBattleCallbackMessage.h; path = ../../Shared/PaperBattleCallbackMessage.h; sourceTree = "<group>"; };
+		A3B2371018B7CFBC001E216A /* PaperBattleCallbackMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaperBattleCallbackMessage.m; path = ../../Shared/PaperBattleCallbackMessage.m; sourceTree = "<group>"; };
 		A3B2978C189825C9003949D3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		A3B2978D189825C9003949D3 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		A3B8D24E189A7DF8009FFE5C /* ButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonPressMessage.h; path = ../../Shared/ButtonPressMessage.h; sourceTree = "<group>"; };
@@ -2084,6 +2090,10 @@
 				A3B8D251189A7DF8009FFE5C /* EndRoundMessage.m */,
 				A3B8D252189A7DF8009FFE5C /* NewMessage.h */,
 				A3B8D253189A7DF8009FFE5C /* NewMessage.m */,
+				A3B2370D18B7CFBC001E216A /* PaperBattleButtonPressMessage.h */,
+				A3B2370E18B7CFBC001E216A /* PaperBattleButtonPressMessage.m */,
+				A3B2370F18B7CFBC001E216A /* PaperBattleCallbackMessage.h */,
+				A3B2371018B7CFBC001E216A /* PaperBattleCallbackMessage.m */,
 				A3B8D254189A7DF8009FFE5C /* SetPlayerNumberMessage.h */,
 				A3B8D255189A7DF8009FFE5C /* SetPlayerNumberMessage.m */,
 				A3B8D256189A7DF8009FFE5C /* StartGameMessage.h */,
@@ -2389,6 +2399,7 @@
 				3A4EA874188D927900E6C9F5 /* ccDeprecated.m in Sources */,
 				3A4EAB42188D927D00E6C9F5 /* CC3World.m in Sources */,
 				3A4EAB9F188D927D00E6C9F5 /* main.m in Sources */,
+				A3B2371118B7CFBC001E216A /* PaperBattleButtonPressMessage.m in Sources */,
 				3A25F106189FFC10005FD2F3 /* Map.m in Sources */,
 				3A4EA92F188D927A00E6C9F5 /* CCDirectorMac.m in Sources */,
 				3A4EAB12188D927C00E6C9F5 /* CC3ShadowVolumes.m in Sources */,
@@ -2508,6 +2519,7 @@
 				3A4EAB25188D927D00E6C9F5 /* CC3Identifiable.m in Sources */,
 				A3B92F6C18A1159B00EFF763 /* Janken.m in Sources */,
 				3A4EA867188D927900E6C9F5 /* CCAtlasNode.m in Sources */,
+				A3B2371218B7CFBC001E216A /* PaperBattleCallbackMessage.m in Sources */,
 				3A4EAACE188D927C00E6C9F5 /* CC3DeviceCameraOverlayUIViewController.m in Sources */,
 				3A4EAA5D188D927B00E6C9F5 /* CC3Matrix4x3.m in Sources */,
 				3A4EAB16188D927C00E6C9F5 /* CC3Backgrounder.m in Sources */,
