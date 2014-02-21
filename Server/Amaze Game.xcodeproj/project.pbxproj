@@ -306,7 +306,6 @@
 		3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5B18A2A19800FEFD9E /* arial16.fnt */; };
 		3A920F6018A3AEDE00FEFD9E /* marcelo_model_low.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */; };
 		3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F6118A3B4B200FEFD9E /* money.mp3 */; };
-		3A9A1D5818A3E78E00B82385 /* bkgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D5718A3E78E00B82385 /* bkgMusic.mp3 */; };
 		3A9A1D6118A3EC2A00B82385 /* Lockers.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D5C18A3EC2A00B82385 /* Lockers.png */; };
 		3A9A1D6218A3EC2A00B82385 /* piso.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D5D18A3EC2A00B82385 /* piso.png */; };
 		3A9A1D6718A3F73400B82385 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A9A1D6618A3F73400B82385 /* bell.mp3 */; };
@@ -959,7 +958,6 @@
 		3A920F5B18A2A19800FEFD9E /* arial16.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arial16.fnt; sourceTree = "<group>"; };
 		3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_low.pod; sourceTree = "<group>"; };
 		3A920F6118A3B4B200FEFD9E /* money.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = money.mp3; sourceTree = "<group>"; };
-		3A9A1D5718A3E78E00B82385 /* bkgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bkgMusic.mp3; sourceTree = "<group>"; };
 		3A9A1D5C18A3EC2A00B82385 /* Lockers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lockers.png; sourceTree = "<group>"; };
 		3A9A1D5D18A3EC2A00B82385 /* piso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piso.png; sourceTree = "<group>"; };
 		3A9A1D6618A3F73400B82385 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
@@ -2068,7 +2066,6 @@
 			children = (
 				A3A73CC618B7EF9400E9B504 /* funky_music.wav */,
 				3A920F6118A3B4B200FEFD9E /* money.mp3 */,
-				3A9A1D5718A3E78E00B82385 /* bkgMusic.mp3 */,
 				3A9A1D6618A3F73400B82385 /* bell.mp3 */,
 			);
 			name = Sounds;
@@ -2363,7 +2360,6 @@
 				3A4EA98E188D927A00E6C9F5 /* ChangeLog in Resources */,
 				A3A0272C18A2B9F8000BAB87 /* camisa_portugal.png in Resources */,
 				3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */,
-				3A9A1D5818A3E78E00B82385 /* bkgMusic.mp3 in Resources */,
 				3A4EAB65188D927D00E6C9F5 /* CC3PureColor.fsh in Resources */,
 				A3F030AB18AA64B600AB48D7 /* lousa.pod in Resources */,
 				3A9A1D6B18A3FD2300B82385 /* school.pod in Resources */,

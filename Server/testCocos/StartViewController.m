@@ -67,20 +67,22 @@
         case MCSessionStateConnected:
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [label setText:@"connected"];
-                
+                [label setText:@"Connected"];
+                label.textColor = [UIColor greenColor];
             });
             break;
         case MCSessionStateNotConnected:
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [label setText:@"disconnected"];
+                label.textColor = [UIColor redColor];
+                [label setText:@"Disconnected"];
                 
             });
             break;
         case MCSessionStateConnecting:
             dispatch_async(dispatch_get_main_queue(), ^{
                 [label setText:@"connecting"];
+                label.textColor = [UIColor yellowColor];
                 
             });
         default:
