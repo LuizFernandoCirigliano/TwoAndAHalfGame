@@ -29,6 +29,7 @@ static Game *myGameConfiguration = nil;
     self.janken = [[Janken alloc] init];
     self.playerArray = [[NSMutableArray alloc] init];
     self.roundDuration = 90;
+    self.introDuration = 16;
 }
 
 /**
@@ -50,6 +51,7 @@ static Game *myGameConfiguration = nil;
         [[Connection myConnection] sendData: data toPeer: peer];
         player.isPlayingMinigame = YES;
         [player.node stopAllActions];
+        
     }
 }
 
@@ -72,14 +74,6 @@ static Game *myGameConfiguration = nil;
 
 - (void) jankenTie
 {
-//    NSData *data = [[[StartMinigameMessage alloc] init] archiveData];
-//   
-//    MCPeerID *peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerAID];
-//    [[Connection myConnection] sendData: data toPeer: peer];
-//    
-//    peer =  [[[Connection myConnection] peerArray] objectAtIndex:self.janken.playerBID];
-//    [[Connection myConnection] sendData: data toPeer: peer];
-//    
     [_hudLayer displayMiddleLabelWithString:@"Draw!"];
     self.janken = [[Janken alloc] init];
 }

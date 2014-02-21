@@ -7,14 +7,9 @@
  */
 
 #import "AmazeGameLayer.h"
-
 #import "CC3Light.h"
-
 #import "Game.h"
-
 #import "CCDirector.h"
-
-
 
 @implementation AmazeGameLayer 
 
@@ -39,7 +34,7 @@ Game *_game;
  * For more info, read the notes of this method on CC3Layer.
  */
 -(void) initializeControls {
-	[self scheduleUpdate];
+    [self scheduleUpdate];
 }
 
 -(void) updateHUD {
@@ -96,71 +91,83 @@ Game *_game;
  * For more info, read the notes of this method on CC3Layer.
  */
 -(void) onOpenCC3Layer {
-    NSLog(@"open la") ;
-
-
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    static BOOL firstOpen = YES;
     
-    CGSize winSize = [CCDirector sharedDirector].winSize;
-    _scoreLabelArray = [[NSMutableArray alloc] init];
-    _game = [Game myGame];
-    
-    const float xoffset = 0.12;
-    const float yoffset = 0.05;
-    
-    for (int i = 0; i < [[[Game myGame]playerArray] count] ; i++) {
-        CCLabelTTF * _statusLabel;
+    if (firstOpen) {
+        NSLog(@"open la") ;
         
-        _statusLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Player %d: %d", i + 1, 0] fontName:@"Arial" fontSize:46];
         
-        switch (i) {
-                
-            case 0:
-                _statusLabel.position = ccp(winSize.width*xoffset, winSize.height * (1- yoffset));
-                break;
-            case 1:
-                 _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (yoffset));
-                break;
-            case 2:
-                _statusLabel.position = ccp(winSize.width*(xoffset), winSize.height * (yoffset));
-                break;
-            case 3:
-                _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (1 - yoffset));
-                break;
-            default:
-                break;
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        _scoreLabelArray = [[NSMutableArray alloc] init];
+        _game = [Game myGame];
+        
+        const float xoffset = 0.12;
+        const float yoffset = 0.05;
+        
+        for (int i = 0; i < [[[Game myGame]playerArray] count] ; i++) {
+            CCLabelTTF * _statusLabel;
+            
+            _statusLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Player %d: %d", i + 1, 0] fontName:@"Arial" fontSize:46];
+            
+            switch (i) {
+                    
+                case 0:
+                    _statusLabel.position = ccp(winSize.width*xoffset, winSize.height * (1- yoffset));
+                    break;
+                case 1:
+                    _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (yoffset));
+                    break;
+                case 2:
+                    _statusLabel.position = ccp(winSize.width*(xoffset), winSize.height * (yoffset));
+                    break;
+                case 3:
+                    _statusLabel.position = ccp(winSize.width*(1- xoffset), winSize.height * (1 - yoffset));
+                    break;
+                default:
+                    break;
+            }
+            
+            ccColor3B color = {255, 215, 0};
+            _statusLabel.color = color;
+            
+            [self addChild:_statusLabel];
+            [_scoreLabelArray addObject:_statusLabel];
         }
         
-        ccColor3B color = {255, 215, 0};
-        _statusLabel.color = color;
         
-        [self addChild:_statusLabel];
-        [_scoreLabelArray addObject:_statusLabel];
+        _roundTimerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60] fontName:@"Arial" fontSize:46];
+        _roundTimerLabel.position = ccp(winSize.width/2, winSize.height*(1-yoffset));
+        [self addChild:_roundTimerLabel];
+        
+        firstOpen = NO;
+    
+        [NSTimer scheduledTimerWithTimeInterval:_game.introDuration target:self selector:@selector(startTimer) userInfo:nil repeats:NO];
+        
+        _middleLabel = [CCLabelTTF labelWithString:@"" fontName:@"Arial" fontSize:60];
+        ccColor3B color = {255, 215, 0};
+        _middleLabel.color = color;
+        _middleLabel.position = ccp(winSize.width/2, winSize.height/2);
+        
+        [self addChild:_middleLabel];
     }
-    
-    
-    _roundTimerLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60] fontName:@"Arial" fontSize:46];
-    _roundTimerLabel.position = ccp(winSize.width/2, winSize.height*(1-yoffset));
-    [self addChild:_roundTimerLabel];
-
-    
-    _roundTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
-    
-    _middleLabel = [CCLabelTTF labelWithString:@"" fontName:@"Arial" fontSize:60];
-    ccColor3B color = {255, 215, 0};
-    _middleLabel.color = color;
-    _middleLabel.position = ccp(winSize.width/2, winSize.height/2);
-    [self addChild:_middleLabel];
 }
 
+-(void) startTimer {
+    [[self scheduler] scheduleSelector:@selector(updateTimer) forTarget:self interval:1.0f paused:NO];
+}
 
--(void) updateTimer: (NSTimer *) timer {
+-(void) updateTimer{
+    NSLog (@"timer update");
     if (![CCDirector.sharedDirector isPaused]) {
     
         _roundTimerLabel.string = [NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60];
         
         if (_game.roundDuration > 0)
             _game.roundDuration--;
+        else if([_roundTimer isValid])
+            [_roundTimer invalidate];
     }
 
 }
@@ -170,7 +177,7 @@ Game *_game;
  * For more info, read the notes of this method on CC3Layer.
  */
 -(void) onCloseCC3Layer {
-    [_roundTimer invalidate];
+
 }
 
 

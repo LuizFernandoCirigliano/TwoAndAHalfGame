@@ -302,6 +302,7 @@
 		if( ! currentTarget->paused ) {
 
 			// The 'actions' ccArray may change while inside this loop.
+#warning possible crash here
 			for( currentTarget->actionIndex = 0; currentTarget->actionIndex < currentTarget->actions->num; currentTarget->actionIndex++) {
 				currentTarget->currentAction = currentTarget->actions->arr[currentTarget->actionIndex];
 				currentTarget->currentActionSalvaged = NO;
