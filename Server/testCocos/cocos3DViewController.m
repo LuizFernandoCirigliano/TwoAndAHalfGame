@@ -12,6 +12,7 @@
 #import "AmazeGameLayer.h"
 #import "AmazeGameScene.h"
 #import "Game.h"
+#import "PaperBattleScene.h"
 
 #define kAnimationFrameRate		60	
 
@@ -35,10 +36,14 @@
 - (IBAction)sceneButton:(id)sender {
     static bool scene = YES;
 
-    if(scene)
-        [CC3UIViewController.sharedDirector pushScene:[CCScene node]];
-    else
+    if(scene) {
+        CC3Layer *cc3Layer = [CC3Layer layerWithController:CC3UIViewController.sharedDirector];
+        cc3Layer.cc3Scene = [PaperBattleScene scene];
+        CC3ControllableLayer *mainLayer = cc3Layer;
+        [CC3UIViewController.sharedDirector pushScene:mainLayer];
+    } else {
         [CC3UIViewController.sharedDirector popScene];
+    }
     
     scene = !scene;
     

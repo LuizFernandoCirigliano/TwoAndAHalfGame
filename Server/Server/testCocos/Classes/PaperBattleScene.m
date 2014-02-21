@@ -12,7 +12,7 @@
 #import "CC3MeshNode.h"
 #import "CC3Camera.h"
 #import "CC3Light.h"
-
+#import "GameDefines.h"
 
 @implementation PaperBattleScene
 
@@ -58,7 +58,7 @@
     
 	// This is the simplest way to load a POD resource file and add the
 	// nodes to the CC3Scene, if no customized resource subclass is needed.
-	[self addContentFromPODFile: @"hello-world.pod"];
+	[self addContentFromPODFile: reinaModel];
 	
 	// Select an appropriate shader program for each mesh node in this scene now. If this step
 	// is omitted, a shader program will be selected for each mesh node the first time that mesh

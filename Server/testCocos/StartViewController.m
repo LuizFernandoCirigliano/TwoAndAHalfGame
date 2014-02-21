@@ -30,8 +30,6 @@
 {
     [super viewDidLoad];
     
-    [Connection myConnection].delegate = self;
-    
     //Order the outlet array based on their X position.
     self.connectionStatusLabels = [self.connectionStatusLabels sortedArrayUsingComparator:^NSComparisonResult(id label1, id label2) {
         if ([label1 frame].origin.x < [label2 frame].origin.x) return NSOrderedAscending;
@@ -44,6 +42,10 @@
         label.text = @"Not Connected!";
     }
 	// Do any additional setup after loading the view.
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [Connection myConnection].delegate = self;
 }
 
 - (void)didReceiveMemoryWarning

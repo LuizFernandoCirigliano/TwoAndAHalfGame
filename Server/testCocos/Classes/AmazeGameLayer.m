@@ -22,6 +22,8 @@ NSTimer *_roundTimer;
 
 Game *_game;
 
+bool _firstOpen;
+
 -(void) dealloc {
     [super dealloc];
 }
@@ -35,6 +37,8 @@ Game *_game;
  */
 -(void) initializeControls {
     [self scheduleUpdate];
+    
+    _firstOpen = YES;
 }
 
 -(void) updateHUD {
@@ -91,9 +95,8 @@ Game *_game;
  * For more info, read the notes of this method on CC3Layer.
  */
 -(void) onOpenCC3Layer {
-    static BOOL firstOpen = YES;
     
-    if (firstOpen) {
+    if (_firstOpen) {
         NSLog(@"open la") ;
         
         
@@ -141,7 +144,7 @@ Game *_game;
         _roundTimerLabel.position = ccp(winSize.width/2, winSize.height*(1-yoffset));
         [self addChild:_roundTimerLabel];
         
-        firstOpen = NO;
+        _firstOpen = NO;
     
         [NSTimer scheduledTimerWithTimeInterval:_game.introDuration target:self selector:@selector(startTimer) userInfo:nil repeats:NO];
         
@@ -161,7 +164,8 @@ Game *_game;
 -(void) updateTimer{
     NSLog (@"timer update");
     if (![CCDirector.sharedDirector isPaused]) {
-    
+        [self updateHUD];
+        
         _roundTimerLabel.string = [NSString stringWithFormat:@"%02d:%02d", _game.roundDuration/60, _game.roundDuration%60];
         
         if (_game.roundDuration > 0)

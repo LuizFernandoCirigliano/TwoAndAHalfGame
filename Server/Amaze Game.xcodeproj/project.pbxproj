@@ -11,6 +11,7 @@
 		3A25F106189FFC10005FD2F3 /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F105189FFC10005FD2F3 /* Map.m */; };
 		3A25F10F18A15398005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */; };
 		3A25F11318A156B4005FD2F3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F11218A156B4005FD2F3 /* Game.m */; };
+		3A2C1F3518B7D89400EEC8BC /* GameDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C1F3418B7D89400EEC8BC /* GameDefines.m */; };
 		3A2F428A1896B8F80088C77D /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42891896B8F80088C77D /* map01.txt */; };
 		3A4EA822188D927900E6C9F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA821188D927900E6C9F5 /* QuartzCore.framework */; };
 		3A4EA824188D927900E6C9F5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA823188D927900E6C9F5 /* OpenGLES.framework */; };
@@ -317,7 +318,6 @@
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		3AF92D1318B29FE50027D433 /* thief.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AF92D1218B29FE50027D433 /* thief.png */; };
-		3AFAB71418A53B770093FDCB /* sergio1.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71318A53B770093FDCB /* sergio1.pod */; };
 		3AFAB71618A53B8D0093FDCB /* skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71518A53B8D0093FDCB /* skin.png */; };
 		3AFAB71818A53BB30093FDCB /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71718A53BB30093FDCB /* tenis.png */; };
 		3AFAB72C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */; };
@@ -370,6 +370,8 @@
 		3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JankenResultMessage.m; path = ../../Shared/JankenResultMessage.m; sourceTree = "<group>"; };
 		3A25F11118A156B4005FD2F3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		3A25F11218A156B4005FD2F3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		3A2C1F3318B7D89400EEC8BC /* GameDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefines.h; sourceTree = "<group>"; };
+		3A2C1F3418B7D89400EEC8BC /* GameDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDefines.m; sourceTree = "<group>"; };
 		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
 		3A4EA81E188D927900E6C9F5 /* Amaze Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amaze Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4EA821188D927900E6C9F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -969,7 +971,6 @@
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		3AF92D1218B29FE50027D433 /* thief.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thief.png; sourceTree = "<group>"; };
-		3AFAB71318A53B770093FDCB /* sergio1.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = sergio1.pod; sourceTree = "<group>"; };
 		3AFAB71518A53B8D0093FDCB /* skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin.png; sourceTree = "<group>"; };
 		3AFAB71718A53BB30093FDCB /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
 		3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2000px-Basketball_court_dimensions_no_label.png"; sourceTree = "<group>"; };
@@ -1057,6 +1058,8 @@
 				3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */,
 				3A760A8E18B7CD7500565C3E /* PaperBattleScene.h */,
 				3A760A8F18B7CD7500565C3E /* PaperBattleScene.m */,
+				3A2C1F3318B7D89400EEC8BC /* GameDefines.h */,
+				3A2C1F3418B7D89400EEC8BC /* GameDefines.m */,
 			);
 			name = 3d;
 			sourceTree = "<group>";
@@ -2140,7 +2143,6 @@
 			isa = PBXGroup;
 			children = (
 				3AFAB71518A53B8D0093FDCB /* skin.png */,
-				3AFAB71318A53B770093FDCB /* sergio1.pod */,
 				A39F717E18AD0B3A00F0CC5B /* sergio2.pod */,
 				3AFAB71718A53BB30093FDCB /* tenis.png */,
 			);
@@ -2266,7 +2268,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A4EA81D188D927900E6C9F5 = {
-						DevelopmentTeam = B6U8VQEK7Q;
+						DevelopmentTeam = QHL9JXYSYP;
 					};
 				};
 			};
@@ -2316,7 +2318,6 @@
 				3A4EAB96188D927D00E6C9F5 /* Default.png in Resources */,
 				3A4EAB47188D927D00E6C9F5 /* CC3BumpMapObjectSpace.fsh in Resources */,
 				3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */,
-				3AFAB71418A53B770093FDCB /* sergio1.pod in Resources */,
 				3A9A1D6118A3EC2A00B82385 /* Lockers.png in Resources */,
 				3A4EAB79188D927D00E6C9F5 /* Icon-29.png in Resources */,
 				3A4EAB4B188D927D00E6C9F5 /* CC3BumpMapTangentSpace.fsh in Resources */,
@@ -2554,6 +2555,7 @@
 				3A4EAA60188D927B00E6C9F5 /* CC3Matrix4x4.m in Sources */,
 				3A4EA9B2188D927A00E6C9F5 /* CC3CALNode.m in Sources */,
 				3A4EAA70188D927C00E6C9F5 /* CC3VertexSkinning.m in Sources */,
+				3A2C1F3518B7D89400EEC8BC /* GameDefines.m in Sources */,
 				A3B8D25D189A7DF8009FFE5C /* SetPlayerNumberMessage.m in Sources */,
 				3A4EABA3188D927D00E6C9F5 /* AmazeGameAppDelegate.m in Sources */,
 				3A4EA958188D927A00E6C9F5 /* TGAlib.m in Sources */,

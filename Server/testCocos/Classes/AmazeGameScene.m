@@ -23,8 +23,7 @@
 #import "Map.h"
 #import "Game.h"
 #import "SimpleAudioEngine.h"
-
-
+#import "GameDefines.h"
 
 #define COLLISION_DEBUG 0
 @interface AmazeGameScene()
@@ -40,6 +39,8 @@
 #define playerScale 22
 
 @implementation AmazeGameScene
+
+
 
 NSMutableArray *_walls;
 
@@ -421,16 +422,12 @@ NSTimer *_cameraPlayersTimer;
 -(void) addCamera {
     // Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-    cam.location = cc3v(0,0, 1000);
-    
-    cam.targetLocation = cc3v(0, 0, 0);
-    
+    cam.location = cc3v(0,0, 10000);
+    cam.targetLocation = cc3v(0, 10, 0);
     
     cam.hasInfiniteDepthOfField = YES;
     cam.nearClippingDistance = 1000;
-    
 	[self addChild: cam];
-    
 }
 
 
@@ -443,7 +440,7 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) addMazeWalls {
     //Add maze map mesh
-    [self addContentFromPODFile:@"school.pod" withName:@"school"];
+    [self addContentFromPODFile: schoolMapModel withName:@"school"];
     _mazeMap = [self getNodeNamed:@"school"];
 
     _mazeMap.scale = cc3v(200,200,200);
@@ -454,7 +451,7 @@ NSTimer *_cameraPlayersTimer;
     
     [self addChild:_mazeMap];
     
-    [self addContentFromPODFile:@"school_entrance1.pod" withName:@"schoolEntrance"];
+    [self addContentFromPODFile: schoolEntranceModel withName:@"schoolEntrance"];
     CC3Node *entrance = [self getNodeNamed:@"schoolEntrance"];
     
     entrance.scale = cc3v(200, 200, 200);
@@ -488,19 +485,19 @@ NSTimer *_cameraPlayersTimer;
     NSString *modelString;
     switch (number) {
         case 0:
-            modelString = @"sergio2.pod";
+            modelString = sergioModel;
             break;
         case 2:
         case 3:
             
-            modelString = @"boy3.pod";
+            modelString = boyModel;
             break;
         
         case 1:
-            modelString = @"marcelo_model_low.pod";
+            modelString = reinaModel;
             break;
         default:
-            modelString = @"boy3.pod";
+            modelString = boyModel;
             break;
     }
     //copy the original model
@@ -769,8 +766,7 @@ NSTimer *_cameraPlayersTimer;
         CC3Node *tempWall = [_tempWallsArray firstObject];
         CGPoint position = CGPointMake(tempWall.location.x, tempWall.location.z);
         CGPoint location = [[Map myMap] locationInMapWithPosition:position];
-        
-//        NSLog(@"%d %d", (int)location.x, (int)location.y);
+
         [self removeChild:tempWall];
         [[Map myMap] replaceAtLocation:location withChar:'0'];
         [_tempWallsArray removeObject:tempWall];
@@ -843,7 +839,7 @@ NSTimer *_cameraPlayersTimer;
 -(void) otherPlayerPressed:(ButtonPressMessage *)buttonPressMessage
 {
     
-    if ([[buttonPressMessage playerNumber] intValue] >= [_playerArray count])
+    if ([[buttonPressMessage playerNumber] intValue] >= [_playerArray count] || !self.isRunning)
     {
         return;
     }
