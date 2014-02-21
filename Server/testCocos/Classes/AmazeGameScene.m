@@ -65,6 +65,9 @@ NSMutableArray *_timersArray;
 
 NSTimer *_cameraPlayersTimer;
 
+BOOL _paused;
+BOOL _ended;
+
 -(void) dealloc
 {
 	[super dealloc];
@@ -209,6 +212,10 @@ NSTimer *_cameraPlayersTimer;
     [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:introDuration*3/4];
     [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:introDuration];
     
+    [[[CCDirector sharedDirector] scheduler] scheduleBlockForKey:@"start" target:self interval:0 repeat:NO delay:introDuration paused:NO block:^(ccTime time){
+        NSLog(@"unpause");
+        _paused = NO;
+    }];
     [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(addBonusCoin) forTarget:self interval:20.0f paused:NO];
     [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(removeWall) forTarget:self interval:10.0f paused:NO];
 }
@@ -396,11 +403,12 @@ NSTimer *_cameraPlayersTimer;
     
     _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
     _tempWallsArray = [[NSMutableArray alloc ] init];
+    _paused = YES;
     self.flip = NO;
     self.isTouchEnabled = NO;
     
     [[Game myGame] configureGame];
-    
+
     _playerArray = [[Game myGame] playerArray];
     _timersArray = [[NSMutableArray alloc] init];
     _coinDictionary = [[NSMutableDictionary alloc] init];
@@ -413,7 +421,7 @@ NSTimer *_cameraPlayersTimer;
     _bonusCoin.scale = cc3v(70,70,70);
     [_bonusCoin createBoundingVolumeFromBoundingBox];
     _bonusCoin.shouldUseFixedBoundingVolume = YES;
-    
+    _ended = NO;
     [self removeChild:[self getNodeNamed:@"bonusCoinModel"]];
     
     [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -460,7 +468,7 @@ NSTimer *_cameraPlayersTimer;
 
 -(void) addBonusCoin {
     
-    if (self.isRunning) {
+    if (!_paused) {
         CC3Node *coin = [_bonusCoin copy];
         int i, j;
         
@@ -649,9 +657,9 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) updateAfterTransform: (CC3NodeUpdatingVisitor*) visitor
 {
-    static bool ended = NO;
-    if ([Game myGame].roundDuration == 0 && !ended) {
-        ended = YES;
+    
+    if ([Game myGame].roundDuration == 0 && !_ended) {
+        _ended = YES;
         [self endGame];
     }
 
@@ -678,8 +686,6 @@ NSTimer *_cameraPlayersTimer;
     
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bkgMusic.mp3" loop:YES];
     
-    
-    self.isRunning = YES;
 	// Add additional scene content dynamically and asynchronously on a background thread
 	// after the scene is open and rendering has begun on the rendering thread. We use the
 	// GL backgrounder provided by the viewSurfaceManager to accomplish this. Asynchronous
@@ -754,7 +760,7 @@ NSTimer *_cameraPlayersTimer;
 -(void) onClose {
    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     
-    self.isRunning = NO;
+    _paused = YES;
 }
 
 /**
@@ -762,7 +768,7 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) removeWall
 {
-    if ([_tempWallsArray count] > 0 && self.isRunning) {
+    if ([_tempWallsArray count] > 0 && !_paused) {
         CC3Node *tempWall = [_tempWallsArray firstObject];
         CGPoint position = CGPointMake(tempWall.location.x, tempWall.location.z);
         CGPoint location = [[Map myMap] locationInMapWithPosition:position];
@@ -824,11 +830,6 @@ NSTimer *_cameraPlayersTimer;
 	[super drawSceneContentWithVisitor: visitor];
 }
 
-
-
-
-
-
 #pragma mark - GameConnectionDelegate
 //Methods that handle multipeer controller interaction
 /**
@@ -839,7 +840,7 @@ NSTimer *_cameraPlayersTimer;
 -(void) otherPlayerPressed:(ButtonPressMessage *)buttonPressMessage
 {
     
-    if ([[buttonPressMessage playerNumber] intValue] >= [_playerArray count] || !self.isRunning)
+    if ([[buttonPressMessage playerNumber] intValue] >= [_playerArray count] || _paused)
     {
         return;
     }
@@ -1137,7 +1138,7 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) zoomCameraOnPlayers
 {
-    if (self.isRunning)
+    if (!_paused)
         [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
 }
 
@@ -1147,9 +1148,7 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
-    
-    if (self.isRunning)
-        [self.activeCamera moveWithDuration:1.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
+    [self.activeCamera moveWithDuration:1.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
 }
 
 /**
