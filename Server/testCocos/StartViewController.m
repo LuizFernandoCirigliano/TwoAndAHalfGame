@@ -38,14 +38,16 @@
     }];
     
     
-    for (UILabel *label in self.connectionStatusLabels) {
-        label.text = @"Not Connected!";
-    }
+    
 	// Do any additional setup after loading the view.
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [Connection myConnection].delegate = self;
+    
+    for (UILabel *label in self.connectionStatusLabels) {
+        label.text = @"Not Connected!";
+    }
 }
 
 - (void)didReceiveMemoryWarning
