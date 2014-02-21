@@ -339,6 +339,8 @@
 		A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272718A2B9F8000BAB87 /* khakishorts.png */; };
 		A3A0273018A2B9F8000BAB87 /* skin1.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272A18A2B9F8000BAB87 /* skin1.png */; };
 		A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272B18A2B9F8000BAB87 /* tenis.png */; };
+		A3A73CC418B7EEFC00E9B504 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CC218B7EEFC00E9B504 /* frame.png */; };
+		A3A73CC518B7EEFC00E9B504 /* logo_transp.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CC318B7EEFC00E9B504 /* logo_transp.png */; };
 		A3A96D3C18A3BFF200FE7910 /* Minigame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A96D3B18A3BFF200FE7910 /* Minigame.m */; };
 		A3B2371118B7CFBC001E216A /* PaperBattleButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2370E18B7CFBC001E216A /* PaperBattleButtonPressMessage.m */; };
 		A3B2371218B7CFBC001E216A /* PaperBattleCallbackMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2371018B7CFBC001E216A /* PaperBattleCallbackMessage.m */; };
@@ -993,6 +995,8 @@
 		A3A0272718A2B9F8000BAB87 /* khakishorts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = khakishorts.png; sourceTree = "<group>"; };
 		A3A0272A18A2B9F8000BAB87 /* skin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skin1.png; sourceTree = "<group>"; };
 		A3A0272B18A2B9F8000BAB87 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
+		A3A73CC218B7EEFC00E9B504 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
+		A3A73CC318B7EEFC00E9B504 /* logo_transp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_transp.png; sourceTree = "<group>"; };
 		A3A96D3A18A3BFF200FE7910 /* Minigame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minigame.h; sourceTree = "<group>"; };
 		A3A96D3B18A3BFF200FE7910 /* Minigame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minigame.m; sourceTree = "<group>"; };
 		A3B2370D18B7CFBC001E216A /* PaperBattleButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaperBattleButtonPressMessage.h; path = ../../Shared/PaperBattleButtonPressMessage.h; sourceTree = "<group>"; };
@@ -2152,6 +2156,8 @@
 		3AFAB71B18A557180093FDCB /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				A3A73CC218B7EEFC00E9B504 /* frame.png */,
+				A3A73CC318B7EEFC00E9B504 /* logo_transp.png */,
 				3AFAB71C18A557180093FDCB /* 2000px-Basketball_court_dimensions_no_label.png */,
 				3AFAB71D18A557180093FDCB /* Backboard.jpg */,
 				3AFAB71E18A557180093FDCB /* big_mesa.pod */,
@@ -2328,6 +2334,7 @@
 				3A4EAB5F188D927D00E6C9F5 /* CC3PointSprites.fsh in Resources */,
 				3AFAB73418A557180093FDCB /* dark-wood-texture.jpg in Resources */,
 				3AFAB71818A53BB30093FDCB /* tenis.png in Resources */,
+				A3A73CC518B7EEFC00E9B504 /* logo_transp.png in Resources */,
 				3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */,
 				3A9A1D6918A3FD1300B82385 /* janelas.png in Resources */,
 				3A4EAB98188D927D00E6C9F5 /* Default-568h@2x.png in Resources */,
@@ -2340,6 +2347,7 @@
 				A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */,
 				A3A0272D18A2B9F8000BAB87 /* khakishorts.png in Resources */,
 				A31C86B41899184D00769876 /* p1.png in Resources */,
+				A3A73CC418B7EEFC00E9B504 /* frame.png in Resources */,
 				3A4EAB55188D927D00E6C9F5 /* CC3MultiTextureConfigurable.fsh in Resources */,
 				3A920F6018A3AEDE00FEFD9E /* marcelo_model_low.pod in Resources */,
 				3A4EAB87188D927D00E6C9F5 /* Icon-57@2x.png in Resources */,
