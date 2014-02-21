@@ -169,6 +169,7 @@ static Connection *myConnectionConfiguration = nil;
     if (state ==  MCSessionStateConnected)
     {
         NSData *data;
+        
         //checks if it's a reconnection
         for (int playerNumber = 0; playerNumber < [self.peerArray count]; playerNumber++)
         {
@@ -176,8 +177,8 @@ static Connection *myConnectionConfiguration = nil;
             {
 
                 data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber:playerNumber] archiveData];
-
                 [self sendData:data toPeer:peerID];
+                
                 
                 if ([self.delegate respondsToSelector:@selector(changeConnectionToState:forPlayerNumber:)]) {
                     [self.delegate changeConnectionToState:state forPlayerNumber:playerNumber];
@@ -196,6 +197,7 @@ static Connection *myConnectionConfiguration = nil;
         
         data = [[[SetPlayerNumberMessage alloc] initWithPlayerNumber: playerNumber] archiveData];
         [self.peerArray addObject:peerID];
+
         
         NSLog(@"Player Number: %d", playerNumber);
         

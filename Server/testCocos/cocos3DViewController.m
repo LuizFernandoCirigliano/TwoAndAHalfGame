@@ -32,6 +32,17 @@
     }
     NSLog(@"TESTE**");
 }
+- (IBAction)sceneButton:(id)sender {
+    static bool scene = YES;
+
+    if(scene)
+        [CC3UIViewController.sharedDirector pushScene:[CCScene node]];
+    else
+        [CC3UIViewController.sharedDirector popScene];
+    
+    scene = !scene;
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,6 +106,8 @@
     // embedded in it.
 
     // Run the scene.
+    
+    [Game myGame].mazeScene = mainLayer;
     [glViewController runSceneOnNode:mainLayer];
     
 

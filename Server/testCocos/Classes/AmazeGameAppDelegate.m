@@ -14,11 +14,13 @@
 
 #define kAnimationFrameRate		60		// Animation frame rate
 
-@implementation AmazeGameAppDelegate
 
+@implementation AmazeGameAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication]
+     setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 
@@ -37,11 +39,20 @@
 
 -(void) applicationDidEnterBackground:(UIApplication*)application {
     [[CC3UIViewController sharedDirector] stopAnimation];
+    self.taskID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^
+                   {
+                       //
+                       //                       [self shutdownMultiPeerStuff];
+                   }];
     
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application {
     [[CC3UIViewController sharedDirector] startAnimation];
+    [[UIApplication sharedApplication] endBackgroundTask:self.taskID];
+    self.taskID = UIBackgroundTaskInvalid;
+    //    [self cancelLocalNotificationAboutMultiPeerSession];
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

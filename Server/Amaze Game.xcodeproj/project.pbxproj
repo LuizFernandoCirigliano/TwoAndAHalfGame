@@ -301,6 +301,7 @@
 		3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */; };
 		3A4EABB1188D927D00E6C9F5 /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */; };
 		3A4EABB4188D927D00E6C9F5 /* configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4EABB3188D927D00E6C9F5 /* configuration.json */; };
+		3A760A9018B7CD7500565C3E /* PaperBattleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A760A8F18B7CD7500565C3E /* PaperBattleScene.m */; };
 		3A920F5C18A2A19800FEFD9E /* arial16.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5B18A2A19800FEFD9E /* arial16.fnt */; };
 		3A920F6018A3AEDE00FEFD9E /* marcelo_model_low.pod in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */; };
 		3A920F6218A3B4B200FEFD9E /* money.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3A920F6118A3B4B200FEFD9E /* money.mp3 */; };
@@ -948,6 +949,8 @@
 		3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-hd.png"; path = "Resources/fps_images-hd.png"; sourceTree = "<group>"; };
 		3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-ipadhd.png"; path = "Resources/fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		3A4EABB3188D927D00E6C9F5 /* configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = configuration.json; path = testCocos.approj/configuration.json; sourceTree = SOURCE_ROOT; };
+		3A760A8E18B7CD7500565C3E /* PaperBattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaperBattleScene.h; path = Server/testCocos/Classes/PaperBattleScene.h; sourceTree = SOURCE_ROOT; };
+		3A760A8F18B7CD7500565C3E /* PaperBattleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaperBattleScene.m; path = Server/testCocos/Classes/PaperBattleScene.m; sourceTree = SOURCE_ROOT; };
 		3A920F5B18A2A19800FEFD9E /* arial16.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arial16.fnt; sourceTree = "<group>"; };
 		3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_low.pod; sourceTree = "<group>"; };
 		3A920F6118A3B4B200FEFD9E /* money.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = money.mp3; sourceTree = "<group>"; };
@@ -1052,6 +1055,8 @@
 				3A4EABA5188D927D00E6C9F5 /* AmazeGameLayer.m */,
 				3A4EABA7188D927D00E6C9F5 /* AmazeGameScene.h */,
 				3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */,
+				3A760A8E18B7CD7500565C3E /* PaperBattleScene.h */,
+				3A760A8F18B7CD7500565C3E /* PaperBattleScene.m */,
 			);
 			name = 3d;
 			sourceTree = "<group>";
@@ -2614,6 +2619,7 @@
 				3A4EA8CD188D927A00E6C9F5 /* CCScheduler.m in Sources */,
 				3A4EA91D188D927A00E6C9F5 /* CCDirectorIOS.m in Sources */,
 				3AA4CE6A18AE29E50013401F /* cocos3DViewController.m in Sources */,
+				3A760A9018B7CD7500565C3E /* PaperBattleScene.m in Sources */,
 				3A4EA9DC188D927B00E6C9F5 /* CC3PODMeshNode.mm in Sources */,
 				3A4EAA86188D927C00E6C9F5 /* CC3Node.m in Sources */,
 				3A4EA89F188D927A00E6C9F5 /* CCMenu.m in Sources */,

@@ -12,6 +12,7 @@
 #import "Connection.h"
 #import "AmazeGameLayer.h"
 #import "CC3UIViewController.h"
+#import "AmazeGameScene.h"
 
 @interface Game : NSObject
 
@@ -30,7 +31,10 @@
 @property (strong, nonatomic) NSMutableArray *playerArray;
 
 @property (strong, nonatomic) AmazeGameLayer *hudLayer;
-@property (nonatomic) int roundDuration;
+@property (nonatomic, assign) int roundDuration;
 
+@property (nonatomic, assign) int introDuration;
+
+@property (nonatomic, strong) CC3ControllableLayer *mazeScene;
 
 @end

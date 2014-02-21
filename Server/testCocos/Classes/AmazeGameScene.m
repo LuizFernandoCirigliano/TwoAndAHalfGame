@@ -16,13 +16,15 @@
 #import "CC3Foundation.h"
 #import "CC3UtilityMeshNodes.h"
 #import "CC3Node+Collision.h"
-
+#import "CCScheduler.h"
 #import "CC3BillBoard.h"
 #import "CC3ParametricMeshNodes.h"
 #import "CC3MeshParticles.h"
 #import "Map.h"
 #import "Game.h"
 #import "SimpleAudioEngine.h"
+
+
 
 #define COLLISION_DEBUG 0
 @interface AmazeGameScene()
@@ -190,6 +192,24 @@ NSTimer *_cameraPlayersTimer;
     [self releaseRedundantContent];
     
     self.collisionEnabled = YES;
+    
+    Game *game = [Game myGame];
+    game.hudLayer = (AmazeGameLayer *)self.cc3Layer;
+    
+    
+    /**Camera movements for the intro **/
+//    self.activeCamera.location = cc3v(0,0,1000);
+//    [self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 0, 1)];
+    
+    NSInteger introDuration = game.introDuration;
+    
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray firstObject] node] afterDelay:introDuration/4];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray lastObject] node] afterDelay:introDuration/2];
+    [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:introDuration*3/4];
+    [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:introDuration];
+    
+    [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(addBonusCoin) forTarget:self interval:20.0f paused:NO];
+    [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(removeWall) forTarget:self interval:10.0f paused:NO];
 }
 
 
@@ -212,6 +232,7 @@ NSTimer *_cameraPlayersTimer;
     _emitter.vertexContentTypes = kCC3VertexContentLocation | kCC3VertexContentColor | kCC3VertexContentNormal;
     [self addChild:_emitter];
     
+
     for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
         for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
             if ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] == '0') {
@@ -253,25 +274,22 @@ NSTimer *_cameraPlayersTimer;
     [self addContentFromPODFile:@"bleacher4.pod" withName:@"bleacher"];
     CC3Node *bleacherModel = [self getNodeNamed:@"bleacher"];
     
-    for (int i = 0; i < [[Map myMap] xTileCount]; i++) {
-        for (int j = 0; j < [[Map myMap] zTileCount]; j++) {
-//            NSLog(@"%c", [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)]);
+    int xTileCount = [[Map myMap] xTileCount];
+    int zTileCount = [[Map myMap] zTileCount];
+    
+    for (int i = 0; i < xTileCount; i++) {
+        for (int j = 0; j < zTileCount; j++) {
+
             char content = [[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)];
             if (content == '2') {
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x - [[Map myMap] tileSizeX]/2, 0, position.y - [[Map myMap] tileSizeZ]/2);
                 CC3MeshNode *newCube = [cube copy];
-                
                 newCube.location = pos;
-                
-                //test
-                
-//                CGPoint testPosition = CGPointMake(newCube.location.x, newCube.location.z);
-//                CGPoint testLocation = [[Map myMap] locationInMapWithPosition:testPosition];
-//                NSLog (@"CERTO: %d %d  TEST: %d %d" , i, j, (int)testLocation.x, (int)testLocation.y);
                 
                 [_tempWallsArray addObject:newCube];
                 [self addChild:newCube];
+                
             } else if (content == '3') {
                 [self addContentFromPODFile:@"big_mesa.pod" withName:@"bigMesa"];
                 CC3Node *mesa = [self getNodeNamed:@"bigMesa"];
@@ -280,8 +298,8 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             } else if (content == '4') {
                 CC3Node *mesa = [mesaModel copy];
                 mesa.scale = cc3v(40,40,40);
@@ -289,8 +307,8 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             } else if (content == '5') {
                 [self addContentFromPODFile:@"lousa.pod" withName:@"lousa"];
                 CC3Node *mesa = [self getNodeNamed:@"lousa"];
@@ -309,8 +327,8 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             } else if (content == '7') {
                 CC3Node *mesa = [mesaModelLib copy];
                 
@@ -319,8 +337,8 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             } else if (content == '8') {
                 CC3Node *mesa = [cestaModel copy];
                 mesa.scale = cc3v(45,45,45);
@@ -330,8 +348,8 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             } else if (content == '9') {
                 CC3Node *mesa = [bleacherModel copy];
                 
@@ -340,8 +358,8 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             } else if (content == 'l') {
                 [self addContentFromPODFile:@"quadra.pod" withName:@"quadra"];
                 CC3Node *mesa = [self getNodeNamed:@"quadra"];
@@ -350,8 +368,8 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 10, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             } else if (content == 'f') {
                 CC3Node *mesa = [cestaModel copy];
                 
@@ -362,13 +380,9 @@ NSTimer *_cameraPlayersTimer;
                 CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
                 CC3Vector pos = cc3v(position.x, 0, position.y);
                 
-                [self addChild:mesa];
                 mesa.location = pos;
+                [self addChild:mesa];
             }
-            
-
-            
-            
         }
     }
 
@@ -407,7 +421,7 @@ NSTimer *_cameraPlayersTimer;
 -(void) addCamera {
     // Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-    cam.location = cc3v(0,10, [[Map myMap] mapSizeZ]* 2);
+    cam.location = cc3v(0,0, 1000);
     
     cam.targetLocation = cc3v(0, 0, 0);
     
@@ -448,22 +462,23 @@ NSTimer *_cameraPlayersTimer;
 }
 
 -(void) addBonusCoin {
-//    [_bonusCoinCollection removeChild:_bonusCoin];
     
-    CC3Node *coin = [_bonusCoin copy];
-    int i, j;
-    
-    do {
-        i = rand() % [[Map myMap] xTileCount];
-        j = rand() % [[Map myMap] zTileCount];
-    } while ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] != '0');
-    
-    CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
-    coin.location = cc3v(position.x, 5000, position.y) ;
-    CCActionInterval *moveCoin = [CC3MoveTo actionWithDuration:1.0f moveTo:cc3v(position.x, 50, position.y)];
-    [coin runAction: moveCoin];
-    
-    [_bonusCoinCollection addChild:coin];
+    if (self.isRunning) {
+        CC3Node *coin = [_bonusCoin copy];
+        int i, j;
+        
+        do {
+            i = rand() % [[Map myMap] xTileCount];
+            j = rand() % [[Map myMap] zTileCount];
+        } while ([[Map myMap] contentOfMapAtLocation:CGPointMake(i, j)] != '0');
+        
+        CGPoint position = [[Map myMap] positionInMapWithLocation:CGPointMake(i, j)];
+        coin.location = cc3v(position.x, 5000, position.y) ;
+        CCActionInterval *moveCoin = [CC3MoveTo actionWithDuration:1.0f moveTo:cc3v(position.x, 50, position.y)];
+        [coin runAction: moveCoin];
+        
+        [_bonusCoinCollection addChild:coin];
+    }
 }
 
 -(void) addPlayerCharacterWithNumber:(NSInteger) number
@@ -483,6 +498,9 @@ NSTimer *_cameraPlayersTimer;
         
         case 1:
             modelString = @"marcelo_model_low.pod";
+            break;
+        default:
+            modelString = @"boy3.pod";
             break;
     }
     //copy the original model
@@ -514,6 +532,7 @@ NSTimer *_cameraPlayersTimer;
             spawnPoint = [[Map myMap] positionInMapWithLocation:CGPointMake(58,2)];
             break;
         default:
+            spawnPoint = CGPointMake(0, 0);
             break;
     }
     
@@ -545,7 +564,6 @@ NSTimer *_cameraPlayersTimer;
     
     
     player.delegate = self;
-    
 }
 
 /**
@@ -664,7 +682,7 @@ NSTimer *_cameraPlayersTimer;
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bkgMusic.mp3" loop:YES];
     
     
-    
+    self.isRunning = YES;
 	// Add additional scene content dynamically and asynchronously on a background thread
 	// after the scene is open and rendering has begun on the rendering thread. We use the
 	// GL backgrounder provided by the viewSurfaceManager to accomplish this. Asynchronous
@@ -676,22 +694,6 @@ NSTimer *_cameraPlayersTimer;
 		[self addSceneContentAsynchronously];
 	}];
  
-    Game *game = [Game myGame];
-    game.hudLayer = (AmazeGameLayer *)self.cc3Layer;
-    
-    //schedule camera movements for the opening scene
-    [self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 0, 1)];
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray firstObject] node] afterDelay:6.0f];
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:[[_playerArray lastObject] node] afterDelay:9.0f];
-    [self performSelector:@selector(zoomCameraOnObject:) withObject:self afterDelay:12.0f];
-    [self performSelector:@selector(startZoomingOnPlayers) withObject:nil  afterDelay:16.0f];
-    
-    
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:20.0f target:self selector:@selector(addBonusCoin) userInfo:nil repeats:YES];
-    [_timersArray addObject:timer];
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(removeWall) userInfo:nil repeats:YES];
-    [_timersArray addObject:timer];
 
     
 	// Uncomment this line to draw the bounding box of the scene.
@@ -708,7 +710,9 @@ NSTimer *_cameraPlayersTimer;
         [timer invalidate];
     }
     
-    [_cameraPlayersTimer invalidate];
+//    [_cameraPlayersTimer invalidate];
+    
+    [self pauseAllActions];
     Player *winner = [[Game myGame] topScorer];
     
     self.collisionEnabled = NO;
@@ -732,12 +736,11 @@ NSTimer *_cameraPlayersTimer;
     //warn the controllers that the game is over
     NSData *data = [[[EndRoundMessage alloc] init] archiveData];
     [[Connection myConnection] sendData:data];
-    
+
     [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
 }
 
 -(void) restartScene {
-
     [[CCDirector sharedDirector] replaceScene:[CCScene node]];
     [CC3Resource removeAllResources];
     
@@ -752,7 +755,9 @@ NSTimer *_cameraPlayersTimer;
  * For more info, read the notes of this method on CC3Scene.
  */
 -(void) onClose {
- 
+   [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    
+    self.isRunning = NO;
 }
 
 /**
@@ -760,7 +765,7 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) removeWall
 {
-    if ([_tempWallsArray count] > 0) {
+    if ([_tempWallsArray count] > 0 && self.isRunning) {
         CC3Node *tempWall = [_tempWallsArray firstObject];
         CGPoint position = CGPointMake(tempWall.location.x, tempWall.location.z);
         CGPoint location = [[Map myMap] locationInMapWithPosition:position];
@@ -1003,13 +1008,12 @@ NSTimer *_cameraPlayersTimer;
                 break;
             //movement end
             default:
+
                 [player.node stopActionByTag:0];
                 [player.node stopActionByTag:1];
                 break;
         }
     }
-    
-//    NSLog(@"%c" , [[Map myMap] contentOfMapAtLocation:tile]);
 }
 
 
@@ -1137,8 +1141,8 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) zoomCameraOnPlayers
 {
-    NSLog(@"moving camera");
-    [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
+    if (self.isRunning)
+        [self.activeCamera moveWithDuration:0.5f toShowAllOf:_allCharacters fromDirection:CAMERA_ANGLE];
 }
 
 /**
@@ -1147,7 +1151,9 @@ NSTimer *_cameraPlayersTimer;
  */
 -(void) zoomCameraOnObject: (CC3Node *)object {
     NSLog (@"camera luz acao")  ;
-    [self.activeCamera moveWithDuration:1.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
+    
+    if (self.isRunning)
+        [self.activeCamera moveWithDuration:1.0f toShowAllOf:object fromDirection:CAMERA_ANGLE];
 }
 
 /**
@@ -1155,8 +1161,8 @@ NSTimer *_cameraPlayersTimer;
  */
 - (void) startZoomingOnPlayers
 {
-    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
-//    [_timersArray addObject:_cameraPlayersTimer];
+    [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(zoomCameraOnPlayers) forTarget:self interval:5.0f paused:NO];
+//    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
 }
 
 #pragma mark - TEST METHODS
@@ -1203,10 +1209,5 @@ NSTimer *_cameraPlayersTimer;
         }
     }
 }
-
-
-
-
-
 @end
 
