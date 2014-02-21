@@ -341,6 +341,7 @@
 		A3A0273118A2B9F8000BAB87 /* tenis.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A0272B18A2B9F8000BAB87 /* tenis.png */; };
 		A3A73CC418B7EEFC00E9B504 /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CC218B7EEFC00E9B504 /* frame.png */; };
 		A3A73CC518B7EEFC00E9B504 /* logo_transp.png in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CC318B7EEFC00E9B504 /* logo_transp.png */; };
+		A3A73CC718B7EF9400E9B504 /* funky_music.wav in Resources */ = {isa = PBXBuildFile; fileRef = A3A73CC618B7EF9400E9B504 /* funky_music.wav */; };
 		A3A96D3C18A3BFF200FE7910 /* Minigame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A96D3B18A3BFF200FE7910 /* Minigame.m */; };
 		A3B2371118B7CFBC001E216A /* PaperBattleButtonPressMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2370E18B7CFBC001E216A /* PaperBattleButtonPressMessage.m */; };
 		A3B2371218B7CFBC001E216A /* PaperBattleCallbackMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B2371018B7CFBC001E216A /* PaperBattleCallbackMessage.m */; };
@@ -997,6 +998,7 @@
 		A3A0272B18A2B9F8000BAB87 /* tenis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenis.png; sourceTree = "<group>"; };
 		A3A73CC218B7EEFC00E9B504 /* frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame.png; sourceTree = "<group>"; };
 		A3A73CC318B7EEFC00E9B504 /* logo_transp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_transp.png; sourceTree = "<group>"; };
+		A3A73CC618B7EF9400E9B504 /* funky_music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = funky_music.wav; sourceTree = "<group>"; };
 		A3A96D3A18A3BFF200FE7910 /* Minigame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minigame.h; sourceTree = "<group>"; };
 		A3A96D3B18A3BFF200FE7910 /* Minigame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Minigame.m; sourceTree = "<group>"; };
 		A3B2370D18B7CFBC001E216A /* PaperBattleButtonPressMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaperBattleButtonPressMessage.h; path = ../../Shared/PaperBattleButtonPressMessage.h; sourceTree = "<group>"; };
@@ -2064,6 +2066,7 @@
 		3A9A1D5918A3E97800B82385 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				A3A73CC618B7EF9400E9B504 /* funky_music.wav */,
 				3A920F6118A3B4B200FEFD9E /* money.mp3 */,
 				3A9A1D5718A3E78E00B82385 /* bkgMusic.mp3 */,
 				3A9A1D6618A3F73400B82385 /* bell.mp3 */,
@@ -2356,6 +2359,7 @@
 				3A4EAB49188D927D00E6C9F5 /* CC3BumpMapObjectSpaceAlphaTest.fsh in Resources */,
 				3A4EAB59188D927D00E6C9F5 /* CC3NoTextureAlphaTest.fsh in Resources */,
 				A3CB075D18A524ED00E153E5 /* boy_skin.png in Resources */,
+				A3A73CC718B7EF9400E9B504 /* funky_music.wav in Resources */,
 				3A4EA98E188D927A00E6C9F5 /* ChangeLog in Resources */,
 				A3A0272C18A2B9F8000BAB87 /* camisa_portugal.png in Resources */,
 				3A4EABAF188D927D00E6C9F5 /* fps_images-hd.png in Resources */,

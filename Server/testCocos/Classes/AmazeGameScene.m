@@ -684,7 +684,7 @@ BOOL _ended;
     //    Licensed under Creative Commons: By Attribution 3.0
     //http://creativecommons.org/licenses/by/3.0/
     
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bkgMusic.mp3" loop:YES];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"funky_music.wav" loop:YES];
     
 	// Add additional scene content dynamically and asynchronously on a background thread
 	// after the scene is open and rendering has begun on the rendering thread. We use the
