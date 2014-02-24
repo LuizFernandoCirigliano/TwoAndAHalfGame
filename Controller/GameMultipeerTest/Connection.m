@@ -8,6 +8,7 @@
 
 #import "Connection.h"
 #import "ControllerViewController.h"
+
 @implementation Connection
 
 /* This classes sets up the remote connection between devices, and handles interactions using the message transfer system
@@ -124,6 +125,13 @@ static Connection *myConnectionConfiguration = nil;
         if ([self.delegate respondsToSelector:@selector(endGame)])
         {
             [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:NO];
+        }
+    }
+    else if ([message isKindOfClass:[PaperBattleCallbackMessage class]])
+    {
+        if ([self.delegate respondsToSelector:@selector(dismissVC)])
+        {
+            [self.delegate performSelectorOnMainThread:@selector(dismissVC) withObject:nil waitUntilDone:NO];
         }
     }
 
