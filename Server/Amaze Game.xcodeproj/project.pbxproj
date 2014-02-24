@@ -957,8 +957,8 @@
 		3A4EABAE188D927D00E6C9F5 /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-hd.png"; path = "Resources/fps_images-hd.png"; sourceTree = "<group>"; };
 		3A4EABB0188D927D00E6C9F5 /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fps_images-ipadhd.png"; path = "Resources/fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		3A4EABB3188D927D00E6C9F5 /* configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = configuration.json; path = testCocos.approj/configuration.json; sourceTree = SOURCE_ROOT; };
-		3A760A8E18B7CD7500565C3E /* PaperBattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaperBattleScene.h; path = Server/testCocos/Classes/PaperBattleScene.h; sourceTree = SOURCE_ROOT; };
-		3A760A8F18B7CD7500565C3E /* PaperBattleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaperBattleScene.m; path = Server/testCocos/Classes/PaperBattleScene.m; sourceTree = SOURCE_ROOT; };
+		3A760A8E18B7CD7500565C3E /* PaperBattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaperBattleScene.h; path = testCocos/PaperBattleScene.h; sourceTree = SOURCE_ROOT; };
+		3A760A8F18B7CD7500565C3E /* PaperBattleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaperBattleScene.m; path = testCocos/PaperBattleScene.m; sourceTree = SOURCE_ROOT; };
 		3A920F5B18A2A19800FEFD9E /* arial16.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arial16.fnt; sourceTree = "<group>"; };
 		3A920F5F18A3AEDE00FEFD9E /* marcelo_model_low.pod */ = {isa = PBXFileReference; lastKnownFileType = file; path = marcelo_model_low.pod; sourceTree = "<group>"; };
 		3A920F6118A3B4B200FEFD9E /* money.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = money.mp3; sourceTree = "<group>"; };
