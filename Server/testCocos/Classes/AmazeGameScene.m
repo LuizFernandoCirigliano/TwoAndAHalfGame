@@ -155,7 +155,7 @@ BOOL _isFirstOpen;
 	
 	// Displays bounding boxes around all nodes. The bounding box for each node
 	// will encompass its child nodes.
-//	self.shouldDrawAllWireframeBoxes = YES;
+	self.shouldDrawAllWireframeBoxes = YES;
 	
 	// If you encounter issues creating and adding nodes, or loading models from
 	// files, the following line is used to log the full structure of the scene.
@@ -200,6 +200,7 @@ BOOL _isFirstOpen;
         NSLog(@"unpause");
         _paused = NO;
     }];
+    
     [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(addBonusCoin) forTarget:self interval:20.0f paused:NO];
     [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(removeWall) forTarget:self interval:10.0f paused:NO];
 }
@@ -209,7 +210,7 @@ BOOL _isFirstOpen;
  */
 
 -(void) performInitializations {
-    [Connection myConnection].delegate = self;
+    
     _allCharacters = [CC3Node node];
     
     
@@ -672,6 +673,9 @@ BOOL _isFirstOpen;
         _paused = NO;
     }
     _isFirstOpen = NO;
+    
+    
+    [Connection myConnection].delegate = self;
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;

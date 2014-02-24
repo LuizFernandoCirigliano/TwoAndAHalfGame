@@ -15,6 +15,8 @@
 #import "SetPlayerNumberMessage.h"
 #import "StartMinigameMessage.h"
 #import "JankenResultMessage.h"
+#import "PaperBattleButtonPressMessage.h"
+#import "PaperBattleCallbackMessage.h"
 
 #define MAX_PLAYERS 4
 

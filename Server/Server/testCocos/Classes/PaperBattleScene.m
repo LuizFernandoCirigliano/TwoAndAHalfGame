@@ -10,6 +10,7 @@
 #import "CC3PODResourceNode.h"
 #import "CC3ActionInterval.h"
 #import "CC3MeshNode.h"
+#import "CC3UtilityMeshNodes.h"
 #import "CC3Camera.h"
 #import "CC3Light.h"
 #import "GameDefines.h"
@@ -68,6 +69,7 @@ NSMutableArray *_characterNodesArray;
         [self addPlayerCharacterWithNumber:i];
     }
     
+   
 	// Select an appropriate shader program for each mesh node in this scene now. If this step
 	// is omitted, a shader program will be selected for each mesh node the first time that mesh
 	// node is drawn. Doing it now adds some additional time up front, but avoids potential pauses
@@ -80,7 +82,6 @@ NSMutableArray *_characterNodesArray;
 	// save memory, release the vertex content in main memory because it is now redundant.
 	[self createGLBuffers];
 	[self releaseRedundantContent];
-
 }
 
 -(void) addPlayerCharacterWithNumber:(NSInteger) number
@@ -89,22 +90,21 @@ NSMutableArray *_characterNodesArray;
     
     CC3Node *character = [player.originalNode copy];
 
-    
     //temporary spawn position methods, replace with positions on map text file
     NSInteger const distanceFromCenter = 6;
     
     switch (number) {
         case 0:
-            character.location = cc3v(distanceFromCenter, 0, distanceFromCenter);
+            character.location = cc3v(-distanceFromCenter, 0, -distanceFromCenter);
             break;
         case 1:
-            character.location = cc3v(distanceFromCenter, 0, -distanceFromCenter);
+            character.location = cc3v( distanceFromCenter, 0, -distanceFromCenter);
             break;
         case 2:
             character.location = cc3v(-distanceFromCenter, 0, distanceFromCenter);
             break;
         case 3:
-            character.location = cc3v(-distanceFromCenter, 0, -distanceFromCenter);
+            character.location = cc3v(distanceFromCenter, 0, distanceFromCenter);
             break;
         default:
             character.location = cc3v(0, 0, 0);
@@ -166,7 +166,7 @@ NSMutableArray *_characterNodesArray;
  * For more info, read the notes of this method on CC3Node.
  */
 -(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor {
-    NSLog(@"OIOIOI");
+
 }
 
 /**
@@ -208,13 +208,12 @@ NSMutableArray *_characterNodesArray;
 	// Move the camera to frame the scene. The resulting configuration of the camera is output as
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
 	[self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 1, 0.1f)];
-    
-    dispatch_async(dispatch_get_main_queue(), ^ {
-        for(CC3Node *character in _characterNodesArray) {
-            [character runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
-        }
-    });
+
+    for (CC3Node *node in _characterNodesArray) {
+         [node runAction:[CC3RotateToLookAt actionWithDuration:0.3f targetLocation:cc3v(0, 0, 0)]];
+    }
   
+    [Connection myConnection].delegate = self;
 	// Uncomment this line to draw the bounding box of the scene.
     //	self.shouldDrawWireframeBox = YES;
 }
@@ -227,6 +226,26 @@ NSMutableArray *_characterNodesArray;
  */
 -(void) onClose {}
 
+#pragma mark - user interaction
+
+-(void) playerPressed: (PaperBattleButtonPressMessage *) message {
+    CC3Node *character = [_characterNodesArray objectAtIndex:[message.playerNumber intValue]];
+    
+    if ([message.playerNumber intValue] == [message.buttonNumber intValue]) {
+        NSLog(@"block");
+        
+    } else {
+        CC3MeshNode *ball = [CC3MeshNode node];
+        [ball populateAsSphereWithRadius:1.0f andTessellation:CC3TessellationMake(8, 8)];
+        
+        [self addChild:ball];
+        
+        ball.location = character.location;
+        CC3Node *targetPlayer = [_characterNodesArray objectAtIndex:[message.buttonNumber intValue]];
+        
+        [ball runAction:[CC3MoveTo actionWithDuration:1.0f moveTo:targetPlayer.location]];
+    }
+}
 
 #pragma mark Drawing
 

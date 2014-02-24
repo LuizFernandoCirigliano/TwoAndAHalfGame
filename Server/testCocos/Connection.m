@@ -261,6 +261,11 @@ static Connection *myConnectionConfiguration = nil;
         //Janken minigame ended
         JankenResultMessage *jankenMessage = (JankenResultMessage *) message;
         [[[Game myGame] janken] player:[[jankenMessage playerNumber] intValue] chose:[[jankenMessage jankenResult] intValue]];
+    } else if ([message isKindOfClass:[PaperBattleButtonPressMessage class]]) {
+        if([self.delegate respondsToSelector:@selector(playerPressed: )]) {
+            PaperBattleButtonPressMessage *paperBattleMessage = (PaperBattleButtonPressMessage *) message;
+            [self.delegate performSelector:@selector(playerPressed: ) withObject:paperBattleMessage];
+        }
     }
 }
 

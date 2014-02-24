@@ -212,7 +212,7 @@
                         <outlet property="playerImage" destination="HzU-dR-4kM" id="9Sv-dD-z83"/>
                         <outlet property="playerLabel" destination="KVE-fa-4JG" id="Zyj-ah-CUm"/>
                         <segue destination="fph-Vi-gR8" kind="modal" identifier="startMinigame" id="a3x-IB-mCp"/>
-                        <segue destination="907-dW-5Vu" kind="modal" id="qaB-28-eA4"/>
+                        <segue destination="907-dW-5Vu" kind="modal" identifier="startPaperBattleMinigame" id="qaB-28-eA4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hx9-0s-wBv" userLabel="First Responder" sceneMemberID="firstResponder"/>

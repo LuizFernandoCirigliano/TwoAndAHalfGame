@@ -15,7 +15,7 @@
 #import "SetPlayerNumberMessage.h"
 #import "StartMinigameMessage.h"
 #import "JankenResultMessage.h"
-
+#import "PaperBattleCallbackMessage.h"
 
 @protocol ConnectionDelegate <NSObject>
 
@@ -29,6 +29,7 @@
 @required
 
 -(void) startMinigame;
+-(void) startPaperBattle;
 -(void) endGame;
 @end
 

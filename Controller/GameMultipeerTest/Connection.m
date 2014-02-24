@@ -126,6 +126,12 @@ static Connection *myConnectionConfiguration = nil;
             [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:NO];
         }
     }
+    
+    else if ([message isKindOfClass:[PaperBattleCallbackMessage class]]) {
+        if ([self.delegate respondsToSelector:@selector(startPaperBattle)]) {
+            [self.delegate performSelectorOnMainThread:@selector(startPaperBattle) withObject:nil waitUntilDone:NO];
+        }
+    }
 
 }
 

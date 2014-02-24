@@ -183,11 +183,14 @@
     [self performSegueWithIdentifier:@"startMinigame" sender:nil];
 }
 
+- (void) startPaperBattle
+{
+    [self performSegueWithIdentifier:@"startPaperBattleMinigame" sender:nil];
+}
+
 -(void) endGame
 {
-#warning possible issue with controller reconnections
     [[Connection myConnection].mySession disconnect];
-
 }
 
 //w Add credits do JSController e CircularTimerView

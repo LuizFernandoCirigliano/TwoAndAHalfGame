@@ -12,6 +12,7 @@
 		3A25F10F18A15398005FD2F3 /* JankenResultMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F10E18A15398005FD2F3 /* JankenResultMessage.m */; };
 		3A25F11318A156B4005FD2F3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A25F11218A156B4005FD2F3 /* Game.m */; };
 		3A2C1F3518B7D89400EEC8BC /* GameDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C1F3418B7D89400EEC8BC /* GameDefines.m */; };
+		3A2C1F3818BBB6FF00EEC8BC /* PaperBattleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C1F3718BBB6FF00EEC8BC /* PaperBattleLayer.m */; };
 		3A2F428A1896B8F80088C77D /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F42891896B8F80088C77D /* map01.txt */; };
 		3A4EA822188D927900E6C9F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA821188D927900E6C9F5 /* QuartzCore.framework */; };
 		3A4EA824188D927900E6C9F5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4EA823188D927900E6C9F5 /* OpenGLES.framework */; };
@@ -374,6 +375,8 @@
 		3A25F11218A156B4005FD2F3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		3A2C1F3318B7D89400EEC8BC /* GameDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefines.h; sourceTree = "<group>"; };
 		3A2C1F3418B7D89400EEC8BC /* GameDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDefines.m; sourceTree = "<group>"; };
+		3A2C1F3618BBB6FF00EEC8BC /* PaperBattleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperBattleLayer.h; sourceTree = "<group>"; };
+		3A2C1F3718BBB6FF00EEC8BC /* PaperBattleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperBattleLayer.m; sourceTree = "<group>"; };
 		3A2F42891896B8F80088C77D /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
 		3A4EA81E188D927900E6C9F5 /* Amaze Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Amaze Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4EA821188D927900E6C9F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1060,6 +1063,8 @@
 				3A4EABA5188D927D00E6C9F5 /* AmazeGameLayer.m */,
 				3A4EABA7188D927D00E6C9F5 /* AmazeGameScene.h */,
 				3A4EABA8188D927D00E6C9F5 /* AmazeGameScene.m */,
+				3A2C1F3618BBB6FF00EEC8BC /* PaperBattleLayer.h */,
+				3A2C1F3718BBB6FF00EEC8BC /* PaperBattleLayer.m */,
 				3A760A8E18B7CD7500565C3E /* PaperBattleScene.h */,
 				3A760A8F18B7CD7500565C3E /* PaperBattleScene.m */,
 				3A2C1F3318B7D89400EEC8BC /* GameDefines.h */,
@@ -2517,6 +2522,7 @@
 				3A4EAA4A188D927B00E6C9F5 /* CC3Texture.m in Sources */,
 				3A4EA8F7188D927A00E6C9F5 /* CCTextureCache.m in Sources */,
 				3A4EAA34188D927B00E6C9F5 /* PVRTTrans.cpp in Sources */,
+				3A2C1F3818BBB6FF00EEC8BC /* PaperBattleLayer.m in Sources */,
 				3A4EAACA188D927C00E6C9F5 /* CC3OSExtensions.m in Sources */,
 				3A4EAAC5188D927C00E6C9F5 /* CC3PointParticles.m in Sources */,
 				3A4EAA40188D927B00E6C9F5 /* CC3Actions.m in Sources */,

@@ -13,6 +13,7 @@
 #import "AmazeGameScene.h"
 #import "Game.h"
 #import "PaperBattleScene.h"
+#import "PaperBattleLayer.h"
 
 #define kAnimationFrameRate		60	
 
@@ -42,10 +43,15 @@
     static bool scene = YES;
 
     if(scene) {
-        CC3Layer *cc3Layer = [CC3Layer layerWithController:CC3UIViewController.sharedDirector];
+        CC3Layer *cc3Layer = [PaperBattleLayer layerWithController:CC3UIViewController.sharedDirector];
         cc3Layer.cc3Scene = [PaperBattleScene scene];
         CC3ControllableLayer *mainLayer = cc3Layer;
         [CC3UIViewController.sharedDirector pushScene:mainLayer];
+        
+        NSData *data = [[[PaperBattleCallbackMessage alloc] init] archiveData];
+        
+        [[Connection myConnection] sendData:data];
+        
     } else {
         [CC3UIViewController.sharedDirector popScene];
     }

@@ -10,4 +10,6 @@
 
 @interface PaperBattleCallbackMessage : NewMessage
 
+- (NSData *)archiveData;
+
 @end
