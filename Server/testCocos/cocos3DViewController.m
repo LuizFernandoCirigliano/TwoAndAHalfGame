@@ -41,7 +41,7 @@
 
 - (IBAction)sceneButton:(id)sender {
     static bool scene = YES;
-
+    
     if(scene) {
         CC3Layer *cc3Layer = [PaperBattleLayer layerWithController:CC3UIViewController.sharedDirector];
         cc3Layer.cc3Scene = [PaperBattleScene scene];
@@ -54,6 +54,10 @@
         
     } else {
         [CC3UIViewController.sharedDirector popScene];
+        
+        NSData *data = [[[EndRoundMessage alloc] init] archiveData];
+        
+        [[Connection myConnection] sendData:data];
     }
     
     scene = !scene;

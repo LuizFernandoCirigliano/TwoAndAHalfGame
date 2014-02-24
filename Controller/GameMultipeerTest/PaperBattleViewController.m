@@ -10,7 +10,7 @@
 #import "PaperBattleButtonPressMessage.h"
 #import "Connection.h"
 
-@interface PaperBattleViewController () <ConnectionDelegate>
+@interface PaperBattleViewController () 
 
 @end
 

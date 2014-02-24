@@ -132,6 +132,11 @@ static Connection *myConnectionConfiguration = nil;
             [self.delegate performSelectorOnMainThread:@selector(startPaperBattle) withObject:nil waitUntilDone:NO];
         }
     }
+    else if ([message isKindOfClass:[EndMinigameMessage class]]) {
+        if ([self.delegate respondsToSelector:@selector(dismissVC)]) {
+            [self.delegate performSelectorOnMainThread:@selector(dismissVC) withObject:nil waitUntilDone:NO];
+        }
+    }
     
     
 }
@@ -157,9 +162,9 @@ static Connection *myConnectionConfiguration = nil;
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state{
     if (state == MCSessionStateNotConnected && peerID == self.serverPeerID && [self.delegate isKindOfClass:[ControllerViewController class]]) {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate dismissViewControllerAnimated:YES completion:nil];
-        });
+        if ([self.delegate respondsToSelector:@selector(dismissVC)]) {
+            [self.delegate performSelectorOnMainThread:@selector(dismissVC) withObject:nil waitUntilDone:NO];
+        }
 
     }
 }

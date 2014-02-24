@@ -193,5 +193,8 @@
     [[Connection myConnection].mySession disconnect];
 }
 
-//w Add credits do JSController e CircularTimerView
+-(void) dismissVC {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+    //w Add credits do JSController e CircularTimerView
 @end

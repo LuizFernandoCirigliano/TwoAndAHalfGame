@@ -24,6 +24,7 @@
 		3A44A53318883A3F00777286 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A44A53218883A3F00777286 /* MultipeerConnectivity.framework */; };
 		3A44A53818883AFA00777286 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A44A53718883AFA00777286 /* Main.storyboard */; };
 		3A44A54618883CE300777286 /* ControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A44A54518883CE300777286 /* ControllerViewController.m */; };
+		3AA68B1118BBD3E900ED10B3 /* EndMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA68B1018BBD3E900ED10B3 /* EndMinigameMessage.m */; };
 		A3A96D3F18A3C86A00FE7910 /* SimpleAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A96D3E18A3C86A00FE7910 /* SimpleAudioPlayer.m */; };
 		A3A96D4118A3CA2700FE7910 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3A96D4018A3CA2700FE7910 /* AVFoundation.framework */; };
 		A3A96D4318A3CF0900FE7910 /* button.wav in Resources */ = {isa = PBXBuildFile; fileRef = A3A96D4218A3CF0900FE7910 /* button.wav */; };
@@ -79,6 +80,8 @@
 		3A44A53718883AFA00777286 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3A44A54418883CE300777286 /* ControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerViewController.h; sourceTree = "<group>"; };
 		3A44A54518883CE300777286 /* ControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerViewController.m; sourceTree = "<group>"; };
+		3AA68B0F18BBD3E900ED10B3 /* EndMinigameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndMinigameMessage.h; path = ../../Shared/EndMinigameMessage.h; sourceTree = "<group>"; };
+		3AA68B1018BBD3E900ED10B3 /* EndMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndMinigameMessage.m; path = ../../Shared/EndMinigameMessage.m; sourceTree = "<group>"; };
 		A3A96D3D18A3C86A00FE7910 /* SimpleAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAudioPlayer.h; sourceTree = "<group>"; };
 		A3A96D3E18A3C86A00FE7910 /* SimpleAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioPlayer.m; sourceTree = "<group>"; };
 		A3A96D4018A3CA2700FE7910 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -269,6 +272,8 @@
 				3A25F10B18A1534F005FD2F3 /* JankenResultMessage.m */,
 				A3B8D23E189A7DE2009FFE5C /* EndRoundMessage.h */,
 				A3B8D23F189A7DE2009FFE5C /* EndRoundMessage.m */,
+				3AA68B0F18BBD3E900ED10B3 /* EndMinigameMessage.h */,
+				3AA68B1018BBD3E900ED10B3 /* EndMinigameMessage.m */,
 				A3B2370718B7A310001E216A /* PaperBattleButtonPressMessage.h */,
 				A3B2370818B7A310001E216A /* PaperBattleButtonPressMessage.m */,
 				A3B2370A18B7BFF0001E216A /* PaperBattleCallbackMessage.h */,
@@ -333,7 +338,7 @@
 				ORGANIZATIONNAME = "Luiz Fernando 2";
 				TargetAttributes = {
 					3A44A4F61888395A00777286 = {
-						DevelopmentTeam = B6U8VQEK7Q;
+						DevelopmentTeam = QHL9JXYSYP;
 					};
 					3A44A5171888395A00777286 = {
 						TestTargetID = 3A44A4F61888395A00777286;
@@ -405,6 +410,7 @@
 				A3B8D24A189A7DE2009FFE5C /* NewMessage.m in Sources */,
 				A3B4719C189AB97F0043BFAC /* JSButton.m in Sources */,
 				A3B2370C18B7BFF0001E216A /* PaperBattleCallbackMessage.m in Sources */,
+				3AA68B1118BBD3E900ED10B3 /* EndMinigameMessage.m in Sources */,
 				A3B8D248189A7DE2009FFE5C /* ButtonPressMessage.m in Sources */,
 				A3B92F6F18A1232900EFF763 /* JankenViewController.m in Sources */,
 			);

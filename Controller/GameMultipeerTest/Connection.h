@@ -32,6 +32,7 @@
 -(void) startMinigame;
 -(void) startPaperBattle;
 -(void) endGame;
+
 @end
 
 

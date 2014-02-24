@@ -19,6 +19,7 @@
 
 NSMutableArray *_playerArray;
 NSMutableArray *_characterNodesArray;
+
 @implementation PaperBattleScene
 
 -(void) dealloc {
@@ -237,14 +238,22 @@ NSMutableArray *_characterNodesArray;
     } else {
         CC3MeshNode *ball = [CC3MeshNode node];
         [ball populateAsSphereWithRadius:1.0f andTessellation:CC3TessellationMake(8, 8)];
-        
         [self addChild:ball];
         
         ball.location = character.location;
         CC3Node *targetPlayer = [_characterNodesArray objectAtIndex:[message.buttonNumber intValue]];
         
+
         [ball runAction:[CC3MoveTo actionWithDuration:1.0f moveTo:targetPlayer.location]];
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(removeNode:) userInfo:ball repeats:NO];
+        
     }
+}
+
+-(void) removeNode: (NSTimer *) timer {
+    CC3Node *node = [timer userInfo];
+    [self removeChild:node];
 }
 
 #pragma mark Drawing
