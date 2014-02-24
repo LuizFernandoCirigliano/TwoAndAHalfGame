@@ -12,8 +12,12 @@
 #import "CC3MeshNode.h"
 #import "CC3Camera.h"
 #import "CC3Light.h"
+#import "GameDefines.h"
+#import "Game.h"
+#import "CC3Billboard.h" 
 
-
+NSMutableArray *_playerArray;
+NSMutableArray *_characterNodesArray;
 @implementation PaperBattleScene
 
 -(void) dealloc {
@@ -46,7 +50,8 @@
     
 	// Create the camera, place it back a bit, and add it to the scene
 	CC3Camera* cam = [CC3Camera nodeWithName: @"Camera"];
-	cam.location = cc3v( 0.0, 0.0, 18.0 );
+	cam.location = cc3v( 0.0, 10.0,1.0 );
+    cam.targetLocation = cc3v(0, 0, 0);
 	[self addChild: cam];
     
 	// Create a light, place it back and to the left at a specific
@@ -56,100 +61,76 @@
 	lamp.isDirectionalOnly = NO;
 	[cam addChild: lamp];
     
-	// This is the simplest way to load a POD resource file and add the
-	// nodes to the CC3Scene, if no customized resource subclass is needed.
-	[self addContentFromPODFile: @"hello-world.pod"];
-	
+    _playerArray = [[Game myGame] playerArray];
+    _characterNodesArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [_playerArray count]; i++) {
+        [self addPlayerCharacterWithNumber:i];
+    }
+    
 	// Select an appropriate shader program for each mesh node in this scene now. If this step
 	// is omitted, a shader program will be selected for each mesh node the first time that mesh
 	// node is drawn. Doing it now adds some additional time up front, but avoids potential pauses
 	// as each shader program is loaded as needed the first time it is needed during drawing.
 	[self selectShaderPrograms];
-    
-	// With complex scenes, the drawing of objects that are not within view of the camera will
-	// consume GPU resources unnecessarily, and potentially degrading app performance. We can
-	// avoid drawing objects that are not within view of the camera by assigning a bounding
-	// volume to each mesh node. Once assigned, the bounding volume is automatically checked
-	// to see if it intersects the camera's frustum before the mesh node is drawn. If the node's
-	// bounding volume intersects the camera frustum, the node will be drawn. If the bounding
-	// volume does not intersect the camera's frustum, the node will not be visible to the camera,
-	// and the node will not be drawn. Bounding volumes can also be used for collision detection
-	// between nodes. You can create bounding volumes automatically for most rigid (non-skinned)
-	// objects by using the createBoundingVolumes on a node. This will create bounding volumes
-	// for all decendant rigid mesh nodes of that node. Invoking the method on your scene will
-	// create bounding volumes for all rigid mesh nodes in the scene. Bounding volumes are not
-	// automatically created for skinned meshes that modify vertices using bones. Because the
-	// vertices can be moved arbitrarily by the bones, you must create and assign bounding
-	// volumes to skinned mesh nodes yourself, by determining the extent of the bounding
-	// volume you need, and creating a bounding volume that matches it. Finally, checking
-	// bounding volumes involves a small computation cost. For objects that you know will be
-	// in front of the camera at all times, you can skip creating a bounding volume for that
-	// node, letting it be drawn on each frame. Since the automatic creation of bounding
-	// volumes depends on having the vertex location content in memory, be sure to invoke
-	// this method before invoking the releaseRedundantContent method.
+
 	[self createBoundingVolumes];
 	
 	// Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
 	// save memory, release the vertex content in main memory because it is now redundant.
 	[self createGLBuffers];
 	[self releaseRedundantContent];
+
+}
+
+-(void) addPlayerCharacterWithNumber:(NSInteger) number
+{
+    Player *player = [_playerArray objectAtIndex:number];
     
-	
-	// ------------------------------------------
-	
-	// That's it! The scene is now constructed and is good to go.
-	
-	// To help you find your scene content once it is loaded, the onOpen method below contains
-	// code to automatically move the camera so that it frames the scene. You can remove that
-	// code once you know where you want to place your camera.
-	
-	// If you encounter problems displaying your models, you can uncomment one or more of the
-	// following lines to help you troubleshoot. You can also use these features on a single node,
-	// or a structure of nodes. See the CC3Node notes for more explanation of these properties.
-	// Also, the onOpen method below contains additional troubleshooting code you can comment
-	// out to move the camera so that it will display the entire scene automatically.
-	
-	// Displays short descriptive text for each node (including class, node name & tag).
-	// The text is displayed centered on the pivot point (origin) of the node.
-    //	self.shouldDrawAllDescriptors = YES;
-	
-	// Displays bounding boxes around those nodes with local content (eg- meshes).
-    //	self.shouldDrawAllLocalContentWireframeBoxes = YES;
-	
-	// Displays bounding boxes around all nodes. The bounding box for each node
-	// will encompass its child nodes.
-    //	self.shouldDrawAllWireframeBoxes = YES;
-	
-	// If you encounter issues creating and adding nodes, or loading models from
-	// files, the following line is used to log the full structure of the scene.
-	LogInfo(@"The structure of this scene is: %@", [self structureDescription]);
-	
-	// ------------------------------------------
+    CC3Node *character = [player.originalNode copy];
+
     
-	// And to add some dynamism, we'll animate the 'hello, world' message
-	// using a couple of actions...
-	
-	// Fetch the 'hello, world' object that was loaded from the POD file and start it rotating
-	CC3MeshNode* helloTxt = (CC3MeshNode*)[self getNodeNamed: @"Hello"];
-	CCActionInterval* partialRot = [CC3RotateBy actionWithDuration: 1.0
-														  rotateBy: cc3v(0.0, 30.0, 0.0)];
-	[helloTxt runAction: [CCRepeatForever actionWithAction: partialRot]];
-	
-	// To make things a bit more appealing, set up a repeating up/down cycle to
-	// change the color of the text from the original red to blue, and back again.
-	GLfloat tintTime = 8.0f;
-	ccColor3B startColor = helloTxt.color;
-	ccColor3B endColor = { 50, 0, 200 };
-	CCActionInterval* tintDown = [CCTintTo actionWithDuration: tintTime
-														  red: endColor.r
-														green: endColor.g
-														 blue: endColor.b];
-	CCActionInterval* tintUp = [CCTintTo actionWithDuration: tintTime
-														red: startColor.r
-													  green: startColor.g
-													   blue: startColor.b];
-    CCActionInterval* tintCycle = [CCSequence actionOne: tintDown two: tintUp];
-	[helloTxt runAction: [CCRepeatForever actionWithAction: tintCycle]];
+    //temporary spawn position methods, replace with positions on map text file
+    NSInteger const distanceFromCenter = 6;
+    
+    switch (number) {
+        case 0:
+            character.location = cc3v(distanceFromCenter, 0, distanceFromCenter);
+            break;
+        case 1:
+            character.location = cc3v(distanceFromCenter, 0, -distanceFromCenter);
+            break;
+        case 2:
+            character.location = cc3v(-distanceFromCenter, 0, distanceFromCenter);
+            break;
+        case 3:
+            character.location = cc3v(-distanceFromCenter, 0, -distanceFromCenter);
+            break;
+        default:
+            character.location = cc3v(0, 0, 0);
+            break;
+    }
+    
+    character.rotationAxis = kCC3VectorUnitYPositive;
+ 
+    //Add Identifier on Player
+    //Make a 2D sprite with image = player's number
+    CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",number+1]];
+    
+    //Add sprite to billboard
+    CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
+    [marker setScale:cc3v(0.05f, 0.05f, 0.05f)];
+    marker.location = cc3v(0,20,0);
+    
+    //Always face the camera
+    marker.shouldAutotargetCamera = YES;
+    [marker setIsTouchEnabled:NO];
+    
+    [character addChild:marker];
+    
+    [_characterNodesArray addObject:character];
+    [self addChild:character];
+    
 }
 
 /**
@@ -184,7 +165,9 @@
  *
  * For more info, read the notes of this method on CC3Node.
  */
--(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor {}
+-(void) updateBeforeTransform: (CC3NodeUpdatingVisitor*) visitor {
+    NSLog(@"OIOIOI");
+}
 
 /**
  * This template method is invoked periodically whenever the 3D nodes are to be updated.
@@ -224,8 +207,14 @@
     
 	// Move the camera to frame the scene. The resulting configuration of the camera is output as
 	// a [debug] log message, so you know where the camera needs to be in order to view your scene.
-	[self.activeCamera moveWithDuration: 3.0 toShowAllOf: self withPadding: 0.5f];
+	[self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 1, 0.1f)];
     
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        for(CC3Node *character in _characterNodesArray) {
+            [character runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
+        }
+    });
+  
 	// Uncomment this line to draw the bounding box of the scene.
     //	self.shouldDrawWireframeBox = YES;
 }

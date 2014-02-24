@@ -30,8 +30,6 @@
 {
     [super viewDidLoad];
     
-    [Connection myConnection].delegate = self;
-    
     //Order the outlet array based on their X position.
     self.connectionStatusLabels = [self.connectionStatusLabels sortedArrayUsingComparator:^NSComparisonResult(id label1, id label2) {
         if ([label1 frame].origin.x < [label2 frame].origin.x) return NSOrderedAscending;
@@ -40,10 +38,17 @@
     }];
     
     
+    
+	// Do any additional setup after loading the view.
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [Connection myConnection].delegate = self;
+    
     for (UILabel *label in self.connectionStatusLabels) {
         label.text = @"Not Connected!";
+        label.textColor = [UIColor yellowColor];
     }
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,20 +68,22 @@
         case MCSessionStateConnected:
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [label setText:@"connected"];
-                
+                [label setText:@"Connected"];
+                label.textColor = [UIColor greenColor];
             });
             break;
         case MCSessionStateNotConnected:
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [label setText:@"disconnected"];
+                label.textColor = [UIColor redColor];
+                [label setText:@"Disconnected"];
                 
             });
             break;
         case MCSessionStateConnecting:
             dispatch_async(dispatch_get_main_queue(), ^{
                 [label setText:@"connecting"];
+                label.textColor = [UIColor yellowColor];
                 
             });
         default:

@@ -14,6 +14,8 @@
 #import "Game.h"
 //w Add pragma marks to this file.
 
+#define maxPlayers 4
+
 @implementation Connection
 
 /**
@@ -319,8 +321,10 @@ static Connection *myConnectionConfiguration = nil;
  */
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL accept, MCSession *session))invitationHandler
 {
-    
-    invitationHandler(YES, self.mySession);
+    if ([self.mySession.connectedPeers count] < maxPlayers)
+        invitationHandler(YES, self.mySession);
+    else
+        invitationHandler(NO, self.mySession);
     
 }
 

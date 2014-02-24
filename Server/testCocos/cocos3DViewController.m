@@ -12,33 +12,43 @@
 #import "AmazeGameLayer.h"
 #import "AmazeGameScene.h"
 #import "Game.h"
+#import "PaperBattleScene.h"
 
 #define kAnimationFrameRate		60	
 
 @interface cocos3DViewController () <Cocos3DViewControllerDelegate>
 {
-    CC3Layer                                    *cc3Layer;
     CC3UIViewController      *director;
 }
 
 @end
 
 @implementation cocos3DViewController
+
+
+
 - (IBAction)buttonPress:(id)sender {
     if ([CC3UIViewController.sharedDirector isPaused]) {
         [CC3UIViewController.sharedDirector resume];
+        [self.pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
     } else {
         [CC3UIViewController.sharedDirector pause];
+        [self.pauseButton setTitle:@"Play" forState:UIControlStateNormal];
     }
     NSLog(@"TESTE**");
 }
+
 - (IBAction)sceneButton:(id)sender {
     static bool scene = YES;
 
-    if(scene)
-        [CC3UIViewController.sharedDirector pushScene:[CCScene node]];
-    else
+    if(scene) {
+        CC3Layer *cc3Layer = [CC3Layer layerWithController:CC3UIViewController.sharedDirector];
+        cc3Layer.cc3Scene = [PaperBattleScene scene];
+        CC3ControllableLayer *mainLayer = cc3Layer;
+        [CC3UIViewController.sharedDirector pushScene:mainLayer];
+    } else {
         [CC3UIViewController.sharedDirector popScene];
+    }
     
     scene = !scene;
     
@@ -98,17 +108,12 @@
     gameScene.delegate = self;
     
     cc3Layer.cc3Scene = gameScene;
+    gameScene.cc3Layer = cc3Layer;
     
-    // Assign to a generic variable so we can uncomment options below to play with the capabilities.
-    CC3ControllableLayer* mainLayer = cc3Layer;
-    // The 3D layer can run either directly in the scene, or it can run as a smaller "sub-window"
-    // within any standard CCLayer. So you can have a mostly 2D window, with a smaller 3D window
-    // embedded in it.
-
     // Run the scene.
     
-    [Game myGame].mazeScene = mainLayer;
-    [glViewController runSceneOnNode:mainLayer];
+    [Game myGame].hudLayer = cc3Layer;
+    [glViewController runSceneOnNode:cc3Layer];
     
 
 }
@@ -128,5 +133,9 @@
 
 -(void) dissmissVC {
     [self dismissViewControllerAnimated:YES completion:NO];
+}
+- (void)dealloc {
+    [_pauseButton release];
+    [super dealloc];
 }
 @end
