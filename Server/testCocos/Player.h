@@ -44,6 +44,8 @@
  */
 @property (nonatomic, strong) CC3Node *node;
 
+@property (nonatomic, strong) CC3Node *originalNode;
+
 /**
  * Dictionary containing the timestamp of the last time the player has collided with another player.
  * Set as default to unix time 0.

@@ -30,6 +30,7 @@ static Game *myGameConfiguration = nil;
     self.playerArray = [[NSMutableArray alloc] init];
     self.roundDuration = 90;
     self.introDuration = 16;
+    
 }
 
 /**

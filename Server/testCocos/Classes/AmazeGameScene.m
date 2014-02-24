@@ -40,8 +40,6 @@
 
 @implementation AmazeGameScene
 
-
-
 NSMutableArray *_walls;
 
 CC3Node *_playerModel;
@@ -67,6 +65,7 @@ NSTimer *_cameraPlayersTimer;
 
 BOOL _paused;
 BOOL _ended;
+BOOL _isFirstOpen;
 
 -(void) dealloc
 {
@@ -141,12 +140,6 @@ BOOL _ended;
 	
 	// ------------------------------------------
 	
-	// That's it! The scene is now constructed and is good to go.
-	
-	// To help you find your scene content once it is loaded, the onOpen method below contains
-	// code to automatically move the camera so that it frames the scene. You can remove that
-	// code once you know where you want to place your camera.
-	
 	// If you encounter problems displaying your models, you can uncomment one or more of the
 	// following lines to help you troubleshoot. You can also use these features on a single node,
 	// or a structure of nodes. See the CC3Node notes for more explanation of these properties.
@@ -174,20 +167,16 @@ BOOL _ended;
     [[Map myMap] readMapFile];
     
     //leave the mazeWalls as the first method
-
-    
     [self addMazeWalls];
     
     for (int i = 0; i < 4 ; i++) {
         [self addPlayerCharacterWithNumber: i];
     }
-    
     [self addChild:_allCharacters];
 
     [self createCoinParticles];
     [self addCamera];
 
-    
     [self createTempWallsAndObjects];
     [self addChild:lamp];
     // Create OpenGL buffers for the vertex arrays to keep things fast and efficient, and to
@@ -198,12 +187,7 @@ BOOL _ended;
     self.collisionEnabled = YES;
     
     Game *game = [Game myGame];
-    game.hudLayer = (AmazeGameLayer *)self.cc3Layer;
-    
-    
-    /**Camera movements for the intro **/
-//    self.activeCamera.location = cc3v(0,0,1000);
-//    [self.activeCamera moveToShowAllOf:self fromDirection:cc3v(0, 0, 1)];
+//    game.hudLayer = (AmazeGameLayer *)self.cc3Layer;
     
     NSInteger introDuration = game.introDuration;
     
@@ -220,8 +204,48 @@ BOOL _ended;
     [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(removeWall) forTarget:self interval:10.0f paused:NO];
 }
 
+/**
+ * This handles initialization for instance variables and properties
+ */
 
-//called in initializeScene
+-(void) performInitializations {
+    [Connection myConnection].delegate = self;
+    _allCharacters = [CC3Node node];
+    
+    
+    _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
+    _tempWallsArray = [[NSMutableArray alloc ] init];
+    _paused = YES;
+    _isFirstOpen = YES;
+    self.flip = NO;
+    self.isTouchEnabled = NO;
+    
+    [[Game myGame] configureGame];
+    
+    _playerArray = [[Game myGame] playerArray];
+    _timersArray = [[NSMutableArray alloc] init];
+    _coinDictionary = [[NSMutableDictionary alloc] init];
+    
+    _bonusCoinCollection  = [CC3Node node];
+    [self addChild:_bonusCoinCollection];
+    
+    [self addContentFromPODFile:@"coin.pod" withName:@"bonusCoinModel"];
+    _bonusCoin = [[self getNodeNamed:@"bonusCoinModel"] copy];
+    _bonusCoin.scale = cc3v(70,70,70);
+    [_bonusCoin createBoundingVolumeFromBoundingBox];
+    _bonusCoin.shouldUseFixedBoundingVolume = YES;
+    _ended = NO;
+    [self removeChild:[self getNodeNamed:@"bonusCoinModel"]];
+    
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+}
+
+/**
+ * This method spawns the smaller coins as particle cubes.
+ * A coin in spawn in each empty tile using particle system
+ * The "collision" is done using a dictionary to check if the coin on that position has been picked up
+ */
+
 -(void)createCoinParticles{
 
     CC3MeshNode *particleTemplate = [CC3MeshNode node];
@@ -258,7 +282,10 @@ BOOL _ended;
     }
 }
 
-
+/**
+ * This method spawns the removable doors and other scenery objects
+ * Positions are defined on the 2d txt map
+ */
 -(void) createTempWallsAndObjects {
     CC3MeshNode *cube = [CC3MeshNode node];
     
@@ -395,37 +422,11 @@ BOOL _ended;
     }
 
 }
-//all variable and property initializations go here
--(void) performInitializations {
-    [Connection myConnection].delegate = self;
-    _allCharacters = [CC3Node node];
 
-    
-    _walls = [[NSMutableArray alloc] init]; //DO NOT USE [NSMutableArray array], if you do the app WILL crash.
-    _tempWallsArray = [[NSMutableArray alloc ] init];
-    _paused = YES;
-    self.flip = NO;
-    self.isTouchEnabled = NO;
-    
-    [[Game myGame] configureGame];
 
-    _playerArray = [[Game myGame] playerArray];
-    _timersArray = [[NSMutableArray alloc] init];
-    _coinDictionary = [[NSMutableDictionary alloc] init];
-    
-    _bonusCoinCollection  = [CC3Node node];
-    [self addChild:_bonusCoinCollection];
-    
-    [self addContentFromPODFile:@"coin.pod" withName:@"bonusCoinModel"];
-    _bonusCoin = [[self getNodeNamed:@"bonusCoinModel"] copy];
-    _bonusCoin.scale = cc3v(70,70,70);
-    [_bonusCoin createBoundingVolumeFromBoundingBox];
-    _bonusCoin.shouldUseFixedBoundingVolume = YES;
-    _ended = NO;
-    [self removeChild:[self getNodeNamed:@"bonusCoinModel"]];
-    
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
-}
+/**
+ * Create the camera and add it to the scene
+ */
 
 -(void) addCamera {
     // Create the camera, place it back a bit, and add it to the scene
@@ -441,9 +442,8 @@ BOOL _ended;
 
 
 /**
- *
- * Add method description here
- *
+ * Load the 3d model of the map and add it to scene
+ * On this case the object for the entrance is added separately
  */
 
 -(void) addMazeWalls {
@@ -466,6 +466,10 @@ BOOL _ended;
     entrance.location = cc3v(-entrance.boundingBox.maximum.x*entrance.scale.x/2, 0, [[Map myMap] mapSizeZ] / 2 + entrance.boundingBox.maximum.z*entrance.scale.z*2.5/3);
 }
 
+/**
+ * This method is called periodically and spawns a bigger coin on a random spot.
+ * This coin is worth more points
+ */
 -(void) addBonusCoin {
     
     if (!_paused) {
@@ -486,9 +490,15 @@ BOOL _ended;
     }
 }
 
+/**
+ * Creates a new player instance with a player index
+ * Creates a node for the character and adds it to scene
+ * Adds a billboard on top of the player to display the number
+ */
+
 -(void) addPlayerCharacterWithNumber:(NSInteger) number
 {
-    Player *player = [[Player alloc] initWithIndex: [_playerArray count]];
+    Player *player = [[Player alloc] initWithIndex: number];
     
     NSString *modelString;
     switch (number) {
@@ -512,13 +522,14 @@ BOOL _ended;
     [self addContentFromPODFile:modelString withName:[NSString stringWithFormat:@"player%d",number]];
     CC3Node *characterModel = [self getNodeNamed:[NSString stringWithFormat:@"player%d",number]];
     
+    player.originalNode = [characterModel copy];
     CC3Node *character = [characterModel copy];
-
+    
     //create bounding volume
     [character createSphericalBoundingVolumeFromBoundingBoxWithRadiusRatio:0.3f];
     
 #if COLLISION_DEBUG
-    monkey.node.shouldDrawBoundingVolume = YES;
+    character.shouldDrawBoundingVolume = YES;
 #endif
     
     //temporary spawn position methods, replace with positions on map text file
@@ -548,7 +559,7 @@ BOOL _ended;
     
     //Add Identifier on Player
     //Make a 2D sprite with image = player's number
-    CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png",[_playerArray count]+1]];
+    CCSprite *markerSprite = [CCSprite spriteWithFile: [NSString stringWithFormat:@"p%d.png", number+1]];
     //Add sprite to billboard
     CC3Billboard *marker = [CC3Billboard nodeWithName: @"TouchSpot" withBillboard: markerSprite];
     [marker setScale:cc3v(0.2f, 0.2f, 0.2f)];
@@ -566,49 +577,9 @@ BOOL _ended;
     [_playerArray addObject:player];
     
     [_allCharacters addChild:character];
-    
-    
+
     player.delegate = self;
 }
-
-/**
- * Creates the terrain.
- *
- */
--(void) createTerrain
-{
-    //hocus pocus add grass
-    const float LOCATION_Z = (0.0f);
-    
-    NSString * name = [NSString stringWithFormat:@"grass.png"];
-    CCLOG(@"tile : %@", name);
-    
-    CC3Texture * texture = [CC3Texture textureFromFile: name];
-    
-    int xTiles = [[Map myMap] xTileCount];
-    int zTiles = [[Map myMap] zTileCount];
-    if( texture != nil)
-    {
-        CC3PlaneNode *tile = [CC3PlaneNode nodeWithName: name];
-        CC3Texture * texture = [CC3Texture textureFromFile: name];
-                [tile rotateByAngle:90 aroundAxis:kCC3VectorUnitXPositive];
-        [tile populateAsCenteredRectangleWithSize: CGSizeMake([Map myMap].tileSizeX*xTiles, [Map myMap].tileSizeZ*zTiles) andTessellation:CC3TessellationMake(0.1f, 0.1f)];
-    
-        tile.shouldCullBackFaces = NO;
-
-
-        [tile setTexture: texture];
-
-
-        CC3Vector loc = cc3v(0, LOCATION_Z, 0);
-        [tile setLocation: loc];
-        [tile retainVertexLocations];
-        
-        [self addChild: tile];
-    }
-}
-
-
 
 /**
  * By populating this method, you can add add additional scene content dynamically and
@@ -696,8 +667,11 @@ BOOL _ended;
 	[self.viewSurfaceManager.backgrounder runBlock: ^{
 		[self addSceneContentAsynchronously];
 	}];
- 
-
+    
+    if (!_isFirstOpen) {
+        _paused = NO;
+    }
+    _isFirstOpen = NO;
     
 	// Uncomment this line to draw the bounding box of the scene.
 //	self.shouldDrawWireframeBox = YES;
@@ -706,6 +680,7 @@ BOOL _ended;
 
 /**
  * Method called when the game ends.
+ * Zooms in on the winner and displays message.
  */
 -(void) endGame
 {
@@ -713,7 +688,6 @@ BOOL _ended;
         [timer invalidate];
     }
     
-//    [_cameraPlayersTimer invalidate];
     
     [self pauseAllActions];
     Player *winner = [[Game myGame] topScorer];
@@ -740,10 +714,10 @@ BOOL _ended;
     NSData *data = [[[EndRoundMessage alloc] init] archiveData];
     [[Connection myConnection] sendData:data];
 
-    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(restartScene) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(closeScene) userInfo:nil repeats:NO];
 }
 
--(void) restartScene {
+-(void) closeScene {
     [[CCDirector sharedDirector] replaceScene:[CCScene node]];
     [CC3Resource removeAllResources];
     
@@ -877,7 +851,7 @@ BOOL _ended;
                 move = [CC3MoveBy actionWithDuration:0.1f moveBy:moveDirection];
                 [player.node runAction:[CCRepeatForever actionWithAction:move] withTag:0];
                 [player.node runAction:[CCRepeatForever actionWithAction:[CC3Animate actionWithDuration:1.0f]] withTag:1];
-                
+
                 break;
             //right button
             case 3:
@@ -1156,7 +1130,6 @@ BOOL _ended;
 - (void) startZoomingOnPlayers
 {
     [[[CCDirector sharedDirector] scheduler] scheduleSelector:@selector(zoomCameraOnPlayers) forTarget:self interval:5.0f paused:NO];
-//    _cameraPlayersTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(zoomCameraOnPlayers) userInfo:nil repeats:YES] ;
 }
 
 #pragma mark - TEST METHODS

@@ -18,13 +18,15 @@
 
 @interface cocos3DViewController () <Cocos3DViewControllerDelegate>
 {
-    CC3Layer                                    *cc3Layer;
     CC3UIViewController      *director;
 }
 
 @end
 
 @implementation cocos3DViewController
+
+
+
 - (IBAction)buttonPress:(id)sender {
     if ([CC3UIViewController.sharedDirector isPaused]) {
         [CC3UIViewController.sharedDirector resume];
@@ -35,6 +37,7 @@
     }
     NSLog(@"TESTE**");
 }
+
 - (IBAction)sceneButton:(id)sender {
     static bool scene = YES;
 
@@ -105,17 +108,12 @@
     gameScene.delegate = self;
     
     cc3Layer.cc3Scene = gameScene;
+    gameScene.cc3Layer = cc3Layer;
     
-    // Assign to a generic variable so we can uncomment options below to play with the capabilities.
-    CC3ControllableLayer* mainLayer = cc3Layer;
-    // The 3D layer can run either directly in the scene, or it can run as a smaller "sub-window"
-    // within any standard CCLayer. So you can have a mostly 2D window, with a smaller 3D window
-    // embedded in it.
-
     // Run the scene.
     
-    [Game myGame].mazeScene = mainLayer;
-    [glViewController runSceneOnNode:mainLayer];
+    [Game myGame].hudLayer = cc3Layer;
+    [glViewController runSceneOnNode:cc3Layer];
     
 
 }
