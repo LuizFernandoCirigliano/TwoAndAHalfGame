@@ -10,9 +10,16 @@
 
 @implementation PaperBattleCallbackMessage
 
+
+/**
+ * Add method description here
+ *
+ */
 - (NSData *)archiveData
 {
-    return [self archiveDataWithKey:@"PaperBattleCallbackMessage"];
+    return [self archiveDataWithKey:@"paperBattleCallbackPressMessage"];
 }
+
+
 
 @end

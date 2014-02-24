@@ -315,6 +315,7 @@
 		3AA4CE6A18AE29E50013401F /* cocos3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4CE6918AE29E50013401F /* cocos3DViewController.m */; };
 		3AA4CE6D18AE31AF0013401F /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4CE6C18AE31AF0013401F /* StartViewController.m */; };
 		3AA4CE6F18AE32010013401F /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA4CE6E18AE32010013401F /* main.storyboard */; };
+		3AA68B0E18BBD0F000ED10B3 /* EndMinigameMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA68B0D18BBD0F000ED10B3 /* EndMinigameMessage.m */; };
 		3AD47EC7189020F900623ACA /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD47EC2189020F900623ACA /* Connection.m */; };
 		3AD47ECC1890227400623ACA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */; };
 		3AF92D1318B29FE50027D433 /* thief.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AF92D1218B29FE50027D433 /* thief.png */; };
@@ -971,6 +972,8 @@
 		3AA4CE6B18AE31AF0013401F /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		3AA4CE6C18AE31AF0013401F /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		3AA4CE6E18AE32010013401F /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		3AA68B0C18BBD0F000ED10B3 /* EndMinigameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndMinigameMessage.h; path = ../../Shared/EndMinigameMessage.h; sourceTree = "<group>"; };
+		3AA68B0D18BBD0F000ED10B3 /* EndMinigameMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndMinigameMessage.m; path = ../../Shared/EndMinigameMessage.m; sourceTree = "<group>"; };
 		3AD47EC1189020F900623ACA /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		3AD47EC2189020F900623ACA /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		3AD47ECB1890227400623ACA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
@@ -2117,6 +2120,8 @@
 				A3B8D257189A7DF8009FFE5C /* StartGameMessage.m */,
 				A3B8D258189A7DF8009FFE5C /* StartMinigameMessage.h */,
 				A3B8D259189A7DF8009FFE5C /* StartMinigameMessage.m */,
+				3AA68B0C18BBD0F000ED10B3 /* EndMinigameMessage.h */,
+				3AA68B0D18BBD0F000ED10B3 /* EndMinigameMessage.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2634,6 +2639,7 @@
 				3A4EAABB188D927C00E6C9F5 /* CC3OpenGLES2Utility.m in Sources */,
 				3A4EA8CD188D927A00E6C9F5 /* CCScheduler.m in Sources */,
 				3A4EA91D188D927A00E6C9F5 /* CCDirectorIOS.m in Sources */,
+				3AA68B0E18BBD0F000ED10B3 /* EndMinigameMessage.m in Sources */,
 				3AA4CE6A18AE29E50013401F /* cocos3DViewController.m in Sources */,
 				3A760A9018B7CD7500565C3E /* PaperBattleScene.m in Sources */,
 				3A4EA9DC188D927B00E6C9F5 /* CC3PODMeshNode.mm in Sources */,
@@ -2746,6 +2752,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Amaze Game";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -2759,6 +2766,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Amaze Game";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

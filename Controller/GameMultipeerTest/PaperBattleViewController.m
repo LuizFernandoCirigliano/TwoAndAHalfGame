@@ -10,7 +10,7 @@
 #import "PaperBattleButtonPressMessage.h"
 #import "Connection.h"
 
-@interface PaperBattleViewController ()
+@interface PaperBattleViewController () <ConnectionDelegate>
 
 @end
 
@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
     }
     return self;
 }
@@ -29,6 +30,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [Connection myConnection].delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,7 +50,10 @@
     [[Connection myConnection] sendData:data];
 }
 
-
+- (void) dismissVC
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

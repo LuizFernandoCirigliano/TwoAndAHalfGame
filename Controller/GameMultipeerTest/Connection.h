@@ -16,6 +16,7 @@
 #import "StartMinigameMessage.h"
 #import "JankenResultMessage.h"
 #import "PaperBattleCallbackMessage.h"
+#import "EndMinigameMessage.h"
 
 @protocol ConnectionDelegate <NSObject>
 

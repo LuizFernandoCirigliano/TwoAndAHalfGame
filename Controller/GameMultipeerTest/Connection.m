@@ -8,6 +8,7 @@
 
 #import "Connection.h"
 #import "ControllerViewController.h"
+
 @implementation Connection
 
 /* This classes sets up the remote connection between devices, and handles interactions using the message transfer system
@@ -126,13 +127,13 @@ static Connection *myConnectionConfiguration = nil;
             [self.delegate performSelectorOnMainThread:@selector(endGame) withObject:nil waitUntilDone:NO];
         }
     }
-    
     else if ([message isKindOfClass:[PaperBattleCallbackMessage class]]) {
         if ([self.delegate respondsToSelector:@selector(startPaperBattle)]) {
             [self.delegate performSelectorOnMainThread:@selector(startPaperBattle) withObject:nil waitUntilDone:NO];
         }
     }
-
+    
+    
 }
 
 - (void) showBrowserVC:(UIViewController*)controller{
